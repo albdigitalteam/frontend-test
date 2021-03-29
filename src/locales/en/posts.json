@@ -1,0 +1,19 @@
+{
+    "createdBy": "created by {{user}}",
+    "add": {
+        "fullname": "Full name",
+        "email": "E-mail",
+        "title": "Title",
+        "body": "Content",
+        "header": "New Post"
+    },
+    "comments": {
+        "empty": "No comments.",
+        "add": {
+            "name": "Name",
+            "email": "E-mail",
+            "body": "Content",
+            "header": "New Comment"
+        }
+    }
+}
