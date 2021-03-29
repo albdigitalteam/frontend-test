@@ -1,0 +1,9 @@
+{
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "screen": {
+        "postAdd": "Criar nova publicação",
+        "commentAdd": "Criar novo comentário",
+        "post": "Publicação"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "screen": {
+        "postAdd": "Create new post",
+        "commentAdd": "Create new comment",
+        "post": "Post"
+    }
+}

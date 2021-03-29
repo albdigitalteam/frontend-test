@@ -1,40 +1,35 @@
-## Teste desenvolvedor Front-end
+# Air Liquide's Front-end Developer Test
 
-Crie um app mobile ou site web que servirá como um blog de publicações e comentários.
+React Native in manage mode by expo was the chosen platform for this test. It was also purposely design with no external UI or components libs to demonstrate the fully use of the react/react native framework only
 
-### O que precisa ser feito
+# Instructions
+With a terminal of your choose, enter the following
+```
+npm install || yarn 
+```
+Then
+```
+expo start
+```
+Scan the QR code presented at the terminal with the expo client (Android) or camera app (iOS)
 
-- [ ]  Consumir a lista de posts onde:
-    - Cada post possui um autor usuário e deverá ter um título, descrição e informar qual foi o usuário autor;
-    - Cada post pode ter ou não comentários de outros usuários e deverá conter o comentário em si e o nome do usuário que fez o comentário;
-    - Não é obrigatório ter uma imagem o post, mas seria um plus se implementar, e caso utilize Lazy Load, será um plus++.
-- [ ]  Deverá ser possível criar um post e um comentário para cada post.
-- [ ]  Deverá ser possível excluir o post.
-- [ ]  Criar um Pull Request no repositório do teste ao finalizar e avisar através do e-mail: **vitor.cazelatto-sc@airliquide.com**
+# Features
 
-**API de consumo dos Posts, Usuários e comentários:**
+* expo sdk 40
+* Swipe left to delete
+* Localization in 3 languages with i18n
+* Auto select language by system active language
+* Stack Navigation with react-navigation v5
+* UI Lottie animation for fetching processes
+* Simple store structure
+* Created or modified posts will appear on top of the list
+* Some ramdom colors! XD
 
-Posts → [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)
+# Known Issues
+* useNativeDrive true for opacity values in Android doesn't work properly
 
-Comentários → [https://jsonplaceholder.typicode.com/comments](https://jsonplaceholder.typicode.com/comments)
+# Sincere Thanks
+To anyone involved in this test review and interviews. 
+Thank you for your time
 
-Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
-
-### Pontos a serem avaliados
-
-- [ ]  Utilização da linguagem e/ou tecnologia
-- [ ]  Gerencia de estado da aplicação, imutabilidade e efeitos colaterais
-- [ ]  Arquitetura, escalabilidade e organização
-- [ ]  Implementação de patterns e conceitos
-- [ ]  Árvore de commits do Git
-
-### Não é obrigatório, mas seria legal se você usasse caso queira ganhar alguns pontos:
-
-- ReactJS, React Native CLI ou Expo
-- Redux + Redux Saga
-- TypeScript
-- Testes automatizados
-
-**Prazo para entrega: 3 dias após o fork do repositório.**
-
-Após finalizar o teste, abre um Pull Request neste repositório para que possamos avaliar o seu resultado, em seguida, avise através do e-mail: [vitor.cazelatto-sc@airliquide.com](mailto:vitor.cazelatto-sc@airliquide.com)
+##### `Tested in iOS Simulator, iOS Device and Android Emulator`
