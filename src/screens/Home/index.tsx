@@ -20,50 +20,49 @@ const Home = () => {
 	const { navigate } = useNavigation();
 	const dispatch = useDispatch();
 	const { loading, posts } = useSelector((state: AppState) => state.post);
-	const { colors, normalizeWidth } = useTheme();
+	const { colors, normalizeWidth } = useTheme()
 
 	const handleSubmit: SubmitHandler<{ search: string }> = (data) => {
 		console.log(formRef);
 		console.log(data);
 		dispatch(filterPosts(data.search));
-	};
+	}
 
 	useEffect(() => {
-		dispatch(fetchingPosts());
-	}, []);
+		dispatch(fetchingPosts())
+	}, [])
 
 	const renderPosts = () => {
 		const categories = ['entertainment', 'games', 'culture', 'sports'];
 		return posts.map((post) => {
-			const category = categories[Math.floor(Math.random() * categories.length)];
+			const category = categories[Math.floor(Math.random() * categories.length)]
 			return (
-				<PostItem
-					goToDetail={() => navigate('PostDetail', { item: { ...post, category } })}
-					key={post.id}
-					category={category}
-					title={post.title}
-					summary={post.body}
-					created={new Date()}
-					author={post.user.name}
-					picture={`https://picsum.photos/300/200.jpg`}
-				/>
-			);
-		});
-	};
+			<PostItem
+				goToDetail={() => navigate('PostDetail', { item: {...post, category } })}
+				key={post.id}
+				category={category}
+				title={post.title}
+				summary={post.body}
+				created={new Date()}
+				author={post.user.name}
+				picture={`https://picsum.photos/300/200.jpg`}
+			/>
+		)})
+	}
 
 	if (loading) {
-		return <SimpleLoading />;
+		return <SimpleLoading />
 	}
 
 	return (
 		<Container insets={insets}>
-			<StatusBar animated barStyle='dark-content' translucent backgroundColor='transparent' />
+			<StatusBar animated barStyle='dark-content' translucent backgroundColor="transparent" />
 			<BoxVertical>
 				<CenterAll>
 					<TitlePage>Posts</TitlePage>
 					<Form ref={formRef} onSubmit={handleSubmit}>
 						<Input
-							name='search'
+							name="search"
 							placeholder='Pesquise aqui'
 							rightIcon={<Search stroke={colors.text} />}
 							inputWidth={normalizeWidth(300)}
@@ -75,7 +74,7 @@ const Home = () => {
 			<Content>
 				<SubTitle>Para você</SubTitle>
 				{renderPosts()}
-			</Content>
+			</Content>	
 		</Container>
 	);
 };

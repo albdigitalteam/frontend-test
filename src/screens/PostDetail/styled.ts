@@ -19,7 +19,7 @@ export const BackButton = styled.TouchableOpacity<{ insets: EdgeInsets }>`
 	top: ${({ insets }) => insets.top + 20}px;
 	left: 20px;
 	padding: 5px;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, .5);
 	border-radius: 10px;
 `;
 
@@ -63,15 +63,15 @@ export const PostText = styled.Text`
 
 export const Content = styled.ScrollView.attrs({
 	contentContainerStyle: {
-		paddingBottom: 50,
-	},
+		paddingBottom: 50
+	}
 })`
 	flex: 1;
-	margin-top: -30px;
-	width: ${({ theme }) => theme.windowSizes.totalWidth}px;
-	background-color: ${({ theme }) => theme.colors.constrastBackground};
-	border-top-left-radius: 30px;
-	border-top-right-radius: 30px;
+    margin-top: -30px;
+    width: ${({ theme }) => theme.windowSizes.totalWidth}px;
+    background-color: ${({ theme }) => theme.colors.constrastBackground};
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 	padding: 20px;
 `;
 
@@ -108,8 +108,8 @@ export const PostCommentsContent = styled.View`
 export const PostCommentsBox = styled.View`
 	flex-direction: column;
 	margin-bottom: 10px;
-	border-bottom-width: 0.3px;
-	border-bottom-color: ${({ theme }) => theme.colors.silver};
+	border-bottom-width: .3px;
+    border-bottom-color: ${({ theme }) => theme.colors.silver};
 `;
 
 export const PostCommentAuthor = styled.Text`

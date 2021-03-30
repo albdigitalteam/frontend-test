@@ -33,23 +33,23 @@ import {
 	PostCommentsBox,
 	PostCommentAuthor,
 	PostCommentText,
-	FormComment,
+	FormComment
 } from './styled';
 import { FormHandles, SubmitHandler } from '@unform/core';
-import { ButtonFill } from '#components/button';
+import {ButtonFill} from '#components/button';
 
 type ParamList = {
 	PostDetail: {
-		item: PostWithUser & { category: string };
+	  item: PostWithUser & { category: string };
 	};
-};
+  };
 
 const PostDetail = () => {
 	const insets = useSafeAreaInsets();
 	const { goBack } = useNavigation();
 	const route = useRoute<RouteProp<ParamList, 'PostDetail'>>();
 	const dispatch = useDispatch();
-	const { commentsDetail } = useSelector((state: AppState) => state.post);
+	const { commentsDetail } = useSelector((state: AppState) => state.post)
 	const formRef = useRef<FormHandles>(null);
 	const [showComments, setShowComments] = useState(false);
 	const { colors, fontSizes, windowSizes, normalizeHeight, normalizeWidth } = useTheme();
@@ -58,18 +58,18 @@ const PostDetail = () => {
 	const handleSubmit: SubmitHandler<FormData> = (data) => {
 		console.log(formRef);
 		console.log(data);
-	};
+	}
 
 	useEffect(() => {
 		dispatch(fetchingPostComments(post.id));
 		return () => {
 			dispatch(clearComments());
-		};
-	}, []);
+		}
+	}, [])
 
 	return (
 		<Container>
-			<StatusBar animated barStyle='dark-content' translucent backgroundColor='transparent' />
+			<StatusBar animated barStyle='dark-content' translucent backgroundColor="transparent" />
 			<PlaceholderImage
 				sizeWidth={`${windowSizes.totalWidth}px`}
 				sizeHeight={`${normalizeHeight(180)}px`}
@@ -77,11 +77,15 @@ const PostDetail = () => {
 				source={{
 					uri: 'https://picsum.photos/1080/608.jpg',
 					width: windowSizes.totalWidth,
-					height: normalizeHeight(180),
+					height: normalizeHeight(180)
 				}}
 			/>
 			<BackButton insets={insets} onPress={() => goBack()}>
-				<ChevronLeft stroke='#000' width={fontSizes.xxlarge} height={fontSizes.xxlarge} />
+				<ChevronLeft
+					stroke='#000'
+					width={fontSizes.xxlarge}
+					height={fontSizes.xxlarge}
+				/>
 			</BackButton>
 			<Content>
 				<Tag category={post.category} size='medium' />
@@ -89,21 +93,30 @@ const PostDetail = () => {
 				<BoxHorizontal>
 					<BoxVertical>
 						<PostAuthorContent>
-							<PostAuthorName>{post.user.name}</PostAuthorName>
-							<PostAuthorDate>{format(new Date(), 'dd MMMM', { locale: ptBR })}</PostAuthorDate>
+							<PostAuthorName>
+								{post.user.name}
+							</PostAuthorName>
+							<PostAuthorDate>
+								{format(new Date(), 'dd MMMM', { locale: ptBR })}
+							</PostAuthorDate>
 						</PostAuthorContent>
+
 					</BoxVertical>
 					<BoxHorizontal>
 						<PostCommentContent onPress={() => setShowComments(true)}>
-							<PostCommentName>{commentsDetail.length}</PostCommentName>
-							<MessageSquare stroke={colors.textDark} />
+							<PostCommentName>
+								{commentsDetail.length}
+							</PostCommentName>
+							<MessageSquare stroke={colors.textDark}/>
 						</PostCommentContent>
 						<PostCommentContent>
-							<Trash2 stroke={colors.textDark} />
+							<Trash2 stroke={colors.textDark}/>
 						</PostCommentContent>
 					</BoxHorizontal>
 				</BoxHorizontal>
-				<PostText>{post.body}</PostText>
+				<PostText>
+					{post.body}
+				</PostText>
 			</Content>
 			<SwipeablePanel
 				isActive={showComments}
@@ -111,26 +124,31 @@ const PostDetail = () => {
 				showCloseButton
 				onClose={() => setShowComments(false)}
 				style={{
-					paddingHorizontal: 20,
+					paddingHorizontal: 20
 				}}
 			>
 				<PostCommentsContent>
 					<PostCommentsContentTitle>Comentários ({commentsDetail.length})</PostCommentsContentTitle>
 					{commentsDetail.map((comment) => (
 						<PostCommentsBox key={comment.id}>
-							<PostCommentAuthor>{comment.name}</PostCommentAuthor>
-							<PostCommentText>{comment.body}</PostCommentText>
+							<PostCommentAuthor>
+								{comment.name}
+							</PostCommentAuthor>
+							<PostCommentText>
+								{comment.body}
+							</PostCommentText>
+
 						</PostCommentsBox>
 					))}
 					<FormComment ref={formRef} onSubmit={handleSubmit}>
 						<Input
-							name='comment'
+							name="comment"
 							placeholder='Comente aqui...'
 							rightIcon={<Send stroke={colors.text} />}
 							rightAction={() => formRef.current?.submitForm()}
 							inputWidth={normalizeWidth(280)}
 							multiline={true}
-							numberOfLines={4}
+    						numberOfLines={4}
 							maxLength={200}
 							border
 						/>

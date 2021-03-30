@@ -47,14 +47,14 @@ export const SubTitle = styled.Text`
 
 export const Content = styled.ScrollView.attrs({
 	contentContainerStyle: {
-		paddingBottom: 50,
-	},
+		paddingBottom: 50
+	}
 })`
 	flex: 1;
-	margin-top: 20px;
-	width: ${({ theme }) => theme.windowSizes.totalWidth}px;
-	background-color: ${({ theme }) => theme.colors.constrastBackground};
-	border-top-left-radius: 30px;
-	border-top-right-radius: 30px;
+    margin-top: 20px;
+    width: ${({ theme }) => theme.windowSizes.totalWidth}px;
+    background-color: ${({ theme }) => theme.colors.constrastBackground};
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 	padding: 20px;
 `;

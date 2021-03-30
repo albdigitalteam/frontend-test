@@ -33,14 +33,7 @@ export interface StatePost {
 	loading: boolean;
 }
 
-export type ActionPayloadPost =
-	| boolean
-	| Array<Post>
-	| Post
-	| PostWithComments
-	| PostWithUser
-	| Array<Comment>
-	| string;
+export type ActionPayloadPost = boolean | Array<Post> | Post | PostWithComments | PostWithUser | Array<Comment> | string;
 
 export interface ActionPost {
 	type: string;

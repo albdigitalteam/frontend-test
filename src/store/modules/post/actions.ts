@@ -4,54 +4,54 @@ import { Comment } from '#interfaces/Comment';
 
 export function fetchingPosts() {
 	return {
-		type: POSTS_TYPES.FETCHING_POSTS,
+		type: POSTS_TYPES.FETCHING_POSTS
 	};
 }
 
 export function filterPosts(filter: string) {
 	return {
 		type: POSTS_TYPES.FILTER_POSTS,
-		payload: filter,
+		payload: filter
 	};
 }
 
 export function fetchedPosts(posts: Array<PostWithUser>) {
 	return {
 		type: POSTS_TYPES.FETCHED_POSTS,
-		payload: posts,
+		payload: posts
 	};
 }
 
 export function fetchedPostsError(message: string) {
 	return {
 		type: POSTS_TYPES.FETCHED_POSTS_ERRROR,
-		payload: message,
+		payload: message
 	};
 }
 
 export function fetchingPostComments(postId: number) {
 	return {
 		type: POSTS_TYPES.FETCHING_COMMENTS_BY_POST,
-		postId,
+		postId
 	};
 }
 
 export function fetchedPostComments(comments: Array<Comment>) {
 	return {
 		type: POSTS_TYPES.FETCHED_COMMENTS_BY_POST,
-		payload: comments,
+		payload: comments
 	};
 }
 
 export function fetchedPostCommentsError(message: string) {
 	return {
 		type: POSTS_TYPES.FETCHED_COMMENTS_BY_POST_ERROR,
-		payload: message,
+		payload: message
 	};
 }
 
 export function clearComments() {
 	return {
-		type: POSTS_TYPES.CLEAR_COMMENTS,
+		type: POSTS_TYPES.CLEAR_COMMENTS
 	};
 }

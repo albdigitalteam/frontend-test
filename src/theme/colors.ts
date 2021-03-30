@@ -17,8 +17,9 @@ export const colors = {
 	warningLight: '#FFF3CD',
 	danger: '#995156',
 	dangerLight: '#F8D7D9',
-
-	silver: '#CDCDCD',
+	
+	silver: '#CDCDCD'
 };
 
 export type Colors = typeof colors;
+

@@ -3,20 +3,20 @@ import { User } from '#interfaces/User';
 
 export function fetchingUsers() {
 	return {
-		type: USERS_TYPES.FETCHING_USERS,
+		type: USERS_TYPES.FETCHING_USERS
 	};
 }
 
 export function fetchedUsers(users: Array<User>) {
 	return {
 		type: USERS_TYPES.FETCHED_USERS,
-		payload: users,
+		payload: users
 	};
 }
 
 export function fetchedUsersError(message: string) {
 	return {
 		type: USERS_TYPES.FETCHED_USERS_ERRROR,
-		payload: message,
+		payload: message
 	};
 }

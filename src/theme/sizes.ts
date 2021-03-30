@@ -29,13 +29,13 @@ export const fontSizes = {
 	medium: normalizeWidth(17),
 	large: normalizeWidth(20),
 	xlarge: normalizeWidth(24),
-	xxlarge: normalizeWidth(30),
+	xxlarge: normalizeWidth(30)
 };
 
 export const windowSizes = {
 	totalWidth: SCREEN_WIDTH,
-	totalHeight: SCREEN_HEIGHT,
-};
+	totalHeight: SCREEN_HEIGHT
+}
 
 export type FontSizes = typeof fontSizes;
 export type WindowSizes = typeof windowSizes;

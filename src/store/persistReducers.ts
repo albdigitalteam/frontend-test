@@ -5,7 +5,7 @@ const PersistReducers = (reducers: Reducer) => {
 	const persistedReducer = persistReducer(
 		{
 			key: '@BlogApp',
-			storage: AsyncStorage,
+			storage: AsyncStorage
 		},
 		reducers
 	);

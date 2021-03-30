@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 export const api = axios.create({
-	baseURL: 'https://jsonplaceholder.typicode.com',
+	baseURL: "https://jsonplaceholder.typicode.com",
 });
 
 export const handleApiError = (error: AxiosError) => {

@@ -13,4 +13,8 @@ const theme: DefaultTheme = {
 	normalizeHeight,
 };
 
-export const Theme: FC = ({ children }) => <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+export const Theme: FC = ({ children }) => (
+	<ThemeProvider theme={theme}>
+		{children}
+	</ThemeProvider>
+);
