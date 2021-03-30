@@ -13,6 +13,20 @@
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": false,
+		"baseUrl": ".",
+		"paths": {
+			"#root/*": ["./*"],
+			"#config": ["./src/config"],
+			"#theme": ["./src/theme"],
+			"#animations/*": ["./src/animations/*"],
+			"#hooks/*": ["./src/hooks/*"],
+			"#store/*": ["./src/store/*"],
+			"#locale/*": ["./src/locale/*"],
+			"#components/*": ["./src/components/*"],
+			"#services/*": ["./src/services/*"],
+			"#interfaces/*": ["./src/interfaces/*"],
+			"#actions/*": ["./src/store/modules/*"]
+		}
 	},
 	"types": ["jest", "styled-components-react-native"],
 	"exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js", "__tests__/**/*-test.ts"]
