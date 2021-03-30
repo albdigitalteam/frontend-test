@@ -2,22 +2,19 @@ import { LANG } from '#config';
 
 const messages = {
 	required: {
-		ptBr: 'O campo {path} é obrigatório!'
+		ptBr: 'O campo {path} é obrigatório!',
 	},
 	formtEmailError: {
-		ptBr: 'Deve ser fornecido um email válido!'
+		ptBr: 'Deve ser fornecido um email válido!',
 	},
 	incorrectLength: {
-		ptBr: 'O campo {path} deve conter {length}'
-	}
+		ptBr: 'O campo {path} deve conter {length}',
+	},
 };
 
 type KeyMessage = keyof typeof messages;
 
-export const getMessage = (
-	key: KeyMessage,
-	options: Record<string, string>
-) => {
+export const getMessage = (key: KeyMessage, options: Record<string, string>) => {
 	if (!options) {
 		return messages[key][LANG];
 	}

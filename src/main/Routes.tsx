@@ -2,10 +2,7 @@ import React, { FC } from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import {
-	Home as HomeScreen,
-	PostDetail as PostDetailScreen,
-} from '../screens';
+import { Home as HomeScreen, PostDetail as PostDetailScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -20,8 +17,8 @@ const Routes: FC = () => {
 				}}
 				headerMode='none'
 			>
-				<Stack.Screen name="Home" component={HomeScreen} />
-				<Stack.Screen name="PostDetail" component={PostDetailScreen} />
+				<Stack.Screen name='Home' component={HomeScreen} />
+				<Stack.Screen name='PostDetail' component={PostDetailScreen} />
 			</Stack.Navigator>
 		</>
 	);
