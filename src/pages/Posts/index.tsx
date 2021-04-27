@@ -4,7 +4,10 @@ import { connect, useDispatch } from 'react-redux';
 //import Post from './Post';
 import { IPosts, IPost, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
+import PerfectScrollbar from 'perfect-scrollbar';
 import './styles.css';
+
+var ps: any;
 
 const Post = lazy(() => import('./Post'));
 
@@ -22,8 +25,15 @@ function Posts(props: PostsProps) {
     dispatch(getPosts());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (document.getElementById("posts") !== null)
+      ps = new PerfectScrollbar("#posts");
+    else
+      ps.update();
+  });
+
   const getRandomImages = () => {
-    return "https://random.imagecdn.app/510/200"
+    return "https://random.imagecdn.app/500/200"
   }
 
   const getPostAuthor = (userId: number) => {
@@ -33,21 +43,25 @@ function Posts(props: PostsProps) {
   }
 
   return (
-    <div className='posts-container'>
-      <Suspense fallback={<LinearProgress />}>
-        {posts && posts.map((post: IPost) => (
-          <Post
-            key={post.id}
-            id={post.id}
-            userId={post.userId}
-            title={post.title}
-            author={getPostAuthor(post.userId)}
-            body={post.body}
-            image_url={getRandomImages()}
-          />
-        ))}
-      </Suspense>
+    <Suspense fallback={<LinearProgress />}>
+    <div className='posts-container' data-testid="posts-element">
+      <div className='posts' id='posts'>
+       
+          {posts && posts.map((post: IPost) => (
+            <Post
+              key={post.id}
+              id={post.id}
+              userId={post.userId}
+              title={post.title}
+              author={getPostAuthor(post.userId)}
+              body={post.body}
+              image_url={getRandomImages()}
+            />
+          ))}
+        
+      </div>
     </div>
+    </Suspense>
   )
 
 }

@@ -11,7 +11,7 @@ function Post(props: IPost) {
   const { id, title, author, image_url, body } = props;
   console.log("image_url ", image_url)
   return (
-    <Grid container spacing={10} justify='center' >
+    <Grid container  justify='center' >
       <Grid item >
       
           <Card
@@ -21,6 +21,7 @@ function Post(props: IPost) {
           >
               <CardActionArea>
             <CardHeader
+            data-testid='post-title'
               classes={{
                 root: 'card-header-root',
                 title: 'card-header-title',

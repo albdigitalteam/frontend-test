@@ -15,6 +15,7 @@
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "notistack": "^1.0.6",
+    "perfect-scrollbar": "^1.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -50,5 +51,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-test-renderer": "^17.0.1",
+    "react-test-renderer": "^17.0.2"
   }
 }
