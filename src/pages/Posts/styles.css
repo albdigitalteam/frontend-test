@@ -10,8 +10,8 @@
 }
 
 .card-root {
-  max-width: 500px;
-  height: 350px;
+  max-width: 550px;
+  height: 385px;
   border-radius: 8px !important;
   transition: 0.3s;
 }
@@ -21,7 +21,13 @@
 }
 
 .card-header-title {
-  font-size: 20px !important;
+  font-size: 20px !important; 
+  text-align: left;
+}
+
+.card-header-subheader{
+  text-align: left;
+  margin-top: 10px !important;
 }
 
 

@@ -23,7 +23,7 @@ function Posts(props: PostsProps) {
   }, [dispatch]);
 
   const getRandomImages = () => {
-    return "https://random.imagecdn.app/500/150"
+    return "https://random.imagecdn.app/510/200"
   }
 
   const getPostAuthor = (userId: number) => {

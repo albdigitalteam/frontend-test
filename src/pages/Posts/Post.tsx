@@ -24,7 +24,7 @@ function Post(props: IPost) {
               classes={{
                 root: 'card-header-root',
                 title: 'card-header-title',
-                //  subheader: 'card-header-subheader',
+                subheader: 'card-header-subheader',
                 // action: 'card-header-action',
               }}
 
@@ -45,20 +45,11 @@ function Post(props: IPost) {
               </Typography>
             </CardContent>
             </CardActionArea>
-            <CardActions disableSpacing>
+            <CardActions >
               <IconButton aria-label="add comments">
                 <CommentIcon />
-              </IconButton>             
-              <IconButton
-                // className={clsx(classes.expand, {
-                //   [classes.expandOpen]: expanded,
-                // })}
-                // onClick={handleExpandClick}
-                // aria-expanded={expanded}
-                // aria-label="show more"
-              >
-             
-              </IconButton>
+              </IconButton>            
+        
             </CardActions>
           </Card>
        
