@@ -1,37 +1,31 @@
-import { unmountComponentAtNode } from 'react-dom';
-import { render } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
-
+import { render, screen } from '@testing-library/react';
 import Post from './Post';
 
-let container: any = null;
-beforeEach(() => {
-    // setup a DOM element as a render target
-    container = document.createElement('div');
-    document.body.appendChild(container);
-});
+describe('test post component', () => {
+    const component = (
+        <Post
+            userId={1}
+            id={1}
+            title='sunt aut facere repellat'
+            author='http://test.com'
+            body='quia et suscipit nsuscipit recusandae consequuntur ex'
+            image_url='https://random.imagecdn.app/510/200'
+        />
+    );
 
-afterEach(() => {
-    // cleanup on exiting
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-});
+    beforeEach(() => {
+        render(component);
+    });    
 
-it('should render post data', () => {
-    act(() => {
-        render(
-            <Post
-                userId={1}
-                id={1}
-                title='sunt aut facere repellat'
-                author='http://test.com'
-                body='quia et suscipit\nsuscipit recusandae consequuntur ex'
-                image_url='https://random.imagecdn.app/510/200'
-            />,
-            container
-        );
+    test('test post title and author', () => {
+        expect(screen.getByTestId('post-title')).toHaveTextContent('sunt aut facere repellathttp://test.com')
     });
-    expect(container.querySelector("[data-testid='post-title']").con).toEqual('sunt aut facere repellat');
-});
 
+    test('test post body', () => {
+        expect(screen.getByTestId('post-body')).toHaveTextContent('quia et suscipit nsuscipit recusandae consequuntur ex')
+    });
+
+    // test('test post img', () => {
+    //     expect(screen.getByTestId('post-image')).toHaveTextContent('https://random.imagecdn.app/510/200')
+    // });   
+});

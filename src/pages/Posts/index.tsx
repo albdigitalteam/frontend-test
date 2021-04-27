@@ -43,12 +43,10 @@ function Posts(props: PostsProps) {
   }
 
   return (
-
+   <Suspense fallback={<LinearProgress />}>
     <div className='posts-container' data-testid="posts-element">
       <div className='posts' id='posts'>
-
-        {posts && posts.map((post: IPost) => (
-          <Suspense fallback={<LinearProgress />}>
+        {posts && posts.map((post: IPost) => (       
             <Post
               key={post.id}
               id={post.id}
@@ -57,13 +55,12 @@ function Posts(props: PostsProps) {
               author={getPostAuthor(post.userId)}
               body={post.body}
               image_url={getRandomImages(post.id)}
-            />
-          </Suspense>
+            />        
         ))}
 
       </div>
     </div>
-
+    </Suspense>
   )
 
 }

@@ -11,17 +11,17 @@ function Post(props: IPost) {
   const { id, title, author, image_url, body } = props;
   console.log("image_url ", image_url)
   return (
-    <Grid container  justify='center' >
+    <Grid container justify='center' >
       <Grid item >
-      
-          <Card
-            classes={{
-              root: 'card-root',
-            }}
-          >
-              <CardActionArea>
+
+        <Card
+          classes={{
+            root: 'card-root',
+          }}
+        >
+          <CardActionArea>
             <CardHeader
-            data-testid='post-title'
+              data-testid='post-title'
               classes={{
                 root: 'card-header-root',
                 title: 'card-header-title',
@@ -35,25 +35,22 @@ function Post(props: IPost) {
             <CardMedia
 
             >
-              <img src={image_url}
-                // className='media' 
-                alt=''
-              />
+              <img src={image_url} alt='' />
             </CardMedia >
             <CardContent>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography variant="body2" color="textSecondary" component="p" data-testid="post-body">
                 {body}
               </Typography>
             </CardContent>
-            </CardActionArea>
-            <CardActions >
-              <IconButton aria-label="add comments">
-                <CommentIcon />
-              </IconButton>            
-        
-            </CardActions>
-          </Card>
-       
+          </CardActionArea>
+          <CardActions >
+            <IconButton aria-label="add comments">
+              <CommentIcon />
+            </IconButton>
+
+          </CardActions>
+        </Card>
+
       </Grid>
     </Grid>
   )
