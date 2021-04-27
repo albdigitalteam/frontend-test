@@ -1,0 +1,27 @@
+.posts-container{
+  height: 100vh;
+  overflow-y: auto;
+  width: 100%;
+  margin: 0;
+  background: url("../../assets/posts-background.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom right;
+}
+
+.card-root {
+  max-width: 500px;
+  height: 350px;
+  border-radius: 8px !important;
+  transition: 0.3s;
+}
+
+.card-header-root {
+  /* padding: 16px 16px 0 !important; */
+}
+
+.card-header-title {
+  font-size: 20px !important;
+}
+
+

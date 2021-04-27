@@ -1,0 +1,7 @@
+#page-not-found {
+  height: 100vh;
+  background: url("../../assets/not-found-background.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
