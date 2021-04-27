@@ -32,8 +32,8 @@ function Posts(props: PostsProps) {
       ps.update();
   });
 
-  const getRandomImages = () => {
-    return "https://random.imagecdn.app/500/200"
+  const getRandomImages = (id:number) => {
+    return  `https://picsum.photos/id/${id}/500/200`; //"https://random.imagecdn.app/500/200"
   }
 
   const getPostAuthor = (userId: number) => {
@@ -43,11 +43,12 @@ function Posts(props: PostsProps) {
   }
 
   return (
-    <Suspense fallback={<LinearProgress />}>
+
     <div className='posts-container' data-testid="posts-element">
       <div className='posts' id='posts'>
-       
-          {posts && posts.map((post: IPost) => (
+
+        {posts && posts.map((post: IPost) => (
+          <Suspense fallback={<LinearProgress />}>
             <Post
               key={post.id}
               id={post.id}
@@ -55,13 +56,14 @@ function Posts(props: PostsProps) {
               title={post.title}
               author={getPostAuthor(post.userId)}
               body={post.body}
-              image_url={getRandomImages()}
+              image_url={getRandomImages(post.id)}
             />
-          ))}
-        
+          </Suspense>
+        ))}
+
       </div>
     </div>
-    </Suspense>
+
   )
 
 }
