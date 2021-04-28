@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 import { Header, Loader, Skeleton } from 'components';
-import Post from '../Posts';
+import Post from '../Posts/Post';
 import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
 import PerfectScrollbar from 'perfect-scrollbar';

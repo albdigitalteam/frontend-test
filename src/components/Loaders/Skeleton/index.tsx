@@ -10,8 +10,9 @@ const mapNumber = new Array(Math.floor(window.innerHeight / 400) + 1).fill(null)
 const Media = () => (
     <>
         <Skeleton
-           height={80}
-           width={700}
+            data-testid='skeleton'
+            height={80}
+            width={700}
         />
         { mapNumber.map((key, index) =>
             <Card

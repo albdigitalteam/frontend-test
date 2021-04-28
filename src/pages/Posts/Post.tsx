@@ -17,7 +17,6 @@ const Post = ({ id, title, author, body, comments }: { id: number, title: string
 
   return (
     <Grid container justify='center' >
-
       <Card
         classes={{
           root: 'card-root',
@@ -71,7 +70,6 @@ const Post = ({ id, title, author, body, comments }: { id: number, title: string
           </IconButton>
         </CardActions>
       </Card>
-
     </Grid>
   );
 };

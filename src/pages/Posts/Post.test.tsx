@@ -16,9 +16,22 @@ describe('test post component', () => {
         </Provider>
     );
 
-    render(component);
+    beforeEach(() => {
+        render(component);
+      });
+   
 
     test('test post exist', () => {
         expect(screen.getByAltText('...')).toBeInTheDocument();
     });
+
+    test('test post title and author', () => {
+        expect(screen.getByTestId('post-title')).toHaveTextContent('sunt aut facere repellathttp://test.com')
+    });
+
+    test('test post body', () => {
+        expect(screen.getByTestId('post-body')).toHaveTextContent('quia et suscipit nsuscipit recusandae consequuntur ex')
+    });
+
+
 });
