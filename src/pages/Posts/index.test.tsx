@@ -17,7 +17,6 @@ afterEach(() => {
     container = null;
 });
 
-
 it("fetching posts data", async () => {
     const fakePosts = [{
         userId: 1,

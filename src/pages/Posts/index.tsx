@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import LazyLoad from 'react-lazyload';
-import { Header, Loader } from 'components';
+import { Header, Loader, Skeleton } from 'components';
 import Post from './Post';
 import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
@@ -36,26 +36,30 @@ function Posts(props: PostsProps) {
 
   return (
     <div className='posts-container' data-testid="posts-element">
-      <Header />
-      <div className='posts' id='posts'>
-        {posts && posts.map((post: IPost) => (
-          < LazyLoad
-            key={post.id}
-            height={385}
-            offset={[-50, 50]}
-            placeholder={<Loader />}
-          >
-            <Post
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              author={getPostAuthor(post.userId)}
-              body={post.body}
-              comments={getCommentsPost(post.id)}
-            />
-          </LazyLoad>
-        ))}
-      </div>
+      {!posts.length ? <Skeleton /> :
+        <>
+          <Header />
+          <div id='posts'>
+            {posts && posts.map((post: IPost) => (
+              < LazyLoad
+                key={post.id}
+                height={350}
+                offset={[-100, 100]}
+                placeholder={<Loader />}
+              >
+                <Post
+                  key={post.id}
+                  id={post.id}
+                  title={post.title}
+                  author={getPostAuthor(post.userId)}
+                  body={post.body}
+                  comments={getCommentsPost(post.id)}
+                />
+              </LazyLoad>
+            ))}
+          </div>
+        </>
+      }
     </div>
   );
 };
