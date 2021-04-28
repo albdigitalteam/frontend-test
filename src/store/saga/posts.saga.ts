@@ -1,35 +1,34 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { postsConstants ,usersConstants} from 'store/redux/constants';
-import { IPosts, IPost,IUsers } from 'types';
-import { getPosts, getUsers,deletePost } from 'services';
+import { postsConstants, usersConstants, commentsConstants } from 'store/redux/constants';
+import { IPosts, IPost, IUsers,IComments } from 'types';
+import { getPosts, getUsers, getComments, deletePost } from 'services';
+
+interface deleteAction {
+  type: 'DELETE_POST';
+  payload: string;
+  id: number;
+}
 
 function* getPostsSaga() {
   const posts: IPosts = yield call(getPosts);
   const users: IUsers = yield call(getUsers);
-  if (posts && users) {
+  const comments: IComments = yield call(getComments);
+  if (posts && users && comments) {
     yield put({ type: postsConstants.SET_POSTS, posts });
     yield put({ type: usersConstants.SET_USERS, users });
+    yield put({ type: commentsConstants.SET_COMMENTS, comments });
   }
 }
 
-interface deleteAction  {
-  type: 'DELETE_POST';
-  payload: string;
-  id:number;
-}
-
 function* deletePostSaga(action: deleteAction) {
-console.log("id ",action.id)
-const {id} =action;
-  const post: IPost = yield call(deletePost,id);
-  console.log("post reotrno delete ",post)
-  // if (post) {
-  //   yield put({ type: postsConstants.SET_DELETED_POST, id }); 
-  // }
+  const { id } = action;
+  const post: IPost = yield call(deletePost, id);
+  if (post)
+    yield put({ type: postsConstants.SET_DELETED_POST, id });
 }
 
 const sagaPosts = [
-  takeEvery(postsConstants.DELETE_POST, deletePostSaga)  ,
+  takeEvery(postsConstants.DELETE_POST, deletePostSaga),
   takeEvery(postsConstants.GET_POSTS, getPostsSaga),
 ]
 

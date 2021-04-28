@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import LazyLoad from 'react-lazyload';
 import { Header, Loader } from 'components';
 import Post from './Post';
-import { IPosts, IPost, IUsers, IUser } from 'types';
+import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
 import PerfectScrollbar from 'perfect-scrollbar';
 import './styles.css';
@@ -13,20 +13,25 @@ var ps: any;
 interface PostsProps {
   posts: IPosts;
   users: IUsers;
+  comments: IComments;
 }
 
 function Posts(props: PostsProps) {
-  const { posts, users } = props;
+  const { posts, users, comments } = props;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("chama")
     dispatch(getPosts());
   }, [dispatch]);
 
   const getPostAuthor = (userId: number) => {
     const user = users.find((user: IUser) => user.id === userId);
     return user?.name;
+  }
+
+  const getCommentsPost = (postId: number) => {
+    const commentsFiltered = comments.filter((comment: IComment) => comment.postId === postId);
+    return commentsFiltered;
   }
 
   return (
@@ -37,7 +42,7 @@ function Posts(props: PostsProps) {
           < LazyLoad
             key={post.id}
             height={385}
-            offset={[-100, 100]}
+            offset={[-50, 50]}
             placeholder={<Loader />}
           >
             <Post
@@ -46,6 +51,7 @@ function Posts(props: PostsProps) {
               title={post.title}
               author={getPostAuthor(post.userId)}
               body={post.body}
+              comments={getCommentsPost(post.id)}
             />
           </LazyLoad>
         ))}
@@ -54,8 +60,9 @@ function Posts(props: PostsProps) {
   );
 };
 
-const mapStateToProps = ({ posts, users }: { posts: IPosts, users: IUsers }) => ({
+const mapStateToProps = ({ posts, comments, users }: { posts: IPosts, comments: IComments, users: IUsers }) => ({
   posts,
+  comments,
   users
 });
 

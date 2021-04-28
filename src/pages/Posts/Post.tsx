@@ -6,10 +6,11 @@ import LazyLoad from 'react-lazyload';
 import { Grid, Card, CardActionArea, CardHeader, CardContent, CardActions, CardMedia, IconButton, Typography } from '@material-ui/core';
 import CommentIcon from '@material-ui/icons/Comment';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { IComments } from 'types';
 import { deletePost } from 'store/redux/actions';
 import './styles.css';
 
-const Post = ({ id, title, author, body }: { id: number, title: string, author: string | undefined, body: string }) => {
+const Post = ({ id, title, author, body, comments }: { id: number, title: string, author: string | undefined, body: string, comments: IComments }) => {
   const dispatch = useDispatch();
 
   const handleDeletePost = (id: number) => {
@@ -17,8 +18,13 @@ const Post = ({ id, title, author, body }: { id: number, title: string, author: 
   }
 
   return (
+
     <Grid container justify='center' >
-      <Grid item >
+      < LazyLoad
+        once={true}
+        placeholder={<img src={`https://picsum.photos/id/${id}/5/5`} alt='...' />}
+      >
+
         <Card
           classes={{
             root: 'card-root',
@@ -45,15 +51,12 @@ const Post = ({ id, title, author, body }: { id: number, title: string, author: 
             subheader={author}
           />
           <CardActionArea>
-            < LazyLoad
-              once={true}
-              placeholder={<img src={`https://picsum.photos/id/${id}/5/5`} alt='...' />}
+
+            <CardMedia
             >
-              <CardMedia
-              >
-                <img src={`https://picsum.photos/id/${id}/700/200`} alt='' />
-              </CardMedia >
-            </LazyLoad>
+              <img src={`https://picsum.photos/id/${id}/700/200`} alt='' />
+            </CardMedia >
+
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p" data-testid="post-body">
                 {body}
@@ -67,13 +70,13 @@ const Post = ({ id, title, author, body }: { id: number, title: string, author: 
             disableSpacing
           >
             <IconButton aria-label="add comments">
-              <Badge badgeContent={11} color="primary">
+              <Badge badgeContent={comments.length} color="primary">
                 <CommentIcon />
               </Badge>
             </IconButton>
           </CardActions>
         </Card>
-      </Grid>
+      </LazyLoad>
     </Grid>
   );
 };
