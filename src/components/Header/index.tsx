@@ -4,10 +4,10 @@ import Button from '@material-ui/core/Button';
 import './styles.css';
 
 function Header() {
-  let { push } = useHistory();
+  const history = useHistory();
 
   const newPost = () => {
-    push('/new-post');
+    history.push('/new-post');
   }
 
   return (

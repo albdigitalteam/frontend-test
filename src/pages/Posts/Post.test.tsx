@@ -1,31 +1,24 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from 'store';
 import Post from './Post';
 
 describe('test post component', () => {
     const component = (
-        <Post
-            userId={1}
-            id={1}
-            title='sunt aut facere repellat'
-            author='http://test.com'
-            body='quia et suscipit nsuscipit recusandae consequuntur ex'
-            image_url='https://random.imagecdn.app/510/200'
-        />
+        <Provider store={store}>
+            <Post
+                id={1}
+                title='sunt aut facere repellat'
+                author='http://test.com'
+                body='quia et suscipit nsuscipit recusandae consequuntur ex'
+                comments={[]}
+            />
+        </Provider>
     );
 
-    beforeEach(() => {
-        render(component);
-    });    
+    render(component);
 
-    test('test post title and author', () => {
-        expect(screen.getByTestId('post-title')).toHaveTextContent('sunt aut facere repellathttp://test.com')
+    test('test post exist', () => {
+        expect(screen.getByAltText('...')).toBeInTheDocument();
     });
-
-    test('test post body', () => {
-        expect(screen.getByTestId('post-body')).toHaveTextContent('quia et suscipit nsuscipit recusandae consequuntur ex')
-    });
-
-    // test('test post img', () => {
-    //     expect(screen.getByTestId('post-image')).toHaveTextContent('https://random.imagecdn.app/510/200')
-    // });   
 });

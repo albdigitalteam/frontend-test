@@ -11,8 +11,8 @@ describe('tests routes using memory router', () => {
 
   const component = (
     <Router history={history}>
-         <Provider store={store}>
-      <App />
+      <Provider store={store}>
+        <App />
       </Provider>
     </Router>
   );
