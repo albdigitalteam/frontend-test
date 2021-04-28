@@ -1,4 +1,4 @@
-#page-not-found {
+.page-not-found {
   height: 100vh;
   background: url("../../assets/not-found-background.svg");
   background-repeat: no-repeat;

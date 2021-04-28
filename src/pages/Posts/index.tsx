@@ -1,15 +1,14 @@
-import React, { useEffect, Suspense, lazy } from 'react';
-import { LinearProgress } from '@material-ui/core';
+import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-//import Post from './Post';
+import LazyLoad from 'react-lazyload';
+import { Header, Loader } from 'components';
+import Post from './Post';
 import { IPosts, IPost, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
 import PerfectScrollbar from 'perfect-scrollbar';
 import './styles.css';
 
 var ps: any;
-
-const Post = lazy(() => import('./Post'));
 
 interface PostsProps {
   posts: IPosts;
@@ -25,45 +24,35 @@ function Posts(props: PostsProps) {
     dispatch(getPosts());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (document.getElementById("posts") !== null)
-      ps = new PerfectScrollbar("#posts");
-    else
-      ps.update();
-  });
-
-  const getRandomImages = (id:number) => {
-    return  `https://picsum.photos/id/${id}/500/200`; //"https://random.imagecdn.app/500/200"
-  }
-
   const getPostAuthor = (userId: number) => {
     const user = users.find((user: IUser) => user.id === userId);
-    if (user)
-      return user.name;
+    return user?.name;
   }
 
   return (
-   <Suspense fallback={<LinearProgress />}>
     <div className='posts-container' data-testid="posts-element">
+      <Header />
       <div className='posts' id='posts'>
-        {posts && posts.map((post: IPost) => (       
+        {posts && posts.map((post: IPost) => (
+          < LazyLoad
+            key={post.id}
+            height={385}
+            offset={[-100, 100]}
+            placeholder={<Loader />}
+          >
             <Post
               key={post.id}
               id={post.id}
-              userId={post.userId}
               title={post.title}
               author={getPostAuthor(post.userId)}
               body={post.body}
-              image_url={getRandomImages(post.id)}
-            />        
+            />
+          </LazyLoad>
         ))}
-
       </div>
     </div>
-    </Suspense>
-  )
-
-}
+  );
+};
 
 const mapStateToProps = ({ posts, users }: { posts: IPosts, users: IUsers }) => ({
   posts,

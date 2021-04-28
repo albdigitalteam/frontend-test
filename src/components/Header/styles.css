@@ -1,0 +1,37 @@
+.page-header {
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--background-color);
+  padding: 20px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  color: var(--title-color);
+  font-weight: bold;
+  font-size: 2rem;
+  margin-left: 10px;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 650px) {
+  #page-header {
+    margin: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-logo-title {
+    display: none;
+  }
+}
