@@ -44,7 +44,7 @@ function Details(props: DetailsProps) {
     }
 
     return (
-        <div className='details-container' data-testid="details-element">
+        <div className='details-container' data-testid='details-element'>
             <Header left />
             <div id='details'>
                 {post &&

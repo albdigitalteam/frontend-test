@@ -17,10 +17,10 @@ const PostBody = ({ id, body }: { id: number, body: string }) => {
     >
       < LazyLoad
         once={true}
-        placeholder={<img src={`https://picsum.photos/id/${id}/5/5`} alt='...' />}
+        placeholder={<img src={`https://picsum.photos/id/${id+100}/5/5`} alt='...' />}
       >
         <CardMedia          >
-          <img src={`https://picsum.photos/id/${id}/700/200`} alt='' />
+          <img src={`https://picsum.photos/id/${id+100}/700/200`} alt='' />
         </CardMedia >
       </LazyLoad>
       <CardContent>

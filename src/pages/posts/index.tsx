@@ -39,7 +39,7 @@ function Posts(props: PostsProps) {
   const handleOpenCreatePost = () => {
     const existPost = posts?.some((post: IPost) => post.id === 101);
     if (existPost)
-      enqueueSnackbar("Você já adicionou 1 post");
+      enqueueSnackbar('Você já adicionou 1 post');
     else
       setOpenDialog(true);
   }
@@ -49,15 +49,15 @@ function Posts(props: PostsProps) {
   }
 
   return (
-    <div className='posts-container' data-testid="posts-element">
+    <div className='posts-container' data-testid='posts-element'>
       {openDialog && <PostCreate onClose={handleCloseCreatePost} />}
       {!posts.length ? <Skeleton /> :
         <>
           <Header >
             <Button
               onClick={handleOpenCreatePost}
-              variant="outlined"
-              color="primary"
+              variant='outlined'
+              color='primary'
             >
               Adicionar Post
           </Button>
