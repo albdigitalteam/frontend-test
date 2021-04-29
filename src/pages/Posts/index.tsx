@@ -18,7 +18,7 @@ function Posts(props: PostsProps) {
   const { posts, users, comments } = props;
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -39,18 +39,18 @@ function Posts(props: PostsProps) {
     if (existPost)
       enqueueSnackbar("Você já adicionou 1 post");
     else
-      setOpen(true);
+      setOpenDialog(true);
   }
 
   const handleCloseCreatePost = () => {
-    setOpen(false);
+    setOpenDialog(false);
   }
 
 
   console.log("posts ",posts.length)
   return (
     <div className='posts-container' data-testid="posts-element">
-      {open && <PostCreate onClose={handleCloseCreatePost} />}
+      {openDialog && <PostCreate onClose={handleCloseCreatePost} />}
       {!posts.length ? <Skeleton /> :
         <>
           <Header >
@@ -76,7 +76,7 @@ function Posts(props: PostsProps) {
                   title={post.title}
                   author={getPostAuthor(post.userId)}
                   body={post.body}
-                  comments={getCommentsPost(post.id)}
+                  comments={getCommentsPost(post.id)}           
                 />
               </LazyLoad>
             ))}

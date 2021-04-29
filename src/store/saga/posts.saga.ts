@@ -25,9 +25,9 @@ const order = (response: any) => {
 
 
 function* getPostsSaga() {
-  const posts: IPosts = yield call(getPosts);
-  const users: IUsers = yield call(getUsers);
+  const users: IUsers = yield call(getUsers);  
   const comments: IComments = yield call(getComments);
+  const posts: IPosts = yield call(getPosts);
   if (posts && users && comments) {
     yield put({ type: postsConstants.SET_POSTS, posts });
     yield put({ type: usersConstants.SET_USERS, users });

@@ -16,6 +16,18 @@
   transition: 0.3s;
 }
 
+@media (max-width: 750px) {
+  .card-root {
+    width: 70%
+  }
+}
+
+@media (max-width: 550px) {
+  .card-root {
+    width: 50%
+  }
+}
+
 .card-header-title {
   font-size: 20px !important;
   text-align: left;

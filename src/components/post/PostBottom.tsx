@@ -1,42 +1,49 @@
 import { useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { connect, } from 'react-redux';
+import { useSnackbar } from 'notistack';
 import Badge from '@material-ui/core/Badge';
 import { CardActions, IconButton } from '@material-ui/core';
 import CommentIcon from '@material-ui/icons/Comment';
-import {CommentCreate} from 'components';
-import { deletePost } from 'store/redux/actions';
+import { CommentCreate } from 'components';
 import './styles.css';
 
 const Bottom = ({ id, commentsCount }: { id: number, commentsCount: number }) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const { enqueueSnackbar } = useSnackbar();
   const [openDialog, setOpenDialog] = useState(false);
 
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
+  const handleOpenCreateCommentDialog = () => {
+    if (commentsCount > 5)
+      enqueueSnackbar("Você já adicionou 1 comentário");
+    else
+      setOpenDialog(true);
   }
 
-  const detailsPost = (postId: number) => {
-    history.push(`/details/${postId}`)
+  const handleCloseCreateCommentDialog = () => {
+    setOpenDialog(false);
   }
 
   return (
     <div>
-    <CardActions
-      classes={{
-        root: 'card-actions',
-      }}
-      disableSpacing
-    >
-      <IconButton
-        onClick={handleOpenDialog}
+      {openDialog &&
+        <CommentCreate
+          id={id}
+          onClose={handleCloseCreateCommentDialog}
+        />
+      }
+      <CardActions
+        classes={{
+          root: 'card-actions',
+        }}
+        disableSpacing
       >
-        <Badge badgeContent={commentsCount} color="primary">
-          <CommentIcon />
-        </Badge>
-      </IconButton>
-    </CardActions>
+        <IconButton
+          onClick={handleOpenCreateCommentDialog}
+        >
+          <Badge badgeContent={commentsCount} color="primary">
+            <CommentIcon />
+          </Badge>
+        </IconButton>
+      </CardActions>
     </div>
   );
 };

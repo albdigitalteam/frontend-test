@@ -5,11 +5,11 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import { addPost,addComment } from 'store/redux/actions';
+import { addComment } from 'store/redux/actions';
 import { Dialog } from 'components';
-import { IComment, IUser, IUsers } from 'types'
+import { IComment } from 'types';
 
-interface IPostCreateProps {
+interface ICommentCreateProps {
   onClose: Function,
   id: number;
 }
@@ -26,7 +26,7 @@ const state = {
   body: ''
 }
 
-function CommentCreate(props: IPostCreateProps) {
+function CommentCreate(props: ICommentCreateProps) {
   const { onClose, id } = props;
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -37,10 +37,8 @@ function CommentCreate(props: IPostCreateProps) {
     onClose();
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("name ", event.target)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
     const { id, value } = event.target;
-
     setForm({ ...form, [id]: value });
     setError(false);
   };
@@ -58,16 +56,16 @@ function CommentCreate(props: IPostCreateProps) {
       }
       dispatch(addComment(comment))
       handleClose()
+      enqueueSnackbar('Comentário foi adicionado');
     }
   }
-
 
   return (
     <div>
       <Dialog
         open={true}
         onClose={handleClose}
-        name='Adicionar Comentário'
+        title='Adicionar Comentário'
       >
         <DialogContent>
           <TextField
@@ -111,8 +109,4 @@ function CommentCreate(props: IPostCreateProps) {
   );
 }
 
-const mapStateToProps = ({ users }: { users: IUsers }) => ({
-  users
-});
-
-export default connect(mapStateToProps)(CommentCreate);
+export default connect()(CommentCreate);

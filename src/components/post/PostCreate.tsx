@@ -50,7 +50,7 @@ function PostCreate(props: IPostCreateProps) {
       setError(true);
     else {   
       const user = users?.find((user: IUser) => user.email.toLowerCase() === form.email.toLowerCase())
-      console.log("userId ", user);
+      console.log("userId ", users);
       if (user) {
         const post: IPost = {
           userId: user.id,

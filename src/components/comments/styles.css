@@ -1,13 +1,25 @@
-.comments-container{
-  justify-content:center;
+.comments-container {
+  justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: -9px;
 }
-.list-root{
+
+.list-root {
   background-color: #fff;
-  max-width: var(--card-width);
+  width: var(--card-width);
   border-radius: 8px !important;
-  
+}
+
+@media (max-width: 750px) {
+  .list-root {
+    width: 70%
+  }
+}
+
+@media (max-width: 550px) {
+  .list-root {
+    width: 50%
+  }
 }

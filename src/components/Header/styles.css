@@ -34,14 +34,8 @@
   height: 40px!important;
 }
 
-/* @media (max-width: 650px) {
-  #page-header {
-    margin: auto;
+@media (max-width: 650px) {
+  .header-actions-start {
+    position: relative;
   }
 }
-
-@media (max-width: 900px) {
-  .header-logo-title {
-    display: none;
-  }
-} */
