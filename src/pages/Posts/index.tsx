@@ -1,14 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import LazyLoad from 'react-lazyload';
-import { Header, Loader, Skeleton } from 'components';
-import Post from './Post';
+import { useSnackbar } from 'notistack';
+import Button from '@material-ui/core/Button';
+import { Header, Loader, Skeleton, Post, PostCreate } from 'components';
 import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
-import PerfectScrollbar from 'perfect-scrollbar';
 import './styles.css';
-
-var ps: any;
 
 interface PostsProps {
   posts: IPosts;
@@ -19,6 +17,8 @@ interface PostsProps {
 function Posts(props: PostsProps) {
   const { posts, users, comments } = props;
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -33,11 +33,35 @@ function Posts(props: PostsProps) {
     const commentsFiltered = comments.filter((comment: IComment) => comment.postId === postId);
     return commentsFiltered;
   }
+
+  const handleOpenCreatePost = () => {
+    const existPost = posts?.some((post: IPost) => post.id === 101);
+    if (existPost)
+      enqueueSnackbar("Você já adicionou 1 post");
+    else
+      setOpen(true);
+  }
+
+  const handleCloseCreatePost = () => {
+    setOpen(false);
+  }
+
+
+  console.log("posts ",posts.length)
   return (
     <div className='posts-container' data-testid="posts-element">
+      {open && <PostCreate onClose={handleCloseCreatePost} />}
       {!posts.length ? <Skeleton /> :
         <>
-          <Header/>
+          <Header >
+            <Button
+              onClick={handleOpenCreatePost}
+              variant="outlined"
+              color="primary"
+            >
+              Adicionar Post
+          </Button>
+          </Header>
           <div id='posts'>
             {posts && posts.map((post: IPost) => (
               < LazyLoad

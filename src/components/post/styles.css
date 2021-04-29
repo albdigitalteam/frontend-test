@@ -1,0 +1,35 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../../assets/posts-background.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom right;
+}
+
+.card-root {
+  margin: 10px 20px;
+  max-width: var(--card-width);
+  border-radius: 8px !important;
+  transition: 0.3s;
+}
+
+.card-header-title {
+  font-size: 20px !important;
+  text-align: left;
+}
+
+.card-header-subheader {
+  text-align: left;
+  margin-top: 10px !important;
+}
+
+.card-header-action {
+  flex: 1!important;
+  justify-content: flex-end !important;
+  margin-top: -6px!important;
+  display: flex;
+  float: right;
+}

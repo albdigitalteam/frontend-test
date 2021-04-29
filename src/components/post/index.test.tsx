@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from 'store';
-import Post from './Post';
+import Post from 'components';
 
 describe('test post component', () => {
     const component = (
@@ -21,15 +21,15 @@ describe('test post component', () => {
       });
    
 
-    test('test post exist', () => {
+    test('post exist', () => {
         expect(screen.getByAltText('...')).toBeInTheDocument();
     });
 
-    test('test post title and author', () => {
+    test('post title and author', () => {
         expect(screen.getByTestId('post-title')).toHaveTextContent('sunt aut facere repellathttp://test.com')
     });
 
-    test('test post body', () => {
+    test('post body', () => {
         expect(screen.getByTestId('post-body')).toHaveTextContent('quia et suscipit nsuscipit recusandae consequuntur ex')
     });
 

@@ -2,27 +2,23 @@
 import { useHistory } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 import './styles.css';
 
 interface HeaderProps {
-  left?: boolean
+  left?: boolean,
+  children?: any
 }
 
 function Header(props: HeaderProps) {
-  const { left } = props;
-  const history = useHistory();
-
-  const goNewPost = () => {
-    history.push('/new-post');
-  }
+  const { left, children } = props;
+  const history = useHistory();  
 
   const goHome = () => {
     history.push('/');
   }
 
   return (
-    <div className='page-header'>
+    <div className='page-header'>      
       <header data-testid='header' className='header'>
         <div className='header-actions-start'>
           {left &&
@@ -40,13 +36,7 @@ function Header(props: HeaderProps) {
           <span >
             Air Liquide Blog
             </span>
-          <Button
-            onClick={goNewPost}
-            variant="outlined"
-            color="primary"
-          >
-            Adicionar Post
-          </Button>
+          {children}
         </div>
       </header>
     </div>

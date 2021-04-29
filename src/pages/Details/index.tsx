@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Header, CommentsList } from 'components';
-import Post from '../posts/Post';
+import { Header, Post, CommentsList } from 'components';
 import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
 import { getPost } from 'store/redux/actions';
-import PerfectScrollbar from 'perfect-scrollbar';
 import './styles.css';
-
-var ps: any;
 
 interface DetailsProps {
     users: IUsers;
