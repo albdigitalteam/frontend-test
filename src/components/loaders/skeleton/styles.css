@@ -1,0 +1,11 @@
+.card {
+    margin: 10px 20px;
+    width: 700px;
+    height: 400px;
+    border-radius: 8px !important;
+    transition: 0.3s;
+}
+
+.media {
+    height: 250px !important;
+}
