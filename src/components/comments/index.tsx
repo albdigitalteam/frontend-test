@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import { ordernation } from 'utils';
 import { IComments, IComment } from 'types';
 import './styles.css';
 
@@ -15,13 +16,14 @@ interface CommentsProps {
 
 const CommentsList = (props: CommentsProps) => {
   const { comments } = props;
+  const commentsOrder = ordernation(comments);
   return (
     <div
       className='comments-container'
       data-testid='comments-list'
     >
-      { comments.length &&
-        comments.map((comment: IComment) => (
+      { 
+        commentsOrder.map((comment: IComment) => (
           <List
             key={comment.id}
             classes={{
@@ -45,7 +47,7 @@ const CommentsList = (props: CommentsProps) => {
                     >
                       {comment.email}
                     </Typography>
-              — {comment.body}
+                    — {comment.body}
                   </React.Fragment>
                 }
               />

@@ -10,20 +10,6 @@ interface IPostAction {
   post: IPost;
 }
 
-const order = (response: any) => {
-  response.sort((a: any, b: any) => {
-    if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
-      return -1;
-    }
-    if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
-      return 1;
-    }
-    return 0;
-  });
-  return response;
-}
-
-
 function* getPostsSaga() {
   const users: IUsers = yield call(getUsers);  
   const comments: IComments = yield call(getComments);
@@ -66,7 +52,6 @@ const sagaPosts = [
   takeEvery(postsConstants.GET_POST, getPostSaga),
   takeEvery(postsConstants.ADD_POST, addPostSaga),
   takeEvery(postsConstants.DELETE_POST, deletePostSaga),
-
 ]
 
 export default sagaPosts;

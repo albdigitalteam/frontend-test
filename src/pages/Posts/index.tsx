@@ -4,6 +4,7 @@ import LazyLoad from 'react-lazyload';
 import { useSnackbar } from 'notistack';
 import Button from '@material-ui/core/Button';
 import { Header, Loader, Skeleton, Post, PostCreate } from 'components';
+import { ordernation } from 'utils';
 import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
 import { getPosts } from 'store/redux/actions';
 import './styles.css';
@@ -16,8 +17,9 @@ interface PostsProps {
 
 function Posts(props: PostsProps) {
   const { posts, users, comments } = props;
+  const postsOrder = ordernation(posts);
   const dispatch = useDispatch();
-  const { enqueueSnackbar } = useSnackbar();  
+  const { enqueueSnackbar } = useSnackbar();
   const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ function Posts(props: PostsProps) {
   const handleCloseCreatePost = () => {
     setOpenDialog(false);
   }
-  
+
   return (
     <div className='posts-container' data-testid="posts-element">
       {openDialog && <PostCreate onClose={handleCloseCreatePost} />}
@@ -61,8 +63,8 @@ function Posts(props: PostsProps) {
           </Button>
           </Header>
           <div id='posts'>
-            {posts && posts.map((post: IPost) => (
-              < LazyLoad
+            {postsOrder && postsOrder.map((post: IPost) => (
+              < LazyLoad               
                 key={post.id}
                 height={350}
                 offset={[-100, 100]}
@@ -74,7 +76,7 @@ function Posts(props: PostsProps) {
                   title={post.title}
                   author={getPostAuthor(post.userId)}
                   body={post.body}
-                  comments={getCommentsPost(post.id)}           
+                  comments={getCommentsPost(post.id)}
                 />
               </LazyLoad>
             ))}

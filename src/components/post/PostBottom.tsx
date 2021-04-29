@@ -12,7 +12,7 @@ const Bottom = ({ id, commentsCount }: { id: number, commentsCount: number }) =>
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleOpenCreateCommentDialog = () => {
-    if (commentsCount > 5)
+    if (commentsCount > 5 || commentsCount === 1)
       enqueueSnackbar("Você já adicionou 1 comentário");
     else
       setOpenDialog(true);

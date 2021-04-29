@@ -60,7 +60,7 @@ function PostCreate(props: IPostCreateProps) {
         handleClose()
       }
       else
-        enqueueSnackbar('E-mail não encontrado, por favor digite um e-mail existente.');
+        enqueueSnackbar('E-mail não encontrado, por favor digite um e-mail existente. Exemplo: Sincere@april.biz');
     }
   }
 
