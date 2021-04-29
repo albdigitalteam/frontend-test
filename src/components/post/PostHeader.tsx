@@ -8,7 +8,7 @@ import './styles.css';
 const PostHeader = ({ id, title, author }: { id: number, title: string, author: string | undefined }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  let location = useLocation();
+  const location = useLocation();
 
   const handleDeletePost = (id: number) => {
     dispatch(deletePost(id));

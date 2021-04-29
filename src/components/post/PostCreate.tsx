@@ -37,8 +37,7 @@ function PostCreate(props: IPostCreateProps) {
     onClose();
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("name ", event.target)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {  
     const { id, value } = event.target;
 
     setForm({ ...form, [id]: value });
@@ -48,9 +47,8 @@ function PostCreate(props: IPostCreateProps) {
   const onSubmit = () => {
     if (!form.email || !form.body || !form.title)
       setError(true);
-    else {   
-      const user = users?.find((user: IUser) => user.email.toLowerCase() === form.email.toLowerCase())
-      console.log("userId ", users);
+    else {
+      const user = users?.find((user: IUser) => user.email.toLowerCase() === form.email.toLowerCase())    
       if (user) {
         const post: IPost = {
           userId: user.id,
@@ -103,10 +101,18 @@ function PostCreate(props: IPostCreateProps) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={handleClose}
+            color="primary"
+          >
             Cancelar
           </Button>
-          <Button onClick={onSubmit} color="primary">
+          <Button
+            onClick={onSubmit}
+            color="primary"
+            type='submit'
+            data-testid='submit-button'
+          >
             Postar
           </Button>
         </DialogActions>

@@ -1,8 +1,9 @@
 import { unmountComponentAtNode } from "react-dom";
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { SnackbarProvider } from 'notistack';
 import store from 'store';
-import Posts from "./index";
+import Posts from './index';
 
 let container: any = null;
 
@@ -36,7 +37,9 @@ describe('render posts data', () => {
     beforeEach(() => {
         render(
             <Provider store={store}>
-                <Posts />
+                <SnackbarProvider maxSnack={3}>
+                    <Posts />
+                </SnackbarProvider>
             </Provider>
         )
     });
@@ -45,4 +48,3 @@ describe('render posts data', () => {
         expect(screen.getByTestId("posts-element")).toBeInTheDocument();
     });
 })
-  

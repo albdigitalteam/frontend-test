@@ -17,7 +17,7 @@ interface PostsProps {
 function Posts(props: PostsProps) {
   const { posts, users, comments } = props;
   const dispatch = useDispatch();
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();  
   const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
@@ -45,9 +45,7 @@ function Posts(props: PostsProps) {
   const handleCloseCreatePost = () => {
     setOpenDialog(false);
   }
-
-
-  console.log("posts ",posts.length)
+  
   return (
     <div className='posts-container' data-testid="posts-element">
       {openDialog && <PostCreate onClose={handleCloseCreatePost} />}

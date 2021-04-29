@@ -23,7 +23,7 @@ describe('test posts reducer', () => {
 
     test('should set one post', () => {
         const setPostAction = {
-            type: postsConstants.SET_ADDED_POST,
+            type: postsConstants.SET_POST,
             post,
         };
         expect(postsReducer([], setPostAction)).toEqual(posts);

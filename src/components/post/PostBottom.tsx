@@ -23,7 +23,7 @@ const Bottom = ({ id, commentsCount }: { id: number, commentsCount: number }) =>
   }
 
   return (
-    <div>
+    <div data-testid='post-bottom'>
       {openDialog &&
         <CommentCreate
           id={id}

@@ -1,15 +1,15 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import TestRenderer from 'react-test-renderer';
+import { SnackbarProvider } from 'notistack';
 import store from 'store';
-
 import App from './App';
 
 test('renders learn react link', () => {
   const { container } = render(
     <Provider store={store}>
-      <App />
+      <SnackbarProvider maxSnack={3}>
+        <App />
+      </SnackbarProvider>
     </Provider>
   );
 

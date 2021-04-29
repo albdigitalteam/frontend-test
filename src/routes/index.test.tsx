@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import React from 'react';
+import { SnackbarProvider } from 'notistack';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from 'store';
@@ -12,7 +12,9 @@ describe('tests routes using memory router', () => {
   const component = (
     <Router history={history}>
       <Provider store={store}>
-        <App />
+        <SnackbarProvider maxSnack={3}>
+          <App />
+        </SnackbarProvider>
       </Provider>
     </Router>
   );

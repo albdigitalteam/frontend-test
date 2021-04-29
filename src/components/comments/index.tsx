@@ -16,7 +16,10 @@ interface CommentsProps {
 const CommentsList = (props: CommentsProps) => {
   const { comments } = props;
   return (
-    <div className='comments-container'>
+    <div
+      className='comments-container'
+      data-testid='comments-list'
+    >
       { comments.length &&
         comments.map((comment: IComment) => (
           <List

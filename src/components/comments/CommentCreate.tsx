@@ -37,7 +37,7 @@ function CommentCreate(props: ICommentCreateProps) {
     onClose();
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
     setForm({ ...form, [id]: value });
     setError(false);
@@ -97,10 +97,18 @@ function CommentCreate(props: ICommentCreateProps) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={handleClose}
+            color="primary"
+          >
             Cancelar
           </Button>
-          <Button onClick={onSubmit} color="primary">
+          <Button
+            onClick={onSubmit}
+            color="primary"
+            type='submit'
+            data-testid='submit-button'
+          >
             Postar
           </Button>
         </DialogActions>
