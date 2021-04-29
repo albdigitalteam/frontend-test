@@ -10,6 +10,11 @@ export const addPost = (post: IPost) => ({
   post,
 })
 
+export const getPost = (id: number) => ({
+  type: postsConstants.GET_POST,
+  id,
+})
+
 export const deletePost = (id: number) => ({
   type: postsConstants.DELETE_POST,
   id,

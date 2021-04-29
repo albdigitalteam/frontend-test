@@ -33,12 +33,11 @@ function Posts(props: PostsProps) {
     const commentsFiltered = comments.filter((comment: IComment) => comment.postId === postId);
     return commentsFiltered;
   }
-
   return (
     <div className='posts-container' data-testid="posts-element">
       {!posts.length ? <Skeleton /> :
         <>
-          <Header />
+          <Header/>
           <div id='posts'>
             {posts && posts.map((post: IPost) => (
               < LazyLoad

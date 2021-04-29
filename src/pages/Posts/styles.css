@@ -11,7 +11,7 @@
 
 .card-root {
   margin: 10px 20px;
-  max-width: 700px;
+  max-width: var(--card-width);
   border-radius: 8px !important;
   transition: 0.3s;
 }

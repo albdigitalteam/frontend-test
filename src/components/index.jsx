@@ -1,8 +1,11 @@
-import Header from './Header';
-import Loader from './Loaders/CircularProgress';
-import Skeleton from './Loaders/Skeleton';
+import Header from './header';
+import Loader from './loaders/circularProgress';
+import Skeleton from './loaders/skeleton';
+import CommentsList from './comments';
+
 export {
   Header,
   Loader,
-  Skeleton
+  Skeleton,
+  CommentsList
 };

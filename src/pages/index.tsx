@@ -1,6 +1,6 @@
-import Posts from './Posts';
-import NotFound from './NotFound';
-import Details from './Details';
+import Posts from './posts';
+import NotFound from './notFound';
+import Details from './details';
 
 export {
   Posts,

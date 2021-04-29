@@ -1,18 +1,18 @@
-import { connect, useDispatch } from 'react-redux';
-import Badge from '@material-ui/core/Badge';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import { Grid, Card, CardActionArea, CardHeader, CardContent, CardActions, CardMedia, IconButton, Typography } from '@material-ui/core';
-import CommentIcon from '@material-ui/icons/Comment';
-import DeleteIcon from '@material-ui/icons/Delete';
+import { Grid, Card, CardActionArea, CardContent, CardMedia, Typography, } from '@material-ui/core';
+import PostHeader from './PostHeader';
+import PostBottom from './PostBottom';
 import { IComments } from 'types';
-import { deletePost } from 'store/redux/actions';
 import './styles.css';
 
 const Post = ({ id, title, author, body, comments }: { id: number, title: string, author: string | undefined, body: string, comments: IComments }) => {
-  const dispatch = useDispatch();
 
-  const handleDeletePost = (id: number) => {
-    dispatch(deletePost(id));
+  const history = useHistory();
+
+  const detailsPost = (postId: number) => {
+    history.push(`/details/${postId}`)
   }
 
   return (
@@ -22,27 +22,14 @@ const Post = ({ id, title, author, body, comments }: { id: number, title: string
           root: 'card-root',
         }}
       >
-        <CardHeader
-          data-testid='post-title'
-          classes={{
-            root: 'card-header-root',
-            title: 'card-header-title',
-            subheader: 'card-header-subheader',
-            action: 'card-header-action',
-          }}
-          action={
-            <>
-              <IconButton aria-label='delete'
-                onClick={() => handleDeletePost(id)}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </>
-          }
+        <PostHeader
+          id={id}
           title={title}
-          subheader={author}
+          author={author}
         />
-        <CardActionArea>
+        <CardActionArea
+          onClick={() => detailsPost(id)}
+        >
           < LazyLoad
             once={true}
             placeholder={<img src={`https://picsum.photos/id/${id}/5/5`} alt='...' />}
@@ -57,18 +44,10 @@ const Post = ({ id, title, author, body, comments }: { id: number, title: string
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions
-          classes={{
-            root: 'card-actions',
-          }}
-          disableSpacing
-        >
-          <IconButton aria-label="add comments">
-            <Badge badgeContent={comments?.length} color="primary">
-              <CommentIcon />
-            </Badge>
-          </IconButton>
-        </CardActions>
+        <PostBottom
+          id={id}
+          commentsCount={comments?.length}
+        />
       </Card>
     </Grid>
   );

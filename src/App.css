@@ -4,6 +4,7 @@
   --text-color: #6c6c80;
   --hover-color: #6c63ffd6;
   --background-color:  #f0f0f5;
+  --card-width:  700px;
 }
 
 * {
@@ -15,7 +16,6 @@
 body {
   background: var(--background-color);
   -webkit-font-smoothing: antialiased;
-  color: var(--text-color);
 }
 
 body,

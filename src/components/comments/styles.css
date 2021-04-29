@@ -1,0 +1,13 @@
+.comments-container{
+  justify-content:center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: -9px;
+}
+.list-root{
+  background-color: #fff;
+  max-width: var(--card-width);
+  border-radius: 8px !important;
+  
+}

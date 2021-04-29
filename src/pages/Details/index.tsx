@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
-import { Header, Loader, Skeleton } from 'components';
-import Post from '../Posts/Post';
+import { Header, CommentsList } from 'components';
+import Post from '../posts/Post';
 import { IPosts, IPost, IComments, IComment, IUsers, IUser } from 'types';
-import { getPosts } from 'store/redux/actions';
+import { getPost } from 'store/redux/actions';
 import PerfectScrollbar from 'perfect-scrollbar';
 import './styles.css';
 
@@ -14,7 +13,7 @@ var ps: any;
 interface DetailsProps {
     users: IUsers;
     posts: IPosts;
-    comments: IComments;   
+    comments: IComments;
 }
 
 interface ParamTypes {
@@ -23,18 +22,20 @@ interface ParamTypes {
 
 function Details(props: DetailsProps) {
     const { postId } = useParams<ParamTypes>();
-
     const { posts, users, comments } = props;
     const [post, setPost] = useState<IPost>();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (postId !== '') {
+        if (postId !== '' && posts && posts.length) {
             const post = posts.find((post: IPost) => post.id === Number(postId));
             if (post)
                 setPost(post);
         }
-    }, [postId, posts]);
+        else
+            dispatch(getPost(Number(postId)));
+
+    }, [postId, posts, dispatch]);
 
     const getPostAuthor = (userId: number) => {
         const user = users.find((user: IUser) => user.id === userId);
@@ -42,22 +43,28 @@ function Details(props: DetailsProps) {
     }
 
     const getCommentsPost = (postId: number) => {
-        const commentsFiltered = comments.filter((comment: IComment) => comment.postId === postId);
+        const commentsFiltered: IComments = comments.filter((comment: IComment) => comment.postId === postId);
         return commentsFiltered;
     }
 
     return (
         <div className='details-container' data-testid="details-element">
-            <Header />
+            <Header left />
             <div id='details'>
-                {post && <Post
-                    key={post.id}
-                    id={1}
-                    title={post.title}
-                    author={getPostAuthor(post.userId)}
-                    body={post?.body}
-                    comments={getCommentsPost(post.id)}
-                />
+                {post &&
+                    <>
+                        <Post
+                            key={post.id}
+                            id={post.id}
+                            title={post.title}
+                            author={getPostAuthor(post.userId)}
+                            body={post?.body}
+                            comments={getCommentsPost(post.id)}
+                        />
+                        <CommentsList
+                            comments={getCommentsPost(post.id)}
+                        />
+                    </>
                 }
             </div>
         </div >

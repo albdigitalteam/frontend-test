@@ -6,9 +6,9 @@ const posts = (state = [], action: any) => {
     case postsConstants.SET_POSTS:{    
       return [...action.posts];
     }
-    case postsConstants.SET_ADDED_POST:{    
+    case postsConstants.SET_POST:{    
       return [...state, action.post];
-    }
+    }    
     case postsConstants.SET_DELETED_POST: {      
       const newState = state.filter((post:IPost) => {
         return post.id !== action.id
