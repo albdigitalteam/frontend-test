@@ -26,6 +26,7 @@ const Bottom = ({ id, commentsCount }: { id: number, commentsCount: number }) =>
     <div data-testid='post-bottom'>
       {openDialog &&
         <CommentCreate
+          idEdit={0}
           id={id}
           onClose={handleCloseCreateCommentDialog}
         />

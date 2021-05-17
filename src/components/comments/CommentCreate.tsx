@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import { addComment } from 'store/redux/actions';
+import { addComment, editComment } from 'store/redux/actions';
 import { Dialog } from 'components';
-import { IComment } from 'types';
+import { IComment, IComments } from 'types';
 
 interface ICommentCreateProps {
   onClose: Function,
   id: number;
+  comments: IComments;
+  idEdit: number;
 }
 
 type IState = {
@@ -27,15 +29,22 @@ const state = {
 }
 
 function CommentCreate(props: ICommentCreateProps) {
-  const { onClose, id } = props;
+  const { onClose, id, comments, idEdit } = props;
+
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [error, setError] = useState(false);
+  const [comment, setComment] = useState<IComment>();
   const [form, setForm] = useState<IState>(state);
 
   const handleClose = () => {
     onClose();
   };
+
+  useEffect(() => {
+    const commentToEdit = comments?.find((comment: IComment) => comment.id === idEdit);
+    setComment(commentToEdit);
+  }, [idEdit, comments]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
@@ -49,12 +58,16 @@ function CommentCreate(props: ICommentCreateProps) {
     else {
       const comment: IComment = {
         postId: id,
-        id: id,
+        id: idEdit,
         name: form.name,
         email: form.email,
         body: form.body
       }
-      dispatch(addComment(comment))
+      if (idEdit){        
+        dispatch(editComment(comment))
+      }
+      else
+        dispatch(addComment(comment))
       handleClose()
       enqueueSnackbar('Comentário foi adicionado');
     }
@@ -76,6 +89,7 @@ function CommentCreate(props: ICommentCreateProps) {
             type="email"
             helperText={error && !form.email ? 'Campo não pode estar vazio.' : ''}
             fullWidth
+            defaultValue={comment?.email}
           />
           <TextField
             onChange={handleChange}
@@ -85,6 +99,7 @@ function CommentCreate(props: ICommentCreateProps) {
             type="text"
             helperText={error && !form.name ? 'Campo não pode estar vazio.' : ''}
             fullWidth
+            defaultValue={comment?.name}
           />
           <TextField
             onChange={handleChange}
@@ -94,6 +109,7 @@ function CommentCreate(props: ICommentCreateProps) {
             type="text"
             helperText={error && !form.body ? 'Campo não pode estar vazio.' : ''}
             fullWidth
+            defaultValue={comment?.body}
           />
         </DialogContent>
         <DialogActions>
@@ -117,4 +133,12 @@ function CommentCreate(props: ICommentCreateProps) {
   );
 }
 
-export default connect()(CommentCreate);
+
+
+const mapStateToProps = ({ comments }: { comments: IComments }) => ({
+  comments,
+});
+
+export default connect(mapStateToProps)(CommentCreate);
+
+

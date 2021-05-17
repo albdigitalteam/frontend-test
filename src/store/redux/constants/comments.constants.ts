@@ -3,4 +3,5 @@ export const commentsConstants = {
   SET_COMMENTS: 'SET_COMMENTS',
   ADD_COMMENT: 'ADD_COMMENT',
   SET_COMMENT: 'SET_COMMENT',
+  EDIT_COMMENT: 'EDIT_COMMENT',
 }

@@ -6,3 +6,8 @@ export const addComment = (comment: IComment) => ({
   comment,
 })
 
+export const editComment = (comment: IComment) => ({
+  type: commentsConstants.EDIT_COMMENT,
+  comment,
+})
+
