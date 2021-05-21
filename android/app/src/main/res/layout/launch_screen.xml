@@ -8,4 +8,10 @@
     android:gravity="center"
     android:background="@drawable/splash">
 
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo" />
+
 </LinearLayout>
