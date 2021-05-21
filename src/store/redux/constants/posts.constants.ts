@@ -1,0 +1,10 @@
+export const postsConstants = {
+  GET_POSTS: 'GET_POSTS',
+  SET_POSTS: 'SET_POSTS',
+  ADD_POST: 'ADD_POST',
+  GET_POST: 'GET_POST',
+  SET_POST: 'SET_POST',  
+  DELETE_POST: 'DELETE_POST',
+  SET_DELETED_POST: 'SET_DELETED_POST',
+}
+
