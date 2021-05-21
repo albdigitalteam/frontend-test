@@ -1,0 +1,10 @@
+export default {
+  VERY_SMALL: 12,
+  SMALL: 14,
+  REGULAR: 16,
+  REGULAR_MEDIUM: 20,
+  MEDIUM: 24,
+  MEDIUM_LARGE: 26,
+  LARGE: 30,
+  VERY_LARGE: 36
+};

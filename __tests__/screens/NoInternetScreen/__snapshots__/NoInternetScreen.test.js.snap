@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests in NoInternetScreen Screen matches snapshot 1`] = `
+Array [
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    statusBarTranslucent={true}
+    transparent={true}
+    visible={false}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FFF",
+              "borderRadius": 16,
+              "justifyContent": "center",
+              "paddingBottom": 6,
+              "paddingLeft": 21,
+              "paddingRight": 21,
+              "paddingTop": 25,
+              "width": 300,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "aspectRatio": 1,
+              },
+              undefined,
+              Array [
+                Object {
+                  "height": 85,
+                  "marginBottom": 16,
+                  "width": 85,
+                },
+              ],
+            ]
+          }
+        >
+          <View
+            autoPlay={true}
+            enableMergePathsAndroidForKitKatAndAbove={false}
+            forwardedRef={[Function]}
+            loop={true}
+            onAnimationFinish={[Function]}
+            onLayout={[Function]}
+            progress={0}
+            resizeMode="contain"
+            sourceJson="{\\"v\\":\\"5.7.4\\",\\"fr\\":30,\\"ip\\":0,\\"op\\":31,\\"w\\":1000,\\"h\\":1000,\\"nm\\":\\"hotspot\\",\\"ddd\\":0,\\"assets\\":[],\\"layers\\":[{\\"ddd\\":0,\\"ind\\":5,\\"ty\\":4,\\"nm\\":\\"Shape Layer 10\\",\\"sr\\":1,\\"ks\\":{\\"o\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":2,\\"s\\":[0]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":5.09,\\"s\\":[16]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":12.433,\\"s\\":[100]},{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":15.136,\\"s\\":[100]},{\\"t\\":19.0000007738859,\\"s\\":[0]}],\\"ix\\":11},\\"r\\":{\\"a\\":0,\\"k\\":178,\\"ix\\":10},\\"p\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":0.667,\\"y\\":1},\\"o\\":{\\"x\\":0.333,\\"y\\":0},\\"t\\":5.09,\\"s\\":[681.693,375,0],\\"to\\":[10.5,0,0],\\"ti\\":[-10.5,0,0]},{\\"t\\":19.0000007738859,\\"s\\":[744.693,375,0]}],\\"ix\\":2,\\"l\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[-243.849,-133.725,0],\\"ix\\":1,\\"l\\":2},\\"s\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.667,0.667,0.667],\\"y\\":[1,1,1]},\\"o\\":{\\"x\\":[0.333,0.333,0.333],\\"y\\":[0,0,0]},\\"t\\":5.09,\\"s\\":[68,68,100]},{\\"t\\":19.0000007738859,\\"s\\":[100,100,100]}],\\"ix\\":6,\\"l\\":2}},\\"ao\\":0,\\"shapes\\":[{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ind\\":0,\\"ty\\":\\"sh\\",\\"ix\\":1,\\"ks\\":{\\"a\\":0,\\"k\\":{\\"i\\":[[36,-30],[0,-104.077],[-22.136,-22.136]],\\"o\\":[[-28.331,23.609],[0,106],[28,28]],\\"v\\":[[-160,-306],[-244,-128],[-166,50]],\\"c\\":false},\\"ix\\":2},\\"nm\\":\\"Path 1\\",\\"mn\\":\\"ADBE Vector Shape - Group\\",\\"hd\\":false},{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":80,\\"ix\\":5},\\"lc\\":2,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 2\\",\\"np\\":3,\\"cix\\":2,\\"bm\\":0,\\"ix\\":1,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false},{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":80,\\"ix\\":5},\\"lc\\":1,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"fl\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":4},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":5},\\"r\\":1,\\"bm\\":0,\\"nm\\":\\"Fill 1\\",\\"mn\\":\\"ADBE Vector Graphic - Fill\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 1\\",\\"np\\":2,\\"cix\\":2,\\"bm\\":0,\\"ix\\":2,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false}],\\"ip\\":0,\\"op\\":600.000024438501,\\"st\\":0,\\"bm\\":0},{\\"ddd\\":0,\\"ind\\":6,\\"ty\\":4,\\"nm\\":\\"Shape Layer 9\\",\\"sr\\":1,\\"ks\\":{\\"o\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":2,\\"s\\":[0]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":5.09,\\"s\\":[16]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":12.433,\\"s\\":[100]},{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":15.136,\\"s\\":[100]},{\\"t\\":19.0000007738859,\\"s\\":[0]}],\\"ix\\":11},\\"r\\":{\\"a\\":0,\\"k\\":180,\\"ix\\":10},\\"p\\":{\\"a\\":0,\\"k\\":[498.00000000000006,374,0],\\"ix\\":2,\\"l\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[92.763,-126,0],\\"ix\\":1,\\"l\\":2},\\"s\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.667,0.667,0.667],\\"y\\":[1,1,1]},\\"o\\":{\\"x\\":[0.333,0.333,0.333],\\"y\\":[0,0,0]},\\"t\\":5.09,\\"s\\":[89,107.06499999999998,100]},{\\"t\\":19.0000007738859,\\"s\\":[128,153.981,100]}],\\"ix\\":6,\\"l\\":2}},\\"ao\\":0,\\"shapes\\":[{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ind\\":0,\\"ty\\":\\"sh\\",\\"ix\\":1,\\"ks\\":{\\"a\\":0,\\"k\\":{\\"i\\":[[48.676,-48.676],[0,-104.077],[-22.136,-22.136]],\\"o\\":[[-26.077,26.077],[0,106],[39.105,39.105]],\\"v\\":[[-160,-306],[-244,-128],[-166,50]],\\"c\\":false},\\"ix\\":2},\\"nm\\":\\"Path 1\\",\\"mn\\":\\"ADBE Vector Shape - Group\\",\\"hd\\":false},{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":60,\\"ix\\":5},\\"lc\\":2,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 2\\",\\"np\\":3,\\"cix\\":2,\\"bm\\":0,\\"ix\\":1,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false},{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":60,\\"ix\\":5},\\"lc\\":1,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"fl\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":4},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":5},\\"r\\":1,\\"bm\\":0,\\"nm\\":\\"Fill 1\\",\\"mn\\":\\"ADBE Vector Graphic - Fill\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 1\\",\\"np\\":2,\\"cix\\":2,\\"bm\\":0,\\"ix\\":2,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false}],\\"ip\\":0,\\"op\\":600.000024438501,\\"st\\":0,\\"bm\\":0},{\\"ddd\\":0,\\"ind\\":7,\\"ty\\":4,\\"nm\\":\\"Shape Layer 8\\",\\"sr\\":1,\\"ks\\":{\\"o\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":2,\\"s\\":[0]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":5.09,\\"s\\":[16]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":12.433,\\"s\\":[100]},{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":15.136,\\"s\\":[100]},{\\"t\\":19.0000007738859,\\"s\\":[0]}],\\"ix\\":11},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":10},\\"p\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":0.667,\\"y\\":1},\\"o\\":{\\"x\\":0.333,\\"y\\":0},\\"t\\":5.09,\\"s\\":[196,374,0],\\"to\\":[-20.833,0,0],\\"ti\\":[20.833,0,0]},{\\"t\\":19.0000007738859,\\"s\\":[71,374,0]}],\\"ix\\":2,\\"l\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[-242,-126,0],\\"ix\\":1,\\"l\\":2},\\"s\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.667,0.667,0.667],\\"y\\":[1,1,1]},\\"o\\":{\\"x\\":[0.333,0.333,0.333],\\"y\\":[0,0,0]},\\"t\\":5.09,\\"s\\":[89,107.06499999999998,100]},{\\"t\\":19.0000007738859,\\"s\\":[128,153.981,100]}],\\"ix\\":6,\\"l\\":2}},\\"ao\\":0,\\"shapes\\":[{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ind\\":0,\\"ty\\":\\"sh\\",\\"ix\\":1,\\"ks\\":{\\"a\\":0,\\"k\\":{\\"i\\":[[48.676,-48.676],[0,-104.077],[-22.136,-22.136]],\\"o\\":[[-26.077,26.077],[0,106],[39.105,39.105]],\\"v\\":[[-160,-306],[-244,-128],[-166,50]],\\"c\\":false},\\"ix\\":2},\\"nm\\":\\"Path 1\\",\\"mn\\":\\"ADBE Vector Shape - Group\\",\\"hd\\":false},{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":60,\\"ix\\":5},\\"lc\\":2,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 2\\",\\"np\\":3,\\"cix\\":2,\\"bm\\":0,\\"ix\\":1,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false},{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":60,\\"ix\\":5},\\"lc\\":1,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"fl\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":4},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":5},\\"r\\":1,\\"bm\\":0,\\"nm\\":\\"Fill 1\\",\\"mn\\":\\"ADBE Vector Graphic - Fill\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 1\\",\\"np\\":2,\\"cix\\":2,\\"bm\\":0,\\"ix\\":2,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false}],\\"ip\\":0,\\"op\\":600.000024438501,\\"st\\":0,\\"bm\\":0},{\\"ddd\\":0,\\"ind\\":8,\\"ty\\":4,\\"nm\\":\\"Shape Layer 7\\",\\"sr\\":1,\\"ks\\":{\\"o\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":2,\\"s\\":[0]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.167],\\"y\\":[0.167]},\\"t\\":5.09,\\"s\\":[16]},{\\"i\\":{\\"x\\":[0.667],\\"y\\":[1]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":12.433,\\"s\\":[100]},{\\"i\\":{\\"x\\":[0.833],\\"y\\":[0.833]},\\"o\\":{\\"x\\":[0.333],\\"y\\":[0]},\\"t\\":15.136,\\"s\\":[100]},{\\"t\\":19.0000007738859,\\"s\\":[0]}],\\"ix\\":11},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":10},\\"p\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":0.667,\\"y\\":1},\\"o\\":{\\"x\\":0.333,\\"y\\":0},\\"t\\":5.09,\\"s\\":[318,376,0],\\"to\\":[-10.333,0,0],\\"ti\\":[10.333,0,0]},{\\"t\\":19.0000007738859,\\"s\\":[256,376,0]}],\\"ix\\":2,\\"l\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[-244,-124,0],\\"ix\\":1,\\"l\\":2},\\"s\\":{\\"a\\":1,\\"k\\":[{\\"i\\":{\\"x\\":[0.667,0.667,0.667],\\"y\\":[1,1,1]},\\"o\\":{\\"x\\":[0.333,0.333,0.333],\\"y\\":[0,0,0]},\\"t\\":5.09,\\"s\\":[68,68,100]},{\\"t\\":19.0000007738859,\\"s\\":[100,100,100]}],\\"ix\\":6,\\"l\\":2}},\\"ao\\":0,\\"shapes\\":[{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ind\\":0,\\"ty\\":\\"sh\\",\\"ix\\":1,\\"ks\\":{\\"a\\":0,\\"k\\":{\\"i\\":[[36,-30],[0,-104.077],[-22.136,-22.136]],\\"o\\":[[-28.331,23.609],[0,106],[28,28]],\\"v\\":[[-160,-306],[-244,-128],[-166,50]],\\"c\\":false},\\"ix\\":2},\\"nm\\":\\"Path 1\\",\\"mn\\":\\"ADBE Vector Shape - Group\\",\\"hd\\":false},{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":80,\\"ix\\":5},\\"lc\\":2,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 2\\",\\"np\\":3,\\"cix\\":2,\\"bm\\":0,\\"ix\\":1,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false},{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":80,\\"ix\\":5},\\"lc\\":1,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"fl\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":4},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":5},\\"r\\":1,\\"bm\\":0,\\"nm\\":\\"Fill 1\\",\\"mn\\":\\"ADBE Vector Graphic - Fill\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[100,100],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Shape 1\\",\\"np\\":2,\\"cix\\":2,\\"bm\\":0,\\"ix\\":2,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false}],\\"ip\\":0,\\"op\\":600.000024438501,\\"st\\":0,\\"bm\\":0},{\\"ddd\\":0,\\"ind\\":14,\\"ty\\":4,\\"nm\\":\\"circle\\",\\"sr\\":1,\\"ks\\":{\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":11},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":10},\\"p\\":{\\"a\\":0,\\"k\\":[500.391,500,0],\\"ix\\":2,\\"l\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0,0],\\"ix\\":1,\\"l\\":2},\\"s\\":{\\"a\\":0,\\"k\\":[100,100,100],\\"ix\\":6,\\"l\\":2}},\\"ao\\":0,\\"shapes\\":[{\\"ty\\":\\"gr\\",\\"it\\":[{\\"d\\":1,\\"ty\\":\\"el\\",\\"s\\":{\\"a\\":0,\\"k\\":[135.023,135.023],\\"ix\\":2},\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":3},\\"nm\\":\\"Ellipse Path 1\\",\\"mn\\":\\"ADBE Vector Shape - Ellipse\\",\\"hd\\":false},{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"lc\\":1,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"fl\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":4},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":5},\\"r\\":1,\\"bm\\":0,\\"nm\\":\\"Fill 1\\",\\"mn\\":\\"ADBE Vector Graphic - Fill\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[-0.391,-122.039],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[120.083,126.79],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Ellipse 1\\",\\"np\\":3,\\"cix\\":2,\\"bm\\":0,\\"ix\\":1,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false},{\\"ty\\":\\"gr\\",\\"it\\":[{\\"ty\\":\\"rc\\",\\"d\\":1,\\"s\\":{\\"a\\":0,\\"k\\":[70.766,573.547],\\"ix\\":2},\\"p\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":20,\\"ix\\":4},\\"nm\\":\\"Rectangle Path 1\\",\\"mn\\":\\"ADBE Vector Shape - Rect\\",\\"hd\\":false},{\\"ty\\":\\"st\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":3},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":4},\\"w\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"lc\\":1,\\"lj\\":1,\\"ml\\":4,\\"bm\\":0,\\"nm\\":\\"Stroke 1\\",\\"mn\\":\\"ADBE Vector Graphic - Stroke\\",\\"hd\\":false},{\\"ty\\":\\"fl\\",\\"c\\":{\\"a\\":0,\\"k\\":[0.3215686274509804,0.6980392156862745,0.592156862745098,1],\\"ix\\":4},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":5},\\"r\\":1,\\"bm\\":0,\\"nm\\":\\"Fill 1\\",\\"mn\\":\\"ADBE Vector Graphic - Fill\\",\\"hd\\":false},{\\"ty\\":\\"tr\\",\\"p\\":{\\"a\\":0,\\"k\\":[-0.617,202.773],\\"ix\\":2},\\"a\\":{\\"a\\":0,\\"k\\":[0,0],\\"ix\\":1},\\"s\\":{\\"a\\":0,\\"k\\":[108.504,103.701],\\"ix\\":3},\\"r\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":6},\\"o\\":{\\"a\\":0,\\"k\\":100,\\"ix\\":7},\\"sk\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":4},\\"sa\\":{\\"a\\":0,\\"k\\":0,\\"ix\\":5},\\"nm\\":\\"Transform\\"}],\\"nm\\":\\"Rectangle 1\\",\\"np\\":3,\\"cix\\":2,\\"bm\\":0,\\"ix\\":2,\\"mn\\":\\"ADBE Vector Group\\",\\"hd\\":false}],\\"ip\\":0,\\"op\\":600.000024438501,\\"st\\":0,\\"bm\\":0}],\\"markers\\":[]}"
+            speed={1}
+            style={
+              Object {
+                "aspectRatio": 1,
+                "height": 85,
+                "marginBottom": 16,
+                "width": 85,
+              }
+            }
+          />
+        </View>
+        <View
+          hidden={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            color="#4F4F4F"
+            fontSize={16}
+            fontStyle="normal"
+            fontWeight={400}
+            hidden={false}
+            lineHeight={28}
+            marginBottom={0}
+            marginLeft={0}
+            marginRight={0}
+            marginTop={0}
+            numberOfLines={null}
+            paddingBottom={0}
+            paddingLeft={0}
+            paddingRight={0}
+            paddingTop={0}
+            style={
+              Array [
+                Object {
+                  "color": "#4F4F4F",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 16,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 28,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "center",
+                  "textDecorationColor": "black",
+                  "textDecorationLine": "none",
+                  "textDecorationStyle": "solid",
+                  "textTransform": "none",
+                  "width": "auto",
+                },
+              ]
+            }
+            textAlign="center"
+            textDecoration="none"
+            textTransform="none"
+            width="auto"
+          >
+            Sem conexão com a internet.
+          </Text>
+        </View>
+        <View
+          backgroundColor="#CDCDCD"
+          marginBottom={0}
+          marginLeft={0}
+          marginRight={0}
+          marginTop={18}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#CDCDCD",
+                "height": 1,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 18,
+                "width": "100%",
+              },
+            ]
+          }
+          width="100%"
+        />
+        <View
+          justifyContent="center"
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-end",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "marginTop": 4,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignContent": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "marginRight": 0,
+                "minWidth": 55,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              hidden={false}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="#52B297"
+                fontSize={14}
+                fontStyle="normal"
+                fontWeight="normal"
+                hidden={false}
+                lineHeight={28}
+                marginBottom={0}
+                marginLeft={0}
+                marginRight={0}
+                marginTop={0}
+                numberOfLines={null}
+                paddingBottom={0}
+                paddingLeft={0}
+                paddingRight={0}
+                paddingTop={0}
+                style={
+                  Array [
+                    Object {
+                      "color": "#52B297",
+                      "fontFamily": "Poppins-Medium",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                      "lineHeight": 28,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "center",
+                      "textDecorationColor": "black",
+                      "textDecorationLine": "none",
+                      "textDecorationStyle": "solid",
+                      "textTransform": "none",
+                      "width": "auto",
+                    },
+                  ]
+                }
+                textAlign="center"
+                textDecoration="none"
+                textTransform="none"
+                width="auto"
+              >
+                OK
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </Modal>,
+  <View
+    justifyContent="center"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 0,
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 0,
+          "width": "auto",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/animations/no-wifi-signal.gif",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 194,
+              "width": 194,
+            },
+          ]
+        }
+      />
+      <View
+        hidden={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          color="#878787"
+          fontSize={16}
+          fontStyle="normal"
+          fontWeight={500}
+          hidden={false}
+          lineHeight={24}
+          marginBottom={44}
+          marginLeft={0}
+          marginRight={0}
+          marginTop={40}
+          numberOfLines={null}
+          paddingBottom={0}
+          paddingLeft={0}
+          paddingRight={0}
+          paddingTop={0}
+          style={
+            Array [
+              Object {
+                "color": "#878787",
+                "fontFamily": "Poppins-Medium",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "lineHeight": 24,
+                "marginBottom": 44,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 40,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+                "textTransform": "none",
+                "width": "auto",
+              },
+            ]
+          }
+          textAlign="center"
+          textDecoration="none"
+          textTransform="none"
+          width="auto"
+        >
+          Ops! Sem internet
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <BVLinearGradient
+        angle={276}
+        backgroundColor="#fff"
+        color="#fff"
+        colors={
+          Array [
+            4285727895,
+            4287431360,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        marginBottom={0}
+        marginLeft={0}
+        marginRight={0}
+        marginTop={0}
+        onPress={[Function]}
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "borderRadius": 8,
+              "justifyContent": "center",
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "minHeight": 48,
+              "minWidth": 100,
+            },
+          ]
+        }
+        useAngle={true}
+        width={241}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "minWidth": 100,
+              "opacity": 1,
+              "paddingBottom": 14,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 14,
+              "width": "100%",
+            }
+          }
+          testID={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            <View
+              hidden={false}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="#fff"
+                fontSize={16}
+                fontStyle="normal"
+                fontWeight={700}
+                hidden={false}
+                lineHeight={28}
+                marginBottom={0}
+                marginLeft={0}
+                marginRight={0}
+                marginTop={0}
+                numberOfLines={null}
+                paddingBottom={0}
+                paddingLeft={0}
+                paddingRight={0}
+                paddingTop={0}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontFamily": "Poppins-Bold",
+                      "fontSize": 16,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                      "lineHeight": 28,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationColor": "black",
+                      "textDecorationLine": "none",
+                      "textDecorationStyle": "solid",
+                      "textTransform": "uppercase",
+                      "width": "auto",
+                    },
+                  ]
+                }
+                textAlign="left"
+                textDecoration="none"
+                textTransform="uppercase"
+                width="auto"
+              >
+                Tentar novamente
+              </Text>
+            </View>
+          </View>
+        </View>
+      </BVLinearGradient>
+    </View>
+  </View>,
+]
+`;
