@@ -27,16 +27,21 @@ type FormAddPostData = {
 type FormAddPostProps = {
   authors: IUsers;
   closeModal(): void;
+  idToUpdatePost?: number | undefined;
 };
-const FormAddPost: React.FC<FormAddPostProps> = ({ authors, closeModal }) => {
+
+const FormAddPost: React.FC<FormAddPostProps> = ({
+  authors,
+  closeModal,
+  idToUpdatePost,
+}) => {
   const formRef = useRef<FormHandles>(null);
 
   const { addToast } = useToast();
-  const { addPost } = usePosts();
+  const { addPost, selectedPost, updatePost } = usePosts();
 
   const handleSubmit = useCallback(
     async (data: FormAddPostData) => {
-      console.log({ data });
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object().shape({
@@ -52,18 +57,33 @@ const FormAddPost: React.FC<FormAddPostProps> = ({ authors, closeModal }) => {
         });
         await schema.validate(data, { abortEarly: false });
 
-        addPost({
-          body: data.description,
-          id: Math.random(),
-          title: data.title,
-          userId: Number(data.author),
-          image_url: data.imagePath,
-        });
-        addToast({
-          type: 'success',
-          title: 'Sucesso!',
-          description: 'Post cadastrado com sucesso! :)',
-        });
+        if (!selectedPost) {
+          addPost({
+            body: data.description,
+            id: Math.random(),
+            title: data.title,
+            userId: Number(data.author),
+            image_url: data.imagePath,
+          });
+          addToast({
+            type: 'success',
+            title: 'Sucesso!',
+            description: 'Post cadastrado com sucesso! :)',
+          });
+        } else {
+          updatePost({
+            body: data.description,
+            id: selectedPost,
+            title: data.title,
+            image_url: data.imagePath,
+            userId: Number(data.author),
+          });
+          addToast({
+            type: 'success',
+            title: 'Sucesso!',
+            description: 'Post atualizado com sucesso! :)',
+          });
+        }
 
         closeModal();
       } catch (err) {
@@ -87,7 +107,7 @@ const FormAddPost: React.FC<FormAddPostProps> = ({ authors, closeModal }) => {
         });
       }
     },
-    [addToast],
+    [addToast, selectedPost],
   );
 
   return (

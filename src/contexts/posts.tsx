@@ -14,6 +14,7 @@ type PostsContextData = {
   addPost(posts: IPost): void;
   selectPost(postId: number): void;
   removePost(postId: number): void;
+  updatePost(post: IPost): void;
   selectedPost: number | undefined;
 };
 
@@ -39,11 +40,19 @@ const PostsProvider: React.FC = ({ children }) => {
 
   const removePost = useCallback(
     (postId: number) => {
-      console.log({ postId });
-      console.log(posts, 'post.id');
       const newsPosts = posts.filter((post) => post.id !== postId);
 
       setPosts(newsPosts);
+    },
+    [posts, setPosts],
+  );
+
+  const updatePost = useCallback(
+    (post: IPost) => {
+      const newPosts = [...posts];
+      newPosts[post.id - 1] = post;
+
+      setPosts(newPosts);
     },
     [posts, setPosts],
   );
@@ -58,7 +67,15 @@ const PostsProvider: React.FC = ({ children }) => {
 
   return (
     <PostsContext.Provider
-      value={{ getPosts, posts, addPost, selectPost, selectedPost, removePost }}
+      value={{
+        getPosts,
+        posts,
+        addPost,
+        selectPost,
+        selectedPost,
+        removePost,
+        updatePost,
+      }}
     >
       {children}
     </PostsContext.Provider>

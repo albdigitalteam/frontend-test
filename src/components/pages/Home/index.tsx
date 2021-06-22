@@ -10,7 +10,13 @@ import { useComments } from '../../../contexts/comments';
 import { useUsers } from '../../../contexts/users';
 
 const Home: React.FC = () => {
-  const { posts, removePost, selectPost } = usePosts();
+  const {
+    posts,
+    removePost,
+    selectPost,
+    selectedPost,
+    updatePost,
+  } = usePosts();
   const { users } = useUsers();
   const { comments } = useComments();
 
@@ -42,6 +48,7 @@ const Home: React.FC = () => {
               posts.map((post) => (
                 <CardPost
                   removePost={() => removePost(post.id)}
+                  updatePost={() => updatePost(post)}
                   key={post.id}
                   id={post.id}
                   title={post.title}
@@ -54,6 +61,7 @@ const Home: React.FC = () => {
                   comments={getCommentsFromPost(post.id)}
                   authors={users}
                   selectPost={selectPost}
+                  selectedPost={selectedPost}
                 />
               ))}
           </S.PostsWrapper>

@@ -5,7 +5,7 @@ import Image from '../../atoms/Image';
 
 import * as S from './styles';
 import Description from '../../atoms/Description';
-import { IComments, IUsers } from '../../../sharedTypes';
+import { IComments, IPost, IUsers } from '../../../sharedTypes';
 import CardComment from '../CardComment';
 import Modal, { FormTypeEnum } from '../../molecules/Modal';
 
@@ -18,6 +18,8 @@ type CardPostProps = {
   comments: IComments;
   authors?: IUsers;
   removePost(postId: number): void;
+  updatePost(post: IPost, selectedPost: number): void;
+  selectedPost?: number | undefined;
   selectPost(postId: number): void;
 };
 
@@ -30,6 +32,8 @@ const CardPost: React.FC<CardPostProps> = ({
   comments,
   authors,
   removePost,
+  selectedPost,
+  updatePost,
   selectPost,
 }) => {
   const [showComments, setShowComments] = useState(false);
@@ -50,14 +54,23 @@ const CardPost: React.FC<CardPostProps> = ({
     [removePost],
   );
 
+  const handleUpdatePost = useCallback(
+    (postId: number) => {
+      setModalIsOpen(!modalIsOpen);
+      selectPost(postId);
+    },
+    [modalIsOpen],
+  );
+
   return (
     <>
       {modalIsOpen && (
         <Modal
           closeModal={() => setModalIsOpen(!modalIsOpen)}
           authors={authors || []}
-          data-testid="videoModal"
-          formType={FormTypeEnum.ADD_COMMENT}
+          formType={
+            selectedPost ? FormTypeEnum.ADD_POST : FormTypeEnum.ADD_COMMENT
+          }
         />
       )}
 
@@ -70,6 +83,10 @@ const CardPost: React.FC<CardPostProps> = ({
           <S.RemovePostWrapper>
             <S.RemovePostBtn onClick={() => handleRemovePost(postId)}>
               Remover post
+            </S.RemovePostBtn>
+
+            <S.RemovePostBtn onClick={() => handleUpdatePost(postId)}>
+              Editar post
             </S.RemovePostBtn>
           </S.RemovePostWrapper>
         </S.CardHeader>
