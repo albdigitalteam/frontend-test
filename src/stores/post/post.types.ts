@@ -18,9 +18,14 @@ export interface IDeletePost {
   postId: number;
 }
 
+export interface IAddPost {
+  post: IPost;
+}
+
 export const postSagaActions = {
   GET_POSTS: 'GET_POSTS',
   DELETE_POST: 'DELETE_POST',
+  ADD_POST: 'ADD_POST',
 };
 
 export type ActionGetPostType = {
@@ -42,5 +47,17 @@ export function deletePostAction(postId: number): ActionDeletePostType {
   return {
     type: postSagaActions.DELETE_POST,
     postId,
+  };
+}
+
+export type ActionAddPostType = {
+  type: string;
+  post: IPost;
+};
+
+export function addPostAction(post: IPost): ActionAddPostType {
+  return {
+    type: postSagaActions.ADD_POST,
+    post,
   };
 }

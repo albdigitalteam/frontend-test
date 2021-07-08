@@ -1,4 +1,4 @@
-import { posts } from '../../../../__mocks__/posts';
+import { posts, newPost, addedPost } from '../../../../__mocks__/posts';
 import { postSlice } from '../post.store';
 
 describe('posts store', () => {
@@ -28,6 +28,22 @@ describe('posts store', () => {
     expect(store).toEqual({
       ...initialState,
       posts: posts.filter(post => post.id !== posts[0].id),
+    });
+  });
+
+  it('should add new post', () => {
+    let store = reducer(initialState, actions.setPosts({ posts }));
+
+    expect(store).toEqual({
+      ...initialState,
+      posts: posts,
+    });
+
+    store = reducer(store, actions.setAddPost({ post: newPost }));
+
+    expect(store).toEqual({
+      ...initialState,
+      posts: addedPost,
     });
   });
 });

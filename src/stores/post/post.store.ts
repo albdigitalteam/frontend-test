@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPostState, ISetPosts, IPost, IDeletePost } from './post.types';
+import {
+  IPostState,
+  ISetPosts,
+  IPost,
+  IDeletePost,
+  IAddPost,
+} from './post.types';
 import type { RootState } from '../reducers';
 
 export const initialState: IPostState = {
@@ -19,17 +25,21 @@ export const postSlice = createSlice({
         post => post.id !== action.payload.postId,
       );
     },
+    setAddPost: (state, action: PayloadAction<IAddPost>) => {
+      state.posts.unshift(action.payload.post);
+    },
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
   },
 });
 
-export const { setPosts, setDeletePost, setIsLoading } = postSlice.actions;
+export const { setPosts, setDeletePost, setAddPost, setIsLoading } =
+  postSlice.actions;
 
 export const selectGetPosts = (state: RootState): IPost[] => state.posts.posts;
 
-export const selectPostIsLoading = (state: RootState): boolean =>
+export const selectPostsIsLoading = (state: RootState): boolean =>
   state.posts.isLoading;
 
 export default postSlice.reducer;
