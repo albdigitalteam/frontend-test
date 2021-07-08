@@ -14,4 +14,20 @@ describe('posts store', () => {
       posts: posts,
     });
   });
+
+  it('should delete post', () => {
+    let store = reducer(initialState, actions.setPosts({ posts }));
+
+    expect(store).toEqual({
+      ...initialState,
+      posts: posts,
+    });
+
+    store = reducer(store, actions.setDeletePost({ postId: posts[0].id }));
+
+    expect(store).toEqual({
+      ...initialState,
+      posts: posts.filter(post => post.id !== posts[0].id),
+    });
+  });
 });

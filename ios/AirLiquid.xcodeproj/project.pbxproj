@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* AirLiquidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AirLiquidTests.m */; };
+		0C9F2E674D42F7FFEC170A1C /* libPods-AirLiquid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CFA80705393028FF4C949E /* libPods-AirLiquid.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B5268F77188ADA7E64938934 /* libPods-AirLiquid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673AF673ECC5B5E31378BA13 /* libPods-AirLiquid.a */; };
-		CC754448553024BA40507B4A /* libPods-AirLiquid-AirLiquidTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9FE609D1D42417644EE4F2 /* libPods-AirLiquid-AirLiquidTests.a */; };
+		A325D3F79756DB97D4136814 /* libPods-AirLiquid-AirLiquidTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F920394D05A266DE1FF6423 /* libPods-AirLiquid-AirLiquidTests.a */; };
+		A8982F9F2697640700C8EFFE /* BridgeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8982F9E2697640700C8EFFE /* BridgeFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +37,15 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AirLiquid/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AirLiquid/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AirLiquid/main.m; sourceTree = "<group>"; };
-		1716C33FF79E2541E5EF6491 /* Pods-AirLiquid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid.debug.xcconfig"; path = "Target Support Files/Pods-AirLiquid/Pods-AirLiquid.debug.xcconfig"; sourceTree = "<group>"; };
-		38487DC4553C98393761EA30 /* Pods-AirLiquid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid.release.xcconfig"; path = "Target Support Files/Pods-AirLiquid/Pods-AirLiquid.release.xcconfig"; sourceTree = "<group>"; };
-		4CE29CCBE47CC6CDC1976A20 /* Pods-AirLiquid-AirLiquidTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid-AirLiquidTests.debug.xcconfig"; path = "Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests.debug.xcconfig"; sourceTree = "<group>"; };
-		673AF673ECC5B5E31378BA13 /* libPods-AirLiquid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirLiquid.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D9FE609D1D42417644EE4F2 /* libPods-AirLiquid-AirLiquidTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirLiquid-AirLiquidTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F920394D05A266DE1FF6423 /* libPods-AirLiquid-AirLiquidTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirLiquid-AirLiquidTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEF67A227A6F091F083C86D /* Pods-AirLiquid-AirLiquidTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid-AirLiquidTests.debug.xcconfig"; path = "Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests.debug.xcconfig"; sourceTree = "<group>"; };
+		510A37FFF739A1F2C62D53CE /* Pods-AirLiquid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid.release.xcconfig"; path = "Target Support Files/Pods-AirLiquid/Pods-AirLiquid.release.xcconfig"; sourceTree = "<group>"; };
+		64CFA80705393028FF4C949E /* libPods-AirLiquid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirLiquid.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7344F354FD13623D94CFEEF7 /* Pods-AirLiquid-AirLiquidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid-AirLiquidTests.release.xcconfig"; path = "Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests.release.xcconfig"; sourceTree = "<group>"; };
+		75B84FF0364BE1110AA19AF5 /* Pods-AirLiquid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid.debug.xcconfig"; path = "Target Support Files/Pods-AirLiquid/Pods-AirLiquid.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AirLiquid/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E4F285C79A6D04C3F75112DD /* Pods-AirLiquid-AirLiquidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLiquid-AirLiquidTests.release.xcconfig"; path = "Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests.release.xcconfig"; sourceTree = "<group>"; };
+		A8982F9E2697640700C8EFFE /* BridgeFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeFile.swift; sourceTree = "<group>"; };
+		A8982FA02697648400C8EFFE /* AirLiquid-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AirLiquid-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC754448553024BA40507B4A /* libPods-AirLiquid-AirLiquidTests.a in Frameworks */,
+				A325D3F79756DB97D4136814 /* libPods-AirLiquid-AirLiquidTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5268F77188ADA7E64938934 /* libPods-AirLiquid.a in Frameworks */,
+				0C9F2E674D42F7FFEC170A1C /* libPods-AirLiquid.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,8 @@
 		13B07FAE1A68108700A75B9A /* AirLiquid */ = {
 			isa = PBXGroup;
 			children = (
+				A8982FA02697648400C8EFFE /* AirLiquid-Bridging-Header.h */,
+				A8982F9E2697640700C8EFFE /* BridgeFile.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -100,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				673AF673ECC5B5E31378BA13 /* libPods-AirLiquid.a */,
-				6D9FE609D1D42417644EE4F2 /* libPods-AirLiquid-AirLiquidTests.a */,
+				64CFA80705393028FF4C949E /* libPods-AirLiquid.a */,
+				2F920394D05A266DE1FF6423 /* libPods-AirLiquid-AirLiquidTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,12 +145,11 @@
 		A331479418AA7CBA418F2C6E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1716C33FF79E2541E5EF6491 /* Pods-AirLiquid.debug.xcconfig */,
-				38487DC4553C98393761EA30 /* Pods-AirLiquid.release.xcconfig */,
-				4CE29CCBE47CC6CDC1976A20 /* Pods-AirLiquid-AirLiquidTests.debug.xcconfig */,
-				E4F285C79A6D04C3F75112DD /* Pods-AirLiquid-AirLiquidTests.release.xcconfig */,
+				75B84FF0364BE1110AA19AF5 /* Pods-AirLiquid.debug.xcconfig */,
+				510A37FFF739A1F2C62D53CE /* Pods-AirLiquid.release.xcconfig */,
+				4FEF67A227A6F091F083C86D /* Pods-AirLiquid-AirLiquidTests.debug.xcconfig */,
+				7344F354FD13623D94CFEEF7 /* Pods-AirLiquid-AirLiquidTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AirLiquidTests" */;
 			buildPhases = (
-				421441987B04EDDC68C800F7 /* [CP] Check Pods Manifest.lock */,
+				80A864403195AC85AD99AE53 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				309403B2F50AFA694D377D25 /* [CP] Embed Pods Frameworks */,
-				07B9F9A94B013BBA68D39067 /* [CP] Copy Pods Resources */,
+				EC0C9AA29E343600DD45EF8E /* [CP] Embed Pods Frameworks */,
+				E7C718699D05D77183280373 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,14 +181,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AirLiquid" */;
 			buildPhases = (
-				945331E22137F59D804E8952 /* [CP] Check Pods Manifest.lock */,
+				90FF72C688CE069B4BB6DDC6 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				D30AEFE5542B3BCAC781055D /* [CP] Embed Pods Frameworks */,
-				CB3010BFAE07B92D4F2CFE7F /* [CP] Copy Pods Resources */,
+				466ED0AD4B3E33B0293E8061 /* [CP] Embed Pods Frameworks */,
+				951D18BA215F7CDD406201BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,7 +212,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -265,41 +269,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		07B9F9A94B013BBA68D39067 /* [CP] Copy Pods Resources */ = {
+		466ED0AD4B3E33B0293E8061 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		309403B2F50AFA694D377D25 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		421441987B04EDDC68C800F7 /* [CP] Check Pods Manifest.lock */ = {
+		80A864403195AC85AD99AE53 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -321,7 +308,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		945331E22137F59D804E8952 /* [CP] Check Pods Manifest.lock */ = {
+		90FF72C688CE069B4BB6DDC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,7 +330,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CB3010BFAE07B92D4F2CFE7F /* [CP] Copy Pods Resources */ = {
+		951D18BA215F7CDD406201BD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,21 +347,38 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D30AEFE5542B3BCAC781055D /* [CP] Embed Pods Frameworks */ = {
+		E7C718699D05D77183280373 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid/Pods-AirLiquid-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC0C9AA29E343600DD45EF8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirLiquid-AirLiquidTests/Pods-AirLiquid-AirLiquidTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -411,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8982F9F2697640700C8EFFE /* BridgeFile.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -429,8 +434,9 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CE29CCBE47CC6CDC1976A20 /* Pods-AirLiquid-AirLiquidTests.debug.xcconfig */;
+			baseConfigurationReference = 4FEF67A227A6F091F083C86D /* Pods-AirLiquid-AirLiquidTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -456,8 +462,9 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4F285C79A6D04C3F75112DD /* Pods-AirLiquid-AirLiquidTests.release.xcconfig */;
+			baseConfigurationReference = 7344F354FD13623D94CFEEF7 /* Pods-AirLiquid-AirLiquidTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = AirLiquidTests/Info.plist;
@@ -480,13 +487,15 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1716C33FF79E2541E5EF6491 /* Pods-AirLiquid.debug.xcconfig */;
+			baseConfigurationReference = 75B84FF0364BE1110AA19AF5 /* Pods-AirLiquid.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = AirLiquid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -498,6 +507,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AirLiquid;
+				SWIFT_OBJC_BRIDGING_HEADER = "AirLiquid-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -506,12 +516,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38487DC4553C98393761EA30 /* Pods-AirLiquid.release.xcconfig */;
+			baseConfigurationReference = 510A37FFF739A1F2C62D53CE /* Pods-AirLiquid.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = AirLiquid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,6 +535,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AirLiquid;
+				SWIFT_OBJC_BRIDGING_HEADER = "AirLiquid-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -561,6 +574,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -582,11 +596,7 @@
 					/usr/lib/swift,
 					"$(inherited)",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -626,6 +636,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -640,11 +651,7 @@
 					/usr/lib/swift,
 					"$(inherited)",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
