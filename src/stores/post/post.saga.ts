@@ -45,7 +45,7 @@ export function* addPost({ post }: ActionAddPostType) {
 
     const data: AxiosResponse = yield call(api.post, '/posts', { ...post });
 
-    if (data.status === 200) {
+    if (data.status === 201) {
       yield put(setAddPost({ post }));
     }
 

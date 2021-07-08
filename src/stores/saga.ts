@@ -1,6 +1,6 @@
 import { takeEvery, all } from 'redux-saga/effects';
-import { getComments } from './comment/comment.saga';
-import { getPosts, deletePost } from './post/post.saga';
+import { getComments, addComment } from './comment/comment.saga';
+import { getPosts, deletePost, addPost } from './post/post.saga';
 import { getUsers } from './user/user.saga';
 import { commentSagaActions } from './comment/comment.types';
 import { postSagaActions } from './post/post.types';
@@ -10,12 +10,20 @@ function* watchGetComments() {
   yield takeEvery(commentSagaActions.GET_COMMENTS, getComments);
 }
 
+function* watchAddComment() {
+  yield takeEvery(commentSagaActions.ADD_COMMENT, addComment);
+}
+
 function* watchGetPosts() {
   yield takeEvery(postSagaActions.GET_POSTS, getPosts);
 }
 
 function* watchDeletePost() {
   yield takeEvery(postSagaActions.DELETE_POST, deletePost);
+}
+
+function* watchAddPost() {
+  yield takeEvery(postSagaActions.ADD_POST, addPost);
 }
 
 function* watchGetUsers() {
@@ -28,5 +36,7 @@ export default function* rootSaga() {
     watchGetUsers(),
     watchGetPosts(),
     watchDeletePost(),
+    watchAddPost(),
+    watchAddComment(),
   ]);
 }

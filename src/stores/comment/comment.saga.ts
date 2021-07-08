@@ -26,7 +26,7 @@ export function* addComment({ comment }: ActionAddCommentType) {
       ...comment,
     });
 
-    if (data.status === 200) {
+    if (data.status === 201) {
       yield put(setAddComment({ comment }));
     }
 
