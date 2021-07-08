@@ -1,4 +1,8 @@
-import { comments } from '../../../../__mocks__/comments';
+import {
+  addedComment,
+  comments,
+  newComment,
+} from '../../../../__mocks__/comments';
 import { commentSlice } from '../comment.store';
 
 describe('comments store', () => {
@@ -12,6 +16,22 @@ describe('comments store', () => {
     expect(reducer(initialState, actions.setComments({ comments }))).toEqual({
       ...initialState,
       comments: comments,
+    });
+  });
+
+  it('should add new comment', () => {
+    let store = reducer(initialState, actions.setComments({ comments }));
+
+    expect(store).toEqual({
+      ...initialState,
+      comments: comments,
+    });
+
+    store = reducer(store, actions.setAddComment({ comment: newComment }));
+
+    expect(store).toEqual({
+      ...initialState,
+      comments: addedComment,
     });
   });
 });

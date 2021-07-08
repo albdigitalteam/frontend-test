@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICommentState, ISetComments, IComment } from './comment.types';
+import {
+  ICommentState,
+  ISetComments,
+  IComment,
+  IAddComment,
+} from './comment.types';
 import type { RootState } from '../reducers';
 
 export const initialState: ICommentState = {
@@ -14,13 +19,17 @@ export const commentSlice = createSlice({
     setComments: (state, action: PayloadAction<ISetComments>) => {
       state.comments = action.payload.comments;
     },
+    setAddComment: (state, action: PayloadAction<IAddComment>) => {
+      state.comments.unshift(action.payload.comment);
+    },
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
   },
 });
 
-export const { setComments, setIsLoading } = commentSlice.actions;
+export const { setComments, setAddComment, setIsLoading } =
+  commentSlice.actions;
 
 export const selectGetCommentsById = (
   state: RootState,
