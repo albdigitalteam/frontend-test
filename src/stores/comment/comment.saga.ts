@@ -15,6 +15,7 @@ export function* getComments() {
     yield put(setIsLoading(false));
   } catch (e) {
     yield put(setIsLoading(false));
+    throw new Error('Não foi possível buscar os comentários');
   }
 }
 
@@ -33,5 +34,6 @@ export function* addComment({ comment }: ActionAddCommentType) {
     yield put(setIsLoading(false));
   } catch (e) {
     yield put(setIsLoading(false));
+    throw new Error('Não foi possível adicionar os comentários');
   }
 }

@@ -19,6 +19,7 @@ module.exports = {
           '@theme': './src/theme',
           '@services': './src/services',
           '@navigation': './src/navigation',
+          '@helpers': './src/helpers',
         },
       },
     ],

@@ -20,6 +20,7 @@ export function* getPosts() {
     yield put(setIsLoading(false));
   } catch (e) {
     yield put(setIsLoading(false));
+    throw new Error('Não foi possível carregar os posts');
   }
 }
 
@@ -36,6 +37,7 @@ export function* deletePost({ postId }: ActionDeletePostType) {
     yield put(setIsLoading(false));
   } catch (e) {
     yield put(setIsLoading(false));
+    throw new Error('Não foi possível deletar o post');
   }
 }
 
@@ -52,5 +54,6 @@ export function* addPost({ post }: ActionAddPostType) {
     yield put(setIsLoading(false));
   } catch (e) {
     yield put(setIsLoading(false));
+    throw new Error('Não foi possível adicionar o post');
   }
 }

@@ -14,5 +14,6 @@ export function* getUsers() {
     yield put(setIsLoading(false));
   } catch (e) {
     yield put(setIsLoading(false));
+    throw new Error('Não foi possível carregar os usuários');
   }
 }

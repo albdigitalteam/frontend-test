@@ -4,10 +4,10 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
-import {ColorProps, createBox, useTheme} from '@shopify/restyle';
+import { ColorProps, createBox, useTheme } from '@shopify/restyle';
 
 import Text from '@components/Text/Text';
-import {Theme} from '@theme/theme';
+import { Theme } from '@theme/theme';
 
 type TouchableProps = TouchableOpacityProps & {
   children?: React.ReactNode;
@@ -21,7 +21,7 @@ type Props = React.ComponentProps<typeof BaseButton> &
     isLoading?: boolean;
   };
 
-export default function Button({label, isLoading, color, ...props}: Props) {
+export default function Button({ label, isLoading, color, ...props }: Props) {
   const theme = useTheme<Theme>();
 
   return (
