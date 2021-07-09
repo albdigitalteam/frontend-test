@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshopt test styledview component render styledview 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "display": "flex",
+      },
+    ]
+  }
+/>
+`;
