@@ -18,12 +18,14 @@ const reducer: Reducer<PostState> = (state = INITIAL_STATE, action) => {
     case PostTypes.LOAD_POST_FAILURE:
       return { ...state, error: true, loading: false, data: [] };
 
-    case PostTypes.ADD_POST_SUCCESS: {
+    case PostTypes.ADD_POST_SUCCESS:
       return { ...state, loading: false, error: false, data: action.payload };
-    }
 
-    case PostTypes.DELETE_POST_STORE:
-      return { ...state, error: false, loading: false, data: [] };
+    case PostTypes.DELETE_POST_REQUEST:
+      return { ...state, error: true };
+
+    case PostTypes.DELETE_POST_SUCCESS:
+      return { ...state, loading: false, error: false, data: action.payload };
 
     default:
       return state;

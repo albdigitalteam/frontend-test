@@ -13,4 +13,7 @@ export const loadCommentFailure = () =>
 export const addCommentRequest = (data: AddComment) =>
   action(CommentTypes.ADD_COMMENT_REQUEST, data);
 
+export const addCommentSuccess = (data: Comment[]) =>
+  action(CommentTypes.ADD_COMMENT_SUCCESS, data);
+
 export const deleteStore = () => action(CommentTypes.DELETE_COMMENT_STORE);

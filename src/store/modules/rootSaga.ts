@@ -1,9 +1,10 @@
 import { all } from 'redux-saga/effects';
 
+import auth from './auth/sagas';
+import comment from './comment/sagas';
 import post from './post/sagas';
 import user from './user/sagas';
-import comment from './comment/sagas';
 
-export default function* rootSaga(): any {
-  return yield all([post, user, comment]);
+export default function* rootSaga(): Generator {
+  return yield all([auth, comment, post, user]);
 }

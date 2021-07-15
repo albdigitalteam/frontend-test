@@ -3,16 +3,20 @@ import { call, put, select, all, takeLatest } from 'redux-saga/effects';
 import api from '~/services/api';
 
 import { AplicationState } from '~/store';
+import { loadCommentSuccess } from '../comment/actions';
+
+import { Comment } from '../comment/types';
+import { PostTypes, Post } from './types';
+import { User } from '../user/types';
 
 import {
   loadPostSuccess,
   loadPostFailure,
   addPostRequest,
   addPostSuccess,
+  deletePostRequest,
+  deletePostSuccess,
 } from './actions';
-
-import { PostTypes, Post } from './types';
-import { User } from '../user/types';
 
 interface IResponse {
   data: Post[];
@@ -24,6 +28,10 @@ interface ISelectUser {
 
 interface ISelectPost {
   data: Post[];
+}
+
+interface ISelectComment {
+  data: Comment[];
 }
 
 function* loadRequest() {
@@ -79,7 +87,27 @@ function* addRequest({ payload }: ReturnType<typeof addPostRequest>) {
   yield put(addPostSuccess(data));
 }
 
+function* deleteRequest({ payload }: ReturnType<typeof deletePostRequest>) {
+  const statePost: ISelectPost = yield select(
+    (state: AplicationState) => state.post,
+  );
+
+  const stateComment: ISelectComment = yield select(
+    (state: AplicationState) => state.comment,
+  );
+
+  const data = statePost.data.filter((post) => post.id !== payload);
+
+  const comments = stateComment.data.filter(
+    (comment) => comment.postId !== payload,
+  );
+
+  yield put(loadCommentSuccess(comments));
+  yield put(deletePostSuccess(data));
+}
+
 export default all([
   takeLatest(PostTypes.LOAD_POST_REQUEST, loadRequest),
   takeLatest(PostTypes.ADD_POST_REQUEST, addRequest),
+  takeLatest(PostTypes.DELETE_POST_REQUEST, deleteRequest),
 ]);

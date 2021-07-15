@@ -19,22 +19,8 @@ const reducer: Reducer<CommentState> = (state = INITIAL_STATE, action) => {
     case CommentTypes.LOAD_COMMENT_FAILURE:
       return { ...state, error: true, loading: false, data: [] };
 
-    case CommentTypes.ADD_COMMENT_REQUEST: {
-      const { payload } = action;
-
-      const posts = state.data;
-
-      const data = [
-        ...posts,
-        { ...payload, id: posts[posts.length - 1].id + 1 },
-      ];
-
-      return {
-        error: false,
-        loading: false,
-        data,
-      };
-    }
+    case CommentTypes.ADD_COMMENT_SUCCESS:
+      return { ...state, error: false, loading: false, data: action.payload };
 
     case CommentTypes.DELETE_COMMENT_STORE: {
       return { error: false, loading: false, data: [] };

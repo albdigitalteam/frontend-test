@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { TouchableOpacity, Modal, ScrollView, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons as Icon } from '@expo/vector-icons';
 
 import { AplicationState } from '~/store';
 import { addPostRequest } from '~/store/modules/post/actions';
+import { User } from '~/store/modules/user/types';
 
 import {
   Container,
@@ -18,11 +19,21 @@ import {
   TextSavePost,
   TextTitleModal,
 } from './styles';
-import { User } from '~/store/modules/user/types';
+import { addCommentRequest } from '~/store/modules/comment/actions';
 
-const AddPost: React.FC = () => {
+type IRouteParams = {
+  params: {
+    type: 'comment' | 'post';
+    postId: number;
+  };
+};
+
+const Publish: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const route = useRoute<RouteProp<IRouteParams, 'params'>>();
+  const { type, postId } = route.params;
 
   const stateUser = useSelector((state: AplicationState) => state.user);
 
@@ -32,16 +43,28 @@ const AddPost: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const handleSubmitAddPost = useCallback(() => {
-    dispatch(
-      addPostRequest({
-        title,
-        body,
-        userId: user.id,
-      }),
-    );
+    if (type === 'post') {
+      dispatch(
+        addPostRequest({
+          title,
+          body,
+          userId: user.id,
+        }),
+      );
+      navigation.goBack();
+    } else {
+      dispatch(
+        addCommentRequest({
+          postId,
+          name: user.name,
+          email: user.email,
+          body,
+        }),
+      );
+    }
 
     navigation.goBack();
-  }, [title, body, user, dispatch, navigation]);
+  }, [title, body, user, dispatch, navigation, type, postId]);
 
   const handleReturn = useCallback(() => {
     navigation.goBack();
@@ -55,19 +78,23 @@ const AddPost: React.FC = () => {
         </TouchableOpacity>
 
         <ButtonSavePost onPress={handleSubmitAddPost}>
-          <TextSavePost>Postar</TextSavePost>
+          <TextSavePost>
+            {type === 'comment' ? 'Responder' : 'Postar'}
+          </TextSavePost>
         </ButtonSavePost>
       </Header>
 
-      <Input
-        placeholder="Titulo"
-        autoFocus
-        multiline
-        numberOfLines={2}
-        maxLength={200}
-        onChangeText={setTitle}
-        value={title}
-      />
+      {type === 'post' && (
+        <Input
+          placeholder="Titulo"
+          autoFocus
+          multiline
+          numberOfLines={2}
+          maxLength={200}
+          onChangeText={setTitle}
+          value={title}
+        />
+      )}
 
       <Input
         placeholder="Descrição"
@@ -117,7 +144,7 @@ const AddPost: React.FC = () => {
               </TouchableOpacity>
             </View>
 
-            <ScrollView>
+            <ScrollView keyboardShouldPersistTaps="handled">
               {stateUser.data.map((user) => (
                 <Card
                   key={String(user.id)}
@@ -138,4 +165,4 @@ const AddPost: React.FC = () => {
   );
 };
 
-export { AddPost };
+export { Publish };

@@ -10,14 +10,35 @@ export const ContainerPost = styled.View`
   border-color: #d9dbe9;
   padding: 8px;
 
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 `;
 
 export const ContainerComment = styled.View`
   background: #ffffff;
   border-top-width: 1px;
   border-color: #d9dbe9;
-  padding: 16px 18px;
+  padding: 16px 32px;
+`;
+
+export const HeaderPost = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+`;
+
+export const ButtonAddComment = styled.TouchableOpacity`
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 16px;
+`;
+
+export const TextAddComment = styled.Text`
+  color: #6d3ca5;
+  font-family: 'Roboto_500Medium';
+  font-size: 16px;
+  margin-right: 8px;
 `;
 
 export const TextNameUser = styled.Text`
@@ -38,7 +59,6 @@ export const TextTitle = styled.Text`
 
 export const TextBody = styled.Text`
   color: #14142b;
-  flex: 1;
   flex-direction: row;
   font-size: 12px;
   font-family: 'Roboto_400Regular';

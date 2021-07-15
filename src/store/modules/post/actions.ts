@@ -14,4 +14,8 @@ export const addPostRequest = (data: AddPost) =>
 export const addPostSuccess = (data: Post[]) =>
   action(PostTypes.ADD_POST_SUCCESS, data);
 
-export const deleteStore = () => action(PostTypes.DELETE_POST_STORE);
+export const deletePostRequest = (id: number) =>
+  action(PostTypes.DELETE_POST_REQUEST, id);
+
+export const deletePostSuccess = (data: Post[]) =>
+  action(PostTypes.DELETE_POST_SUCCESS, data);

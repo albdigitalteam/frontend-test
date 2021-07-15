@@ -9,11 +9,12 @@ import {
   StoreEnhancer,
 } from 'redux';
 
+import { AuthState } from './modules/auth/types';
 import { PostState } from './modules/post/types';
 import { UserState } from './modules/user/types';
 import { CommentState } from './modules/comment/types';
 
-import rootReducer from './modules/rootReducer';
+import { rootReducer } from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
 const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
@@ -27,6 +28,7 @@ const enhancer: StoreEnhancer<{}, PostState> = __DEV__
   : applyMiddleware(sagaMiddleware);
 
 export interface AplicationState {
+  auth: AuthState;
   post: PostState;
   user: UserState;
   comment: CommentState;
@@ -35,7 +37,7 @@ export interface AplicationState {
 const persistConfig = {
   key: 'airLiquide',
   storage: AsyncStorage,
-  whitelist: ['post', 'user', 'comment'],
+  whitelist: ['auth', 'post', 'user', 'comment'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

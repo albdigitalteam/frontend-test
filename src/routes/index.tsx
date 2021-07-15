@@ -1,33 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { useSelector } from 'react-redux';
 
-import { Home } from '~/screens/Home';
-import { DetailPost } from '~/screens/DetailPost';
-import { AddPost } from '~/screens/AddPost';
-
-const HomeStack = createStackNavigator();
+import { AppRoutes } from './app.routes';
+import { HomeRoutes } from './home.routes';
+import { AplicationState } from '~/store';
 
 const Routes: React.FC = () => {
+  const logged = useSelector((state: AplicationState) => state.auth.logged);
+
   return (
     <NavigationContainer>
-      <HomeStack.Navigator>
-        <HomeStack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerTitle: 'Publicações', headerTitleAlign: 'center' }}
-        />
-        <HomeStack.Screen
-          name="DetailPost"
-          component={DetailPost}
-          options={{ headerTitle: 'Comentários' }}
-        />
-        <HomeStack.Screen
-          name="AddPost"
-          component={AddPost}
-          options={{ headerShown: false }}
-        />
-      </HomeStack.Navigator>
+      {logged ? <AppRoutes /> : <HomeRoutes />}
     </NavigationContainer>
   );
 };
