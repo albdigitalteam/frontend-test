@@ -51,7 +51,6 @@ const Publish: React.FC = () => {
           userId: user.id,
         }),
       );
-      navigation.goBack();
     } else {
       dispatch(
         addCommentRequest({
@@ -69,6 +68,11 @@ const Publish: React.FC = () => {
   const handleReturn = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
+
+  const handleSelectedUser = useCallback((user: User) => {
+    setUser(user);
+    setOpen(false);
+  }, []);
 
   return (
     <Container>
@@ -117,7 +121,7 @@ const Publish: React.FC = () => {
           onPress={() => setOpen(true)}
           style={{ marginLeft: 6 }}
         >
-          <Icon name="search-circle-outline" size={40} color="#111" />
+          <Icon name="search-circle-outline" size={36} color="#dcdaeb" />
         </TouchableOpacity>
       </View>
 
@@ -148,10 +152,7 @@ const Publish: React.FC = () => {
               {stateUser.data.map((user) => (
                 <Card
                   key={String(user.id)}
-                  onPress={() => {
-                    setUser(user);
-                    setOpen(false);
-                  }}
+                  onPress={() => handleSelectedUser(user)}
                 >
                   <Text>{user.name}</Text>
                   <Text>{user.email}</Text>
