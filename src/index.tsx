@@ -1,6 +1,7 @@
 import React from 'react';
+import '@redux-saga/core';
 import ReactDOM from 'react-dom';
-import App from './pages/App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
