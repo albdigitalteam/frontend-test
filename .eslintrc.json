@@ -55,6 +55,22 @@
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": [
       "error"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "object-curly-newline": [
+      "off",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": {
+          "multiline": true
+        },
+        "ImportDeclaration": "never"
+      }
     ]
   },
   "settings": {
