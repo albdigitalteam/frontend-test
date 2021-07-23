@@ -1,9 +1,9 @@
 import { call, put } from '@redux-saga/core/effects';
 import api from '../../../services/api';
-import { IPost } from './types';
+import { IComment } from './types';
 import { loadSuccess } from './actions';
 
-export function* loadPosts() {
-  const response: IPost[] = yield call(api.get, 'posts');
+export function* loadComments() {
+  const response: IComment[] = yield call(api.get, 'comments');
   yield put(loadSuccess(response));
 }

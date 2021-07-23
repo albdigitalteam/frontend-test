@@ -12,6 +12,8 @@ export const Container = styled.section`
 
 export const PostContent = styled.div`
   border-top: 1px solid #666;
+  display: flex;
+  flex-direction: column;
   strong {
     font-weight: bold;
   }
