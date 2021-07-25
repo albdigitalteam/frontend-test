@@ -4,9 +4,17 @@ import Comment from '../../assets/images/comments.svg';
 import Retweet from '../../assets/images/retweet.svg';
 import Like from '../../assets/images/like.svg';
 
-const PostAction: React.FC = () => (
+interface IPostActionProps {
+  totalComments: number;
+}
+const PostAction: React.FC<IPostActionProps> = ({
+  totalComments = 0,
+}: IPostActionProps) => (
   <Container>
-    <img src={Comment} alt="comments" />
+    <div>
+      <img src={Comment} alt="comments" />
+      {totalComments > 0 && <span>{totalComments}</span>}
+    </div>
     <img src={Retweet} alt="retweet" />
     <img src={Like} alt="likes" />
   </Container>
