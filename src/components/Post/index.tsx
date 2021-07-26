@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ActionsPost from '../../store/ducks/posts/actions';
 import * as ActionUser from '../../store/ducks/users/actions';
@@ -14,38 +14,36 @@ const Posts: React.FC = () => {
   const dispatch = useDispatch();
   const postState = useSelector((state: IApplicationState) => state.posts);
   const userState = useSelector((state: IApplicationState) => state.users);
-  const commentState = useSelector(
-    (state: IApplicationState) => state.comments,
-  );
+  const commentState = useSelector((state: IApplicationState) => {
+    const { data } = state.comments;
+    return data;
+  });
 
   useEffect(() => {
     dispatch(ActionsPost.loadRequest());
     dispatch(ActionUser.loadRequest());
-    dispatch(ActionComment.loadRequest());
   }, [dispatch]);
 
-  const getComments = useCallback((postId: number, index: number) => {
-    const comments = commentState.data.filter(
-      (c: IComment) => c.postId === postId,
-    );
-    return comments;
-  }, []);
+  const getComments = (postId: number) => {
+    if (!commentState.find((comment: IComment) => comment.postId === postId)) {
+      dispatch(ActionComment.loadRequest(postId));
+    }
+  };
 
   const renderPost = () =>
     postState.data.map((p: IPost) => {
-      console.log(p.id, 'edilson');
-
       const user = userState.data.find((u: IUser) => u.id === p.userId);
-      const totalComments = commentState.data.filter(
-        (c: IComment) => c.postId === p.id,
-      ).length;
-
       return (
         <PostContent>
           <strong>{user?.name}</strong>
           <strong>{p.title}</strong>
           <p>{p.body}</p>
-          <PostAction totalComments={totalComments} />
+          <PostAction
+            onClick={() => getComments(p.id)}
+            comments={commentState.filter(
+              (comment: IComment) => comment.postId === p.id,
+            )}
+          />
         </PostContent>
       );
     });

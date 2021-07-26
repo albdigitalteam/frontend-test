@@ -1,7 +1,10 @@
 import { action } from 'typesafe-actions';
 import { CommentTypes, IComment } from './types';
 
-export const loadRequest = () => action(CommentTypes.LOAD_REQUEST);
+export const loadRequest = (postId: number) => ({
+  type: CommentTypes.LOAD_REQUEST,
+  postId,
+});
 
 export const loadSuccess = (data: IComment[]) =>
   action(CommentTypes.LOAD_SUCCESS, data);

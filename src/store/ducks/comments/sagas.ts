@@ -3,7 +3,8 @@ import api from '../../../services/api';
 import { IComment } from './types';
 import { loadSuccess } from './actions';
 
-export function* loadComments() {
-  const response: IComment[] = yield call(api.get, 'comments');
+type Params = { postId: number; type: string };
+export function* loadComments({ postId }: Params) {
+  const response: IComment[] = yield call(api.get, `comments?postId=${postId}`);
   yield put(loadSuccess(response));
 }

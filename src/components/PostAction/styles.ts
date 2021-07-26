@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+export const ActionsContent = styled.div`
+  display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 25%;
