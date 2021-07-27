@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Container, ActionsContent, InputTextComment } from './styles';
+import { useDispatch } from 'react-redux';
+import { Container, ActionsContent } from './styles';
 import Comment from '../../assets/images/comments.svg';
 import Retweet from '../../assets/images/retweet.svg';
 import Like from '../../assets/images/like.svg';
 import Comments from '../Comments';
 import { IComment } from '../../store/ducks/comments/types';
-import { IApplicationState } from '../../store';
 import * as CommentAction from '../../store/ducks/comments/actions';
 import InputText from '../InputText';
 import Button from '../Button';
@@ -15,15 +14,16 @@ interface IPostActionProps {
   postOwner?: string;
   comments: IComment[];
   onClick(): void;
+  postId: number;
 }
 const PostAction: React.FC<IPostActionProps> = ({
   comments,
   onClick,
   postOwner,
+  postId,
 }: IPostActionProps) => {
   const [showComments, setShowComments] = useState(false);
   const [newCommentText, setNewCommentText] = useState('');
-  const postState = useSelector((state: IApplicationState) => state.posts);
   const dispatch = useDispatch();
 
   const getComments = () => {
@@ -35,11 +35,12 @@ const PostAction: React.FC<IPostActionProps> = ({
     const newComment: IComment = {
       body: newCommentText,
       id: Math.floor(Math.random() * 10),
-      postId: comments[0].postId,
+      postId,
       email: postOwner,
     };
 
     dispatch(CommentAction.saveRequest(newComment));
+    setNewCommentText('');
   };
 
   return (

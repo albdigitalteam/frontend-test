@@ -4,7 +4,6 @@ import { IPostState, PostTypes, IPost } from './types';
 const INITIAL_STATE: IPostState = {
   data: [],
   loading: false,
-  error: false,
 };
 
 const reducer: Reducer<IPostState> = (state = INITIAL_STATE, action) => {
@@ -24,14 +23,7 @@ const reducer: Reducer<IPostState> = (state = INITIAL_STATE, action) => {
       return { ...state, loading: false, error: true };
     }
     case PostTypes.SAVE_REQUEST: {
-      return { ...state, loading: true, data: action.payload.data };
-    }
-    case PostTypes.SAVE_SUCCESS: {
-      return {
-        loading: false,
-        error: false,
-        data: [...state.data, state.data.concat(action.payload)],
-      };
+      return { ...state, data: state.data.concat([action.payload]) };
     }
     case PostTypes.DELETE_REQUEST: {
       return {

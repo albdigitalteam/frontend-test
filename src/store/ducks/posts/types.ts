@@ -21,5 +21,4 @@ export interface IPost {
 export interface IPostState {
   readonly data: IPost[];
   readonly loading: boolean;
-  readonly error: boolean;
 }

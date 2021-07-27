@@ -9,6 +9,16 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
 `;
+export const NewPostContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(58, 59, 60);
+  border-radius: 5px;
+  button {
+    width: 220px;
+  }
+`;
 
 export const PostContent = styled.div`
   padding: 5px 0;
