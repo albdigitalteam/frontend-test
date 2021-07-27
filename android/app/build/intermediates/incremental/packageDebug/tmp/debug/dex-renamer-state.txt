@@ -1,0 +1,4 @@
+#Tue Jul 27 07:38:38 BRT 2021
+base.0=/Users/joabe/Documents/projects/testes/frontend-test/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
