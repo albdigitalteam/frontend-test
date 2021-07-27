@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { IPostState, PostTypes } from './types';
+import { IPostState, PostTypes, IPost } from './types';
 
 const INITIAL_STATE: IPostState = {
   data: [],
@@ -27,10 +27,18 @@ const reducer: Reducer<IPostState> = (state = INITIAL_STATE, action) => {
       return { ...state, loading: true, data: action.payload.data };
     }
     case PostTypes.SAVE_SUCCESS: {
-      return { ...state, loading: false, data: action.payload.data };
+      return {
+        loading: false,
+        error: false,
+        data: [...state.data, state.data.concat(action.payload)],
+      };
     }
     case PostTypes.DELETE_REQUEST: {
-      return { ...state, loading: false, data: action.payload.data };
+      return {
+        ...state,
+        loading: false,
+        data: state.data.filter((post: IPost) => post.id !== +action.payload),
+      };
     }
     case PostTypes.DELETE_SUCCCESS: {
       return { ...state, loading: false, data: action.payload.data };

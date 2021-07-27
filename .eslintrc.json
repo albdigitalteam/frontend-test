@@ -71,6 +71,7 @@
         "devDependencies": true
       }
     ],
+    "react/jsx-curly-newline": "off",
     "object-curly-newline": [
       "off",
       {
@@ -80,7 +81,9 @@
         },
         "ImportDeclaration": "never"
       }
-    ]
+    ],
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "import/resolver": {

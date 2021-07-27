@@ -7,7 +7,7 @@ import { IPost } from '../../store/ducks/posts/types';
 import { IUser } from '../../store/ducks/users/types';
 import { IComment } from '../../store/ducks/comments/types';
 import { IApplicationState } from '../../store';
-import { Container, PostContent } from './styles';
+import { Container, PostContent, TitleExcludeButtonContent } from './styles';
 import PostAction from '../PostAction';
 
 const Posts: React.FC = () => {
@@ -30,15 +30,35 @@ const Posts: React.FC = () => {
     }
   };
 
+  const handleDeletePost = (postId: number) => {
+    dispatch(ActionsPost.deleteRequest(postId));
+  };
+
   const renderPost = () =>
     postState.data.map((p: IPost) => {
       const user = userState.data.find((u: IUser) => u.id === p.userId);
       return (
         <PostContent>
-          <strong>{user?.name}</strong>
+          <TitleExcludeButtonContent>
+            <strong>{user?.name}</strong>
+            <span
+              tabIndex={0}
+              onKeyPress={() => {
+                handleDeletePost(p.id);
+              }}
+              onClick={() => {
+                handleDeletePost(p.id);
+              }}
+              role="button"
+            >
+              Excluir
+            </span>
+          </TitleExcludeButtonContent>
+
           <strong>{p.title}</strong>
           <p>{p.body}</p>
           <PostAction
+            postOwner={user?.name}
             onClick={() => getComments(p.id)}
             comments={commentState.filter(
               (comment: IComment) => comment.postId === p.id,

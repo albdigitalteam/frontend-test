@@ -11,6 +11,7 @@ export const Container = styled.section`
 `;
 
 export const PostContent = styled.div`
+  padding: 5px 0;
   border-top: 1px solid #666;
   display: flex;
   flex-direction: column;
@@ -19,5 +20,16 @@ export const PostContent = styled.div`
   }
   p {
     margin-top: 10px;
+  }
+`;
+
+export const TitleExcludeButtonContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  span {
+    cursor: pointer;
+    font-size: 12px;
+    color: #f35;
+    font-weight: bold;
   }
 `;

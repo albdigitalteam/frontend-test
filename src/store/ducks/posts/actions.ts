@@ -9,6 +9,6 @@ export const saveRequest = (data: IPost) =>
   action(PostTypes.SAVE_REQUEST, data);
 export const saveSuccess = (data: IPost) =>
   action(PostTypes.SAVE_SUCCESS, data);
-export const deleteRequest = (data: number) =>
-  action(PostTypes.DELETE_REQUEST, data);
+export const deleteRequest = (postId: number) =>
+  action(PostTypes.DELETE_REQUEST, postId);
 export const deleteSuccess = () => action(PostTypes.DELETE_SUCCCESS);

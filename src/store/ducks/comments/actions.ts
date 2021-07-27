@@ -8,3 +8,6 @@ export const loadRequest = (postId: number) => ({
 
 export const loadSuccess = (data: IComment[]) =>
   action(CommentTypes.LOAD_SUCCESS, data);
+
+export const saveRequest = (data: IComment) =>
+  action(CommentTypes.SAVE_REQUEST, data);
