@@ -1,6 +1,6 @@
 {
   "name": "@react-native-community/cli-tools",
-  "version": "4.13.0",
+  "version": "5.0.1",
   "license": "MIT",
   "main": "build/index.js",
   "publishConfig": {
@@ -24,5 +24,11 @@
     "!*.d.ts",
     "!*.map"
   ],
-  "gitHead": "6cf12b00c02aca6d4bc843446394331d71a9749e"
+  "homepage": "https://github.com/react-native-community/cli/tree/master/packages/tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-native-community/cli.git",
+    "directory": "packages/tools"
+  },
+  "gitHead": "84e9f0ba54a391db43ee30f1da2824845f6c289e"
 }
