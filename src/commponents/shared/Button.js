@@ -7,6 +7,7 @@ const Button = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   ${props => props.icon && css`padding: 16px;`}
+  ${props => props.width && css`width: ${props.width}%;`}
   ${props => props.bgColor && css`background-color: ${props.bgColor};`}
   ${props => props.full && css`
     width: 100%;
@@ -31,7 +32,7 @@ const Button = styled.TouchableOpacity`
   `}
   ${props => props.pill && css`
     border-radius: 32px;
-    padding: 4px 32px;
+    padding: 4px 12px;
   `}
   ${props => props.shadow && css`
     shadow-color: gray;

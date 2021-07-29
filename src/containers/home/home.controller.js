@@ -5,14 +5,15 @@ import { actionGetPosts } from './store/home.saga'
 import HomeView from './home.view'
 
 const HomeController = () => {
+  const { posts } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(actionGetPosts())
   }, [])
 
   const controller = {
-
+    posts
   }
 
   return <HomeView controller={controller} />
