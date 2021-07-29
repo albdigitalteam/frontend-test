@@ -7,7 +7,7 @@ import InitialView from './initial.view'
 
 const InitialController = () => {
   const dispatch = useDispatch()
-  const { teste } = useSelector((state) => state.initial)
+  const { loginError, initialLoading } = useSelector((state) => state.initial)
   const { reset } = useNavigation();
   const [email, setEmail] = useState('')
  
@@ -16,18 +16,21 @@ const InitialController = () => {
   }
 
   const handleCallback = () => {
-    reset({
-      index: 0,
-      routes: [{ name: 'Home' }],
-    })
+    setTimeout(() => {
+      reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      })
+    }, 2000)
   }
  
   const handleLogin = () => {
-    dispatch(actionGetActiveUser({eamil: email, callback: handleCallback()} ))
-    // handleCallback()
+    dispatch(actionGetActiveUser({email: email, callback: handleCallback()} ))
   }
 
   const controller = {
+    loginError,
+    loading: initialLoading,
     email,
     handleEmail,
     handleLogin

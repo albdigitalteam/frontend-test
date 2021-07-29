@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Text } from './';
 import { colors } from '../../utils';
 
-const Input = ({ title, erro, ...props }) => (
+const Input = ({ height=false, title, erro, titleColor, ...props }) => (
   <Wrapper {...props}>
-    <Text weight="bold">{title}</Text>
-    <Body {...props} />
+    {title && <Text color={titleColor} weight="bold">{title}</Text>}
+    <Body height={height} {...props} />
     {erro !== '' ? <Text helper color={colors.red60}>{erro}</Text> : null}
   </Wrapper>
 );
@@ -19,9 +19,9 @@ const Wrapper = styled.View`
 `;
 const Body = styled.TextInput`
   padding: 8px;
-  height: 40px;
   width: 100%;
   border-width: 1px;
+  height: ${props => props.height ? props.height : 40}px;
   border-color: ${colors.gray40};
   background-color: ${colors.white};
   margin-top: 5px;

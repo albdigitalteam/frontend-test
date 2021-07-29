@@ -1,6 +1,8 @@
 import { initial_types } from './initial.saga'
 const INITIAL = {
-  activeUser: null
+  initialLoading: false,
+  activeUser: null,
+  loginError: ''
 }
 
 const reducer = (state = INITIAL, payload) => {
@@ -9,6 +11,18 @@ const reducer = (state = INITIAL, payload) => {
       return { 
         ...state, 
         activeUser: payload.payload
+      }
+    }
+    case initial_types.set_loading: {
+      return { 
+        ...state, 
+        initialLoading: payload.payload
+      }
+    }
+    case initial_types.set_active_user_error: {
+      return { 
+        ...state, 
+        initialLoading: payload.payload
       }
     }
 

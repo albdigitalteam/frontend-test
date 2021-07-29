@@ -27,7 +27,7 @@ const Button = styled.TouchableOpacity`
   ${props => props.float && css`
     border-radius: 30px;
     position: absolute;
-    bottom: 15px;
+    top: 15px;
     right: 15px;
   `}
   ${props => props.pill && css`

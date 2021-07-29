@@ -1,5 +1,7 @@
-import PostCard from './post.component'
+import PostCard from './card.component'
+import PostComponent from './post.component'
 
 export {
+  PostComponent,
   PostCard
 }

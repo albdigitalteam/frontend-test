@@ -10,6 +10,9 @@ export const home_types = {
   set_comments: 'SET_COMMENTS',
   request_all_users: 'REQUEST_ALL_USERS',
   set_all_users: 'SET_ALL_USERS',
+  request_new_comment: 'REQUEST_NEW_COMMENT',
+  set_new_comment: 'SET_NEW_COMMENT',
+  set_loading: 'SET_LOADING',
 }
 
 export const actionGetPosts = () => action(home_types.request_posts)
@@ -18,9 +21,12 @@ export const actionGetComments = () => action(home_types.request_comments)
 const actionSetComments = payload => action(home_types.set_comments, payload)
 export const actionGetAllUsers = () => action(home_types.request_all_users)
 const actionSetUsers = () => action(home_types.set_all_users)
+export const actionSetNewComment = payload => action(home_types.set_new_comment, payload)
+export const actionSetLoading = payload => action(home_types.set_loading, payload)
 
 function* requestPosts() {
   try {
+    yield put(actionSetLoading(true))
     const response = yield call(api.get, '/posts')
     const comments = yield requestComments()
     const users = yield requestAllUsers()
@@ -37,10 +43,11 @@ function* requestPosts() {
           })
         });
       }
-      console.log('res all posts::::', newList)
       yield put(actionSetposts(newList))
+      yield put(actionSetLoading(false))
     }
   } catch (error) {
+    yield put(actionSetLoading(false))
     console.log(error)
   }
 }

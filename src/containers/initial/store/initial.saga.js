@@ -6,19 +6,29 @@ import { api } from '../../../service'
 export const initial_types = {
   request_user: 'REQUEST_ACTIVE_USER',
   set_active_user: 'SET_ACTIVE_USER',
+  set_loading: 'SET_INITIAL_LOADING',
+  set_active_user_error: 'SET_ACTIVE_USER_error',
 }
 
 export const actionGetActiveUser = payload => action(initial_types.request_user, payload)
+export const actionLoading = payload => action(initial_types.set_loading, payload)
 const actionSetActiveUser = payload => action(initial_types.set_active_user, payload)
+const actionSetActiveUserError = payload => action(initial_types.set_active_user_error, payload)
 
 function* actionRequestActiveUser(payload) {
   try {
-    const response = yield call(api.get, `/users?email=${payload.email}`)
+    yield put(actionLoading(true))
+    const response = yield call(api.get, `/users?email=${payload.payload.email}`)
     if (response?.status === 200) {
-      payload.callback()
       yield put(actionSetActiveUser(response.data[0]));
+      yield put(actionLoading(false))
+      payload.callback()
+    } else {
+      yield put(actionSetActiveUserError('Verifique email informado!'))
+      yield put(actionLoading(false))
     }
   } catch (error) {
+    yield put(actionLoading(false))
     console.log(error)
   }
 }
