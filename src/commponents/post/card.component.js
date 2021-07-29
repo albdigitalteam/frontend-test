@@ -68,14 +68,16 @@ const PostCard = ({ postlist = [], pressSenMessage, pressRemovePost, userId }) =
                   {isOpen ? 'Ocutar' : 'Ver' } Comentários
                 </Text>
               </Button>
-              <Button
-                pill
-                outline
-                borderColor={colors.green30}
-                width={49}
-                onPress={() => handleShowComments(ix, post.commentList, isOpen, !itemOpen.boxComment)}>
-                <Text color={colors.green30} weight='bold' helper> Comentar </Text>
-              </Button>
+              {(userId !== post.userId) &&
+                <Button
+                  pill
+                  outline
+                  borderColor={colors.green30}
+                  width={49}
+                  onPress={() => handleShowComments(ix, post.commentList, isOpen, !itemOpen.boxComment)}>
+                  <Text color={colors.green30} weight='bold' helper> Comentar </Text>
+                </Button>
+              }
             </ButtonBox>
           </WrapperProfile>
           {isOpen && handleComments(itemOpen.cmt, itemOpen.boxComment, pressSenMessage, post.id)}
@@ -125,7 +127,6 @@ const BoxPost = styled.View`
     border-width: 1px;
     border-color: ${colors.gray50}
     border-radius: 12px;
-    elevation: 2px;
   `}
   ${props => !props.isPost && css`
     borderBottomWidth: 1px;
