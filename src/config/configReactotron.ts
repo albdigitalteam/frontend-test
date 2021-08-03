@@ -11,7 +11,7 @@ declare global {
 
 if (__DEV__ && Reactotron.setAsyncStorageHandler) {
   const tron = Reactotron.setAsyncStorageHandler(AsyncStorage)
-    .configure({ host: '192.168.0.8' })
+    .configure({ host: '192.168.0.105' })
     .useReactNative()
     .use(reactotronRedux())
     .use(sagaPlugin({ except: [''] }))

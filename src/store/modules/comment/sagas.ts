@@ -15,7 +15,7 @@ interface IResponse {
   data: Comment[];
 }
 
-function* loadRequest() {
+export function* loadRequest() {
   try {
     const response: IResponse = yield call(api.get, '/comments');
 

@@ -9,21 +9,27 @@ interface IResponse {
   data: User[];
 }
 
-function* loadRequest() {
-  try {
-    const response: IResponse = yield call(api.get, '/users');
+function fetchUsersApi() {
+  return api.get('/users').catch((err) => err);
+}
 
-    const data = response.data.map((user) => ({
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-    }));
+export function* loadRequest() {
+  // try {
+  const response: IResponse = yield call(fetchUsersApi);
 
-    yield put(loadUserSuccess(data));
-  } catch (error) {
-    yield put(loadUserFailure());
-  }
+  // throw new Error('Error');
+
+  const data = response.data.map((user) => ({
+    id: user.id,
+    name: user.name,
+    username: user.username,
+    email: user.email,
+  }));
+
+  yield put(loadUserSuccess(data));
+  // } catch (error) {
+  //   yield put(loadUserFailure());
+  // }
 }
 
 export default all([takeLatest(UserTypes.LOAD_USER_REQUEST, loadRequest)]);

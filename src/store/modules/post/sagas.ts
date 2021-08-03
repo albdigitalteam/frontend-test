@@ -34,29 +34,31 @@ interface ISelectComment {
   data: Comment[];
 }
 
-function* loadRequest() {
-  try {
-    const response: IResponse = yield call(api.get, '/posts');
+export function* loadRequest() {
+  // try {
+  const response: IResponse = yield call(api.get, '/posts');
 
-    const stateUser: ISelectUser = yield select(
-      (state: AplicationState) => state.user,
-    );
+  // throw new Error('Error post');
 
-    const data = response.data
-      .map((post) => {
-        const user = stateUser.data.find((user) => user.id === post.userId);
+  const stateUser: ISelectUser = yield select(
+    (state: AplicationState) => state.user,
+  );
 
-        return {
-          ...post,
-          userName: user?.name || '',
-        };
-      })
-      .sort((a, b) => (a.id < b.id ? 1 : -1));
+  const data = response.data
+    .map((post) => {
+      const user = stateUser.data.find((user) => user.id === post.userId);
 
-    yield put(loadPostSuccess(data));
-  } catch (error) {
-    yield put(loadPostFailure());
-  }
+      return {
+        ...post,
+        userName: user?.name || '',
+      };
+    })
+    .sort((a, b) => (a.id < b.id ? 1 : -1));
+
+  yield put(loadPostSuccess(data));
+  // } catch (error) {
+  //   yield put(loadPostFailure());
+  // }
 }
 
 function* addRequest({ payload }: ReturnType<typeof addPostRequest>) {

@@ -29,6 +29,10 @@ const Publications: React.FC = () => {
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
 
+  const stateAuth = useSelector((state: AplicationState) => state.auth);
+
+  console.log('stateAuth', stateAuth);
+
   const statePost = useSelector((state: AplicationState) => state.post);
 
   const handleAddPost = useCallback(() => {
