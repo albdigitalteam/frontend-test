@@ -7,8 +7,10 @@ import { colors } from '../../utils'
 const HomeView = ({ controller }) => {
   const {
     userId,
-    loading,
-    posts, 
+    loadingPosts,
+    posts,
+    loadingRemovePost,
+    loadingNewComment,
     handleSendMessage,
     setShowPostModal, 
     showPostModal, 
@@ -18,6 +20,8 @@ const HomeView = ({ controller }) => {
     <Container>
       <Content>
         <PostCard
+          loadingRemove={loadingRemovePost}
+          loadingComment={loadingNewComment}
           postlist={posts} 
           pressSenMessage={data => handleSendMessage(data)}
           pressRemovePost={id => handleRemovepost(id)}
@@ -25,20 +29,22 @@ const HomeView = ({ controller }) => {
         />
       </Content>
       <Button
+        labelColor={colors.white}
+        label='Publicar'
+        labelWeight='bold'
         bgColor={colors.main}
         float
         onPress={() => setShowPostModal(!showPostModal)}
-      >
-        <Text color={colors.white}  weight='bold' helper>Publicar</Text>
-      </Button>
+      />
       {showPostModal && 
         <PostComponent
+          loading={loadingPosts}
           handleSend={data => handleSendPost(data)}
           pressCancel={() => setShowPostModal(!showPostModal)} 
           visible={showPostModal}  
         />
       }
-      {loading && <Spinner message='Atualizando posts ...' />}
+      {loadingPosts && <Spinner message='Atualizando posts ...' />}
     </Container>
   )
 }

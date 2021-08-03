@@ -1,7 +1,9 @@
 import { home_types } from './home.saga'
 const INITIAL = {
   posts: [],
-  loadingPosts: false
+  loadingPosts: false,
+  loadingRemovePost: false,
+  loadingNewComment: false
 }
 
 const reducer = (state = INITIAL, payload) => {
@@ -22,6 +24,18 @@ const reducer = (state = INITIAL, payload) => {
       return { 
         ...state,
         loadingPosts: payload.payload
+      }
+    }
+    case home_types.set_loading_remove: {
+      return { 
+        ...state,
+        loadingRemovePost: payload.payload
+      }
+    }
+    case home_types.set_loading_new_comment: {
+      return { 
+        ...state,
+        loadingNewComment: payload.payload
       }
     }
 

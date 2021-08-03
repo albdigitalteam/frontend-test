@@ -1,5 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { ActivityIndicator } from 'react-native'
+import styled, { css } from 'styled-components'
+import { Text } from './'
+import { colors } from '../../utils'
 
 const Button = styled.TouchableOpacity`
   padding: 16px 16px;
@@ -44,5 +47,14 @@ const Button = styled.TouchableOpacity`
 
 export default ({ ...props }) => (
   <Button {...props}>
+    {props.loading && <ActivityIndicator color={props.spinnerColor} />}
+    {!props.loading && 
+      <Text 
+        weight={props?.labelWeight ? props.labelWeight : 'normal'}
+        color={props?.labelColor ? props.labelColor : colors.black}
+        size={props?.labelSize ? props.labelSize : 16} >
+          {props.label}
+      </Text>
+    }
   </Button>
 )

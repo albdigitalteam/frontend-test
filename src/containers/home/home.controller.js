@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 
-import { actionGetPosts, actionSetNewComment, actionSetLoading } from './store/home.saga'
+import { 
+  actionGetPosts, 
+  actionSetNewComment, 
+  actionSetLoading, 
+  actionSetLoadingRemovePost,
+  actionSetLoadingNewComment } from './store/home.saga'
 import HomeView from './home.view'
 
 const HomeController = () => {
-  const { posts, loadingPosts } = useSelector((state) => state.home);
+  const { posts, loadingPosts, loadingRemovePost, loadingNewComment } = useSelector((state) => state.home)
   const [updatedPosts, setUpdatedPosts] = useState(posts)
   const [showPostModal, setShowPostModal] = useState(false)
-  const { activeUser } = useSelector((state) => state.initial);
+  const { activeUser } = useSelector((state) => state.initial)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,22 +29,32 @@ const HomeController = () => {
   }
 
   const handleSendMessage = data => {
-    dispatch(actionSetLoading(true))
+    dispatch(actionSetLoadingNewComment(true))
     try {
       setTimeout(() => {
         const index = posts.findIndex(( it => it.id === data.postId ))
-        let comments = posts[index].commentList[0]
-        comments.splice(0,0,{
-          ...data,
-          name: activeUser?.name,
-          email: activeUser?.email,
-          id: posts[index].commentList[0].length + 1
-        })
-        comments.join()
-        posts[index].commentList[0] = comments
-    
-        dispatch(actionSetNewComment(posts))
-        dispatch(actionSetLoading(false))
+        if (!posts[index].commentList[0].length) {
+          let list = [...posts]
+          list[index].commentList[0].push({
+            ...data,
+            name: activeUser?.name,
+            email: activeUser?.email,
+            id: 1
+          })
+          dispatch(actionSetNewComment(list))
+        } else {
+          let comments = posts[index].commentList[0]
+          comments.splice(0,0,{
+            ...data,
+            name: activeUser?.name,
+            email: activeUser?.email,
+            id: posts[index].commentList[0].length + 1
+          })
+          comments.join()
+          posts[index].commentList[0] = comments
+          dispatch(actionSetNewComment(posts))
+        }
+        dispatch(actionSetLoadingNewComment(false))
       }, 1000)
     } catch(error) {}
   }
@@ -50,13 +65,13 @@ const HomeController = () => {
       try {
         let newList = []
         newList = [{
-        user: activeUser,
-        body: data.postMsg,
-        userId: activeUser?.id,
-        title: activeUser?.email,
-        id: posts.length + 1,
-        commentList: []
-      }, ...posts]
+          user: activeUser,
+          body: data.body,
+          userId: activeUser?.id,
+          title: data.postMsg,
+          id: posts.length + 1,
+          commentList: [[]]
+        }, ...posts]
       const newOrder = newList.sort((a, b) => b.id - a.id)
       
       dispatch(actionSetNewComment(newOrder))
@@ -67,7 +82,7 @@ const HomeController = () => {
   }
 
   const handleRemovepost = id => {
-    dispatch(actionSetLoading(true))
+    dispatch(actionSetLoadingRemovePost(true))
     setTimeout(() => {
       try {
         let newList = []  
@@ -77,7 +92,7 @@ const HomeController = () => {
           newList.splice(index, 1);
         }
         dispatch(actionSetNewComment(newList))
-        dispatch(actionSetLoading(false))
+        dispatch(actionSetLoadingRemovePost(false))
       } catch(error) {}
     }, 1000)
 
@@ -90,7 +105,9 @@ const HomeController = () => {
     handleSendPost,
     posts: updatedPosts,
     showPostModal,
-    loading: loadingPosts,
+    loadingPosts,
+    loadingNewComment,
+    loadingRemovePost,
     userId: activeUser?.id
   }
 

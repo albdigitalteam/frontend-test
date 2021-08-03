@@ -22,7 +22,7 @@ const reducer = (state = INITIAL, payload) => {
     case initial_types.set_active_user_error: {
       return { 
         ...state, 
-        initialLoading: payload.payload
+        loginError: payload.payload
       }
     }
 

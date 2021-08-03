@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { Modal } from 'react-native'
 
 import { CommentInput } from '../comment'
-import { Button, Text } from '../shared'
+import { Button } from '../shared'
 import { colors } from '../../utils'
 
-const InputPost = ({ visible, pressCancel, handleSend }) => {
+const InputPost = ({ visible, pressCancel, handleSend, loading }) => {
 
   return(
     <Wrapper>
@@ -17,13 +17,15 @@ const InputPost = ({ visible, pressCancel, handleSend }) => {
       >
         <WrapperContent>
           <Button
+            label='Concelar'
+            disabled={loading}
             pill
             outline
             borderColor={colors.red} 
-            onPress={() => pressCancel(!visible)}>
-            <Text color={colors.red} weight='bold' helper>Concelar</Text>
-          </Button>
+            onPress={() => pressCancel(!visible)}
+          />
           <CommentInput
+            loading={loading}
             title='Titulo de seu post'
             desc='Conteúdo de seu post'
             width={100}

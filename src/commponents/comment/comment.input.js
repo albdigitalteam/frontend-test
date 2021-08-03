@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Text, Button, Input } from '../shared'
 import { colors } from '../../utils'
 
-const CommentInput = ({ postId=null, handleSend, withTitle=false, width=70, title, desc }) => {
+const CommentInput = ({ postId=null, handleSend, withTitle=false, width=70, title, desc, loading }) => {
   const [message, setMessage] = useState('')
   const [postMessage, setPostMessage] = useState('')
 
@@ -34,15 +34,19 @@ const CommentInput = ({ postId=null, handleSend, withTitle=false, width=70, titl
         />
       <WrapperSend>
         <Button
+          label='Enviar'
+          loading={loading}
+          disabled={loading}
+          labelColor={colors.white}
+          spinnerColor={colors.white}
           pill
           bgColor={colors.green30}
           onPress={() => {
             handleSend({body: message, postId, postMsg: postMessage})
             setMessage('')
             setPostMessage('')
-          }}>
-          <Text color={colors.white} weight='bold' helper> Enviar </Text>
-        </Button>
+          }}
+        />
       </WrapperSend>
     </Wrapper>
   )

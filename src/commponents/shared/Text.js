@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 const Text = styled.Text`
   color: ${props => props.color || '#000000'};
-  font-size: 16px;
+  font-size: ${props => props.size ? props.size : 16}px;
   line-height: 24px;
   text-align: ${props => props.align};
   font-weight: ${props => props.weight};

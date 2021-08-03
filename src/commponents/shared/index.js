@@ -4,6 +4,7 @@ import Content from './Content'
 import Input from './Input'
 import Text from './Text'
 import Spinner from './Spinner'
+import Spacer from './Spacer'
 
 export {
   Spinner,
@@ -11,5 +12,6 @@ export {
   Container,
   Content,
   Input,
-  Text
+  Text,
+  Spacer
 }

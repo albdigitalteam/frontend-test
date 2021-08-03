@@ -17,17 +17,23 @@ const actionSetActiveUserError = payload => action(initial_types.set_active_user
 
 function* actionRequestActiveUser(payload) {
   try {
+    yield put(actionSetActiveUserError(''))
     yield put(actionLoading(true))
     const response = yield call(api.get, `/users?email=${payload.payload.email}`)
     if (response?.status === 200) {
-      yield put(actionSetActiveUser(response.data[0]));
-      yield put(actionLoading(false))
-      payload.callback()
+      if (response.data.length) {
+        yield put(actionSetActiveUser(response.data[0]));
+        payload.payload.callback()
+      } else {
+        yield put(actionSetActiveUserError('Ops! Nenhum usuário encontrado com esse email.'))
+        yield put(actionLoading(false))
+      }
     } else {
       yield put(actionSetActiveUserError('Verifique email informado!'))
       yield put(actionLoading(false))
     }
   } catch (error) {
+    yield put(actionSetActiveUserError('Sistema indisponível, tente novamente mais tarde!'))
     yield put(actionLoading(false))
     console.log(error)
   }
