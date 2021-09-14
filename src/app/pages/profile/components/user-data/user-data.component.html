@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="containerUsername">
+    <ion-img src="assets/imgs/person.svg"></ion-img>
+    <ion-text>{{ user.username }}</ion-text>
+  </div>
+
+  <div class="containerData">
+    <div class="container100percent containerItem">
+      <div>
+        <ion-label>Nome</ion-label>
+        <ion-text>{{ user.name }}</ion-text>
+      </div>
+
+      <div>
+        <ion-label>E-mail</ion-label>
+        <ion-text>{{ user.email }}</ion-text>
+      </div>
+    </div>
+
+    <div class="container97percent containerItem">
+      <div>
+        <ion-label>Telefonel</ion-label>
+        <ion-text>{{ user.phone }}</ion-text>
+      </div>
+
+      <div>
+        <ion-label>Site</ion-label>
+        <ion-text>{{ user.website }}</ion-text>
+      </div>
+    </div>
+
+    <div class="container94percent containerItem">
+      <div>
+        <ion-label>Rua</ion-label>
+        <ion-text>{{ user.address.street }}</ion-text>
+      </div>
+
+      <div>
+        <ion-label>Complemento</ion-label>
+        <ion-text>{{ user.address.suite }}</ion-text>
+      </div>
+    </div>
+
+    <div class="container91percent containerItem">
+      <div>
+        <ion-label>Cidade</ion-label>
+        <ion-text>{{ user.address.city }}</ion-text>
+      </div>
+
+      <div>
+        <ion-label>CEP</ion-label>
+        <ion-text>{{ user.address.zipcode }}</ion-text>
+      </div>
+    </div>
+
+    <div class="container88percent containerItem">
+      <div>
+        <ion-label>Empresa</ion-label>
+        <ion-text>{{ user.company.name }}</ion-text>
+      </div>
+
+      <div>
+        <ion-label>BS</ion-label>
+        <ion-text>{{ user.company.bs }}</ion-text>
+      </div>
+    </div>
+
+    <div class="container85percent containerItem">
+      <div>
+        <ion-label>Bordão</ion-label>
+        <ion-text>{{ user.company.catchPhrase }}</ion-text>
+      </div>
+    </div>
+  </div>
+</div>

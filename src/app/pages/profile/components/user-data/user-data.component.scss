@@ -1,0 +1,132 @@
+.container {
+  width: 100%;
+  min-height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  .containerUsername {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    ion-img {
+      width: 12%;
+      margin: 0px 0px 30px;
+    }
+
+    ion-text {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: var(--ion-color-primary);
+    }
+  }
+
+  .containerData {
+    width: 95%;
+    margin-bottom: 30px;
+
+    .containerItem {
+      padding: 0 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      div:first-child {
+        width: 350px;
+        margin-right: 20px;
+
+        @media screen and (max-width: 1240px) {
+          width: 280px;
+        }
+      }
+
+      div:last-child {
+        flex: 1;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        border-bottom: 1px solid var(--ion-color-primary);
+        margin-bottom: 20px;
+        overflow: hidden;
+
+        ion-label {
+          margin: 0 0 5px 4px;
+          font-size: 0.9em;
+          color: rgb(128, 128, 128);
+
+          @media screen and (max-width: 720px) {
+            font-size: 0.8em;
+          }
+        }
+
+        ion-text {
+          font-size: 1em;
+          color: rgb(27, 27, 27);
+
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+
+          @media screen and (max-width: 720px) {
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+
+    .container100percent {
+      width: 100%;
+    }
+
+    .container97percent {
+      width: 97%;
+    }
+
+    .container94percent {
+      width: 94%;
+    }
+
+    .container91percent {
+      width: 91%;
+    }
+
+    .container88percent {
+      width: 88%;
+    }
+
+    .container85percent {
+      width: 85%;
+
+      div {
+        margin-right: 0 !important;
+      }
+    }
+
+    @media screen and (max-width: 980px) {
+      width: 100%;
+
+      .container100percent,
+      .container97percent,
+      .container94percent,
+      .container91percent,
+      .container88percent,
+      .container85percent {
+        width: 100%;
+
+        div {
+          width: 48% !important;
+        }
+      }
+    }
+  }
+}
