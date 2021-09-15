@@ -12,12 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
-    path: 'posts',
-    loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsPageModule)
-  },
-  {
     path: 'user-posts',
     loadChildren: () => import('./pages/user-posts/user-posts.module').then( m => m.UserPostsPageModule)
+  },
+  {
+    path: 'feed',
+    loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
   },
 ];
 
