@@ -1,23 +1,23 @@
 export interface IUser {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
+  readonly id: number;
+  readonly name: string;
+  readonly username: string;
+  readonly email: string;
+  readonly address: {
+    readonly street: string;
+    readonly suite: string;
+    readonly city: string;
+    readonly zipcode: string;
+    readonly geo: {
+      readonly lat: string;
+      readonly lng: string;
     };
   };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
+  readonly phone: string;
+  readonly website: string;
+  readonly company: {
+    readonly name: string;
+    readonly catchPhrase: string;
+    readonly bs: string;
   };
 }

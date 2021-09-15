@@ -1,7 +1,7 @@
 export interface IComment {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
+  readonly postId: number;
+  readonly id: number;
+  readonly name: string;
+  readonly email: string;
+  readonly body: string;
 }
