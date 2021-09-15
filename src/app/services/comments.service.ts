@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICommnent } from '../models/comment.model';
+import { IComment } from '../models/comment.model';
 import { UtilService } from './util.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -13,8 +13,8 @@ export class CommentsService {
 
   constructor(private http: HttpClient, private utilService: UtilService) { }
 
-  public fetchComments(): Observable<ICommnent[]> {
-    return this.http.get<ICommnent[]>(`${environment.apiBaseURL}/comments`)
+  public fetchComments(): Observable<IComment[]> {
+    return this.http.get<IComment[]>(`${environment.apiBaseURL}/comments`)
       .pipe(
         catchError(this.utilService.handleError)
       );
