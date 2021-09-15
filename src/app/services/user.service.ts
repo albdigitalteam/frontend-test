@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
 import { IUser } from '../models/user.model';
 import { getUserMock } from '../utils/userMock.util';
 import { UtilService } from './util.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UserService {
   }
 
   public fetchUsers(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`${environment.apiBaseURL}/users`)
+    return this.http.get<IUser[]>(`${environment.apiBaseURL}users`)
       .pipe(
         catchError(this.utilService.handleError)
       );
