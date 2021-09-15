@@ -13,6 +13,6 @@ export class UtilService {
   public handleError(error: HttpErrorResponse) {
     console.error(`Backend retornou o código: ${error.status}, e no corpo: ${error.error}`);
 
-    return throwError(`Ocorreu um erro na requisição`);
+    return throwError(`Ocorreu um erro inesperado`);
   }
 }
