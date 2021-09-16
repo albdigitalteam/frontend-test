@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IComment } from 'src/app/models/comment.model';
 import { IPost } from 'src/app/models/post.model';
 
@@ -16,7 +17,11 @@ export class PostsComponent implements OnInit {
 
   public disableComment = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  public openUserProfile(userId: string) {
+    this.router.navigateByUrl(`/profile/${userId}`);
+  }
 }

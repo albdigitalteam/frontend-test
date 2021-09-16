@@ -6,6 +6,7 @@ import { IUser } from 'src/app/models/user.model';
 import { CommentsService } from 'src/app/services/comments.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
+import { getRandomImgPost } from 'src/app/utils/postImgMock.util';
 import { IToastData, ToastCreate } from 'src/app/utils/toastCreate.util';
 
 @Component({
@@ -18,6 +19,7 @@ export class FeedPage {
     comments: IComment[];
     username: string;
     enableComment: boolean;
+    imagePath: string;
   })[] = [];
 
   private toastCreate = new ToastCreate();
@@ -53,6 +55,7 @@ export class FeedPage {
     comments: IComment[];
     username: string;
     enableComment: boolean;
+    imagePath: string;
   } {
     const postComments = comments.filter(comment => comment.postId === post.id);
     const username = users.find(user => user.id === post.userId).username;
@@ -61,7 +64,8 @@ export class FeedPage {
       ...post,
       comments: postComments,
       username,
-      enableComment: false
+      enableComment: false,
+      imagePath: getRandomImgPost()
     };
   }
 }
