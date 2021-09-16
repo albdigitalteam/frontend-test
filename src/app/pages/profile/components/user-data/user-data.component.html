@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="user">
   <div class="containerUsername">
     <ion-img src="assets/imgs/person.svg"></ion-img>
     <ion-text>{{ user.username }}</ion-text>
@@ -72,4 +72,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="userNotFoundContainer" *ngIf="!user">
+  <ion-img src="assets/imgs/notFound.svg"></ion-img>
+
+  <ion-text>Não foi possível encontrar esse usuário :(</ion-text>
 </div>

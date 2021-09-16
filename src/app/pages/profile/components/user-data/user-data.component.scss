@@ -130,3 +130,34 @@
     }
   }
 }
+
+.userNotFoundContainer {
+  width: 100%;
+  min-height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  ion-img {
+    width: 30%;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 980px) {
+      width: 40%;
+    }
+  }
+
+  ion-text {
+    width: 80%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+    margin-bottom: 40px;
+
+    @media screen and (max-width: 980px) {
+      font-size: 1em;
+    }
+  }
+}
