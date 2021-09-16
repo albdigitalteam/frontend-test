@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { IComment } from 'src/app/models/comment.model';
 import { IPost } from 'src/app/models/post.model';
@@ -14,7 +14,7 @@ import { IToastData, ToastCreate } from 'src/app/utils/toastCreate.util';
   templateUrl: './feed.page.html',
   styleUrls: ['./feed.page.scss'],
 })
-export class FeedPage {
+export class FeedPage implements OnInit {
   public posts: (IPost & {
     comments: IComment[];
     username: string;
@@ -30,7 +30,7 @@ export class FeedPage {
     private userService: UserService
   ) { }
 
-  ionViewDidEnter() {
+  ngOnInit() {
     forkJoin({
       posts: this.postsService.fetchPosts(),
       comments: this.commentsService.fetchComments(),
@@ -48,6 +48,26 @@ export class FeedPage {
       };
 
       await this.toastCreate.create(toastData);
+    });
+  }
+
+  public addComment(newComment: IComment) {
+    this.posts = this.posts.map(post => {
+      if (post.id === newComment.postId) {
+        const newComments = [
+          ...post.comments,
+          newComment
+        ];
+
+        return {
+          ...post,
+          comments: newComments,
+        };
+      }
+
+      return {
+        ...post
+      };
     });
   }
 

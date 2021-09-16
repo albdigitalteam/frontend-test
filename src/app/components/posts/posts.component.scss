@@ -214,6 +214,38 @@
       .commentContainer:last-child {
         margin-bottom: 30px;
       }
+
+      .addCommentContainer {
+        margin: 10px 0;
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .commentInput {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+
+          ion-textarea {
+            flex: 1;
+            border: 1px solid var(--ion-color-tertiary);
+            border-radius: 8px;
+          }
+
+          app-error-container {
+            width: 100%;
+          }
+        }
+
+        ion-button {
+          margin-left: 10px;
+          text-transform: none;
+        }
+      }
     }
 
     .hide {

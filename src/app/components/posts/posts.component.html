@@ -29,6 +29,20 @@
           {{ comment.body }}
         </div>
       </div>
+
+      <div class="addCommentContainer" [formGroup]="formNewComment">
+        <div class="commentInput">
+          <ion-textarea formControlName="comment" placeholder="Digite seu comentário aqui..." maxlength="240">
+          </ion-textarea>
+          <app-error-container>
+            <app-error-message [showError]="(showErrors && formNewComment.controls.comment.errors?.required)">
+              Campo obrigatório
+            </app-error-message>
+          </app-error-container>
+        </div>
+
+        <ion-button shape="round" color="primary" (click)="addComment(post.id)">Enviar</ion-button>
+      </div>
     </div>
   </div>
 </div>
