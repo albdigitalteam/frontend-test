@@ -2,11 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { PostsComponent } from 'src/app/components/posts/posts.component';
 import { UserDataComponent } from 'src/app/pages/profile/components/user-data/user-data.component';
 
 @NgModule({
   declarations: [
-    UserDataComponent
+    UserDataComponent,
+    PostsComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { UserDataComponent } from 'src/app/pages/profile/components/user-data/us
     FormsModule,
   ],
   exports: [
-    UserDataComponent
+    UserDataComponent,
+    PostsComponent
   ],
 })
 export class SharedModule { }
