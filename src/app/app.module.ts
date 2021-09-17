@@ -9,11 +9,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared-module/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(), AppRoutingModule,
+    SharedModule, HttpClientModule,
+    LazyLoadImageModule
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
