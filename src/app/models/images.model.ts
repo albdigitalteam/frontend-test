@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IRandomImage {
-    id: string;
-    author: string;
-    width: number;
-    height: number;
-    url: string;
-    download_url: string;
+  readonly id: string;
+  readonly author: string;
+  readonly width: number;
+  readonly height: number;
+  readonly url: string;
+  readonly download_url: string;
 }

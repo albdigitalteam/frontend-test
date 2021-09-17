@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { forkJoin } from 'rxjs';
+
 import { IComment } from 'src/app/models/comment.model';
 import { IRandomImage } from 'src/app/models/images.model';
 import { IPost } from 'src/app/models/post.model';

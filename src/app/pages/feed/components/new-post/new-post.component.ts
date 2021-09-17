@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+
 import { IPost } from 'src/app/models/post.model';
 import { UserService } from 'src/app/services/user.service';
 import { CreateForms } from 'src/app/utils/createForms.util';
@@ -24,7 +25,7 @@ export class NewPostComponent implements OnInit {
 
   constructor(private modalController: ModalController, private userService: UserService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   public savePost() {
     this.showErrors = true;

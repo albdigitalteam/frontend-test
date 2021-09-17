@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { IUser } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { IToastData, ToastCreate } from 'src/app/utils/toastCreate.util';

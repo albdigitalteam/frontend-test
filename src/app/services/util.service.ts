@@ -14,9 +14,9 @@ export class UtilService {
 
   public getRandomImages(): Observable<IRandomImage[]> {
     return this.http.get<IRandomImage[]>('https://picsum.photos/v2/list?limit=10')
-    .pipe(
-      catchError(this.handleError)
-    );
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   // resposta de erro para a chamada

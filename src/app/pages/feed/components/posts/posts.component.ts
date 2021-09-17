@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+
 import { IComment } from 'src/app/models/comment.model';
 import { IPost } from 'src/app/models/post.model';
 import { IUser } from 'src/app/models/user.model';

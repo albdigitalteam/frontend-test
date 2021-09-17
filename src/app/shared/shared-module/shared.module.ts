@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 import { ErrorContainerComponent } from 'src/app/components/error-container/error-container.component';
 import { ErrorMessageComponent } from 'src/app/components/error-message/error-message.component';
 import { NewPostComponent } from 'src/app/pages/feed/components/new-post/new-post.component';
