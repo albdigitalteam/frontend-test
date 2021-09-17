@@ -26,6 +26,8 @@ export class FeedPage implements OnInit {
     imagePath: string;
   })[] = [];
 
+  public loading = false;
+
   private toastCreate = new ToastCreate();
 
   constructor(
@@ -39,12 +41,15 @@ export class FeedPage implements OnInit {
   ngOnInit() {
     const userId = this.activatedRoute.snapshot.paramMap.get('userId');
 
+    this.loading = true;
+
     forkJoin({
       posts: this.postsService.fetchPosts(),
       comments: this.commentsService.fetchComments(),
       users: this.userService.fetchUsers(),
       images: this.utilService.getRandomImages(),
     }).subscribe(result => {
+      this.loading = false;
       const { posts, comments, users, images } = result;
 
       this.posts = posts.map(post => this.adaptPosts(post, comments, users, images));
@@ -53,6 +58,7 @@ export class FeedPage implements OnInit {
         this.posts = this.posts.filter(el => el.userId === Number(userId));
       }
     }, async error => {
+      this.loading = false;
       console.log(error);
 
       const toastData: IToastData = {

@@ -1,0 +1,15 @@
+.containerLoading {
+  width: 100%;
+  height: calc(100vh - 57px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ion-img {
+    width: 10%;
+
+    @media screen and (max-width: 560px) {
+      width: 20%;
+    }
+  }
+}
