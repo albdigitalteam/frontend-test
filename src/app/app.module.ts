@@ -16,8 +16,10 @@ import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyl
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(), AppRoutingModule,
-    SharedModule, HttpClientModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule,
     LazyLoadImageModule
   ],
   providers: [

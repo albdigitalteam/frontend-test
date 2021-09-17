@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { IComment } from 'src/app/models/comment.model';
+import { IRandomImage } from 'src/app/models/images.model';
 import { IPost } from 'src/app/models/post.model';
 import { IUser } from 'src/app/models/user.model';
 import { CommentsService } from 'src/app/services/comments.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
-import { getRandomImgPost } from 'src/app/utils/postImgMock.util';
+import { UtilService } from 'src/app/services/util.service';
 import { IToastData, ToastCreate } from 'src/app/utils/toastCreate.util';
 
 @Component({
@@ -29,7 +30,8 @@ export class FeedPage implements OnInit {
     private postsService: PostsService,
     private commentsService: CommentsService,
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private utilService: UtilService,
   ) { }
 
   ngOnInit() {
@@ -38,11 +40,12 @@ export class FeedPage implements OnInit {
     forkJoin({
       posts: this.postsService.fetchPosts(),
       comments: this.commentsService.fetchComments(),
-      users: this.userService.fetchUsers()
+      users: this.userService.fetchUsers(),
+      images: this.utilService.getRandomImages(),
     }).subscribe(result => {
-      const { posts, comments, users } = result;
+      const { posts, comments, users, images } = result;
 
-      this.posts = posts.map(post => this.adaptPosts(post, comments, users));
+      this.posts = posts.map(post => this.adaptPosts(post, comments, users, images));
 
       if (userId) {
         this.posts = this.posts.filter(el => el.userId === Number(userId));
@@ -90,7 +93,7 @@ export class FeedPage implements OnInit {
     });
   }
 
-  private adaptPosts(post: IPost, comments: IComment[], users: IUser[]): IPost & {
+  private adaptPosts(post: IPost, comments: IComment[], users: IUser[], images: IRandomImage[]): IPost & {
     comments: IComment[];
     username: string;
     enableComment: boolean;
@@ -98,13 +101,14 @@ export class FeedPage implements OnInit {
   } {
     const postComments = comments.filter(comment => comment.postId === post.id);
     const username = users.find(user => user.id === post.userId).username;
+    const { download_url: imageUrl } = images[this.utilService.getRandomIndex()];
 
     return {
       ...post,
       comments: postComments,
       username,
       enableComment: false,
-      imagePath: post.imagePath || getRandomImgPost()
+      imagePath: post.imagePath || imageUrl
     };
   }
 }

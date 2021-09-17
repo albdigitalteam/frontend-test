@@ -8,7 +8,7 @@
   <div *ngFor="let post of posts; let isOdd=odd" class="postContainer" [class.imgReverse]="isOdd">
     <div class="post">
       <div class="leftPostContainer">
-        <ion-img class="postImage" [src]="post.imagePath" *ngIf="post.imagePath"></ion-img>
+        <img class="postImage" [defaultImage]="'assets/imgs/loading.gif'" [lazyLoad]="post.imagePath" *ngIf="post.imagePath" />
         <ion-img class="noDataImage" src="assets/imgs/noData.svg" *ngIf="!post.imagePath"></ion-img>
       </div>
 
