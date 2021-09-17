@@ -36,7 +36,7 @@ export class PostsComponent implements OnInit {
     this.currentUser = this.userService.getCurrentUser();
   }
 
-  public openUserProfile(userId: string) {
+  public openUserProfile(userId: number) {
     this.router.navigateByUrl(`/profile/${userId}`);
   }
 
