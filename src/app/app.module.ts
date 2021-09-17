@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
+import { Camera } from '@ionic-native/camera/ngx';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared-module/shared.module';
@@ -23,6 +25,7 @@ import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyl
     LazyLoadImageModule
   ],
   providers: [
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }
   ],
