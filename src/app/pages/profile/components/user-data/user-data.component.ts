@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/user.model';
 
 @Component({
@@ -9,8 +10,11 @@ import { IUser } from 'src/app/models/user.model';
 export class UserDataComponent implements OnInit {
   @Input() public user: IUser = null;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
+  public openUserPosts() {
+    this.router.navigateByUrl(`/feed/${this.user.id}`);
+  }
 }

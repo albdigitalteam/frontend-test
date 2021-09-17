@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { IComment } from 'src/app/models/comment.model';
 import { IPost } from 'src/app/models/post.model';
@@ -27,10 +28,13 @@ export class FeedPage implements OnInit {
   constructor(
     private postsService: PostsService,
     private commentsService: CommentsService,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    const userId = this.activatedRoute.snapshot.paramMap.get('userId');
+
     forkJoin({
       posts: this.postsService.fetchPosts(),
       comments: this.commentsService.fetchComments(),
@@ -39,6 +43,10 @@ export class FeedPage implements OnInit {
       const { posts, comments, users } = result;
 
       this.posts = posts.map(post => this.adaptPosts(post, comments, users));
+
+      if (userId) {
+        this.posts = this.posts.filter(el => el.userId === Number(userId));
+      }
     }, async error => {
       console.log(error);
 

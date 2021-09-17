@@ -5,6 +5,28 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
+  position: relative;
+
+  .containerOpenPosts {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    padding: 20px;
+    background-color: var(--ion-color-secondary);
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px #c9c9c9;
+    transition: all 0.3s;
+  }
+
+  .containerOpenPosts:hover {
+    transform: translateX(-2px);
+  }
+
+  .containerOpenPosts:active {
+    transform: translate(-2px, 2px);
+  }
 
   .containerUsername {
     width: 100%;

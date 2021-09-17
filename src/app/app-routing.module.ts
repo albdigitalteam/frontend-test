@@ -16,11 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
-    path: 'user-posts',
-    loadChildren: () => import('./pages/user-posts/user-posts.module').then( m => m.UserPostsPageModule)
+    path: 'feed',
+    loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
   },
   {
-    path: 'feed',
+    path: 'feed/:userId',
     loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
   },
 ];

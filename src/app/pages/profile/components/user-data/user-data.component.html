@@ -1,4 +1,6 @@
 <div class="container" *ngIf="user">
+  <div class="containerOpenPosts" (click)="openUserPosts()">Ver posts</div>
+
   <div class="containerUsername">
     <ion-img src="assets/imgs/person.svg"></ion-img>
     <ion-text>{{ user.username }}</ion-text>

@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  min-height: calc(100vh);
+  min-height: calc(100vh - 57px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,7 +177,7 @@
       align-items: center;
       justify-content: space-evenly;
       overflow: hidden;
-      max-height: 100vh;
+      max-height: 1000vh;
       transition: max-height 1s ease-in-out;
 
       .commentContainer {
@@ -298,5 +298,30 @@
         }
       }
     }
+  }
+}
+
+.containerNoData {
+  width: 100%;
+  min-height: calc(100vh - 57px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  ion-img {
+    width: 30%;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: 720px) {
+      width: 45%;
+    }
+  }
+
+  ion-text {
+    font-weight: bold;
+    text-align: center;
+    color: var(--ion-color-primary);
+    font-size: 1.2em;
   }
 }
