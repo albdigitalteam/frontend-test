@@ -29,12 +29,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 75px;
 
     @media screen and (max-width: 560px) {
       width: 95%;
       flex-direction: column;
+      justify-content: center;
     }
 
     .imagePreview {

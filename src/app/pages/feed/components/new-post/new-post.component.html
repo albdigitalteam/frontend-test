@@ -12,7 +12,7 @@
     </div>
 
     <div class="uploadContainer">
-      <input type="file" id="imagePostImage" style="display: none;" (change)="fileSelected($event)" accept=".jpg, .png">
+      <input type="file" id="imagePostImage" style="display: none;" (change)="notCordovaUpload($event)" accept=".jpg, .png">
       <ion-button class="upload" shape="round" color="primary" (click)="clickBtnUpload()">Adicionar imagem</ion-button>
 
       <div class="imageNameContainer" *ngIf="imagePost">

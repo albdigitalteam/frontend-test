@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController, Platform } from '@ionic/angular';
+
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 import { IPost } from 'src/app/models/post.model';
 import { UserService } from 'src/app/services/user.service';
@@ -23,7 +25,13 @@ export class NewPostComponent implements OnInit {
 
   private toastCreate = new ToastCreate();
 
-  constructor(private modalController: ModalController, private userService: UserService) { }
+  constructor(
+    private modalController: ModalController,
+    private userService: UserService,
+    private platform: Platform,
+    private actionSheetController: ActionSheetController,
+    private camera: Camera,
+  ) { }
 
   ngOnInit() { }
 
@@ -49,7 +57,7 @@ export class NewPostComponent implements OnInit {
     this.closeModal(newPost);
   }
 
-  public async fileSelected(event: Event) {
+  public async notCordovaUpload(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
 
     if (!file.type.includes('image')) {
@@ -71,11 +79,65 @@ export class NewPostComponent implements OnInit {
     this.imagePost = null;
   }
 
-  public clickBtnUpload() {
+  public async clickBtnUpload() {
+    if (this.platform.is('cordova')) {
+      return await this.cordovaUpload();
+    }
+
     document.getElementById('imagePostImage').click();
   }
 
   public closeModal(newPost?: IPost) {
     this.modalController.dismiss(newPost);
+  }
+
+  private async cordovaUpload() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Selecione',
+      buttons: [
+        {
+          text: 'Câmera',
+          icon: 'camera-outline',
+          handler: async () => {
+            await this.takePicture('CAMERA');
+          }
+        },
+        {
+          text: 'Biblioteca da Fotos',
+          icon: 'image-outline',
+          handler: async () => {
+            await this.takePicture('PHOTOLIBRARY');
+          }
+        },
+        {
+          text: 'Cancelar',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    await actionSheet.present();
+  }
+
+  private async takePicture(sourceImage: 'PHOTOLIBRARY' | 'CAMERA') {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType[sourceImage]
+    };
+
+    const cameraInfo = await this.camera.getPicture(options);
+    const image = 'data:image/jpg;base64,' + cameraInfo;
+
+    this.imagePost = {
+      imagePath: image,
+      imageName: 'Imagem adicionada'
+    };
   }
 }
