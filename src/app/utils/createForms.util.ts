@@ -7,4 +7,12 @@ export class CreateForms {
       comment: ['', Validators.compose([Validators.required])],
     });
   }
+
+  static createFormNewPost() {
+    const formBuilder = new FormBuilder();
+    return formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+      body: ['', Validators.compose([Validators.required])],
+    });
+  }
 }

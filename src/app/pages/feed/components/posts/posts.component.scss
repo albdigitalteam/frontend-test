@@ -6,6 +6,78 @@
   align-items: center;
   justify-content: flex-start;
 
+  .headerFeed {
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #c9c9c9;
+    box-shadow: 1px 1px 2px #d9d9d9;
+
+    @media screen and (max-width: 920px) {
+      padding: 20px 20px;
+    }
+
+    ion-img {
+      height: 80px;
+
+      @media screen and (max-width: 920px) {
+        height: 60px;
+      }
+
+      @media screen and (max-width: 560px) {
+        height: 45px;
+      }
+    }
+
+    .newPost {
+      padding: 20px;
+      width: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--ion-color-secondary);
+      border-radius: 4px;
+      border: 1px solid #d9d9d9;
+      box-shadow: 2px 2px 4px #c9c9c9;
+      color: var(--ion-color-tertiary);
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      user-select: none;
+
+      @media screen and (max-width: 920px) {
+        width: 30%;
+        padding: 10px 5px;
+        font-size: 0.85em;
+      }
+    }
+
+    .newPost:hover {
+      opacity: 0.9;
+    }
+
+    .newPost:active {
+      transform: translateY(2px);
+    }
+
+    ion-text {
+      font-weight: bold;
+      color: var(--ion-color-primary);
+      font-size: 1.2em;
+
+      @media screen and (max-width: 920px) {
+        font-size: 1em;
+      }
+
+      @media screen and (max-width: 720px) {
+        display: none;
+      }
+    }
+  }
+
   .postContainer {
     width: 80%;
     margin: 20px 0;
@@ -57,11 +129,15 @@
           padding: 0;
         }
 
-        ion-img {
+        .postImage {
           width: auto;
           height: auto;
           max-width: 420px;
           max-height: 230px;
+        }
+
+        .noDataImage {
+          width: 42%;
         }
       }
 
@@ -73,11 +149,16 @@
         align-items: flex-start;
         justify-content: space-between;
 
+        @media screen and (max-width: 720px) {
+          width: 90%;
+        }
+
         .postTitle {
-          width: 100%;
+          width: 90%;
           margin-left: 45px;
           font-weight: bold;
           color: var(--ion-color-tertiary);
+          font-size: 1.1em;
 
           @media screen and (max-width: 920px) {
             font-size: 1em;
@@ -86,6 +167,7 @@
           @media screen and (max-width: 720px) {
             margin-left: 0;
             text-align: center;
+            width: 100%;
           }
 
           @media screen and (max-width: 560px) {
@@ -94,9 +176,11 @@
         }
 
         .postBody {
+          width: 90%;
           margin-left: 25px;
           color: #797979;
           font-style: italic;
+          font-size: 0.95em;
 
           @media screen and (max-width: 920px) {
             font-size: 0.85em;
@@ -105,6 +189,7 @@
           @media screen and (max-width: 720px) {
             margin-left: 0;
             text-align: center;
+            width: 100%;
           }
 
           @media screen and (max-width: 560px) {
@@ -124,6 +209,7 @@
           ion-text {
             font-size: 0.85em;
             cursor: pointer;
+            user-select: none;
             transition: all 0.3s;
 
             @media screen and (max-width: 920px) {

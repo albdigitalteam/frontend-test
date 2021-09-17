@@ -79,6 +79,17 @@ export class FeedPage implements OnInit {
     });
   }
 
+  public addPost(newPost: IPost) {
+    const username = this.userService.getCurrentUser().username;
+
+    this.posts.unshift({
+      ...newPost,
+      comments: [],
+      enableComment: false,
+      username,
+    });
+  }
+
   private adaptPosts(post: IPost, comments: IComment[], users: IUser[]): IPost & {
     comments: IComment[];
     username: string;
@@ -93,7 +104,7 @@ export class FeedPage implements OnInit {
       comments: postComments,
       username,
       enableComment: false,
-      imagePath: getRandomImgPost()
+      imagePath: post.imagePath || getRandomImgPost()
     };
   }
 }

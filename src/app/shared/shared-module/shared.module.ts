@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ErrorContainerComponent } from 'src/app/components/error-container/error-container.component';
 import { ErrorMessageComponent } from 'src/app/components/error-message/error-message.component';
+import { NewPostComponent } from 'src/app/pages/feed/components/new-post/new-post.component';
 import { PostsComponent } from 'src/app/pages/feed/components/posts/posts.component';
 import { UserDataComponent } from 'src/app/pages/profile/components/user-data/user-data.component';
 
@@ -12,7 +13,8 @@ import { UserDataComponent } from 'src/app/pages/profile/components/user-data/us
     UserDataComponent,
     PostsComponent,
     ErrorContainerComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    NewPostComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { UserDataComponent } from 'src/app/pages/profile/components/user-data/us
     UserDataComponent,
     PostsComponent,
     ErrorContainerComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    NewPostComponent,
   ],
 })
 export class SharedModule { }

@@ -1,0 +1,54 @@
+<div class="container">
+  <ion-toolbar>
+    <ion-title>Novo post</ion-title>
+
+    <ion-icon slot="end" name="close-outline" color="danger" (click)="closeModal()"></ion-icon>
+  </ion-toolbar>
+
+  <div class="containerImage">
+    <div class="imagePreview" (click)="clickBtnUpload()">
+      <ion-text *ngIf="!imagePost">Vazio</ion-text>
+      <ion-img *ngIf="imagePost" [src]="imagePost.imagePath"></ion-img>
+    </div>
+
+    <div class="uploadContainer">
+      <input type="file" id="imagePostImage" style="display: none;" (change)="fileSelected($event)" accept=".jpg, .png">
+      <ion-button class="upload" shape="round" color="primary" (click)="clickBtnUpload()">Adicionar imagem</ion-button>
+
+      <div class="imageNameContainer" *ngIf="imagePost">
+        <div class="imageName">
+          <ion-text>{{ imagePost.imageName }}</ion-text>
+        </div>
+
+        <ion-icon name="trash-outline" color="danger" (click)="deleteImage()"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="postContainer" [formGroup]="formNewPost">
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input formControlName="title" type="text" maxlength="60"></ion-input>
+    </ion-item>
+    <app-error-container>
+      <app-error-message [showError]="(showErrors && formNewPost.controls.title.errors?.required)">
+        Campo obrigatório
+      </app-error-message>
+    </app-error-container>
+
+    <ion-item>
+      <ion-label position="stacked">Mensagem</ion-label>
+      <ion-input formControlName="body" type="text" maxlength="100"></ion-input>
+    </ion-item>
+    <app-error-container>
+      <app-error-message [showError]="(showErrors && formNewPost.controls.body.errors?.required)">
+        Campo obrigatório
+      </app-error-message>
+    </app-error-container>
+
+    <div class="containerButton">
+      <ion-button shape="round" color="primary" (click)="savePost()">Salvar</ion-button>
+    </div>
+    <br>
+  </div>
+</div>

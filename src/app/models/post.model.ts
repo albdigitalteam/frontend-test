@@ -3,4 +3,5 @@ export interface IPost {
   readonly id: number;
   readonly title: string;
   readonly body: string;
+  readonly imagePath: string | null;
 }
