@@ -1,7 +1,7 @@
 <ion-content>
   <app-posts *ngIf="posts && !loading" [posts]="posts" (newCommentEmitter)="addComment($event)" (newPostEmitter)="addPost($event)"></app-posts>
 
-  <div class="containerLoading">
+  <div class="containerLoading" *ngIf="!posts || loading1">
     <ion-img src="assets/imgs/loading.gif"></ion-img>
   </div>
 </ion-content>
