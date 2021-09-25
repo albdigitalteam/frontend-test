@@ -19,7 +19,7 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".js", ".jsx", "tsx"]
+        "extensions": [".js", ".jsx", "ts", "tsx"]
       }
     ],
     "global-require": "off",
