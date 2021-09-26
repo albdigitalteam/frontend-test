@@ -84,7 +84,7 @@ export default function PostNavigation({ route }) {
           ),
         }}
       />
-      <Tab.Screen name="Comments" component={Comments} />
+      <Tab.Screen name="Comments" component={Comments} initialParams={params} />
     </Tab.Navigator>
   );
 }
