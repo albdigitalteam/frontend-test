@@ -19,11 +19,17 @@ export function PostDetail({ route }: any) {
   const [loaded, setLoaded] = useState(false);
 
   const LoadTest = () => (
-    <View style={{ height: 250 }}>
+    <View style={{
+      position: 'absolute',
+      zIndex: 15,
+      height: 250,
+      width: Dimensions.get('window').width,
+    }}
+    >
       <ContentLoader
         viewBox="0 0 100 50"
-        backgroundColor="#999"
-        foregroundColor="#cfcfcf"
+        backgroundColor="#cfcfcf"
+        foregroundColor="#efefef"
       >
         <Rect x="0" y="0" rx="10" ry="10" width="100" height="100" />
       </ContentLoader>
