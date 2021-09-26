@@ -1,9 +1,16 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import HomeScreen from './src/screens/HomeScreen';
+import theme from './src/theme';
+
+import Routes from './src/routes';
 
 const App = () => {
-  return <HomeScreen />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Routes />
+    </ThemeProvider>
+  );
 };
 
 export default App;
