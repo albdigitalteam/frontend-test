@@ -4,6 +4,8 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MIIcon from 'react-native-vector-icons/MaterialIcons';
 import styled, { useTheme } from 'styled-components/native';
 
+import User from './User';
+
 import users from '../mocks/users';
 
 export type Props = {
@@ -32,7 +34,7 @@ const UsersModal: React.FC<Props> = ({ isVisible, onRequestClose }) => {
           </StyledButtonContainer>
           <FlatList
             data={users}
-            renderItem={({ item }) => <StyledText>{item.username}</StyledText>}
+            renderItem={({ item }) => <User data={item} />}
           />
         </StyledContainer>
       </StyledBackdrop>
@@ -59,12 +61,6 @@ const StyledContainer = styled.View`
 
 const StyledButtonContainer = styled.View`
   align-items: flex-end;
-`;
-
-const StyledText = styled.Text`
-  font-size: 20px;
-  margin-top: 12px;
-  margin-bottom: 12px;
 `;
 
 const Button = styled.TouchableOpacity`
