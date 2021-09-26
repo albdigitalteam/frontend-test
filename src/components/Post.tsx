@@ -1,9 +1,12 @@
 import React, { useMemo } from 'react';
 import { View, Dimensions } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+
 import styled from 'styled-components/native';
 
 import comments from '../mocks/comments';
-
+import { RootStackParamList } from '../routes';
 export type PostProps = {
   userId: number;
   id: number;
@@ -11,14 +14,19 @@ export type PostProps = {
   body: string;
 };
 
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
+
 const { width } = Dimensions.get('screen');
 
-const Hello: React.FC<PostProps> = ({ userId, id, title, body }) => {
+const Post: React.FC<PostProps> = ({ userId, id, title, body }) => {
+  const { navigate } = useNavigation<HomeScreenNavigationProp>();
+
   const numOfComments = useMemo(() => {
     return comments.filter(comment => comment.postId === id).length;
   }, [id]);
-
-  console.log(numOfComments);
 
   return (
     <StyledContainer>
@@ -30,7 +38,7 @@ const Hello: React.FC<PostProps> = ({ userId, id, title, body }) => {
       <View>
         <StyledTitle>{title}</StyledTitle>
         <StyledText>{body}</StyledText>
-        <Button>
+        <Button onPress={() => navigate('Details', { postId: id })}>
           <StyledButtonText>
             `ver comentários ({numOfComments})`
           </StyledButtonText>
@@ -76,4 +84,4 @@ const StyledButtonText = styled.Text`
   color: #9d9d9d;
 `;
 
-export default Hello;
+export default Post;
