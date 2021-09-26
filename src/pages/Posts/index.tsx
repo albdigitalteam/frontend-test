@@ -48,7 +48,7 @@ export function Posts() {
   };
 
   useEffect(() => {
-    // getPosts();
+    getPosts();
   }, []);
 
   return (
