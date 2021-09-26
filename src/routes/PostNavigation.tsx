@@ -5,7 +5,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
 
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { PostDetail } from '../pages/PostDetail';
 import { Comments } from '../pages/Comments';
 
@@ -62,14 +62,38 @@ export default function PostNavigation({ route }) {
   return (
     <Tab.Navigator
       sceneContainerStyle={{ backgroundColor: '#FFF' }}
-      screenOptions={{
+      // screenOptions={{
+      //   headerStyle: {
+      //     shadowOffset: {
+      //       height: 0,
+      //       width: 0,
+      //     },
+      //   },
+      // }}
+      screenOptions={({ route }) => ({
         headerStyle: {
           shadowOffset: {
             height: 0,
             width: 0,
           },
         },
-      }}
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Detail') {
+            iconName = focused
+              ? 'list-alt'
+              : 'list';
+          } else if (route.name === 'Comments') {
+            iconName = focused ? 'comment-alt' : 'comment';
+          }
+
+          // You can return any component that you like here!
+          return <FontAwesome5 name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#375f9b',
+        tabBarInactiveTintColor: 'gray',
+      })}
     >
       <Tab.Screen
         name="Detail"
