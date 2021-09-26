@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { View } from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MIIcon from 'react-native-vector-icons/MaterialIcons';
 import styled, { useTheme } from 'styled-components/native';
@@ -42,7 +41,7 @@ const Header: React.FC<Props> = ({
         </Button>
       );
     }
-    return <View />;
+    return <StyledEmptyView />;
   }, [isOwner, secondary, showUserIcon]);
 
   return (
@@ -53,7 +52,7 @@ const Header: React.FC<Props> = ({
             <MIIcon name="arrow-back-ios" color={secondary} size={30} />
           </Button>
         ) : (
-          <View />
+          <StyledEmptyView />
         )}
         <StyledText>{title}</StyledText>
         {rightIcon}
@@ -85,6 +84,11 @@ const StyledText = styled.Text`
 const Button = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
+`;
+
+const StyledEmptyView = styled.View`
+  width: 35px;
+  height: 35px;
 `;
 
 export default Header;
