@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import fonts from "../../styles/fonts";
 
 export const Container = styled.TouchableOpacity`
   background-color: #375f9b;
@@ -12,4 +13,5 @@ export const Container = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
   color: #fff;
   font-size: 16px;
+  font-family: ${fonts.heading};
 `;
