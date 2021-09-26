@@ -1,57 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert } from 'react-native';
+import React from 'react';
+import { Dimensions } from 'react-native';
 
-import axios from 'axios';
-import { api } from '../../services/api';
 import { capitalizeFirstLetter } from '../../Util/utils';
 
-import { UserDetail } from '../../components/UserDetail';
-
 import {
-  Container, Content, Title, Description,
+  Container,
+  ScrollContent,
+  Content,
+  Title,
+  Description,
+  ImageHeader,
 } from './styles';
-import { LoadingData } from '../../components/LoadingData';
-
-interface UserProps {
-  name: {first: string; last: string;};
-  email: string;
-  picture: {thumbnail: string;};
-}
 
 export function PostDetail({ route }: any) {
-  const { title, body } = route.params;
-  console.log('PARAMS DETAIL', route.params);
-
-  const [user, setUser] = useState<UserProps[]>([]);
-
-  const getUser = async () => {
-    await axios.get('https://randomuser.me/api/?results=1')
-      .then((res) => {
-        setUser(res.data.results[0]);
-      })
-      .catch((error) => {
-        Alert.alert(
-          'Error!',
-          'Not possible fetch users data',
-        );
-      });
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
-  if (Object.keys(user).length <= 0) {
-    return <LoadingData />;
-  }
+  const { title, body, id } = route.params;
 
   return (
     <Container>
-      <Content>
-        <Title>{capitalizeFirstLetter(title)}</Title>
-        <Description>{capitalizeFirstLetter(body)}</Description>
-        <UserDetail picture={user.picture.thumbnail} name={`${user.name.first} ${user.name.last}`} email={user.email} />
-      </Content>
+      <ScrollContent showsVerticalScrollIndicator={false}>
+        <ImageHeader source={{ uri: `https://picsum.photos/id/${id}/${Dimensions.get('window').width}/250` }} />
+        <Content>
+          <Title>{capitalizeFirstLetter(title)}</Title>
+          <Description>{capitalizeFirstLetter(body)}</Description>
+        </Content>
+      </ScrollContent>
     </Container>
   );
 }
