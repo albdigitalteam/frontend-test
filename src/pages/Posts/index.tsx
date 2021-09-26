@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Alert, View } from 'react-native';
+import { FlatList, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { api } from '../../services/api';
 
+import { LoadingData } from '../../components/LoadingData';
+
 import {
-  Container, ItemContainer, Title, Description, Author,
+  Container, Content, ItemContainer, Title, Description,
 } from './styles';
 
 interface PostProps {
@@ -20,11 +23,12 @@ interface ItemProps {
 }
 
 export function Posts() {
-  const [posts, setPosts] = useState<[PostProps]>([{} as PostProps]);
+  const [posts, setPosts] = useState<PostProps[]>([]);
+
+  const navigation = useNavigation();
 
   async function getPosts() {
     await api.get('/posts').then((res) => {
-      console.log('POSTS', res);
       if (res.status === 200) {
         setPosts(res.data);
       } else {
@@ -36,13 +40,16 @@ export function Posts() {
     });
   }
 
+  const handlePostDetail = (post: PostProps) => {
+    navigation.navigate('PostDetail', post);
+  };
+
   const renderItems = (elem: ItemProps) => {
-    const { title, body, userId } = elem.item;
+    const { title, body } = elem.item;
     return (
-      <ItemContainer>
-        <Title>{title}</Title>
-        <Description>{body}</Description>
-        <Author>{userId}</Author>
+      <ItemContainer onPress={() => { handlePostDetail(elem.item); }}>
+        <Title numberOfLines={1}>{title}</Title>
+        <Description numberOfLines={2}>{body}</Description>
       </ItemContainer>
     );
   };
@@ -51,14 +58,20 @@ export function Posts() {
     getPosts();
   }, []);
 
+  if (Object.keys(posts).length <= 0) {
+    return <LoadingData />;
+  }
+
   return (
     <Container>
-      <FlatList
-        ListEmptyComponent={(<View />)}
-        data={posts}
-        renderItem={renderItems}
-        keyExtractor={(item, index) => index.toString()}
-      />
+      <Content>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={posts}
+          renderItem={renderItems}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </Content>
     </Container>
   );
 }

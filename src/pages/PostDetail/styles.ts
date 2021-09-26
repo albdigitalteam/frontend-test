@@ -1,14 +1,11 @@
 import styled from "styled-components/native";
 
-export const Container = styled.SafeAreaView``;
+export const Container = styled.SafeAreaView`
+  flex: 1;
+`;
 
 export const Content = styled.View`
   padding: 20px;
-`;
-
-export const ItemContainer = styled.TouchableOpacity`
-  padding: 16px;
-  margin: 5px 0;
 `;
 
 export const Title = styled.Text`
@@ -17,5 +14,6 @@ export const Title = styled.Text`
 `;
 
 export const Description = styled.Text`
-  font-size: 18px;
+  margin: 16px 0;
+  font-size: 14px;
 `;

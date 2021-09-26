@@ -8,8 +8,9 @@ import axios from 'axios';
 import { Card } from '../../components/Card';
 
 import {
-  Container, UserImage, ListContainer, CardContent, CardDescriptionContent, UserName, UserEmail,
+  Container, ListContainer, CardContent,
 } from './styles';
+import { UserDetail } from '../../components/UserDetail';
 
 interface UsersProps {
     // id: number;
@@ -64,11 +65,7 @@ export function Users() {
     return (
       <Card>
         <CardContent onPress={handleMove}>
-          <UserImage source={{ uri: `${picture.thumbnail}` }} />
-          <CardDescriptionContent>
-            <UserName>{`${name.first} ${name.last}`}</UserName>
-            <UserEmail>{email}</UserEmail>
-          </CardDescriptionContent>
+          <UserDetail picture={picture.thumbnail} name={name} email={email} />
         </CardContent>
       </Card>
     );
@@ -80,8 +77,6 @@ export function Users() {
 
   return (
     <Container>
-      <UserName>Users Screen</UserName>
-
       <ListContainer>
         <FlatList
           showsVerticalScrollIndicator={false}
