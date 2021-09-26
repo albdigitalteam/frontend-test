@@ -9,6 +9,7 @@ import { LoadingData } from '../../components/LoadingData';
 import {
   Container, Content, ItemContainer, Title, Description,
 } from './styles';
+import { capitalizeFirstLetter } from '../../Util/utils';
 
 interface PostProps {
   userId: number;
@@ -48,8 +49,8 @@ export function Posts() {
     const { title, body } = elem.item;
     return (
       <ItemContainer onPress={() => { handlePostDetail(elem.item); }}>
-        <Title numberOfLines={1}>{title}</Title>
-        <Description numberOfLines={2}>{body}</Description>
+        <Title numberOfLines={1}>{capitalizeFirstLetter(title)}</Title>
+        <Description numberOfLines={2}>{capitalizeFirstLetter(body)}</Description>
       </ItemContainer>
     );
   };

@@ -3,6 +3,7 @@ import { ActivityIndicator, Alert } from 'react-native';
 
 import axios from 'axios';
 import { api } from '../../services/api';
+import { capitalizeFirstLetter } from '../../Util/utils';
 
 import { UserDetail } from '../../components/UserDetail';
 
@@ -46,8 +47,8 @@ export function PostDetail({ route }: any) {
   return (
     <Container>
       <Content>
-        <Title>{title}</Title>
-        <Description>{body}</Description>
+        <Title>{capitalizeFirstLetter(title)}</Title>
+        <Description>{capitalizeFirstLetter(body)}</Description>
         <UserDetail picture={user.picture.thumbnail} name={user.name} email={user.email} />
       </Content>
     </Container>
