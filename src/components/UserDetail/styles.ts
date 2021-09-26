@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import colors from "../../styles/colors";
 
 export const Container = styled.View`
   flex-direction: row;
@@ -17,6 +18,9 @@ export const UserImage = styled.Image`
 
 export const UserName = styled.Text`
   font-size: 18px;
+  color: ${colors.heading};
 `;
 
-export const UserEmail = styled.Text``;
+export const UserEmail = styled.Text`
+  color: ${colors.body};
+`;

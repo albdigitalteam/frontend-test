@@ -5,11 +5,12 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
 
-import { FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { PostDetail } from '../pages/PostDetail';
 import { Comments } from '../pages/Comments';
 
 import { api } from '../services/api';
+import colors from '../styles/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,14 +63,6 @@ export default function PostNavigation({ route }) {
   return (
     <Tab.Navigator
       sceneContainerStyle={{ backgroundColor: '#FFF' }}
-      // screenOptions={{
-      //   headerStyle: {
-      //     shadowOffset: {
-      //       height: 0,
-      //       width: 0,
-      //     },
-      //   },
-      // }}
       screenOptions={({ route }) => ({
         headerStyle: {
           shadowOffset: {
@@ -91,8 +84,8 @@ export default function PostNavigation({ route }) {
           // You can return any component that you like here!
           return <FontAwesome5 name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#375f9b',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: colors.blue,
+        tabBarInactiveTintColor: colors.gray,
       })}
     >
       <Tab.Screen
@@ -101,14 +94,22 @@ export default function PostNavigation({ route }) {
         initialParams={params}
         options={{
           title: user.name,
+          headerTitleStyle: { color: colors.blue },
           headerRight: () => (
             <TouchableOpacity onPress={confirmDelete} style={{ padding: 10 }}>
-              <FontAwesome5 name="trash-alt" size={24} color="black" />
+              <FontAwesome5 name="trash-alt" size={24} color={colors.blue} />
             </TouchableOpacity>
           ),
         }}
       />
-      <Tab.Screen name="Comments" component={Comments} initialParams={params} />
+      <Tab.Screen
+        name="Comments"
+        component={Comments}
+        initialParams={params}
+        options={{
+          headerTitleStyle: { color: colors.blue },
+        }}
+      />
     </Tab.Navigator>
   );
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import colors from "../../styles/colors";
 
 export const Container = styled.SafeAreaView``;
 
@@ -14,8 +15,10 @@ export const ItemContainer = styled.TouchableOpacity`
 export const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
+  color: ${colors.heading};
 `;
 
 export const Description = styled.Text`
   font-size: 18px;
+  color: ${colors.body};
 `;
