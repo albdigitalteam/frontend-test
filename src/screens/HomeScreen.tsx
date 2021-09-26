@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import styled from 'styled-components/native';
 
 import Header from '../components/Header';
@@ -10,18 +10,16 @@ import posts from '../mocks/posts';
 
 const HomeScreen: React.FC = () => {
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
-        <Header title="POSTGRAM" />
-        <NewPost />
-        <StyledFlatList
-          data={posts}
-          renderItem={({ item: { id, userId, title, body } }) => (
-            <Post id={id} userId={userId} title={title} body={body} />
-          )}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Header title="POSTGRAM" showUserIcon />
+      <NewPost />
+      <StyledFlatList
+        data={posts}
+        renderItem={({ item: { id, userId, title, body } }) => (
+          <Post id={id} userId={userId} title={title} body={body} />
+        )}
+      />
+    </View>
   );
 };
 
