@@ -9,6 +9,13 @@ export const Content = styled.View`
 `;
 
 export const ItemContainer = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const ItemContent = styled.TouchableOpacity`
+  flex: 1;
   padding: 16px;
   margin: 5px 0;
 `;

@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { api } from '../../services/api';
-
+import { FontAwesome5 } from '@expo/vector-icons';
+import { FAB } from '../../components/FAB';
 import { LoadingData } from '../../components/LoadingData';
 
-import {
-  Container, Content, ItemContainer, Title, Description,
-} from './styles';
+import { api } from '../../services/api';
 import { capitalizeFirstLetter } from '../../Util/utils';
-import { FAB } from '../../components/FAB';
+
+import {
+  Container, Content, ItemContainer, Title, Description, ItemContent,
+} from './styles';
+import colors from '../../styles/colors';
 
 interface PostProps {
   userId: number;
@@ -49,9 +51,12 @@ export function Posts() {
   const renderItems = (elem: ItemProps) => {
     const { title, body } = elem.item;
     return (
-      <ItemContainer onPress={() => { handlePostDetail(elem.item); }}>
-        <Title numberOfLines={1}>{capitalizeFirstLetter(title)}</Title>
-        <Description numberOfLines={2}>{capitalizeFirstLetter(body)}</Description>
+      <ItemContainer>
+        <ItemContent onPress={() => { handlePostDetail(elem.item); }}>
+          <Title numberOfLines={1}>{capitalizeFirstLetter(title)}</Title>
+          <Description numberOfLines={2}>{capitalizeFirstLetter(body)}</Description>
+        </ItemContent>
+        <FontAwesome5 name="chevron-right" size={18} color={colors.blue} />
       </ItemContainer>
     );
   };
