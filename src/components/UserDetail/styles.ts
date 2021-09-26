@@ -9,6 +9,7 @@ export const Container = styled.View`
 export const Content = styled.View`
   margin: 0 0 0 12px;
   justify-content: center;
+  min-height: 60px;
 `;
 
 export const UserImage = styled.Image`
