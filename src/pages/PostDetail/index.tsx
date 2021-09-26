@@ -20,6 +20,7 @@ interface UserProps {
 
 export function PostDetail({ route }: any) {
   const { title, body } = route.params;
+  console.log('PARAMS DETAIL', route.params);
 
   const [user, setUser] = useState<UserProps[]>([]);
 
@@ -49,7 +50,7 @@ export function PostDetail({ route }: any) {
       <Content>
         <Title>{capitalizeFirstLetter(title)}</Title>
         <Description>{capitalizeFirstLetter(body)}</Description>
-        <UserDetail picture={user.picture.thumbnail} name={user.name} email={user.email} />
+        <UserDetail picture={user.picture.thumbnail} name={`${user.name.first} ${user.name.last}`} email={user.email} />
       </Content>
     </Container>
   );
