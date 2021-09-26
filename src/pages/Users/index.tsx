@@ -10,7 +10,7 @@ import { LoadingData } from '../../components/LoadingData';
 import { api } from '../../services/api';
 
 import {
-  Container, ListContainer, CardContent,
+  Container, Title, ListContainer, CardContent,
 } from './styles';
 
 interface UsersProps {
@@ -90,6 +90,7 @@ export function Users() {
     <Container>
       <ListContainer>
         <FlatList
+          ListHeaderComponent={(<Title>Select your user</Title>)}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={(<View />)}
           data={users}

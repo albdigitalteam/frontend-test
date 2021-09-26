@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import PostNavigation from './PostNavigation';
 
+import { Welcome } from '../pages/Welcome';
 import { Users } from '../pages/Users';
 import { Posts } from '../pages/Posts';
 import { NewPost } from '../pages/NewPost';
@@ -12,9 +13,10 @@ const Stack = createNativeStackNavigator();
 function Routes() {
   return (
     <Stack.Navigator
-      initialRouteName="Users"
+      initialRouteName="Welcome"
       screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#FFF' } }}
     >
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Users" component={Users} />
       <Stack.Screen name="Posts" component={Posts} />
       <Stack.Screen name="PostDetail" component={PostNavigation} />
