@@ -10,6 +10,7 @@ import {
   Container, Content, ItemContainer, Title, Description,
 } from './styles';
 import { capitalizeFirstLetter } from '../../Util/utils';
+import { FAB } from '../../components/FAB';
 
 interface PostProps {
   userId: number;
@@ -72,6 +73,7 @@ export function Posts() {
           renderItem={renderItems}
           keyExtractor={(item, index) => index.toString()}
         />
+        <FAB />
       </Content>
     </Container>
   );

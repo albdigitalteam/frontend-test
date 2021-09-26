@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { api } from '../../services/api';
 
@@ -15,6 +16,8 @@ export function NewPost() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigation();
 
   const handleInputTitle = (value: string) => {
     setTitle(value);
@@ -36,7 +39,9 @@ export function NewPost() {
         console.log('OK', res);
         Alert.alert(
           'Success!',
-          'New post register',
+          'New post register', [
+            { text: 'OK', onPress: () => { navigation.goBack(); } },
+          ],
         );
       })
       .catch((error) => {
@@ -69,7 +74,6 @@ export function NewPost() {
   return (
     <Container>
       <Content>
-        <Title>New post</Title>
         <TitleContainer>
           <Input
             placeholder="Title"

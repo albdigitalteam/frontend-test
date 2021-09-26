@@ -18,7 +18,7 @@ function Routes() {
       <Stack.Screen name="Users" component={Users} />
       <Stack.Screen name="Posts" component={Posts} />
       <Stack.Screen name="PostDetail" component={PostNavigation} />
-      <Stack.Screen name="NewPost" component={NewPost} />
+      <Stack.Screen name="NewPost" component={NewPost} options={{ headerShown: true, title: 'New post' }} />
     </Stack.Navigator>
   );
 }
