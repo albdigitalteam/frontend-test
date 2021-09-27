@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { Modal, FlatList } from 'react-native';
-import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MIIcon from 'react-native-vector-icons/MaterialIcons';
+import { useSelector } from 'react-redux';
 import styled, { useTheme } from 'styled-components/native';
 
 import User from './User';
 
-import users from '../mocks/users';
+import { RootState } from '../store';
+import { UserState } from '../store/slices/usersSlice';
 
 export type Props = {
   isVisible: boolean;
@@ -17,6 +18,8 @@ const UsersModal: React.FC<Props> = ({ isVisible, onRequestClose }) => {
   const {
     colors: { secondary },
   } = useTheme();
+
+  const { users } = useSelector<RootState, UserState>(state => state.user);
 
   return (
     <Modal
@@ -34,7 +37,9 @@ const UsersModal: React.FC<Props> = ({ isVisible, onRequestClose }) => {
           </StyledButtonContainer>
           <FlatList
             data={users}
-            renderItem={({ item }) => <User data={item} />}
+            renderItem={({ item }) => (
+              <User data={item} onPress={onRequestClose} />
+            )}
           />
         </StyledContainer>
       </StyledBackdrop>

@@ -1,37 +1,27 @@
 import React, { useMemo } from 'react';
-import { Text, Dimensions, View } from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import styled from 'styled-components/native';
 
-import comments from '../mocks/comments';
-import { RootStackParamList } from '../routes';
+import { Post as PostProps } from '../store/slices/postsSlice';
 
-export type PostProps = {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-};
+import { RootState } from '../store';
+import { PostsState } from '../store/slices/postsSlice';
+import { useSelector } from 'react-redux';
 
 type Props = {
   data: PostProps;
+  onPress: () => void;
 };
-
-type HomeScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'Home'
->;
 
 const { width } = Dimensions.get('window');
 
-const Post: React.FC<Props> = ({ data: { userId, id, title, body } }) => {
-  const { navigate } = useNavigation<HomeScreenNavigationProp>();
+const Post: React.FC<Props> = ({ data: { id, title, body }, onPress }) => {
+  const { comments } = useSelector<RootState, PostsState>(state => state.post);
 
   const numOfComments = useMemo(() => {
     return comments.filter(comment => comment.postId === id).length;
-  }, [id]);
+  }, [id, comments]);
 
   return (
     <StyledContainer>
@@ -48,7 +38,7 @@ const Post: React.FC<Props> = ({ data: { userId, id, title, body } }) => {
           </StyledText>
         </StyledTextView>
         <StyledDots>...</StyledDots>
-        <Button onPress={() => navigate('Details', { postId: id })}>
+        <Button onPress={onPress}>
           <StyledButtonText>ver comentários ({numOfComments})</StyledButtonText>
         </Button>
       </StyledWrapper>
@@ -69,6 +59,7 @@ const StyledContainer = styled.View`
 const StyledWrapper = styled.View`
   padding: 0 12px 16px;
   flex: 1;
+  width: 100%;
 `;
 
 const StyledTextView = styled.View`
