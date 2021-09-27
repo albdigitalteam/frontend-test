@@ -2,25 +2,11 @@ import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
 
-export type Props = {
-  name: string;
-  email: string;
-  body: string;
-  isLoggedUser: boolean;
-};
+import { Comment as CommentProps } from '../store/slices/postsSlice';
 
-interface ContainerProps {
-  isLoggedUser: boolean;
-}
-
-const Comment: React.FC<Props> = ({
-  name,
-  email,
-  body,
-  isLoggedUser = false,
-}) => {
+const Comment: React.FC<CommentProps> = ({ name, email, body }) => {
   return (
-    <StyledContainer isLoggedUser={isLoggedUser}>
+    <StyledContainer>
       <Text>
         <StyledAuthor>
           {name} ({email.toLocaleLowerCase()}):{' '}
@@ -31,13 +17,11 @@ const Comment: React.FC<Props> = ({
   );
 };
 
-const StyledContainer = styled.View<ContainerProps>`
-  /* padding: 5px; */
+const StyledContainer = styled.View`
   margin-bottom: 5px;
   margin-top: 5px;
   border-radius: 5px;
-  background-color: ${({ isLoggedUser, theme: { colors } }) =>
-    isLoggedUser ? 'rgba(0, 0, 0, 0.05)' : colors.primary};
+  background-color: ${({ theme: { colors } }) => colors.primary};
 `;
 
 const StyledText = styled.Text`
