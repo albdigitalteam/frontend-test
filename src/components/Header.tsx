@@ -8,6 +8,7 @@ import UsersModal from './UsersModal';
 export type Props = {
   title: string;
   isOwner?: boolean;
+  onDeletePost?: () => void;
   showBackButton?: boolean;
   onPressBack?: () => void;
   showUserIcon?: boolean;
@@ -16,19 +17,20 @@ export type Props = {
 const Header: React.FC<Props> = ({
   title,
   isOwner = false,
+  onDeletePost = () => { },
   showBackButton = false,
   onPressBack = () => { },
-  showUserIcon = false,
+  showUserIcon = false
 }) => {
   const [modalVisibility, setModalVisibility] = useState<boolean>(false);
   const {
-    colors: { secondary },
+    colors: { secondary }
   } = useTheme();
 
   const rightIcon = useMemo(() => {
     if (isOwner) {
       return (
-        <Button>
+        <Button onPress={onDeletePost}>
           <FAIcon name="trash-o" color={secondary} size={25} />
         </Button>
       );
@@ -59,7 +61,7 @@ const Header: React.FC<Props> = ({
       </StyledContainer>
       <UsersModal
         isVisible={modalVisibility}
-        onRequestClose={() => setModalVisibility(prev => !prev)}
+        onRequestClose={() => setModalVisibility((prev) => !prev)}
       />
     </>
   );
