@@ -80,7 +80,7 @@ export function Posts() {
           renderItem={renderItems}
           keyExtractor={(item, index) => index.toString()}
         />
-        <FAB />
+        <FAB navigationURL="NewPost" />
       </Content>
     </Container>
   );

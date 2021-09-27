@@ -7,10 +7,10 @@ import { useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
 import { Posts } from '../pages/Posts';
 import PostNavigation from './PostNavigation';
-import { NewPost } from '../pages/NewPost';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { NewPostComment } from '../components/NewPostComment';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +37,12 @@ export default function AppNavigation({ route }) {
         }}
       />
       <Stack.Screen name="PostDetail" component={PostNavigation} />
-      <Stack.Screen name="NewPost" component={NewPost} options={{ headerShown: true, title: 'New post' }} />
+      <Stack.Screen
+        name="NewPost"
+        component={NewPostComment}
+        options={{ headerShown: true, title: 'New post', headerTitleStyle: { color: colors.heading, fontFamily: fonts.heading } }}
+        initialParams={{ url: 'posts', post: true }}
+      />
     </Stack.Navigator>
   );
 }

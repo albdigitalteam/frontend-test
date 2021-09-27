@@ -107,10 +107,3 @@ function Routes() {
 }
 
 export default Routes;
-
-// <>
-//   <Stack.Screen name="Posts" component={Posts} />
-//   <Stack.Screen name="PostDetail" component={PostNavigation} />
-//   <Stack.Screen name="NewPost" component={NewPost}
-// options={{ headerShown: true, title: 'New post' }} />
-// </>

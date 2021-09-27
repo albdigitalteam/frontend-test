@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
+import { FAB } from '../../components/FAB';
 
 import { LoadingData } from '../../components/LoadingData';
 
@@ -62,6 +63,7 @@ export function Comments({ route }: any) {
           renderItem={renderItems}
           keyExtractor={(item, index) => index.toString()}
         />
+        <FAB navigationURL="NewComment" />
       </Content>
     </Container>
   );

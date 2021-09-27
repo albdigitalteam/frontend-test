@@ -6,11 +6,15 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Container } from './styles';
 import colors from '../../styles/colors';
 
-export function FAB() {
+interface FabProps {
+  navigationURL: string;
+}
+
+export function FAB({ navigationURL }: FabProps) {
   const navigation = useNavigation();
 
   const handleNavigateNewPost = () => {
-    navigation.navigate('NewPost');
+    navigation.navigate(navigationURL);
   };
 
   return (

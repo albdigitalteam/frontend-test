@@ -11,6 +11,8 @@ import { Comments } from '../pages/Comments';
 
 import { api } from '../services/api';
 import colors from '../styles/colors';
+import { NewPostComment } from '../components/NewPostComment';
+import { CommentNavigation } from './CommentNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -109,9 +111,10 @@ export default function PostNavigation({ route }) {
       />
       <Tab.Screen
         name="Comments"
-        component={Comments}
+        component={CommentNavigation}
         initialParams={params}
         options={{
+          headerShown: false,
           headerTitleStyle: { color: colors.blue },
         }}
       />

@@ -9,14 +9,15 @@ import { InputArea } from '../../components/InputArea';
 import Button from '../../components/Button';
 
 import {
-  Container, Content, Title, Footer, TitleContainer, DescriptionContainer,
+  Container, Content, Footer, TitleContainer, DescriptionContainer,
 } from './styles';
 
-export function NewPost() {
+export function NewPostComment({ route }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const { url, post } = route.params;
   const navigation = useNavigation();
 
   const handleInputTitle = (value: string) => {
@@ -30,15 +31,14 @@ export function NewPost() {
   const handleSubmit = async () => {
     setLoading(true);
     const params = {
-      // userId: 0, // add user with email
       title,
       body: description,
     };
-    await api.post('/posts', params)
+    await api.post(url, params)
       .then((res) => {
         Alert.alert(
           'Success!',
-          'New post register', [
+          `New ${post ? 'post' : 'comment'} register`, [
             { text: 'OK', onPress: () => { navigation.goBack(); } },
           ],
         );
@@ -47,7 +47,7 @@ export function NewPost() {
         console.log('Error', error);
         Alert.alert(
           'Error!',
-          'Not possible register new post',
+          `Not possible register new ${post ? 'post' : 'comment'}`,
         );
       });
     setLoading(false);
