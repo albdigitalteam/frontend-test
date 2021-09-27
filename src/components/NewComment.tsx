@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import styled, { useTheme } from 'styled-components/native';
 
-const NewComment: React.FC = () => {
+import { CREATE_NEW_COMMENT } from '../store/slices/postsSlice';
+import { User } from '../store/slices/usersSlice';
+
+type Props = {
+  readonly postId: number;
+  readonly userLogged?: User;
+};
+
+const NewComment: React.FC<Props> = ({ postId, userLogged }) => {
+  const [text, setText] = useState<string>('');
+  const dispatch = useDispatch();
   const {
     colors: { secondary },
   } = useTheme();
+
+  const saveComment = () => {
+    if (text.length > 0) {
+      dispatch(
+        CREATE_NEW_COMMENT({
+          comment: {
+            postId,
+            email: userLogged?.email,
+            name: userLogged?.name,
+            body: text,
+          },
+        }),
+      );
+      setText('');
+    }
+  };
+
   return (
     <StyledContainer>
-      <StyledTextInput placeholder="Digite aqui o seu comentário" />
-      <Button onPress={() => { }}>
+      <StyledTextInput
+        placeholder="Digite aqui o seu comentário"
+        value={text}
+        onChangeText={setText}
+      />
+      <Button onPress={saveComment}>
         <FAIcon name="send-o" size={25} color={secondary} />
       </Button>
     </StyledContainer>
@@ -20,7 +52,7 @@ const StyledContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: #fefbf3;
+  background-color: ${({ theme: { colors } }) => colors.primary};
   box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.15);
   padding: 12px;
   margin-top: 18px;
