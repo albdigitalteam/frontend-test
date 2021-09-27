@@ -78,7 +78,7 @@ const HomeScreen: React.FC = () => {
         snapToOffsets={[...Array(posts.length)].map(
           (x, i) => i * (POST_WIDTH + 10) + (i - 1) * 10,
         )}
-        keyExtractor={item => item.title}
+        keyExtractor={item => `${item.title}-${item.id}`}
         renderItem={({ item }: { item: PostProps }) => (
           <Post
             data={item}
@@ -106,12 +106,11 @@ const StyledContainer = styled.View`
 
 const StyledFlatList = styled(FlatList as new () => FlatList<PostProps>).attrs({
   contentContainerStyle: {
+    paddingTop: 16,
     paddingHorizontal: 10,
+    paddingBottom: 16
   },
-})`
-  padding-top: 14px;
-  padding-bottom: 16px;
-`;
+})``;
 
 const StyledFloatingButtonContainer = styled.TouchableOpacity`
   width: 40px;

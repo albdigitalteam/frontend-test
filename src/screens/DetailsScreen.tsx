@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Dimensions } from 'react-native';
+import React, { useMemo, useRef, Fragment } from 'react';
+import { Dimensions, ScrollView } from 'react-native';
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,6 +24,7 @@ type DetailsScreenNavigationProp = NativeStackNavigationProp<
 const { width } = Dimensions.get('screen');
 
 const HomeScreen: React.FC = () => {
+  const scrollRef = useRef<ScrollView | null>(null);
   const {
     params: { postId },
   } = useRoute<DetailsScreenRouteProp>();
@@ -54,7 +55,7 @@ const HomeScreen: React.FC = () => {
           dispatch(DELETE_POST({ id: postId }));
         }}
       />
-      <StyledContainer>
+      <StyledContainer ref={scrollRef} >
         <StyledCover
           source={{
             uri: 'https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg?size=626&ext=jpg',
@@ -70,9 +71,8 @@ const HomeScreen: React.FC = () => {
           )}
 
           {postComments.map((comment, index) => (
-            <>
+            <Fragment key={`${comment.id}-${comment.postId}`}>
               <Comment
-                key={comment.id}
                 name={comment.name}
                 email={comment.email}
                 body={comment.body}
@@ -80,11 +80,11 @@ const HomeScreen: React.FC = () => {
                 id={comment.id}
               />
               {index !== postComments.length - 1 && (
-                <StyledDivisor key={`divisor${index}`} />
+                <StyledDivisor />
               )}
-            </>
+            </Fragment>
           ))}
-          <NewComment postId={postId} userLogged={userLogged} />
+          <NewComment postId={postId} userLogged={userLogged} onCommentSuccess={() => scrollRef.current?.scrollToEnd({ animated: true })} />
         </StyledContent>
       </StyledContainer>
     </>

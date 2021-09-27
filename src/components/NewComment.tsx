@@ -9,9 +9,10 @@ import { User } from '../store/slices/usersSlice';
 type Props = {
   readonly postId: number;
   readonly userLogged?: User;
+  onCommentSuccess: () => void;
 };
 
-const NewComment: React.FC<Props> = ({ postId, userLogged }) => {
+const NewComment: React.FC<Props> = ({ postId, userLogged, onCommentSuccess }) => {
   const [text, setText] = useState<string>('');
   const dispatch = useDispatch();
   const {
@@ -31,6 +32,7 @@ const NewComment: React.FC<Props> = ({ postId, userLogged }) => {
         }),
       );
       setText('');
+      setTimeout(() => onCommentSuccess(), 250);
     }
   };
 
@@ -53,7 +55,8 @@ const StyledContainer = styled.View`
   align-items: center;
   justify-content: center;
   background-color: ${({ theme: { colors } }) => colors.primary};
-  box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.15);
+  box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.55);
+  elevation: 10;
   padding: 12px;
   margin-top: 18px;
   margin-bottom: 18px;

@@ -51,8 +51,9 @@ const NewPost: React.FC<Props> = ({ userLogged }) => {
 
 const StyledContainer = styled.View`
   background-color: ${({ theme: { colors } }) => colors.primary};
-  box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.15);
-  margin: 0 12px 16px;
+  box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.55);
+  elevation: 10;
+  margin: 0 12px;
   padding: 10px 12px 10px;
   border-radius: 10px;
 `;

@@ -14,7 +14,7 @@ type Props = {
   onPress: () => void;
 };
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const Post: React.FC<Props> = ({ data: { id, title, body }, onPress }) => {
   const { comments } = useSelector<RootState, PostsState>(state => state.post);
@@ -27,13 +27,13 @@ const Post: React.FC<Props> = ({ data: { id, title, body }, onPress }) => {
     <StyledContainer>
       <StyledCover
         source={{
-          uri: 'https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg?size=626&ext=jpg',
+          uri: 'https://images.unsplash.com/photo-1593264919882-777fee614660?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2832&q=80',
         }}
       />
       <StyledWrapper>
-        <StyledTitle>{title}</StyledTitle>
+        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
         <StyledTextView>
-          <StyledText numberOfLines={5} ellipsizeMode="tail">
+          <StyledText numberOfLines={4} ellipsizeMode="tail">
             {body}
           </StyledText>
         </StyledTextView>
@@ -50,7 +50,8 @@ const StyledContainer = styled.View`
   width: ${width * 0.85}px;
   align-items: center;
   background-color: ${({ theme: { colors } }) => colors.primary};
-  box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.15);
+  box-shadow: 0px 3px 15px rgba(86, 86, 86, 0.55);
+  elevation: 10;
   margin-right: 10px;
   margin-left: 10px;
   border-radius: 10px;
@@ -86,7 +87,7 @@ const StyledDots = styled.Text`
 
 const StyledCover = styled.Image`
   width: 100%;
-  height: ${width - 48}px;
+  height: ${height * 0.35}px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 `;
