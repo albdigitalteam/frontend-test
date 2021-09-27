@@ -36,7 +36,6 @@ export function NewPost() {
     };
     await api.post('/posts', params)
       .then((res) => {
-        console.log('OK', res);
         Alert.alert(
           'Success!',
           'New post register', [

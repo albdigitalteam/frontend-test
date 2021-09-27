@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SecureStore from 'expo-secure-store';
 import { AuthContext } from '../Contexts/AuthContext';
 
+import DrawerMenuNavigation from './DrawerMenuNavigation';
 import PostNavigation from './PostNavigation';
 
 import { Welcome } from '../pages/Welcome';
@@ -98,11 +99,7 @@ function Routes() {
             <Stack.Screen name="Users" component={Users} />
           </>
         ) : (
-          <>
-            <Stack.Screen name="Posts" component={Posts} />
-            <Stack.Screen name="PostDetail" component={PostNavigation} />
-            <Stack.Screen name="NewPost" component={NewPost} options={{ headerShown: true, title: 'New post' }} />
-          </>
+          <Stack.Screen name="DrawerApp" component={DrawerMenuNavigation} />
         )}
       </Stack.Navigator>
     </AuthContext.Provider>
@@ -110,3 +107,10 @@ function Routes() {
 }
 
 export default Routes;
+
+// <>
+//   <Stack.Screen name="Posts" component={Posts} />
+//   <Stack.Screen name="PostDetail" component={PostNavigation} />
+//   <Stack.Screen name="NewPost" component={NewPost}
+// options={{ headerShown: true, title: 'New post' }} />
+// </>

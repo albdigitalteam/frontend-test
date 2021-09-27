@@ -93,6 +93,11 @@ export default function PostNavigation({ route }) {
         component={PostDetail}
         initialParams={params}
         options={{
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => { navigation.goBack(); }} style={{ padding: 10 }}>
+              <FontAwesome5 name="chevron-left" size={24} color={colors.blue} />
+            </TouchableOpacity>
+          ),
           title: user.name,
           headerTitleStyle: { color: colors.blue },
           headerRight: () => (

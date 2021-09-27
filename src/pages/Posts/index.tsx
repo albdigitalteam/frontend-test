@@ -31,7 +31,6 @@ export function Posts() {
   const [posts, setPosts] = useState<PostProps[]>([]);
 
   const navigation = useNavigation();
-  const { signOut } = React.useContext(AuthContext);
 
   async function getPosts() {
     await api.get('/posts').then((res) => {
@@ -75,8 +74,7 @@ export function Posts() {
     <Container>
       <Content>
         <FlatList
-          ListHeaderComponent={(<TitleScreen>Posts</TitleScreen>)}
-          // ListHeaderComponent={(<Button title="Deslogar" onPress={signOut} />)}
+          // ListHeaderComponent={(<TitleScreen>Posts</TitleScreen>)}
           showsVerticalScrollIndicator={false}
           data={posts}
           renderItem={renderItems}
