@@ -1,45 +1,36 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/native';
 
-type Address = {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: {
-    lat: string;
-    lng: string;
-  };
-};
-
-type Company = {
-  name: string;
-  catchPhrase: string;
-  bs: string;
-};
-
-type UserProps = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: Address;
-  phone: string;
-  website: string;
-  company: Company;
-};
+import {
+  User as UserType,
+  UserState,
+  SET_USER_LOGGED,
+} from '../store/slices/usersSlice';
+import { RootState } from '../store';
 
 type Props = {
-  data: UserProps;
+  data: UserType;
+  onPress?: () => void;
 };
 
 interface ContainerProps {
   isLogged: boolean;
 }
 
-const User: React.FC<Props> = ({ data }) => {
+const User: React.FC<Props> = ({ data, onPress = () => { } }) => {
+  const dispatch = useDispatch();
+  const { userLogged } = useSelector<RootState, UserState>(state => state.user);
+
+  const onUserPressed = () => {
+    dispatch(SET_USER_LOGGED({ user: data }));
+    setTimeout(() => onPress(), 250);
+  };
+
   return (
-    <StyledContainer isLogged>
+    <StyledContainer
+      isLogged={userLogged?.id === data.id}
+      onPress={onUserPressed}>
       <StyledText>{data.name}</StyledText>
     </StyledContainer>
   );
