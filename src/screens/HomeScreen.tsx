@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   FlatList,
   NativeSyntheticEvent,
@@ -6,15 +6,29 @@ import {
   Dimensions,
 } from 'react-native';
 import FAIcon from 'react-native-vector-icons/MaterialIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import styled, { useTheme } from 'styled-components/native';
-
-import { PostProps } from '../components/Post';
 
 import Header from '../components/Header';
 import NewPost from '../components/NewPost';
 import Post from '../components/Post';
 
-import posts from '../mocks/posts';
+import { SET_USERS, UserState } from '../store/slices/usersSlice';
+import {
+  GET_COMMENTS,
+  GET_POSTS,
+  Post as PostProps,
+  PostsState,
+} from '../store/slices/postsSlice';
+import { RootState } from '../store';
+import { RootStackParamList } from '../routes';
+
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
 
 const POST_WIDTH = Dimensions.get('window').width * 0.85;
 
@@ -23,6 +37,10 @@ const HomeScreen: React.FC = () => {
   const [floatingButtonVisibility, setFloatingButtonVisibility] =
     useState<boolean>(false);
   const { colors } = useTheme();
+  const { navigate } = useNavigation<HomeScreenNavigationProp>();
+  const dispatch = useDispatch();
+  const { posts } = useSelector<RootState, PostsState>(state => state.post);
+  const { userLogged } = useSelector<RootState, UserState>(state => state.user);
 
   const handleScrolling = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const {
@@ -37,10 +55,16 @@ const HomeScreen: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(SET_USERS());
+    dispatch(GET_POSTS());
+    dispatch(GET_COMMENTS());
+  }, []);
+
   return (
     <StyledContainer>
       <Header title="POSTGRAM" showUserIcon />
-      <NewPost />
+      <NewPost userLogged={userLogged} />
       <StyledFlatList
         data={posts}
         ref={flatListRef}
@@ -54,7 +78,13 @@ const HomeScreen: React.FC = () => {
         snapToOffsets={[...Array(posts.length)].map(
           (x, i) => i * (POST_WIDTH + 10) + (i - 1) * 10,
         )}
-        renderItem={({ item }: { item: PostProps }) => <Post data={item} />}
+        keyExtractor={item => item.title}
+        renderItem={({ item }: { item: PostProps }) => (
+          <Post
+            data={item}
+            onPress={() => navigate('Details', { postId: item.id })}
+          />
+        )}
       />
 
       {floatingButtonVisibility && (
@@ -74,7 +104,7 @@ const StyledContainer = styled.View`
   background-color: ${({ theme: { colors } }) => colors.primary};
 `;
 
-const StyledFlatList = styled.FlatList.attrs({
+const StyledFlatList = styled(FlatList as new () => FlatList<PostProps>).attrs({
   contentContainerStyle: {
     paddingHorizontal: 10,
   },

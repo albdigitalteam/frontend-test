@@ -1,12 +1,31 @@
 import React, { useState } from 'react';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch } from 'react-redux';
 import styled, { useTheme } from 'styled-components/native';
 
-const NewPost: React.FC = () => {
+import { User } from '../store/slices/usersSlice';
+import { CREATE_NEW_POST } from '../store/slices/postsSlice';
+
+type Props = {
+  userLogged?: User;
+};
+
+const NewPost: React.FC<Props> = ({ userLogged }) => {
   const [title, setTitle] = useState<string>('');
+  const [body, setBody] = useState<string>('');
   const {
     colors: { secondary },
   } = useTheme();
+  const dispatch = useDispatch();
+
+  const savePost = () => {
+    if (title.length > 0 && body.length > 0) {
+      dispatch(CREATE_NEW_POST({ post: { userId: userLogged?.id, title, body } }));
+      setBody('');
+      setTitle('');
+    }
+  };
+
   return (
     <StyledContainer>
       <StyledTitleContainer>
@@ -15,12 +34,16 @@ const NewPost: React.FC = () => {
           value={title}
           onChangeText={setTitle}
         />
-        <Button>
+        <Button onPress={savePost}>
           <FAIcon name="send-o" size={25} color={secondary} />
         </Button>
       </StyledTitleContainer>
       {title.trim().length > 0 && (
-        <StyledInput placeholder="Digite o seu texto aqui..." />
+        <StyledInput
+          placeholder="Digite o seu texto aqui..."
+          value={body}
+          onChangeText={setBody}
+        />
       )}
     </StyledContainer>
   );
