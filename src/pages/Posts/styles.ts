@@ -7,6 +7,12 @@ export const Container = styled.SafeAreaView``;
 export const Content = styled.View`
   padding: 20px;
 `;
+export const TitleScreen = styled.Text`
+  font-size: 32px;
+  font-weight: bold;
+  color: ${colors.heading};
+  font-family: ${fonts.heading};
+`;
 
 export const ItemContainer = styled.TouchableOpacity`
   flex-direction: row;

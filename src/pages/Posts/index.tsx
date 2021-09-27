@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Alert } from 'react-native';
+import { FlatList, Alert, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -8,9 +8,10 @@ import { LoadingData } from '../../components/LoadingData';
 
 import { api } from '../../services/api';
 import { capitalizeFirstLetter } from '../../Util/utils';
+import { AuthContext } from '../../Contexts/AuthContext';
 
 import {
-  Container, Content, ItemContainer, Title, Description, ItemContent,
+  Container, Content, ItemContainer, Title, Description, ItemContent, TitleScreen,
 } from './styles';
 import colors from '../../styles/colors';
 
@@ -30,6 +31,7 @@ export function Posts() {
   const [posts, setPosts] = useState<PostProps[]>([]);
 
   const navigation = useNavigation();
+  const { signOut } = React.useContext(AuthContext);
 
   async function getPosts() {
     await api.get('/posts').then((res) => {
@@ -73,6 +75,8 @@ export function Posts() {
     <Container>
       <Content>
         <FlatList
+          ListHeaderComponent={(<TitleScreen>Posts</TitleScreen>)}
+          // ListHeaderComponent={(<Button title="Deslogar" onPress={signOut} />)}
           showsVerticalScrollIndicator={false}
           data={posts}
           renderItem={renderItems}

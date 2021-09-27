@@ -12,6 +12,7 @@ import { api } from '../../services/api';
 import {
   Container, Title, ListContainer, CardContent,
 } from './styles';
+import { AuthContext } from '../../Contexts/AuthContext';
 
 interface UsersProps {
     id: number;
@@ -28,6 +29,7 @@ export function Users() {
   const [users, setUsers] = useState<UsersProps[]>([]);
 
   const navigation = useNavigation();
+  const { signIn } = React.useContext(AuthContext);
 
   const getUserPhotos = async (userList) => {
     await axios.get('https://randomuser.me/api/?results=10')
@@ -63,15 +65,15 @@ export function Users() {
       });
   };
 
-  const handleMove = () => {
-    navigation.navigate('Posts');
+  const handleMove = (user: UsersProps) => {
+    signIn(user);
   };
 
   const renderItems = (elem: ItemProps) => {
     const { name, email, picture } = elem.item;
     return (
       <Card>
-        <CardContent onPress={handleMove}>
+        <CardContent onPress={() => handleMove(elem.item)}>
           <UserDetail picture={picture} name={name} email={email} />
         </CardContent>
       </Card>
