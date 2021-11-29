@@ -1,9 +1,7 @@
 ## Front-End Developer Test
-
 Crie um app mobile ou site web que servirá como um blog de publicações e comentários.
 
 ### O que precisa ser feito:
-
 - [ ]  Consumir a lista de posts onde:
     - Cada post possui um autor usuário e deverá ter um título, descrição e informar qual foi o usuário autor;
     - Cada post pode ter ou não comentários de outros usuários e deverá conter o comentário em si e o nome do usuário que fez o comentário;
@@ -20,15 +18,13 @@ Comentários → [https://jsonplaceholder.typicode.com/comments](https://jsonpla
 Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 
 ### Pontos a serem avaliados:
-
 - [ ]  Utilização da linguagem e/ou tecnologia
 - [ ]  Gerencia de estado da aplicação, imutabilidade e efeitos colaterais
 - [ ]  Arquitetura, escalabilidade e organização
 - [ ]  Implementação de patterns e conceitos
 - [ ]  Árvore de commits do Git
 
-### Não é obrigatório, mas seria legal se você usasse caso queira ganhar alguns pontos:
-
+### Não essencial, mas ótimo se tiver também:
 - ReactJS ou React Native
 - Redux + Redux Saga
 - TypeScript
