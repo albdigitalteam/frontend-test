@@ -1,8 +1,8 @@
-## Teste desenvolvedor Front-end
+## Front-End Developer Test
 
 Crie um app mobile ou site web que servirá como um blog de publicações e comentários.
 
-### O que precisa ser feito
+### O que precisa ser feito:
 
 - [ ]  Consumir a lista de posts onde:
     - Cada post possui um autor usuário e deverá ter um título, descrição e informar qual foi o usuário autor;
@@ -11,7 +11,7 @@ Crie um app mobile ou site web que servirá como um blog de publicações e come
 - [ ]  Deverá ser possível criar um post e um comentário para cada post.
 - [ ]  Deverá ser possível excluir o post.
 
-**API de consumo dos Posts, Usuários e comentários:**
+**API para consumo:**
 
 Posts → [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)
 
@@ -19,7 +19,7 @@ Comentários → [https://jsonplaceholder.typicode.com/comments](https://jsonpla
 
 Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 
-### Pontos a serem avaliados
+### Pontos a serem avaliados:
 
 - [ ]  Utilização da linguagem e/ou tecnologia
 - [ ]  Gerencia de estado da aplicação, imutabilidade e efeitos colaterais
@@ -36,4 +36,4 @@ Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplacehold
 
 **Prazo para entrega: 4 dias após o fork do repositório.**
 
-Após finalizar o teste, abre um Pull Request neste repositório para que possamos avaliar o seu resultado, em seguida, avise através do e-mail: [vitor.cazelatto-sc@airliquide.com](mailto:vitor.cazelatto-sc@airliquide.com)
+Ao finalizar, abrir um Pull Request neste repositório e notificar pelo mesmo e-mail que você recebeu o teste.
