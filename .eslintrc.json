@@ -1,0 +1,33 @@
+{
+  "env": {
+      "es2021": true
+  },
+  "extends": [
+      "airbnb-typescript",
+      "react-app",
+      "prettier",
+      "prettier/react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react",
+      "react-hooks",
+      "@typescript-eslint",
+      "prettier"
+  ],
+  "rules": {
+      "import/no-unresolved": "error"
+  },
+  "settings": {
+      "import/resolver": {
+          "typescript": {}
+      }
+  }
+}
