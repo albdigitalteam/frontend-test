@@ -8,6 +8,7 @@ import {FlatList} from 'react-native';
 interface Props {
   commentsStatus: ReduxState<IComment[]>;
   comments: IComment[] | null | undefined;
+  postId: number;
 }
 
 const CommentsContent = (props: Props) => {
@@ -22,7 +23,7 @@ const CommentsContent = (props: Props) => {
           data={props.comments}
         />
       )}
-      <NewComment />
+      <NewComment postId={props.postId} />
       {props.commentsStatus.isDoing && <Skeleton amount={5} />}
     </Container>
   );

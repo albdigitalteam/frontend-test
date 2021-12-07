@@ -23,7 +23,7 @@ const CommentsContainer = (props: Props) => {
     props.getComments(postId);
   }, []);
 
-  return <CommentsContent {...props} />;
+  return <CommentsContent postId={postId} {...props} />;
 };
 
 export {CommentsContainer};
