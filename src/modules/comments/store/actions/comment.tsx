@@ -1,6 +1,6 @@
 import {GET_COMMENTS_FROM_POST, CREATE_COMMENT} from '../types';
 import {ErrorState} from '@interfaces/';
-import {IComment} from '@modules/main/home/store/interfaces';
+import {IComment} from '@modules/comments/store/interfaces';
 
 export const getCommentsFromPostAction = {
   request: (): any => ({type: GET_COMMENTS_FROM_POST.REQUEST}),

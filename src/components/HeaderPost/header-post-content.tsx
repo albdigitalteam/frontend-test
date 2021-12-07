@@ -7,7 +7,7 @@ import {
 } from './styles';
 import {View, ActivityIndicator} from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
-import {ICreatePostDto, IPost} from '@modules/main/home/store/interfaces';
+import {ICreatePostDto, IPost} from '@modules/posts/store/interfaces';
 import {ReduxState} from '@interfaces/';
 import {IUser} from '@modules/user/store/interfaces';
 import Input from '../Input';

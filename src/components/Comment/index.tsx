@@ -1,6 +1,4 @@
 import React from 'react';
-import {getUserById} from '@modules/user/api/user';
-import {useSelector, useDispatch} from 'react-redux';
 import {IComment} from '@modules/comments/store/interfaces';
 import {CommentContainer} from './comment-container';
 

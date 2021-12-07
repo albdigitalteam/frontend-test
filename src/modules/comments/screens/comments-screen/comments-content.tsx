@@ -16,15 +16,13 @@ const CommentsContent = (props: Props) => {
   return (
     <Container>
       {props.commentsStatus.isDone && (
-        <>
-          <FlatList
-            keyExtractor={comment => `${comment.id}`}
-            renderItem={renderItem}
-            data={props.comments}
-          />
-          <NewComment />
-        </>
+        <FlatList
+          keyExtractor={comment => `${comment.id}`}
+          renderItem={renderItem}
+          data={props.comments}
+        />
       )}
+      <NewComment />
       {props.commentsStatus.isDoing && <Skeleton amount={5} />}
     </Container>
   );

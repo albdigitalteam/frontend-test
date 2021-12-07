@@ -1,5 +1,5 @@
 import React from 'react';
-import {ICreatePostDto, IPost} from '@modules/main/home/store/interfaces';
+import {ICreatePostDto, IPost} from '@modules/posts/store/interfaces';
 import {ReduxState} from '@interfaces/';
 import {IUser} from '@modules/user/store/interfaces';
 import HeaderPostContent from './header-post-content';
