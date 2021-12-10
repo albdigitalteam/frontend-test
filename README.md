@@ -5,7 +5,7 @@ Crie um app mobile ou site web que servirá como um blog de publicações e come
 - [ ]  Consumir a lista de posts onde:
     - Cada post possui um autor usuário e deverá ter um título, descrição e informar qual foi o usuário autor;
     - Cada post pode ter ou não comentários de outros usuários e deverá conter o comentário em si e o nome do usuário que fez o comentário;
-    - Não é obrigatório ter uma imagem o post, mas seria um plus se implementar, e caso utilize Lazy Load, será um plus++.
+    - Não é obrigatório ter uma imagem o post, mas seria um plus se implementar Lazy Load.
 - [ ]  Deverá ser possível criar um post e um comentário para cada post.
 - [ ]  Deverá ser possível excluir o post.
 
@@ -30,6 +30,6 @@ Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplacehold
 - TypeScript
 - Testes automatizados
 
-**Prazo para entrega: 4 dias após o fork do repositório.**
+**Prazo para entrega: 1 semana após o fork do repositório.**
 
 Ao finalizar, abrir um Pull Request neste repositório e notificar pelo mesmo e-mail que você recebeu o teste.
