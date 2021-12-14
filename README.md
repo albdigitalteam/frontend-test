@@ -1,35 +1,46 @@
-## Front-End Developer Test
-Crie um app mobile ou site web que servirá como um blog de publicações e comentários.
+# Getting Started with Create React App
 
-### O que precisa ser feito:
-- [ ]  Consumir a lista de posts onde:
-    - Cada post possui um autor usuário e deverá ter um título, descrição e informar qual foi o usuário autor;
-    - Cada post pode ter ou não comentários de outros usuários e deverá conter o comentário em si e o nome do usuário que fez o comentário;
-    - Não é obrigatório ter uma imagem o post, mas seria um plus se implementar, e caso utilize Lazy Load, será um plus++.
-- [ ]  Deverá ser possível criar um post e um comentário para cada post.
-- [ ]  Deverá ser possível excluir o post.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**API para consumo:**
+## Available Scripts
 
-Posts → [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)
+In the project directory, you can run:
 
-Comentários → [https://jsonplaceholder.typicode.com/comments](https://jsonplaceholder.typicode.com/comments)
+### `yarn start`
 
-Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Pontos a serem avaliados:
-- [ ]  Utilização da linguagem e/ou tecnologia
-- [ ]  Gerencia de estado da aplicação, imutabilidade e efeitos colaterais
-- [ ]  Arquitetura, escalabilidade e organização
-- [ ]  Implementação de patterns e conceitos
-- [ ]  Árvore de commits do Git
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Não essencial, mas ótimo se tiver também:
-- ReactJS ou React Native
-- Redux + Redux Saga
-- TypeScript
-- Testes automatizados
+### `yarn test`
 
-**Prazo para entrega: 4 dias após o fork do repositório.**
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Ao finalizar, abrir um Pull Request neste repositório e notificar pelo mesmo e-mail que você recebeu o teste.
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
