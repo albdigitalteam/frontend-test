@@ -1,6 +1,6 @@
 export interface IToastData {
-  duration?: number;
   message: string;
+  duration?: number;
   color?: string;
   position?: 'bottom' | 'top' | 'middle';
 }
