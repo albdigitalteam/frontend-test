@@ -1,4 +1,4 @@
-import {IUser} from './user.model';
+import {IUserReduced} from './user.model';
 
 export interface ICommentAPI {
   readonly id: number;
@@ -10,6 +10,6 @@ export interface ICommentAPI {
 
 export interface IComment {
   readonly id: number;
-  readonly user: IUser;
+  readonly user: IUserReduced;
   readonly description: string;
 }

@@ -28,3 +28,9 @@ export interface IUserAPI {
 export type IUser = IUserAPI & {
   readonly avatar: IAvatar,
 }
+
+export interface IUserReduced {
+  readonly email: string;
+  readonly name: string;
+  readonly avatar: IAvatar,
+}

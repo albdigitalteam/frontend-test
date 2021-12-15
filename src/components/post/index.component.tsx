@@ -1,6 +1,9 @@
 import React, {useCallback, useMemo, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {FaRegComments} from 'react-icons/fa';
+import {LazyLoadImage} from 'react-lazy-load-image-component';
+
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import {IPostPage, IPost} from '../../models/post.model';
 import Comment from '../../components/comment/index.component';
@@ -45,6 +48,7 @@ const Post: React.FC<IPostPage> = ({
         id,
         title,
         description,
+        user,
       },
     });
   }, [navigate]);
@@ -52,9 +56,10 @@ const Post: React.FC<IPostPage> = ({
   return (
     <Container>
       <Header>
-        <img
-          src='https://scontent.fcgh10-1.fna.fbcdn.net/v/t39.30808-6/258854853_4697875306922352_8420990843923849622_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=sPgW1bQXhfUAX__znKq&_nc_ht=scontent.fcgh10-1.fna&oh=00_AT-P50UHEnjcLGF3NUFtsNYRGFNJ7fPAT1XuZJR8ypWMMQ&oe=61B91BAD'
-          alt='Foto icone'
+        <LazyLoadImage
+          src={user?.avatar.url}
+          alt='Foto icone perfil'
+          effect='blur'
         />
         <div>
           <h3>{user?.name}</h3>
@@ -64,7 +69,7 @@ const Post: React.FC<IPostPage> = ({
       <Body>
         <ImageContainer>
           <a href={postPhoto} target='_blank' rel="noreferrer">
-            <img src={postPhoto} alt="Imagem do post" />
+            <LazyLoadImage src={postPhoto} alt="Imagem do post" effect='blur' />
           </a>
         </ImageContainer>
 

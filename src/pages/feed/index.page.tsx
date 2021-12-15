@@ -33,6 +33,9 @@ const Feed: React.FC = () => {
   }, [modalIsOpen, setModalIsOpen]);
 
   const handleSavePost = useCallback(({photoUrl, title, description}: ISaveNewPost): void => {
+    const titleFormatted = title.trim();
+    const descriptionFormatted = description.trim();
+
     posts.unshift({
       id: posts.length + 1,
       photoUrl: String(photoUrl),

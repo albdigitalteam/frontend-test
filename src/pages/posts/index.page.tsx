@@ -9,14 +9,18 @@ import Post from '../../components/post/index.component';
 import {IPost} from '../../models/post.model';
 
 import {useAuth} from '../../hooks/auth';
+import {useToast} from '../../hooks/toast';
+
 
 import {adaptComment} from '../../adapters/comment.adapter';
 
 import {Container, Content, PostContainer} from './styles.style';
+import {adaptUser} from '../../adapters/user.adapter';
 
 const Posts: React.FC = () => {
   const location = useLocation();
   const {user} = useAuth();
+  const {addToast} = useToast();
 
   const [post, setPost] = useState<IPost>({} as IPost);
 
@@ -24,7 +28,11 @@ const Posts: React.FC = () => {
     const newCommentFormatted = newComment.trim();
 
     if (!newCommentFormatted) {
-      alert('Digite um comentário');
+      addToast({
+        type: 'error',
+        title: 'Digite um comentário',
+      });
+      return;
     }
 
     setPost((oldPost) => {
@@ -33,9 +41,9 @@ const Posts: React.FC = () => {
         comments: [
           ...oldPost.comments,
           {
-            user,
-            id: 123,
+            id: oldPost.comments.length + 1,
             description: newCommentFormatted,
+            user: adaptUser(user),
           },
         ],
       };
@@ -43,7 +51,7 @@ const Posts: React.FC = () => {
   }, [user]);
 
   async function handleComments(): Promise<void> {
-    const {id, title, description} = location.state as IPost;
+    const {id, title, description, user} = location.state as IPost;
 
     const {data: commentDataAPI} = await commentsService.get(id);
 
@@ -53,6 +61,7 @@ const Posts: React.FC = () => {
       id,
       title,
       description,
+      user,
       comments,
     });
   }
@@ -74,6 +83,7 @@ const Posts: React.FC = () => {
             title={post.title}
             description={post.description}
             comments={post.comments}
+            user={post.user}
             handleSaveComment={handleSaveComment}
             showComments
           />

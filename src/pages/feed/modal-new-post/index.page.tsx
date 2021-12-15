@@ -69,6 +69,7 @@ const ModalNewPost: React.FC<IModalCreateNewPost> = ({
         <Input
           placeholder='Título'
           onChange={(input) => setTitle(input.target.value)}
+          error={true}
         />
         <Textarea
           placeholder='Descrição'
