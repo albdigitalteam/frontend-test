@@ -6,6 +6,9 @@
 
 <ion-content>
   <div>
+    <ion-button fill="outline" slot="end" (click)="deletePost()">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
     <ion-card-header>
       <ion-card-subtitle>Autor {{post.author}}</ion-card-subtitle>
       <ion-card-title>{{ post.title }}</ion-card-title>
