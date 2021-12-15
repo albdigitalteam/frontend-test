@@ -4,6 +4,7 @@ import Textarea from '../../components/textarea/index.component';
 import Button from '../../components/button/index.component';
 
 export const Container = styled.div`
+  background: ${({theme}) => theme.colors.primary};
 `;
 
 export const Content = styled.main`

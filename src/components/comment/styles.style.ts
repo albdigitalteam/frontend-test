@@ -20,8 +20,4 @@ export const Content = styled.div`
   h1 {
     font-size: 14px;
   }
-
-  p {
-
-  }
 `;

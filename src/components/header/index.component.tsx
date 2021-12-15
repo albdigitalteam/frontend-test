@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {RiArrowLeftSLine} from 'react-icons/ri';
 
-import logo from '../../assets/logo.jpeg';
+import logo from '../../assets/logo.svg';
 
 import {IHeader} from './header.interface';
 

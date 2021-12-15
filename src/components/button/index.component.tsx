@@ -1,15 +1,13 @@
 import React from 'react';
 
-import {IButton} from './button.interface';
-
 import {Container} from './styles.style';
 
-const Button: React.FC<IButton> = ({children, ...rest}) => {
-  return (
-    <Container {...rest}>
-      {children}
-    </Container>
-  );
-};
+import {IButton} from './button.interface';
+
+const Button: React.FC<IButton> = ({children, ...props}) => (
+  <Container {...props}>
+    {children}
+  </Container>
+);
 
 export default Button;

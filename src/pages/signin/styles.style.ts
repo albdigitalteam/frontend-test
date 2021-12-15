@@ -1,47 +1,87 @@
-import styled from 'styled-components';
-
-import Input from '../../components/input/index.component';
-import Button from '../../components/button/index.component';
-
+import styled, {keyframes} from 'styled-components';
+import {shade} from 'polished';
 
 export const Container = styled.div`
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 100%;
-
+  align-items: stretch;
+  background: ${({theme}) => theme.colors.primary};
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  place-content: center;
+  align-items: center;
 
-  width: 90%;
+  width: 100%;
+`;
 
-  padding: 10px;
-  border-radius: 8px;
-  background: #242526;
-
-  img {
-    width: 128px;
-    height: 128px;
-
-    align-self: center;
-    margin-bottom: 4px;
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
   }
 
-  @media (min-width: 760px) {
-    width: 70%;
-    max-width: 700px;
+  to {
+    opacity: 1;
+    transform: translateX(0px);
   }
 `;
 
-export const EmailInput = styled(Input)``;
-
-export const SigninButton = styled(Button)`
+export const AnimationContainer = styled.div`
   width: 100%;
+  max-width: 700px;
 
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
+
+  animation: ${appearFromLeft} 1s;
+
+  form {
+    margin: 40px 0;
+    width: 340px;
+    text-align: center;
+
+    h1 {
+      margin-bottom: 24px;
+    }
+
+    > a {
+      color: ${({theme}) => theme.colors.text};
+      display: block;
+      margin-top: 24px;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: ${({theme}) => shade(0.2, theme.colors.text)};
+      }
+    }
+  }
+
+  > a {
+    color: ${({theme}) => theme.colors.secundary};
+    display: block;
+    margin-top: 24px;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: ${({theme}) => shade(0.2, theme.colors.secundary)};
+    }
+
+    svg {
+      margin-right: 16px;
+    }
+  }
+`;
+
+export const Logo = styled.img`
+  max-height: 75px;
 `;

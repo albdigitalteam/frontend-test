@@ -24,6 +24,7 @@ const Modal: React.FC<IModalProps> = ({
       style={{
         content: {
           ...style,
+          backgroundColor: '#000000',
           top: '50%',
           left: '50%',
           right: 'auto',
@@ -33,7 +34,7 @@ const Modal: React.FC<IModalProps> = ({
           background: '#F0F0F5',
           color: '#000000',
           borderRadius: '8px',
-          width: '900px',
+          width: '90%',
           border: 'none',
         },
         overlay: {

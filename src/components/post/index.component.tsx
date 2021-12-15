@@ -1,15 +1,18 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {FaRegComments} from 'react-icons/fa';
 
 import {IPostPage, IPost} from '../../models/post.model';
-
 import Comment from '../../components/comment/index.component';
+
+import noPhotoImage from '../../assets/no-data.svg';
 
 import {
   Container,
   Header,
   Body,
+  ImageContainer,
+  ContentContainer,
   Footer,
   ButtonsContainer,
   CommentsFeed,
@@ -22,6 +25,7 @@ const Post: React.FC<IPostPage> = ({
   id,
   title,
   description,
+  photoUrl,
   user,
   comments,
   showComments,
@@ -30,6 +34,10 @@ const Post: React.FC<IPostPage> = ({
   const navigate = useNavigate();
 
   const [newComment, setNewComment] = useState<string>('');
+
+  const postPhoto = useMemo(() => {
+    return photoUrl ? photoUrl : noPhotoImage;
+  }, []);
 
   const handleToComments = useCallback(({id, title, description}: Omit<IPost, 'comments'>) => {
     navigate(`/posts/${id}`, {
@@ -54,8 +62,16 @@ const Post: React.FC<IPostPage> = ({
 
       </Header>
       <Body>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <ImageContainer>
+          <a href={postPhoto} target='_blank' rel="noreferrer">
+            <img src={postPhoto} alt="Imagem do post" />
+          </a>
+        </ImageContainer>
+
+        <ContentContainer>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </ContentContainer>
       </Body>
 
       <Footer>

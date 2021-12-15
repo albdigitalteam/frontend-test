@@ -4,7 +4,7 @@ import Button from '../../components/button/index.component';
 import Textarea from '../textarea/index.component';
 
 export const Container = styled.div`
-  background-color: #242526;
+  background-color: ${({theme}) => theme.colors.background};
   padding: 16px 16px 0 16px;
 
   & + div {
@@ -32,9 +32,26 @@ export const Header = styled.div`
 `;
 
 export const Body = styled.div`
+  display: flex;
+  align-items: center;
+
   p {
     margin-top: 10px;
   }
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;  
+  margin-top: 10px;
+  margin-right: 20px;
+
+  img {
+    width: 140px;
+    height: 140px;
+  }
+`;
+
+export const ContentContainer = styled.div`
 `;
 
 export const Footer = styled.div`
@@ -63,7 +80,8 @@ export const ButtonsContainer = styled.div`
   align-items: center;
   width: 100%;
 
-  margin: 10px 0;
+  margin: 15px 0;
+  padding: 5px 0;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
 `;

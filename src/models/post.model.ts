@@ -10,6 +10,7 @@ export interface IPostAPI {
 
 export interface IPost {
   readonly id: number;
+  readonly photoUrl?: string;
   readonly title: string;
   readonly description: string;
   readonly user?: IUser;
