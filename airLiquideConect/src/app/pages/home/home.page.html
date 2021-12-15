@@ -5,15 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-card *ngFor="let post of posts; let i = index">
-      <ion-item>
-        <ion-icon name="chatbubble" slot="start"></ion-icon>
-        <ion-button fill="outline" slot="end" (click)="openPostDetails(post.id)"
-          >Detalhes do post</ion-button
-        >
-      </ion-item>
-
+  <ion-list *ngIf="!isLoading">
+    <ion-card
+      *ngFor="let post of posts; let i = index"
+      (click)="openPostDetails(post.id)"
+    >
       <ion-card-header>
         <ion-card-subtitle>Post {{ i + 1 }}</ion-card-subtitle>
         <ion-card-title>{{ post.title }}</ion-card-title>
@@ -22,7 +18,22 @@
       <ion-img [src]="post.image"></ion-img>
       <ion-card-content> {{ post.body }} </ion-card-content>
 
-      <ion-label> Autor ({{post.userId}}) </ion-label>
+      <ion-label> Autor {{post.author}} </ion-label>
+
+      <ion-item>
+        <ion-icon name="chatbubble" slot="start"></ion-icon>
+        <ion-row>
+          <ion-label>{{post.lastComment.body}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label>{{post.lastComment.name}}</ion-label>
+        </ion-row>
+        <ion-button fill="outline" slot="end" (click)="openPostDetails(post.id)"
+          >Ver conversa</ion-button
+        >
+      </ion-item>
     </ion-card>
   </ion-list>
+
+  <app-posts-skeleton *ngIf="isLoading"></app-posts-skeleton>
 </ion-content>

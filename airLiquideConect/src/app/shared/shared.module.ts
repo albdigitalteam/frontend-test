@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { PostsSkeletonComponent } from '../components/posts-skeleton/posts-skeleton.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [PostsSkeletonComponent],
+  imports: [CommonModule],
+  exports: [PostsSkeletonComponent],
 })
-export class SharedModule { }
+export class SharedModule {}
