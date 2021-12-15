@@ -8,6 +8,7 @@ import { ImagesService } from 'src/app/services/images.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UsersService } from 'src/app/services/users.service';
+import { PostAdapter } from 'src/app/utils/post.adapter';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,8 @@ export class HomePage implements OnInit {
     private readonly commentsService: CommentsService,
     private readonly imagesService: ImagesService,
     private readonly router: Router,
-    private readonly localStorage: LocalStorageService
+    private readonly localStorage: LocalStorageService,
+    private readonly postAdapter: PostAdapter
   ) {}
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class HomePage implements OnInit {
         this.commentsService
           .getComments()
           .subscribe((commentsArray: IComment[]) => {
-            this.posts = this.postAdapter(
+            this.posts = this.postAdapter.adaptInitialPost(
               postsArray,
               usersArray,
               commentsArray,
@@ -55,30 +57,7 @@ export class HomePage implements OnInit {
     });
   }
 
-  public openPostDetails(postId: number): void {
+  public goToPostDetails(postId: number): void {
     this.router.navigateByUrl(`post-details/${postId}`);
   }
-
-  private postAdapter(
-    posts: IPost[],
-    users: IUser[],
-    comments: IComment[],
-    images: string[]
-  ): IPost[] {
-    return posts.map((post: IPost) => {
-      const postAuthor = users.find((user) => user.id === post.userId);
-      const author = postAuthor.username;
-      const postComments = comments.filter(
-        (comment) => comment.postId === post.id
-      );
-      const lastComment = postComments[postComments.length - 1];
-      const image = this.setPostImages(images);
-
-      return { ...post, author, comments: postComments, lastComment, image };
-    });
-  }
-
-  private readonly setPostImages = (imagesArray: string[]): string => {
-    return imagesArray[Math.floor(Math.random() * imagesArray.length)];
-  };
 }
