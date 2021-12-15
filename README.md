@@ -9,7 +9,6 @@
 </h4>
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lukemorales/react-native-design-code.svg">
-
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/lukemorales/react-native-design-code.svg">
 
   <a href="https://github.com/lukemorales/react-native-design-code/issues">
