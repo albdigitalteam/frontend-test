@@ -8,7 +8,7 @@ export class ImagesService {
 
   getImages(): string[] {
     return [
-      'assets/postsImages/clock-g225091df0_640.jpg.jpg',
+      'assets/postsImages/clock-g225091df0_640.jpg',
       'assets/postsImages/confused-g5a5f760db_640.jpg',
       'assets/postsImages/fence-g2e47ac910_640.jpg',
       'assets/postsImages/moon-g51a89dec8_640.jpg',
