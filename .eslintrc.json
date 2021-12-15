@@ -23,6 +23,7 @@
     "rules": {
       "max-len": "off",
       "require-jsdoc": "off",
-      "@typescript-eslint/ban-types": "off"
+      "@typescript-eslint/ban-types": "off",
+      "react/no-children-prop": "off"    
     }
 }

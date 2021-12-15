@@ -33,10 +33,15 @@ export const Header = styled.div`
 
 export const Body = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
 
   p {
     margin-top: 10px;
+  }
+
+  @media (min-width: 760px) {
+    flex-direction: row;
   }
 `;
 

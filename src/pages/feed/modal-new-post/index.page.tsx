@@ -22,7 +22,7 @@ const ModalNewPost: React.FC<IModalCreateNewPost> = ({
 
   const [photoPreview, setPhotoPreview] = useState<string>(uploadPhoto);
 
-  const [photo, setPhoto] = useState<File>({} as File);
+  const [, setPhoto] = useState<File>({} as File);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
 
@@ -50,6 +50,7 @@ const ModalNewPost: React.FC<IModalCreateNewPost> = ({
           <input
             type='file'
             id='photo'
+            accept="image/png, image/jpeg, image/jpg"
             ref={inputFileRef}
             onChange={handleChangePhoto}
           />

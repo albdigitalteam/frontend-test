@@ -11,8 +11,6 @@ export const Content = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin-top: 12px;
 `;
 
 export const NewPostContainer = styled.div`

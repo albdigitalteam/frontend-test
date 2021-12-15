@@ -25,6 +25,17 @@ export const Content = styled.div`
 
   h1 {
     font-size: 32px;
-    color: #ffffff;
+    color: ${({theme}) => theme.colors.text};
+  }
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin-right: 16px;
+    cursor: pointer;
   }
 `;
