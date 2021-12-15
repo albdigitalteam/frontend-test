@@ -18,6 +18,6 @@ export class AppComponent {
       const currentUser = usersArray.find((user) => user.id === 1);
       this.localStorage.setCurrentUser(currentUser);
     });
-    this.router.navigate(['/home']);
+    this.router.navigate(['/tabs']);
   }
 }
