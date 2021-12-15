@@ -1,10 +1,11 @@
 import React, {useCallback, useRef, useState} from 'react';
+import {FiAlertCircle} from 'react-icons/fi';
 
 import {ITextarea} from './textarea.interface';
 
-import {Container} from './styles.style';
+import {Container, Error} from './styles.style';
 
-const Textarea: React.FC<ITextarea> = ({...rest}) => {
+const Textarea: React.FC<ITextarea> = ({error, ...rest}) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -18,15 +19,18 @@ const Textarea: React.FC<ITextarea> = ({...rest}) => {
   const handleInputFocus = useCallback(() => [setIsFocused(true)], []);
 
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
       <textarea
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         ref={textareaRef}
         {...rest}
-      >
-
-      </textarea>
+      ></textarea>
+      {error && (
+        <Error title={error}>
+          <FiAlertCircle color="#c53030" size={20} />
+        </Error>
+      )}
     </Container>
   );
 };

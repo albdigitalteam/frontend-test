@@ -7,12 +7,14 @@ import {ISaveNewPost} from '../../components/modal/modal.interface';
 import ModalNewPost from './modal-new-post/index.page';
 
 import {useToast} from '../../hooks/toast';
+import {useAuth} from '../../hooks/auth';
 
 import {IPost} from '../../models/post.model';
 
 import postsService from '../../services/posts.service';
 import usersService from '../../services/users.service';
 import {adaptPost} from '../../adapters/post.adapter';
+import {adaptUser} from '../../adapters/user.adapter';
 
 import {
   Container,
@@ -24,6 +26,7 @@ import {
 
 const Feed: React.FC = () => {
   const {addToast} = useToast();
+  const {user} = useAuth();
 
   const [posts, setPosts] = useState<IPost[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -33,14 +36,12 @@ const Feed: React.FC = () => {
   }, [modalIsOpen, setModalIsOpen]);
 
   const handleSavePost = useCallback(({photoUrl, title, description}: ISaveNewPost): void => {
-    const titleFormatted = title.trim();
-    const descriptionFormatted = description.trim();
-
     posts.unshift({
       id: posts.length + 1,
       photoUrl: String(photoUrl),
       title,
       description,
+      user: adaptUser(user),
       comments: [],
     });
 

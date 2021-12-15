@@ -1,8 +1,9 @@
 import React, {useCallback, useRef, useState} from 'react';
+import {FiAlertCircle} from 'react-icons/fi';
 
 import {IInput} from './input.interface';
 
-import {Container} from './styles.style';
+import {Container, Error} from './styles.style';
 
 const Input: React.FC<IInput> = ({error, icon: Icon, ...rest}) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,7 +19,7 @@ const Input: React.FC<IInput> = ({error, icon: Icon, ...rest}) => {
   const handleInputFocus = useCallback(() => [setIsFocused(true)], []);
 
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
       <input
         onFocus={handleInputFocus}
@@ -26,11 +27,11 @@ const Input: React.FC<IInput> = ({error, icon: Icon, ...rest}) => {
         ref={inputRef}
         {...rest}
       />
-      {/* {error && (
+      {error && (
         <Error title={error}>
           <FiAlertCircle color="#c53030" size={20} />
         </Error>
-      )} */}
+      )}
     </Container>
   );
 };

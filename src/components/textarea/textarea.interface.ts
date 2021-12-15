@@ -1,8 +1,11 @@
 import {TextareaHTMLAttributes} from 'react';
 
-export type ITextarea = TextareaHTMLAttributes<HTMLTextAreaElement>
+export interface ITextarea extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  error?: string;
+}
 
 export interface ITextareaContainer {
   isFocused: boolean;
+  isErrored?: boolean;
   isFilled: boolean;
 }

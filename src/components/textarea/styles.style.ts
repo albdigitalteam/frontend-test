@@ -2,6 +2,8 @@ import styled, {css} from 'styled-components';
 
 import {ITextareaContainer} from './textarea.interface';
 
+import Tooltip from '../tooltip/index.component';
+
 export const Container = styled.div<ITextareaContainer>`
   background: ${({theme}) => theme.colors.background};
   border-radius: 10px; 
@@ -16,6 +18,12 @@ export const Container = styled.div<ITextareaContainer>`
   & + div {
     margin-top: 8px;
   }
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border-color: ${(props) => props.theme.colors.error};
+    `}
 
   ${(props) =>
     props.isFocused &&
@@ -43,5 +51,23 @@ export const Container = styled.div<ITextareaContainer>`
 
   svg {
     margin-right: 16px;
+  }
+`;
+
+export const Error = styled(Tooltip)`
+  height: 20px;
+  margin-left: 16px;
+
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background: ${(props) => props.theme.colors.error};
+    color: #fff;
+
+    &::before {
+      border-color: ${(props) => props.theme.colors.error} transparent;
+    }
   }
 `;
