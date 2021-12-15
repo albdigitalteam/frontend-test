@@ -95,6 +95,6 @@ export class PostDetailsPage implements OnInit {
   }
 
   public goToHome(): void {
-    this.router.navigateByUrl(`home`);
+    this.router.navigateByUrl(`tabs/home`);
   }
 }

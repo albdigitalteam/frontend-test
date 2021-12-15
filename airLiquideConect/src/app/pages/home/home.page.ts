@@ -58,6 +58,6 @@ export class HomePage implements OnInit {
   }
 
   public goToPostDetails(postId: number): void {
-    this.router.navigateByUrl(`post-details/${postId}`);
+    this.router.navigateByUrl(`tabs/post-details/${postId}`);
   }
 }
