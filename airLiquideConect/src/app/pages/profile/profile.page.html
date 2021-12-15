@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-lis>
+    <div>
+      <ion-label>Seus dados</ion-label>
+      <ion-item> <ion-label>ID:</ion-label> <p>{{ currentUser.id }}</p> </ion-item>
+      <ion-item> <ion-label>Nome:</ion-label> <p>{{ currentUser.name }}</p> </ion-item>
+      <ion-item> <ion-label>E-mail:</ion-label> <p>{{ currentUser.email }}</p> </ion-item>
+      <ion-item> <ion-label>Username:</ion-label> <p>{{ currentUser.username }}</p> </ion-item>
+      <ion-item> <ion-label>Telefone:</ion-label> <p>{{ currentUser.phone }}</p> </ion-item>
+      <ion-item> <ion-label>Website:</ion-label> <p>{{ currentUser.website }}</p> </ion-item>
+    </div>
+    <div>
+      <ion-label>Endereço</ion-label>
+      <ion-item> <ion-label>Cidade:</ion-label> <p>{{ currentUser.address.city }}</p> </ion-item>
+      <ion-item> <ion-label>Rua:</ion-label> <p>{{ currentUser.address.street }}</p> </ion-item>
+      <ion-item> <ion-label>Complemento:</ion-label> <p>{{ currentUser.address.suite }}</p> </ion-item>
+      <ion-item> <ion-label>CEP:</ion-label> <p>{{ currentUser.address.zipcode }}</p> </ion-item>
+      <ion-item> <ion-label>Latitude:</ion-label> <p>{{ currentUser.address.geo.lat }}</p> </ion-item>
+      <ion-item> <ion-label>Longitude:</ion-label> <p>{{ currentUser.address.geo.lng }}</p> </ion-item>
+    </div>
+    <div>
+      <ion-label>Companhia</ion-label>
+      <ion-item> <ion-label>Nome:</ion-label> <p>{{ currentUser.company.name }}</p> </ion-item>
+      <ion-item> <ion-label>Frase de efeito:</ion-label> <p>{{ currentUser.company.catchPhrase }}</p> </ion-item>
+      <ion-item> <ion-label>BS:</ion-label> <p>{{ currentUser.company.bs }}</p> </ion-item>
+    </div>
+  </ion-lis>
 </ion-content>
