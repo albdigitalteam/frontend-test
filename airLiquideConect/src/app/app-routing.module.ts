@@ -19,9 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/new-post/new-post.module').then( m => m.NewPostPageModule)
   },
   {
-    path: 'preferences',
-    loadChildren: () => import('./pages/preferences/preferences.module').then( m => m.PreferencesPageModule)
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 ];
 @NgModule({
   imports: [
