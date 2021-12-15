@@ -6,8 +6,8 @@ import Button from '../../components/button/index.component';
 
 import logoImg from '../../assets/logo.svg';
 
-import {useAuth} from '../../hooks/auth';
-import {useToast} from '../../hooks/toast';
+import {useAuth} from '../../hooks/auth.hook';
+import {useToast} from '../../hooks/toast.hook';
 
 import {getByEmail} from '../../services/users.service';
 import {adaptUser} from '../../adapters/user.adapter';

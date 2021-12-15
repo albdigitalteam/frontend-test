@@ -29,6 +29,10 @@ export const Content = styled.div`
   }
 `;
 
+export const LogoButton = styled.button`
+  cursor: pointer;
+`;
+
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: center;

@@ -7,13 +7,17 @@ import logo from '../../assets/logo.svg';
 
 import {IHeader} from './header.interface';
 
-import {useAuth} from '../../hooks/auth';
+import {useAuth} from '../../hooks/auth.hook';
 
-import {Container, Content, TitleContainer} from './styles.style';
+import {Container, Content, LogoButton, TitleContainer} from './styles.style';
 
 const Header: React.FC<IHeader> = ({title}) => {
   const navigate = useNavigate();
   const {signOut} = useAuth();
+
+  const handleGoToFeed = useCallback(() => {
+    navigate('/feed');
+  }, []);
 
   const handleSignOut = useCallback(() => {
     signOut();
@@ -26,8 +30,9 @@ const Header: React.FC<IHeader> = ({title}) => {
   return (
     <Container>
       <Content>
-        <img src={logo} alt='Logo' />
-
+        <LogoButton onClick={handleGoToFeed}>
+          <img src={logo} alt='Logo' />
+        </LogoButton>
         <TitleContainer>
           <button onClick={handleGoBack}>
             <RiArrowLeftSLine

@@ -8,8 +8,8 @@ import Post from '../../components/post/index.component';
 
 import {IPost} from '../../models/post.model';
 
-import {useAuth} from '../../hooks/auth';
-import {useToast} from '../../hooks/toast';
+import {useAuth} from '../../hooks/auth.hook';
+import {useToast} from '../../hooks/toast.hook';
 
 
 import {adaptComment} from '../../adapters/comment.adapter';

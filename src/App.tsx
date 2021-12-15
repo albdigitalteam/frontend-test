@@ -4,7 +4,7 @@ import {ThemeProvider} from 'styled-components';
 
 import dark from './styles/themes/dark';
 
-import AppProvider from './hooks';
+import AppProvider from './hooks/index.hook';
 
 import Routes from './routes/index.route';
 import GlobalStyle from './styles/global';

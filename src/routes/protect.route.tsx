@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navigate, Outlet, RouteProps} from 'react-router-dom';
 
-import {useAuth} from '../hooks/auth';
+import {useAuth} from '../hooks/auth.hook';
 
 const ProtectRoute: React.FC<RouteProps> = () => {
   const {user} = useAuth();

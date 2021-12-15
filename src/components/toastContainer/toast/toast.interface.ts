@@ -1,4 +1,4 @@
-import {ToastMessage} from '../../../hooks/toast';
+import {ToastMessage} from '../../../hooks/toast.hook';
 
 export interface IToast {
   message: ToastMessage;

@@ -87,19 +87,25 @@ export const ButtonsContainer = styled.div`
 
   margin: 15px 0;
   padding: 5px 0;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  border-top: 1px solid ${({theme}) => theme.colors.background};
+  border-bottom: 1px solid ${({theme}) => theme.colors.background};
 `;
 
 export const CommentsFeed = styled.div`
   width: 100%;
+  margin-top: 14px;
 `;
 
 export const NewCommentContainer = styled.div`
-  display: flex;    
+  display: flex;
+  flex-direction: column;
 
-  border-top: 1px solid #000000;
+  border-top: 1px solid ${({theme}) => theme.colors.background};
   padding: 10px 0;
+
+  @media (min-width: 760px) {
+    flex-direction: row;
+  }
 `;
 
 export const CommentTextarea = styled(Textarea)`

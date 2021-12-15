@@ -80,14 +80,16 @@ const Post: React.FC<IPostPage> = ({
       </Body>
 
       <Footer>
-        <ButtonsContainer>
-          <button onClick={() => handleToComments({
-            id, title, description,
-          })}>
-            <FaRegComments size={24} color='#ffffff' />
-            <p>Comentários</p>
-          </button>
-        </ButtonsContainer>
+        {!showComments && (
+          <ButtonsContainer>
+            <button onClick={() => handleToComments({
+              id, title, description,
+            })}>
+              <FaRegComments size={24} color='#ffffff' />
+              <p>Comentários</p>
+            </button>
+          </ButtonsContainer>
+        )}
 
         {showComments && !!comments && (
           <CommentsFeed>

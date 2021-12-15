@@ -12,6 +12,7 @@ export const Container = styled.button`
   font-weight: 500;
   margin-top: 16px;
   transition: background 0.2s;
+  font-weight: bolder;
 
   &:hover {
     background: ${({theme}) => shade(0.2, theme.colors.secundary)};

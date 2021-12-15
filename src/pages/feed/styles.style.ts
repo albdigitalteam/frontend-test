@@ -14,7 +14,7 @@ export const Content = styled.main`
 `;
 
 export const NewPostContainer = styled.div`
-  background-color: #242526;
+  background-color: ${({theme}) => theme.colors.background};
   padding: 16px;
   margin-bottom: 12px;
 

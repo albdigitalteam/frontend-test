@@ -6,8 +6,8 @@ import Post from '../../components/post/index.component';
 import {ISaveNewPost} from '../../components/modal/modal.interface';
 import ModalNewPost from './modal-new-post/index.page';
 
-import {useToast} from '../../hooks/toast';
-import {useAuth} from '../../hooks/auth';
+import {useToast} from '../../hooks/toast.hook';
+import {useAuth} from '../../hooks/auth.hook';
 
 import {IPost} from '../../models/post.model';
 
