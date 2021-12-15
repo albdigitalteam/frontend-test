@@ -25,7 +25,7 @@
 </p>
 
 <p align="center">
-  <img alt="App Demo" src="https://res.cloudinary.com/lucasarena/image/upload/v1639580668/Repositories/AirLiquide%20Teste/gif_airliquide_flgjyb.gif">
+  <img src="https://res.cloudinary.com/lucasarena/image/upload/v1639592143/Repositories/AirLiquide%20Teste/Lista_de_posts_1_rjgwqf.gif" alt="App Demo" />
 </p>
 
 ## :rocket: Technologies
