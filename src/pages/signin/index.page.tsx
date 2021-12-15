@@ -67,7 +67,7 @@ const SignIn: React.FC = () => {
     <Container>
       <Content>
         <AnimationContainer>
-          <Logo src={logoImg} alt="Logo do teste FCamara" />
+          <Logo src={logoImg} alt="Logo" />
           <form>
             <h1>Faça seu login</h1>
 

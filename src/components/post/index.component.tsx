@@ -2,11 +2,13 @@ import React, {useCallback, useMemo, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {FaRegComments} from 'react-icons/fa';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
-
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import {IPostPage, IPost} from '../../models/post.model';
+
 import Comment from '../../components/comment/index.component';
+
+import {useToast} from '../../hooks/toast.hook';
 
 import noPhotoImage from '../../assets/no-data.svg';
 
@@ -35,12 +37,30 @@ const Post: React.FC<IPostPage> = ({
   handleSaveComment,
 }) => {
   const navigate = useNavigate();
+  const {addToast} = useToast();
 
   const [newComment, setNewComment] = useState<string>('');
 
   const postPhoto = useMemo(() => {
     return photoUrl ? photoUrl : noPhotoImage;
   }, []);
+
+  const handleSubmitNewComment = useCallback(() => {
+    const newCommentFormatted = newComment.trim();
+
+    if (!newCommentFormatted) {
+      addToast({
+        type: 'error',
+        title: 'Digite um comentário',
+      });
+      return;
+    }
+
+    if (handleSaveComment) {
+      handleSaveComment(newComment);
+      setNewComment('');
+    }
+  }, [handleSaveComment, addToast, setNewComment, newComment]);
 
   const handleToComments = useCallback(({id, title, description}: Omit<IPost, 'comments'>) => {
     navigate(`/posts/${id}`, {
@@ -108,10 +128,11 @@ const Post: React.FC<IPostPage> = ({
               <CommentTextarea
                 placeholder='Digite um comentário...'
                 onChange={(input) => setNewComment(input.target.value)}
+                value={newComment}
               />
               <CommentButton
                 type='button'
-                onClick={() => handleSaveComment && handleSaveComment(newComment)}
+                onClick={handleSubmitNewComment}
               >Comentar</CommentButton>
             </NewCommentContainer>
           </CommentsFeed>

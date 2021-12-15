@@ -20,21 +20,10 @@ import {adaptUser} from '../../adapters/user.adapter';
 const Posts: React.FC = () => {
   const location = useLocation();
   const {user} = useAuth();
-  const {addToast} = useToast();
 
   const [post, setPost] = useState<IPost>({} as IPost);
 
   const handleSaveComment = useCallback((newComment: string) => {
-    const newCommentFormatted = newComment.trim();
-
-    if (!newCommentFormatted) {
-      addToast({
-        type: 'error',
-        title: 'Digite um comentário',
-      });
-      return;
-    }
-
     setPost((oldPost) => {
       return {
         ...oldPost,
@@ -42,7 +31,7 @@ const Posts: React.FC = () => {
           ...oldPost.comments,
           {
             id: oldPost.comments.length + 1,
-            description: newCommentFormatted,
+            description: newComment,
             user: adaptUser(user),
           },
         ],

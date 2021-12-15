@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img alt="Design+Code" src="https://res.cloudinary.com/lucasarena/image/upload/v1639578879/Logos/logo_s1t335.svg" width="200" />
+    <br>
+    Blog by Lucas Arena
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">
+  Blog to send and comment posts
+</h4>
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lukemorales/react-native-design-code.svg">
 
-## Available Scripts
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/lukemorales/react-native-design-code.svg">
 
-In the project directory, you can run:
+  <a href="https://github.com/lukemorales/react-native-design-code/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lukemorales/react-native-design-code.svg">
+  </a>
 
-### `yarn start`
+  <img alt="GitHub" src="https://img.shields.io/github/license/lukemorales/react-native-design-code.svg">
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center">
+  <img alt="App Demo" src="https://res.cloudinary.com/lucasarena/image/upload/v1639580668/Repositories/AirLiquide%20Teste/gif_airliquide_flgjyb.gif">
+</p>
 
-### `yarn test`
+## :rocket: Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project was developed with the following technologies:
+-  [typescript](https://github.com/microsoft/TypeScript)
+-  [reactJS](https://github.com/facebook/react)
+-  [react-icons](https://github.com/react-icons/react-icons)
+-  [react-modal](https://github.com/reactjs/react-modal)
+-  [react-spring](https://github.com/pmndrs/react-spring)
+-  [typesafe-actions](https://github.com/piotrwitek/typesafe-actions)
+-  [styled-components](https://www.styled-components.com/)
+-  [axios](https://github.com/axios/axios)
+-  [yup](https://github.com/jquense/yup)
+-  [uuid](https://github.com/uuidjs/uuid)
+-  [polished](https://github.com/styled-components/polished)
+-  [react-lazy-load-image-component](https://github.com/Aljullu/react-lazy-load-image-component)
+-  [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
 
-### `yarn build`
+## :information_source: How To Use
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer. From your command line:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone this repository
+$ git clone https://github.com/lucasArena/frontend-test web
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+To start the frontend's app, install de dependecies execute the command to start the application
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# Enter in the web folder 
+$ cd web
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Install the dependencies packages (you can use npm as well)
+$ yarn install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Start front-end (you can use npm as well)
+$ yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## :loudspeaker: Important information
 
-## Learn More
+To sign in on the application you have to select a valid e-mail from this address: [jsonplaceholder](https://jsonplaceholder.typicode.com/users)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Made with ♥ by Lucas Arena :wave: [Get in touch!](https://www.linkedin.com/in/lucas-arena-771959136/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[nodejs]: https://nodejs.org/
+[yarn]: https://yarnpkg.com/
+[vc]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
