@@ -16,10 +16,6 @@ const routes: Routes = [
         loadChildren: () => import('../new-post/new-post.module').then(m => m.NewPostPageModule)
       },
       {
-        path: 'preferences',
-        loadChildren: () => import('../preferences/preferences.module').then(m => m.PreferencesPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
