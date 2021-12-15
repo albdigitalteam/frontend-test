@@ -8,10 +8,10 @@
   <ion-list *ngIf="!isLoading">
     <ion-card
       *ngFor="let post of posts; let i = index"
-      (click)="openPostDetails(post.id)"
+      (click)="goToPostDetails(post.id)"
     >
       <ion-card-header>
-        <ion-card-subtitle>Post {{ i + 1 }}</ion-card-subtitle>
+        <ion-card-subtitle>Post {{ post.id }}</ion-card-subtitle>
         <ion-card-title>{{ post.title }}</ion-card-title>
       </ion-card-header>
 
@@ -28,7 +28,7 @@
         <ion-row>
           <ion-label>{{post.lastComment.name}}</ion-label>
         </ion-row>
-        <ion-button fill="outline" slot="end" (click)="openPostDetails(post.id)"
+        <ion-button fill="outline" slot="end" (click)="goToPostDetails(post.id)"
           >Ver conversa</ion-button
         >
       </ion-item>
