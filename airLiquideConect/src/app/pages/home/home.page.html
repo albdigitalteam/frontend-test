@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bem Vindo!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let post of posts; let i = index">
+      <ion-item>
+        <ion-icon name="chatbubble" slot="start"></ion-icon>
+        <ion-button fill="outline" slot="end" (click)="openPostDetails(post.id)"
+          >Detalhes do post</ion-button
+        >
+      </ion-item>
+
+      <ion-card-header>
+        <ion-card-subtitle>Post {{ i + 1 }}</ion-card-subtitle>
+        <ion-card-title>{{ post.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-img [src]="post.image"></ion-img>
+      <ion-card-content> {{ post.body }} </ion-card-content>
+
+      <ion-label> Autor ({{post.userId}}) </ion-label>
+    </ion-card>
+  </ion-list>
+</ion-content>
