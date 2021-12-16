@@ -1,0 +1,72 @@
+ion-content {
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+
+    div {
+      width: 100%;
+    }
+
+    .imageSelectContainer {
+      div {
+        padding: 20px;
+      }
+
+      .imageSelected {
+        ion-img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .noImageSelected {
+        ion-button {
+          height: 25vh;
+
+          div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+
+            ion-icon {
+              font-size: 3em;
+              margin-bottom: 10px;
+            }
+
+            ion-label {
+              font-size: 1.3em;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    .fieldsContainer {
+      ion-row {
+        app-error-container {
+          width: 100%;
+        }
+
+        ion-item {
+          width: 100%;
+        }
+      }
+
+      input {
+        display: none;
+      }
+    }
+
+    .actionsContainer {
+      margin-bottom: 20px;
+      padding: 0px 20px;
+    }
+  }
+}

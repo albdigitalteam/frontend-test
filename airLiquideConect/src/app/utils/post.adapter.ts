@@ -25,6 +25,9 @@ export class PostAdapter {
       const lastComment = postComments[postComments.length - 1];
       const image = this.setPostImages(images);
 
+      if (!image)
+        return { ...post, author, comments: postComments, lastComment };
+
       return { ...post, author, comments: postComments, lastComment, image };
     });
   }
@@ -40,7 +43,12 @@ export class PostAdapter {
     });
   }
 
+  //função para colocar fotos randomicamente em alguns dos posts
   private readonly setPostImages = (imagesArray: string[]): string => {
+    const randIndex = Math.floor(Math.random() * imagesArray.length + 3);
+    if (randIndex > imagesArray.length) {
+      return;
+    }
     return imagesArray[Math.floor(Math.random() * imagesArray.length)];
   };
 }
