@@ -1,5 +1,7 @@
 {
   "name": "airLiquideConect",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

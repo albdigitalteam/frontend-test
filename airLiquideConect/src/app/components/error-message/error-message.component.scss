@@ -1,0 +1,11 @@
+.error-message {
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+  position: absolute;
+  transform: translateX(20px);
+
+  &.active {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}

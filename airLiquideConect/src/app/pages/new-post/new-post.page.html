@@ -1,9 +1,73 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>newPost</ion-title>
+    <ion-title>O que gostaria de postar?</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="newPostForm">
+    <div class="imageSelectContainer">
+      <div class="imageSelected" *ngIf="postImage !== ''">
+        <ion-fab vertical="top" horizontal="end" slot="fixed">
+          <ion-fab-button color="danger" (click)="deleteImage()">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <ion-img [src]="postImage"></ion-img>
+      </div>
 
+      <div *ngIf="postImage === ''" class="noImageSelected">
+        <ion-button (click)="selectImage()" expand="block" color="medium">
+          <div>
+            <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+            <ion-label>Selecione uma imagem</ion-label>
+          </div>
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="fieldsContainer">
+      <ion-row>
+        <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input type="text" formControlName="title" required></ion-input>
+        </ion-item>
+        <app-error-container>
+          <app-error-message
+            [showError]="showErrors && formControls.title.errors?.required"
+          >
+            O título do post é obrigatório.
+          </app-error-message>
+        </app-error-container>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-label position="floating">Descrição</ion-label>
+          <ion-textarea formControlName="body"></ion-textarea>
+        </ion-item>
+        <app-error-container>
+          <app-error-message
+            [showError]="showErrors && formControls.body.errors?.required"
+          >
+            O conteúdo do post é obrigatório.
+          </app-error-message>
+        </app-error-container>
+      </ion-row>
+
+      <input
+        type="file"
+        accept=".jpeg, .jpg, .png"
+        id="fileInput"
+        (change)="onInputFileChange($event)"
+      />
+    </div>
+
+    <div class="actionsContainer">
+      <ion-button (click)="savePost()" expand="block" [disabled]="isLoading">
+        <ion-spinner name="dots" [hidden]="!isLoading"></ion-spinner>
+        <ion-icon name="add-outline"></ion-icon>
+        Salvar
+      </ion-button>
+    </div>
+  </form>
 </ion-content>
