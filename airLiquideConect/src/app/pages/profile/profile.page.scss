@@ -1,0 +1,148 @@
+ion-content {
+  .profileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px 0px 20px;
+
+    ion-img {
+      width: 30%;
+      height: auto;
+    }
+
+    .systemInfo {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      padding: 20px 20px 0px 20px;
+      margin-top: 10px;
+
+      div {
+        width: 30%;
+
+        ion-label {
+          color: var(--ion-color-primary);
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
+  .userInfoContainer {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .userTopicContainer,
+    .addressTopicContainer,
+    .companyTopicContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      margin-top: 10px;
+      width: 100%;
+
+      ion-list {
+        width: 100%;
+
+        ion-item {
+          color: #fff;
+          --background: var(--ion-color-primary);
+          --border-radius: 40px;
+
+          div {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            ion-label {
+              font-size: 1.3em;
+            }
+
+            ion-icon {
+              font-size: 1.8em;
+              color: #fff;
+            }
+          }
+        }
+
+        .userData,
+        .addressData,
+        .companyData {
+          margin-top: 10px;
+          padding: 0px 15px;
+
+          p {
+            margin: 5px 0px 0px 0px;
+          }
+
+          ion-row {
+            ion-col {
+              margin-bottom: 10px;
+
+              ion-label {
+                color: var(--ion-color-secondary);
+                font-weight: bold;
+                font-size: 1.1em;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .geoTopicContainer {
+      ion-list {
+        width: 100%;
+
+        ion-item {
+          --background: transparent;
+          --padding-start: 0px !important;
+          color: #000;
+
+          div {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            ion-label {
+              font-size: 1em;
+            }
+
+            ion-icon {
+              color: #000;
+              font-size: 1.1em;
+              padding-left: 5px;
+            }
+          }
+        }
+
+        .geoTopic {
+          margin-top: 10px;
+          padding: 0px 15px;
+
+          p {
+            margin: 5px 0px 0px 0px;
+          }
+        }
+      }
+    }
+  }
+}

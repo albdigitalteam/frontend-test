@@ -22,13 +22,11 @@ export class PostAdapter {
       const postComments = comments.filter(
         (comment) => comment.postId === post.id
       );
-      const lastComment = postComments[postComments.length - 1];
       const image = this.setPostImages(images);
 
-      if (!image)
-        return { ...post, author, comments: postComments, lastComment };
+      if (!image) return { ...post, author, comments: postComments };
 
-      return { ...post, author, comments: postComments, lastComment, image };
+      return { ...post, author, comments: postComments, image };
     });
   }
 

@@ -5,30 +5,194 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <div>
-      <ion-label>Seus dados</ion-label>
-      <ion-item> <ion-label>ID:</ion-label> <p>{{ currentUser.id }}</p> </ion-item>
-      <ion-item> <ion-label>Nome:</ion-label> <p>{{ currentUser.name }}</p> </ion-item>
-      <ion-item> <ion-label>E-mail:</ion-label> <p>{{ currentUser.email }}</p> </ion-item>
-      <ion-item> <ion-label>Username:</ion-label> <p>{{ currentUser.username }}</p> </ion-item>
-      <ion-item> <ion-label>Telefone:</ion-label> <p>{{ currentUser.phone }}</p> </ion-item>
-      <ion-item> <ion-label>Website:</ion-label> <p>{{ currentUser.website }}</p> </ion-item>
+  <div class="profileContainer">
+    <ion-img [src]="userImg"></ion-img>
+    <div class="systemInfo">
+      <div>
+        <ion-label> ID: </ion-label>
+        <p>{{ currentUser.id }}</p>
+      </div>
+      <div>
+        <ion-label>Apelido: </ion-label>
+        <p>{{ currentUser.username }}</p>
+      </div>
+      <div>
+        <ion-label>Posts: </ion-label>
+        <p>{{ currentUser.postsCount ? currentUser.postsCount : 0 }}</p>
+      </div>
     </div>
-    <div>
-      <ion-label>Endereço</ion-label>
-      <ion-item> <ion-label>Cidade:</ion-label> <p>{{ currentUser.address.city }}</p> </ion-item>
-      <ion-item> <ion-label>Rua:</ion-label> <p>{{ currentUser.address.street }}</p> </ion-item>
-      <ion-item> <ion-label>Complemento:</ion-label> <p>{{ currentUser.address.suite }}</p> </ion-item>
-      <ion-item> <ion-label>CEP:</ion-label> <p>{{ currentUser.address.zipcode }}</p> </ion-item>
-      <ion-item> <ion-label>Latitude:</ion-label> <p>{{ currentUser.address.geo.lat }}</p> </ion-item>
-      <ion-item> <ion-label>Longitude:</ion-label> <p>{{ currentUser.address.geo.lng }}</p> </ion-item>
+  </div>
+
+  <div class="userInfoContainer">
+    <div class="userTopicContainer">
+      <ion-list class="accordion-list" lines="none" detail="false" no-padding>
+        <ion-item
+          tappable
+          (click)="toggleSection('userTopic')"
+          [ngClass]="{ 'section-active': userTopic, section: !userTopic }"
+        >
+          <div>
+            <ion-label>Seus dados</ion-label>
+            <ion-icon
+              name="chevron-forward-circle-outline"
+              *ngIf="!userTopic"
+            ></ion-icon>
+            <ion-icon
+              name="chevron-down-circle-outline"
+              *ngIf="userTopic"
+            ></ion-icon>
+          </div>
+        </ion-item>
+
+        <div class="userData" *ngIf="userTopic">
+          <ion-row>
+            <ion-col size="6" size-sm="6">
+              <ion-label> Nome: </ion-label>
+              <p>{{ currentUser.name }}</p>
+            </ion-col>
+            <ion-col size="6" size-sm="6">
+              <ion-label> E-mail: </ion-label>
+              <p>{{ currentUser.email }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm="6">
+              <ion-label> Website: </ion-label>
+              <p>{{ currentUser.website }}</p>
+            </ion-col>
+            <ion-col size="12" size-sm="6">
+              <ion-label> Telefone: </ion-label>
+              <p>{{ currentUser.phone }}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-list>
     </div>
-    <div>
-      <ion-label>Companhia</ion-label>
-      <ion-item> <ion-label>Nome:</ion-label> <p>{{ currentUser.company.name }}</p> </ion-item>
-      <ion-item> <ion-label>Frase de efeito:</ion-label> <p>{{ currentUser.company.catchPhrase }}</p> </ion-item>
-      <ion-item> <ion-label>BS:</ion-label> <p>{{ currentUser.company.bs }}</p> </ion-item>
+
+    <div class="addressTopicContainer">
+      <ion-list class="accordion-list" lines="none" detail="false" no-padding>
+        <ion-item
+          tappable
+          (click)="toggleSection('addressTopic')"
+          [ngClass]="{ 'section-active': addressTopic, section: !addressTopic }"
+        >
+          <div>
+            <ion-label>Endereço</ion-label>
+            <ion-icon
+              name="chevron-forward-circle-outline"
+              *ngIf="!addressTopic"
+            ></ion-icon>
+            <ion-icon
+              name="chevron-down-circle-outline"
+              *ngIf="addressTopic"
+            ></ion-icon>
+          </div>
+        </ion-item>
+
+        <div class="addressData" *ngIf="addressTopic">
+          <ion-row>
+            <ion-col size="6" size-sm="6">
+              <ion-label> CEP: </ion-label>
+              <p>{{ currentUser.address.zipcode }}</p>
+            </ion-col>
+            <ion-col size="6" size-sm="6">
+              <ion-label> Cidade: </ion-label>
+              <p>{{ currentUser.address.city }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" size-sm="6">
+              <ion-label> Rua: </ion-label>
+              <p>{{ currentUser.address.street }}</p>
+            </ion-col>
+            <ion-col size="6" size-sm="6">
+              <ion-label> Complemento: </ion-label>
+              <p>{{ currentUser.address.suite }}</p>
+            </ion-col>
+          </ion-row>
+          <div class="geoTopicContainer">
+            <ion-list
+              class="accordion-list"
+              lines="none"
+              detail="false"
+              no-padding
+            >
+              <ion-item
+                tappable
+                (click)="toggleSection('geoTopic')"
+                [ngClass]="{ 'section-active': geoTopic, section: !geoTopic }"
+                no-padding
+              >
+                <div>
+                  <ion-label>Geolocalização</ion-label>
+                  <ion-icon
+                    name="chevron-forward-circle-outline"
+                    *ngIf="!geoTopic"
+                  ></ion-icon>
+                  <ion-icon
+                    name="chevron-down-circle-outline"
+                    *ngIf="geoTopic"
+                  ></ion-icon>
+                </div>
+              </ion-item>
+
+              <div class="geoData" *ngIf="geoTopic">
+                <ion-row>
+                  <ion-col size="6" size-sm="6">
+                    <ion-label> Latitude: </ion-label>
+                    <p>{{ currentUser.address.geo.lat }}</p>
+                  </ion-col>
+                  <ion-col size="6" size-sm="6">
+                    <ion-label> Longitude: </ion-label>
+                    <p>{{ currentUser.address.geo.lng }}</p>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-list>
+          </div>
+        </div>
+      </ion-list>
     </div>
-  </ion-list>
+
+    <div class="companyTopicContainer">
+      <ion-list class="accordion-list" lines="none" detail="false" no-padding>
+        <ion-item
+          tappable
+          (click)="toggleSection('companyTopic')"
+          [ngClass]="{ 'section-active': companyTopic, section: !companyTopic }"
+        >
+          <div>
+            <ion-label>Companhia</ion-label>
+            <ion-icon
+              name="chevron-forward-circle-outline"
+              *ngIf="!companyTopic"
+            ></ion-icon>
+            <ion-icon
+              name="chevron-down-circle-outline"
+              *ngIf="companyTopic"
+            ></ion-icon>
+          </div>
+        </ion-item>
+
+        <div class="companyData" *ngIf="companyTopic">
+          <ion-row>
+            <ion-col size="12" size-sm="6">
+              <ion-label> Nome: </ion-label>
+              <p>{{ currentUser.company.name }}</p>
+            </ion-col>
+            <ion-col size="12" size-sm="6">
+              <ion-label> BS: </ion-label>
+              <p>{{ currentUser.company.bs }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm="12">
+              <ion-label> Frase de efeito: </ion-label>
+              <p>{{ currentUser.company.catchPhrase }}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>
