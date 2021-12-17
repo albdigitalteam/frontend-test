@@ -1,0 +1,60 @@
+ion-list {
+  padding: 20px;
+  width: 100%;
+
+  ion-list-header {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  ion-item {
+    width: 100%;
+    .postContainer {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+
+      .postContentContainer {
+        width: 100%;
+
+        ion-thumbnail {
+          width: 95%;
+          height: 25vh;
+          margin-bottom: 20px;
+        }
+      }
+
+      .commentsContainer {
+        width: 100%;
+
+        p {
+          ion-skeleton-text {
+            margin-left: 79%;
+          }
+          border-top: 1px solid #000;
+        }
+
+        .commentContainer {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          margin-bottom: 10px;
+
+          ion-thumbnail {
+            width: 15%;
+            height: 5vh;
+            margin-right: 20px;
+            margin-left: 10px;
+          }
+
+          ion-label {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
