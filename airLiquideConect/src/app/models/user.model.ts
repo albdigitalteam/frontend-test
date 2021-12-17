@@ -10,4 +10,5 @@ export interface IUser {
   readonly phone: string;
   readonly website: string;
   readonly company: ICompany;
+  readonly postsCount?: number;
 }

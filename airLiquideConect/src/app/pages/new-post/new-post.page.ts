@@ -42,6 +42,7 @@ export class NewPostPage implements OnInit {
         color: 'danger',
       };
       this.createToast.create(toastData);
+      this.isLoading = false;
       return;
     }
 
@@ -50,7 +51,7 @@ export class NewPostPage implements OnInit {
       userId: this.currentUser.id,
       title: this.newPostForm.value.title,
       body: this.newPostForm.value.body,
-      id: this.posts.length,
+      id: this.posts.length + 1,
     };
     if (this.postImage !== '') {
       newPost = { ...newPost, image: this.postImage };

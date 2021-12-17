@@ -1,0 +1,68 @@
+ion-content {
+  ion-list {
+    ion-card {
+      ion-card-header {
+        ion-card-title {
+          font-size: 1.5em;
+        }
+      }
+
+      ion-img {
+        padding: 20px;
+      }
+
+      p {
+        width: 100%;
+        margin: 0;
+        padding: 10px 20px 10px 0px;
+        font-size: 0.9em;
+        text-align: right;
+        border-top: 0.5px solid #000;
+      }
+
+      .commentContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: row;
+        text-align: center;
+        padding: 15px;
+        margin: 0px 10px 10px 10px;
+        border-radius: 20px;
+        border: 1px solid #7c85ff;
+
+        .commentIcons {
+          font-size: 2em;
+          margin-right: 15px;
+          color: #7c85ff;
+        }
+
+        .commentContent {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          width: 65%;
+
+          ion-label {
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 1.2em;
+          }
+
+          .postAuthor {
+            margin-top: 5px;
+            color: rgb(32, 32, 32);
+            font-size: 1em;
+            width: 55%;
+          }
+        }
+
+        ion-button {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

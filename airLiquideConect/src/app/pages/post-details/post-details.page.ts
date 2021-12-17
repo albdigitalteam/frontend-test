@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 import { IComment } from 'src/app/models/comment.model';
 import { IPost } from 'src/app/models/post.model';
 import { IToastData } from 'src/app/models/toast.model';
@@ -24,7 +25,8 @@ export class PostDetailsPage implements OnInit {
     private readonly localStorageService: LocalStorageService,
     private readonly createToast: CreateToast,
     private readonly postAdapter: PostAdapter,
-    private readonly router: Router
+    private readonly router: Router,
+    private actionSheetController: ActionSheetController
   ) {}
 
   ngOnInit() {
@@ -72,7 +74,7 @@ export class PostDetailsPage implements OnInit {
     this.loadPost();
   }
 
-  public deletePost(): void {
+  public async deletePost() {
     if (this.post.userId !== this.currentUser.id) {
       const toastData: IToastData = {
         message: 'Atenção: Você não pode apagar posts de outras pessoas!',
@@ -82,16 +84,35 @@ export class PostDetailsPage implements OnInit {
       return;
     }
 
-    this.posts.splice(this.post.id - 1, 1);
-    this.localStorageService.setPosts(this.posts);
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Quer mesmo excluir o post: ' + this.post.id + '?',
+      buttons: [
+        {
+          text: 'Sim',
+          handler: async () => {
+            const postIndex = this.posts.findIndex(
+              (post) => post.id === this.post.id
+            );
+            this.posts.splice(postIndex, 1);
+            this.localStorageService.setPosts(this.posts);
 
-    const toastData: IToastData = {
-      message: 'Post excluido com sucesso!',
-      color: 'success',
-    };
-    this.createToast.create(toastData);
+            const toastData: IToastData = {
+              message: 'Post excluido com sucesso!',
+              color: 'success',
+            };
+            this.createToast.create(toastData);
 
-    this.goToHome();
+            this.goToHome();
+          },
+        },
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {},
+        },
+      ],
+    });
+    await actionSheet.present();
   }
 
   public goToHome(): void {
