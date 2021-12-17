@@ -1,36 +1,67 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <ion-icon
+          slot="icon-only"
+          name="chevron-back-circle-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Post {{post.id}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div>
-    <ion-button fill="outline" slot="end" (click)="deletePost()">
-      <ion-icon name="trash-outline"></ion-icon>
-    </ion-button>
+  <div class="postContainer">
+    <ion-fab
+      vertical="top"
+      horizontal="end"
+      slot="fixed"
+      *ngIf="post.userId === currentUser.id"
+    >
+      <ion-fab-button color="light" (click)="deletePost()" size="small">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <ion-card-header>
-      <ion-card-subtitle>Autor {{post.author}}</ion-card-subtitle>
+      <ion-card-subtitle
+        >Post {{ post.id }} - {{post.author}}</ion-card-subtitle
+      >
       <ion-card-title>{{ post.title }}</ion-card-title>
     </ion-card-header>
 
-    <ion-img [src]="post.image"></ion-img>
+    <ion-img *ngIf="post.image" [src]="post.image"></ion-img>
     <ion-card-content> {{ post.body }} </ion-card-content>
 
-    <ion-list>
-      <ion-item *ngFor="let comment of post.comments; let i = index">
-        <ion-label>{{comment.body}}</ion-label>
-        <ion-label>{{comment.name}}</ion-label>
-        <!-- <ion-label>{{comment.email}}</ion-label> -->
+    <p>Comentários: {{post.comments ? post.comments.length : 0}}</p>
+    <div class="noComments" *ngIf="!post.comments"></div>
+    <ion-list *ngIf="post.comments">
+      <div
+        class="commentContainer"
+        *ngFor="let comment of post.comments; let i = index"
+      >
+        <div class="authorContainer">
+          <ion-icon name="chatbubble" class="commentIcons"></ion-icon>
+          <ion-label class="postAuthor">{{comment.name}}</ion-label>
+        </div>
+
+        <div class="commentContent">
+          <ion-label>{{comment.body}}</ion-label>
+        </div>
+      </div>
+      <ion-item lines="none">
+        <div class="newCommentContainer">
+          <ion-input
+            type="text"
+            [(ngModel)]="newCommentBody"
+            placeholder="Digite seu comentário..."
+          ></ion-input>
+          <ion-button fill="outline" slot="end" (click)="saveComment()">
+            <ion-icon name="send-outline"></ion-icon>
+          </ion-button>
+        </div>
       </ion-item>
     </ion-list>
-
-    <ion-item>
-      <ion-label position="floating">Digite seu comentário...</ion-label>
-      <ion-input type="text" [(ngModel)]="newCommentBody"></ion-input>
-      <ion-button fill="outline" slot="end" (click)="saveComment()">
-        <ion-icon name="send-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
   </div>
 </ion-content>
