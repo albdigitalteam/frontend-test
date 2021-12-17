@@ -11,27 +11,33 @@
       (click)="goToPostDetails(post.id)"
     >
       <ion-card-header>
-        <ion-card-subtitle>Post {{ post.id }}</ion-card-subtitle>
+        <ion-card-subtitle
+          >Post {{ post.id }} - {{post.author}}</ion-card-subtitle
+        >
         <ion-card-title>{{ post.title }}</ion-card-title>
       </ion-card-header>
 
-      <ion-img [src]="post.image"></ion-img>
+      <ion-img *ngIf="post.image" [src]="post.image"></ion-img>
       <ion-card-content> {{ post.body }} </ion-card-content>
 
-      <ion-label> Autor {{post.author}} </ion-label>
-
-      <ion-item>
-        <ion-icon name="chatbubble" slot="start"></ion-icon>
-        <ion-row>
-          <ion-label>{{post.lastComment.body}}</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-label>{{post.lastComment.name}}</ion-label>
-        </ion-row>
-        <ion-button fill="outline" slot="end" (click)="goToPostDetails(post.id)"
-          >Ver conversa</ion-button
+      <p>Comentários: {{post.comments ? post.comments.length : 0}}</p>
+      <div class="commentContainer" *ngIf="post.comments">
+        <ion-icon name="chatbubble" class="commentIcons"></ion-icon>
+        <div class="commentContent">
+          <ion-label
+            >{{post.comments[post.comments.length - 1].body}}</ion-label
+          >
+          <ion-label class="postAuthor"
+            >{{post.comments[post.comments.length - 1].name}}</ion-label
+          >
+        </div>
+        <ion-button
+          fill="outline"
+          size="small"
+          (click)="goToPostDetails(post.id)"
+          >Ver</ion-button
         >
-      </ion-item>
+      </div>
     </ion-card>
   </ion-list>
 
