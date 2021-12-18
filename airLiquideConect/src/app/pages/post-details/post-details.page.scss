@@ -9,7 +9,7 @@ ion-content {
     ion-fab {
       ion-fab-button {
         ion-icon {
-          color: var(--ion-color-danger);
+          color: var(--ion-color-secondary);
           font-size: 1.7em;
         }
       }
@@ -33,7 +33,7 @@ ion-content {
         padding: 15px;
         margin: 0px 10px 10px 10px;
         border-radius: 20px;
-        border: 1px solid #7c85ff;
+        border: 1px solid var(--ion-color-primary);
 
         .authorContainer {
           display: flex;
@@ -45,7 +45,7 @@ ion-content {
           .commentIcons {
             font-size: 2em;
             margin-right: 15px;
-            color: #7c85ff;
+            color: var(--ion-color-primary);
           }
 
           .postAuthor {
@@ -75,26 +75,26 @@ ion-content {
         }
       }
     }
+  }
 
-    ion-item {
-      margin-top: 15px;
-      padding: 10px;
-      border-top: 1px solid #000;
+  ion-item {
+    margin-top: 15px;
+    padding: 10px;
+    border-top: 1px solid #000;
 
-      .newCommentContainer {
-        display: flex;
-        flex-direction: row;
-        text-align: start;
-        justify-content: center;
-        width: 100%;
+    .newCommentContainer {
+      display: flex;
+      flex-direction: row;
+      text-align: start;
+      justify-content: center;
+      width: 100%;
 
-        ion-input {
-          font-size: 1.1em;
-        }
+      ion-input {
+        font-size: 1.1em;
+      }
 
-        ion-button {
-          font-size: 1em;
-        }
+      ion-button {
+        font-size: 1em;
       }
     }
   }

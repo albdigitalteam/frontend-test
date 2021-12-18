@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="goToHome()">
         <ion-icon
@@ -35,7 +35,7 @@
     <ion-card-content> {{ post.body }} </ion-card-content>
 
     <p>Comentários: {{post.comments ? post.comments.length : 0}}</p>
-    <div class="noComments" *ngIf="!post.comments"></div>
+
     <ion-list *ngIf="post.comments">
       <div
         class="commentContainer"
@@ -50,18 +50,19 @@
           <ion-label>{{comment.body}}</ion-label>
         </div>
       </div>
-      <ion-item lines="none">
-        <div class="newCommentContainer">
-          <ion-input
-            type="text"
-            [(ngModel)]="newCommentBody"
-            placeholder="Digite seu comentário..."
-          ></ion-input>
-          <ion-button fill="outline" slot="end" (click)="saveComment()">
-            <ion-icon name="send-outline"></ion-icon>
-          </ion-button>
-        </div>
-      </ion-item>
     </ion-list>
+
+    <ion-item lines="none">
+      <div class="newCommentContainer">
+        <ion-input
+          type="text"
+          [(ngModel)]="newCommentBody"
+          placeholder="Digite seu comentário..."
+        ></ion-input>
+        <ion-button fill="outline" slot="end" (click)="saveComment()">
+          <ion-icon name="send-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
   </div>
 </ion-content>
