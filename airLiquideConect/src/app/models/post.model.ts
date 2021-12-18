@@ -8,4 +8,6 @@ export interface IPost {
   readonly author: string;
   readonly comments?: IComment[];
   readonly image?: string;
+  showContent?: boolean;
+  showTitle?: boolean;
 }

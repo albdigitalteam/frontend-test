@@ -1,4 +1,9 @@
 ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
   .profileContainer {
     display: flex;
     flex-direction: column;

@@ -22,7 +22,9 @@ export class ProfilePage implements OnInit {
 
   constructor(private readonly loacalStorage: LocalStorageService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter() {
     this.getUserPosts();
   }
 
