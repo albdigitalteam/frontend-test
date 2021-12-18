@@ -24,9 +24,23 @@ export class PostAdapter {
       );
       const image = this.setPostImages(images);
 
-      if (!image) return { ...post, author, comments: postComments };
+      if (!image)
+        return {
+          ...post,
+          author,
+          comments: postComments,
+          showContent: false,
+          showTitle: false,
+        };
 
-      return { ...post, author, comments: postComments, image };
+      return {
+        ...post,
+        author,
+        comments: postComments,
+        image,
+        showContent: false,
+        showTitle: false,
+      };
     });
   }
 

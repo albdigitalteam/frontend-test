@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -6,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class ImagesService {
   constructor() {}
 
-  getImages(): string[] {
-    return [
+  getImages(): Observable<string[]> {
+    const images = [
       'assets/postsImages/clock-g225091df0_640.jpg',
       'assets/postsImages/confused-g5a5f760db_640.jpg',
       'assets/postsImages/fence-g2e47ac910_640.jpg',
@@ -19,5 +20,14 @@ export class ImagesService {
       'assets/postsImages/squirrel-g7d9f9764c_640.jpg',
       'assets/postsImages/waterslide-gfffd2350f_640.jpg',
     ];
+
+    return this.imagesAdapt(images);
+  }
+
+  private imagesAdapt(images: string[]): Observable<string[]> {
+    return new Observable((observer: Observer<string[]>) => {
+      observer.next(images);
+      observer.complete();
+    });
   }
 }
