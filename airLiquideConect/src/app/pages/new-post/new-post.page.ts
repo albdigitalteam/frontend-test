@@ -7,6 +7,7 @@ import { IUser } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { CreateForms } from 'src/app/utils/createForms.util';
 import { CreateToast } from 'src/app/utils/createToast.util';
+import { PostAdapter } from 'src/app/utils/post.adapter';
 
 @Component({
   selector: 'app-new-post',
@@ -24,7 +25,8 @@ export class NewPostPage implements OnInit {
   constructor(
     private readonly localStorage: LocalStorageService,
     private readonly createToast: CreateToast,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly postAdapter: PostAdapter
   ) {}
 
   ngOnInit() {}
@@ -52,13 +54,27 @@ export class NewPostPage implements OnInit {
       title: this.newPostForm.value.title,
       body: this.newPostForm.value.body,
       id: this.posts.length + 1,
+      showContent: false,
+      showTitle: false,
     };
+
     if (this.postImage !== '') {
       newPost = { ...newPost, image: this.postImage };
     }
 
-    this.posts.push(newPost);
-    this.localStorage.setPosts(this.posts);
+    this.posts.unshift(newPost);
+
+    const commentsSubject = this.localStorage.getComments();
+    const updatedPosts = this.postAdapter.adaptPostNewComment(
+      this.posts,
+      commentsSubject
+    );
+
+    this.localStorage.setPosts(updatedPosts);
+
+    this.isLoading = this.showErrors = false;
+    this.postImage = '';
+    this.newPostForm.reset();
 
     this.goToHome();
   }
