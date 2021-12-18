@@ -37,7 +37,6 @@ export class PostDetailsPage implements OnInit {
     const currentPost: number =
       +this.activatedRoute.snapshot.paramMap.get('postId');
 
-    // melhorar para atualizar com next do storage
     this.posts = this.localStorageService.getPosts();
     this.post = this.posts.find((post) => post.id === currentPost);
   }
@@ -59,7 +58,7 @@ export class PostDetailsPage implements OnInit {
       postId: this.post.id,
       name: this.currentUser.name,
       email: this.currentUser.email,
-      id: commentsSubject.length,
+      id: commentsSubject.length + 1,
     };
 
     commentsSubject.push(newComment);
@@ -70,6 +69,7 @@ export class PostDetailsPage implements OnInit {
       commentsSubject
     );
     this.localStorageService.setPosts(updatedPosts);
+    this.newCommentBody = '';
 
     this.loadPost();
   }
@@ -90,9 +90,12 @@ export class PostDetailsPage implements OnInit {
         {
           text: 'Sim',
           handler: async () => {
+            this.removePostComments();
+
             const postIndex = this.posts.findIndex(
               (post) => post.id === this.post.id
             );
+
             this.posts.splice(postIndex, 1);
             this.localStorageService.setPosts(this.posts);
 
@@ -113,6 +116,22 @@ export class PostDetailsPage implements OnInit {
       ],
     });
     await actionSheet.present();
+  }
+
+  private removePostComments() {
+    const comments = this.localStorageService.getComments();
+    const postComments = comments.filter(
+      (comment) => comment.postId === this.post.id
+    );
+
+    postComments.map((comment) => {
+      const commentIndex = comments.findIndex(
+        (indexComment) => comment.id === indexComment.id
+      );
+      comments.splice(commentIndex, 1);
+    });
+
+    this.localStorageService.setComments(comments);
   }
 
   public goToHome(): void {
