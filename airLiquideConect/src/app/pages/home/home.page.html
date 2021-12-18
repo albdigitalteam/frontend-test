@@ -1,42 +1,82 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Bem Vindo!</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list *ngIf="!isLoading">
-    <ion-card
-      *ngFor="let post of posts; let i = index"
-      (click)="goToPostDetails(post.id)"
-    >
+    <ion-card *ngFor="let post of posts; let i = index">
       <ion-card-header>
         <ion-card-subtitle
-          >Post {{ post.id }} - {{post.author}}</ion-card-subtitle
+          >Post {{ post.id }} - {{ post.author }}</ion-card-subtitle
         >
-        <ion-card-title>{{ post.title }}</ion-card-title>
+        <ion-card-title
+          [class]="post.showTitle ? 'showWholeTitle' : ''"
+          (click)="goToPostDetails(post.id)"
+          >{{ post.title }}</ion-card-title
+        >
+        <ion-button
+          class="btShowMore"
+          fill="outline"
+          size="small"
+          color="medium"
+          (click)="toggleTitle(post.id)"
+          *ngIf="post.title.length >= 53"
+        >
+          <ion-icon name="ellipsis-horizontal" slot="icon-only"></ion-icon>
+        </ion-button>
       </ion-card-header>
 
-      <ion-img *ngIf="post.image" [src]="post.image"></ion-img>
-      <ion-card-content> {{ post.body }} </ion-card-content>
+      <ion-img
+        *ngIf="post.image"
+        [src]="post.image"
+        (click)="goToPostDetails(post.id)"
+      ></ion-img>
 
-      <p>Comentários: {{post.comments ? post.comments.length : 0}}</p>
-      <div class="commentContainer" *ngIf="post.comments">
+      <ion-card-content
+        (click)="goToPostDetails(post.id)"
+        [class]="post.showContent ? 'showWholeBody' : ''"
+      >
+        {{ post.body }}
+      </ion-card-content>
+      <ion-button
+        class="btShowMore"
+        fill="outline"
+        size="small"
+        color="medium"
+        (click)="toggleBoddy(post.id)"
+        *ngIf="post.body.length >= 117"
+      >
+        <ion-icon name="ellipsis-horizontal" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <p>Comentários: {{ post.comments ? post.comments.length : 0 }}</p>
+      <div
+        class="commentContainer"
+        *ngIf="post.comments && post.comments.length > 0"
+        (click)="goToPostDetails(post.id)"
+      >
         <ion-icon name="chatbubble" class="commentIcons"></ion-icon>
         <div class="commentContent">
           <ion-label
-            >{{post.comments[post.comments.length - 1].body}}</ion-label
+            >{{ post.comments[post.comments.length - 1].body }}</ion-label
           >
           <ion-label class="postAuthor"
-            >{{post.comments[post.comments.length - 1].name}}</ion-label
+            >{{ post.comments[post.comments.length - 1].name }}</ion-label
           >
         </div>
-        <ion-button
-          fill="outline"
-          size="small"
-          (click)="goToPostDetails(post.id)"
-          >Ver</ion-button
-        >
+        <ion-button fill="outline" size="small">Ver</ion-button>
+      </div>
+
+      <div
+        class="noCommentContainer"
+        *ngIf="!post.comments || post.comments.length === 0"
+        (click)="goToPostDetails(post.id)"
+      >
+        <ion-icon name="chatbubble" class="commentIcons"></ion-icon>
+        <ion-label>Seja o primeiro a comentar.</ion-label>
+        <ion-button fill="outline" size="small">Ver</ion-button>
       </div>
     </ion-card>
   </ion-list>

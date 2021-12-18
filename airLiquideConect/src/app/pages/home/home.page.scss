@@ -3,17 +3,64 @@ ion-content {
     ion-card {
       ion-card-header {
         ion-card-title {
+          text-align: left;
           font-size: 1.5em;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        .showWholeTitle {
+          overflow: visible;
+          display: block;
+        }
+
+        .btShowMore {
+          padding: 0;
+          margin-top: 5px;
+
+          ion-icon {
+            font-size: 1.5em;
+          }
         }
       }
 
       ion-img {
-        padding: 20px;
+        padding: 0px 20px 20px 20px;
+      }
+
+      ion-card-content {
+        padding-bottom: 0;
+        text-align: justify;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+
+      .showWholeBody {
+        overflow: visible;
+        display: block;
+      }
+
+      .btShowMore {
+        padding-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+
+        ion-icon {
+          font-size: 1.5em;
+        }
       }
 
       p {
-        width: 100%;
-        margin: 0;
+        width: 95%;
+        margin: auto;
         padding: 10px 20px 10px 0px;
         font-size: 0.9em;
         text-align: right;
@@ -29,12 +76,12 @@ ion-content {
         padding: 15px;
         margin: 0px 10px 10px 10px;
         border-radius: 20px;
-        border: 1px solid #7c85ff;
+        border: 1px solid var(--ion-color-primary);
 
         .commentIcons {
           font-size: 2em;
           margin-right: 15px;
-          color: #7c85ff;
+          color: var(--ion-color-primary);
         }
 
         .commentContent {
@@ -49,6 +96,7 @@ ion-content {
             overflow: hidden;
             white-space: nowrap;
             font-size: 1.2em;
+            text-align: start;
           }
 
           .postAuthor {
@@ -57,6 +105,33 @@ ion-content {
             font-size: 1em;
             width: 55%;
           }
+        }
+
+        ion-button {
+          margin-left: 15px;
+        }
+      }
+
+      .noCommentContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: row;
+        text-align: center;
+        padding: 15px;
+        margin: 0px 10px 10px 10px;
+        border-radius: 20px;
+        border: 1px solid var(--ion-color-primary);
+
+        .commentIcons {
+          font-size: 2em;
+          margin-right: 15px;
+          color: var(--ion-color-primary);
+        }
+
+        ion-label {
+          width: 65%;
+          font-size: 1.2em;
         }
 
         ion-button {
