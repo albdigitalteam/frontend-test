@@ -7,14 +7,21 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromPosts from './+state/posts.reducer';
+import { PostsEffects } from './+state/posts.effects';
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    StoreModule.forFeature(fromPosts.POSTS_FEATURE_KEY, fromPosts.reducer),
+    EffectsModule.forFeature([PostsEffects]),
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page],
 })
 export class Tab1PageModule {}
