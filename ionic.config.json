@@ -1,0 +1,8 @@
+{
+  "name": "Front-End Developer Test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "626db5ad"
+}
