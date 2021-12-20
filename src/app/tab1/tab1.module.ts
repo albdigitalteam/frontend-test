@@ -9,8 +9,8 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromPosts from './+state/posts.reducer';
-import { PostsEffects } from './+state/posts.effects';
+import * as fromPosts from './+state/post/posts.reducer';
+import { PostsEffects } from './+state/post/posts.effects';
 import { PostCardComponent } from './components/post-card/post-card.component';
 
 @NgModule({

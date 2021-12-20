@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {
+  CommentsEntity,
+  PostsEntity,
+  UserEntity,
+} from '../tab1/+state/post/posts.models';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +15,15 @@ export class PostsService {
 
   constructor(private http: HttpClient) {}
 
-  // TODO: tipar o retorno
-  fetchPosts(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/posts`);
+  fetchPosts(): Observable<PostsEntity[]> {
+    return this.http.get<PostsEntity[]>(`${this.baseUrl}/posts`);
+  }
+
+  fetchComments(): Observable<CommentsEntity[]> {
+    return this.http.get<CommentsEntity[]>(`${this.baseUrl}/comments`);
+  }
+
+  fetchUsers(): Observable<UserEntity[]> {
+    return this.http.get<UserEntity[]>(`${this.baseUrl}/users`);
   }
 }

@@ -1,10 +1,10 @@
 import { PostsService } from './../services/posts.service';
-import { State } from './+state/posts.reducer';
+import { State } from './+state/post/posts.reducer';
 import { Component, OnInit } from '@angular/core';
 import { Store, on } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getAllPosts } from './+state/posts.selectors';
-import * as PostsActions from './+state/posts.actions';
+import { getAllPosts } from './+state/post/posts.selectors';
+import * as PostsActions from './+state/post/posts.actions';
 
 @Component({
   selector: 'app-tab1',

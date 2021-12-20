@@ -39,3 +39,4 @@ export interface UserEntity {
     bs: string;
   };
 }
+
