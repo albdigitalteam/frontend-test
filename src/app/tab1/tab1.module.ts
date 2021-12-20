@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromPosts from './+state/posts.reducer';
 import { PostsEffects } from './+state/posts.effects';
+import { PostCardComponent } from './components/post-card/post-card.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { PostsEffects } from './+state/posts.effects';
     StoreModule.forFeature(fromPosts.POSTS_FEATURE_KEY, fromPosts.reducer),
     EffectsModule.forFeature([PostsEffects]),
   ],
-  declarations: [Tab1Page],
+  declarations: [Tab1Page, PostCardComponent],
 })
 export class Tab1PageModule {}
