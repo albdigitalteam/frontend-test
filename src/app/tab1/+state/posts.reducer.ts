@@ -33,6 +33,7 @@ const postsReducer = createReducer(
   on(PostsActions.loadPostsFailure, (state, { error }) => ({ ...state, error }))
 );
 
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function reducer(state: State | undefined, action: Action) {
   return postsReducer(state, action);
 }

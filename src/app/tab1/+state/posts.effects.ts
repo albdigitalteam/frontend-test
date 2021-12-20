@@ -5,8 +5,8 @@ import { fetch } from '@nrwl/angular';
 import * as PostsActions from './posts.actions';
 import * as PostsFeature from './posts.reducer';
 
-import { catchError, switchMap } from 'rxjs/operators';
-
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Injectable()
 export class PostsEffects {
@@ -16,8 +16,9 @@ export class PostsEffects {
       fetch({
         // eslint-disable-next-line arrow-body-style
         run: (action) => {
-          // Your custom service 'load' logic goes here. For now just return a success action...
-          return PostsActions.loadPostsSuccess({ posts: [] });
+          return this.postService
+            .fetchPosts()
+            .pipe(map((posts) => PostsActions.loadPostsSuccess({ posts })));
         },
         onError: (action, error) => {
           console.error('Error', error);
@@ -27,5 +28,5 @@ export class PostsEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions) {}
+  constructor(private readonly actions$: Actions, private postService: PostsService) {}
 }
