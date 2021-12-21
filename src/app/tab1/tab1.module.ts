@@ -12,6 +12,8 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromPosts from './+state/post/posts.reducer';
 import { PostsEffects } from './+state/post/posts.effects';
 import { PostCardComponent } from './components/post-card/post-card.component';
+import * as fromComments from './+state/comments/comments.reducer';
+import { CommentsEffects } from './+state/comments/comments.effects';
 
 @NgModule({
   imports: [
@@ -22,6 +24,11 @@ import { PostCardComponent } from './components/post-card/post-card.component';
     Tab1PageRoutingModule,
     StoreModule.forFeature(fromPosts.POSTS_FEATURE_KEY, fromPosts.reducer),
     EffectsModule.forFeature([PostsEffects]),
+    StoreModule.forFeature(
+      fromComments.COMMENTS_FEATURE_KEY,
+      fromComments.reducer
+    ),
+    EffectsModule.forFeature([CommentsEffects]),
   ],
   declarations: [Tab1Page, PostCardComponent],
 })

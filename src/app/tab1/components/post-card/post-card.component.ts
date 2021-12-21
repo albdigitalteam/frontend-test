@@ -1,4 +1,4 @@
-import { PostsEntity } from './../../+state/post/posts.models';
+import { CommentsEntity, PostsEntity } from './../../+state/post/posts.models';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
