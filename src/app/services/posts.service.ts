@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import {
   CommentsEntity,
   PostsEntity,
-  UserEntity,
 } from '../tab1/+state/post/posts.models';
+import { UsersEntity } from '../tab1/+state/user/users.models';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class PostsService {
     return this.http.get<CommentsEntity[]>(`${this.baseUrl}/comments`);
   }
 
-  fetchUsers(): Observable<UserEntity[]> {
-    return this.http.get<UserEntity[]>(`${this.baseUrl}/users`);
+  fetchUsers(): Observable<UsersEntity[]> {
+    return this.http.get<UsersEntity[]>(`${this.baseUrl}/users`);
   }
 }

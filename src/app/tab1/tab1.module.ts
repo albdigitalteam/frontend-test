@@ -14,6 +14,8 @@ import { PostsEffects } from './+state/post/posts.effects';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import * as fromComments from './+state/comments/comments.reducer';
 import { CommentsEffects } from './+state/comments/comments.effects';
+import * as fromUsers from './+state/user/users.reducer';
+import { UsersEffects } from './+state/user/users.effects';
 
 @NgModule({
   imports: [
@@ -29,6 +31,8 @@ import { CommentsEffects } from './+state/comments/comments.effects';
       fromComments.reducer
     ),
     EffectsModule.forFeature([CommentsEffects]),
+    StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.reducer),
+    EffectsModule.forFeature([UsersEffects]),
   ],
   declarations: [Tab1Page, PostCardComponent],
 })

@@ -3,10 +3,12 @@ import { State } from './+state/post/posts.reducer';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, Observable } from 'rxjs';
-import { getAllPosts } from './+state/post/posts.selectors';
 import * as PostsActions from './+state/post/posts.actions';
 import * as CommentsActions from './+state/comments/comments.actions';
+import * as UsersActions from './+state/user/users.actions';
+import { getAllPosts } from './+state/post/posts.selectors';
 import { getAllComments } from './+state/comments/comments.selectors';
+import { getAllUsers } from './+state/user/users.selectors';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -17,6 +19,8 @@ import { map } from 'rxjs/operators';
 export class Tab1Page implements OnInit {
   posts$: Observable<any>;
   comments$: Observable<any>;
+  users$: Observable<any>;
+
   combinedPosts$: Observable<any>;
   combinedPosts: any;
 
@@ -28,8 +32,12 @@ export class Tab1Page implements OnInit {
 
     this.store.dispatch(CommentsActions.loadComments());
     this.comments$ = this.store.select(getAllComments);
-    // this.comments$.subscribe((comments) => {
-    //   console.log('aqui', comments);
+
+    this.store.dispatch(UsersActions.loadUsers());
+    this.users$ = this.store.select(getAllUsers);
+
+    // this.users$.subscribe((users) => {
+    //   console.log('aqui', users);
     // });
 
     // combineLatest([this.posts$, this.comments$]).subscribe(

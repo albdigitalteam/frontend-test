@@ -1,7 +1,8 @@
 /**
- * Interface for the 'Posts' data
+ * Interface for the 'Users' data
  */
-export interface PostsEntity {
+
+ export interface PostsEntity {
   id: string | number; // Primary ID
   userId: number;
   title: string;
@@ -39,3 +40,4 @@ export interface UsersEntity {
     bs: string;
   };
 }
+
