@@ -42,5 +42,5 @@ export interface UsersEntity {
 
 export interface CombinedPosts extends PostsEntity {
   comments: CommentsEntity[];
-  user: UsersEntity[];
+  user: UsersEntity;
 }

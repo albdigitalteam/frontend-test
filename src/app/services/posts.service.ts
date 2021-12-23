@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {
-  CommentsEntity,
-  PostsEntity,
-} from '../tab1/+state/post/posts.models';
+import { PostsEntity } from '../tab1/+state/post/posts.models';
 import { UsersEntity } from '../tab1/+state/user/users.models';
+import { CommentsEntity } from '../tab1/+state/comments/comments.models';
 
 @Injectable({
   providedIn: 'root',

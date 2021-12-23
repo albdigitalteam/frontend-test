@@ -1,7 +1,25 @@
 <ion-card>
   <ion-card-header>
-    <!-- <ion-card-subtitle></ion-card-subtitle> -->
+    <ion-card-subtitle>{{combinedPost?.user?.name}}</ion-card-subtitle>
     <ion-card-title>{{combinedPost?.title}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>{{combinedPost?.body}}</ion-card-content>
+  <ion-item-divider></ion-item-divider>
+  <ion-card-content *ngFor="let comment of combinedPost?.comments">
+    <ion-item>
+      <ion-icon name="person-circle-sharp" slot="start"></ion-icon>
+      <ion-label>{{comment.name}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="document-text-sharp" slot="start"></ion-icon>
+      <ion-label>{{comment.body}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="mail-sharp" slot="start"></ion-icon>
+      <ion-label>{{comment.email}}</ion-label>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+  </ion-card-content>
 </ion-card>
