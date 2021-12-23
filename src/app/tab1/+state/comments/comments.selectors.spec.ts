@@ -1,4 +1,4 @@
-import { CommentsEntity, PostsEntity } from './comments.models';
+import { CommentsEntity } from './comments.models';
 import { commentsAdapter, CommentsPartialState, initialState } from './comments.reducer';
 import * as CommentsSelectors from './comments.selectors';
 

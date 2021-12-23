@@ -5,10 +5,12 @@ import * as PostsSelectors from './posts.selectors';
 describe('Posts Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getPostsId = (it: PostsEntity) => it.id;
-  const createPostsEntity = (id: string, name = '') =>
+  const createPostsEntity = (id: string, userId = 0, title = '', body = '') =>
     ({
       id,
-      name: name || `name-${id}`,
+      userId,
+      title: title || `title-${id}`,
+      body,
     } as PostsEntity);
 
   let state: PostsPartialState;

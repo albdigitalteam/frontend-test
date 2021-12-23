@@ -1,5 +1,5 @@
-import { CommentsEntity, PostsEntity } from './../../+state/post/posts.models';
 import { Component, OnInit, Input } from '@angular/core';
+import { CombinedPosts } from '../../+state/combinedPosts.models';
 
 @Component({
   selector: 'app-post-card',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./post-card.component.scss'],
 })
 export class PostCardComponent implements OnInit {
-  @Input() post: PostsEntity | undefined;
+  @Input() combinedPost: CombinedPosts | undefined;
 
   constructor() {}
 

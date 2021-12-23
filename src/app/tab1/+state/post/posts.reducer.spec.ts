@@ -5,9 +5,16 @@ import { PostsEntity } from './posts.models';
 import { State, initialState, reducer } from './posts.reducer';
 
 describe('Posts Reducer', () => {
-  const createPostsEntity = (id: string, name = ''): PostsEntity => ({
+  const createPostsEntity = (
+    id: string,
+    userId = 0,
+    title = '',
+    body = ''
+  ): PostsEntity => ({
     id,
-    name: name || `name-${id}`,
+    userId,
+    title: title || `title-${id}`,
+    body,
   });
 
   describe('valid Posts actions', () => {
