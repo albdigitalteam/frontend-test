@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import { State } from './+state/post/posts.reducer';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, Observable, throwError } from 'rxjs';
 import * as PostsActions from './+state/post/posts.actions';
@@ -10,6 +10,7 @@ import { getAllPosts } from './+state/post/posts.selectors';
 import { getAllComments } from './+state/comments/comments.selectors';
 import { getAllUsers } from './+state/user/users.selectors';
 import { catchError, map } from 'rxjs/operators';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -17,10 +18,14 @@ import { catchError, map } from 'rxjs/operators';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
   posts$: Observable<any>;
   comments$: Observable<any>;
   users$: Observable<any>;
   combinedPosts$: Observable<any>;
+
+  public data: any;
 
   constructor(private store: Store<State>) {}
 
@@ -57,6 +62,15 @@ export class Tab1Page implements OnInit {
     // this.combinedPosts$.subscribe((combined) => {
     //   console.log('Aqui', combined);
     // });
+  }
+
+  loadData(event) {
+    setTimeout(() => {
+      event.target.complete();
+      if (this.data.length === 1000) {
+        event.target.disabled = true;
+      }
+    }, 500);
   }
 
   private handleError(error: Error) {
