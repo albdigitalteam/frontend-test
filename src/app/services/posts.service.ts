@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PostsEntity } from '../tab1/+state/post/posts.models';
 import { UsersEntity } from '../tab1/+state/user/users.models';
@@ -9,7 +9,13 @@ import { CommentsEntity } from '../tab1/+state/comments/comments.models';
   providedIn: 'root',
 })
 export class PostsService {
-  baseUrl = 'https://jsonplaceholder.typicode.com';
+  private baseUrl = 'https://jsonplaceholder.typicode.com';
+  private options: any = {
+    headers: new HttpHeaders({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Content-type': 'application/json; charset=UTF-8',
+    }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +29,25 @@ export class PostsService {
 
   fetchUsers(): Observable<UsersEntity[]> {
     return this.http.get<UsersEntity[]>(`${this.baseUrl}/users`);
+  }
+
+  addData(data: any) {
+    return this.http.post<PostsEntity[]>(
+      `${this.baseUrl}/posts`,
+      JSON.stringify(data),
+      this.options
+    );
+  }
+
+  updateData(data: any) {
+    return this.http.put<PostsEntity[]>(
+      `${this.baseUrl}/posts`,
+      JSON.stringify(data),
+      this.options
+    );
+  }
+
+  deleteData() {
+    this.http.delete<PostsEntity[]>(`${this.baseUrl}/posts/1`);
   }
 }

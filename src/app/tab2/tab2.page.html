@@ -13,5 +13,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-button (click)="createData()">
+  <ion-icon slot="start" name="create-outline"></ion-icon>
+  Create Post
+</ion-button>
+
+<ion-button (click)="updateData()">
+  <ion-icon slot="start" name="hammer-outline"></ion-icon>
+  Update Post
+</ion-button>
+
+<ion-button (click)="deleteData()">
+  <ion-icon slot="star" name="trash-outline"></ion-icon>
+  Delete
+</ion-button>
+
 </ion-content>

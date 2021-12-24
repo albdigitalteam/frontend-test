@@ -3,9 +3,8 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 
 import * as PostsActions from './posts.actions';
-import * as PostsFeature from './posts.reducer';
 
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Injectable()
