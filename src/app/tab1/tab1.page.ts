@@ -10,7 +10,9 @@ import { getAllPosts } from './+state/post/posts.selectors';
 import { getAllComments } from './+state/comments/comments.selectors';
 import { getAllUsers } from './+state/user/users.selectors';
 import { catchError, map } from 'rxjs/operators';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { PostsService } from '../services/posts.service';
+import { FormModalComponent } from './components/form-modal/form-modal.component';
 
 @Component({
   selector: 'app-tab1',
@@ -27,7 +29,11 @@ export class Tab1Page implements OnInit {
 
   public data: any;
 
-  constructor(private store: Store<State>) {}
+  constructor(
+    private store: Store<State>,
+    private postService: PostsService,
+    public modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(PostsActions.init());
@@ -64,6 +70,33 @@ export class Tab1Page implements OnInit {
     // });
   }
 
+  async openFormModal(id: string | number) {
+    const modal = await this.modalController.create({
+      component: FormModalComponent,
+      swipeToClose: true,
+      // cssClass: 'my-custom-class',
+      componentProps: {
+        isPost: false,
+        postId: id,
+      },
+    });
+    return await modal.present();
+  }
+
+  // openFormModal(id: string | number) {
+  //   this.postService.addComment(id).subscribe((res) => {
+  //     console.log('Aqui', res);
+  //     return res;
+  //   });
+  // }
+
+  deletePost(id: string | number) {
+    this.postService.deleteData(id).subscribe((res) => {
+      console.log('Aqui', res);
+      return res;
+    });
+  }
+
   loadData(event) {
     setTimeout(() => {
       event.target.complete();
@@ -79,3 +112,17 @@ export class Tab1Page implements OnInit {
     });
   }
 }
+
+// function openCardModal() {
+//   openModal({
+//     swipeToClose: true,
+//     presentingElement: pageEl,
+//   });
+// }
+
+// function dismissModal() {
+//   if (currentModal) {
+//     currentModal.dismiss().then(() => {
+//       currentModal = null;
+//     });
+//   }

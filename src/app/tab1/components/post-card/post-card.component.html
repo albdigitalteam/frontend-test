@@ -1,6 +1,19 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>{{combinedPost?.user?.name}}</ion-card-subtitle>
+
+    <ion-item>
+      <ion-card-subtitle slot="start">
+        {{combinedPost?.user?.name}}
+      </ion-card-subtitle>
+      <!-- <ion-icon name="ellipsis-vertical-circle-outline" slot="end"></ion-icon> -->
+      <ion-button (click)="deleteData(combinedPost.id)" slot="end">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="addComment(combinedPost.id)" slot="end">
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-item>
+
     <ion-card-title>{{combinedPost?.title}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>{{combinedPost?.body}}</ion-card-content>

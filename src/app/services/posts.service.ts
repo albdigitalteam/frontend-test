@@ -39,6 +39,14 @@ export class PostsService {
     );
   }
 
+  addComment(data: any) {
+    return this.http.post<PostsEntity[]>(
+      `${this.baseUrl}/comments`,
+      JSON.stringify(data),
+      this.options
+    );
+  }
+
   updateData(data: any) {
     return this.http.put<PostsEntity[]>(
       `${this.baseUrl}/posts`,
@@ -47,7 +55,7 @@ export class PostsService {
     );
   }
 
-  deleteData() {
-    this.http.delete<PostsEntity[]>(`${this.baseUrl}/posts/1`);
+  deleteData(id: string | number) {
+   return this.http.delete<PostsEntity[]>(`${this.baseUrl}/posts/${id}`);
   }
 }

@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{isPost ? 'Adicionar Post' : 'Adicionar Comentário'}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="blogForm">
+    <ion-label position="floating">Título</ion-label>
+    <ion-input formControlName="title"></ion-input>
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-textarea formControlName="body"></ion-textarea>
+    </ion-item>
+    <ion-button (click)="saveForm()" [disabled]="blogForm.invalid" color="success">Salvar</ion-button>
+  </form>
+</ion-content>
