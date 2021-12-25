@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { PostsService } from 'src/app/services/posts.service';
+import { Store } from '@ngrx/store';
+import { getAllComments } from '../../+state/comments/comments.selectors';
+import * as CommentsActions from '../../+state/comments/comments.actions';
 
 @Component({
   selector: 'app-form-modal',
@@ -16,7 +18,7 @@ export class FormModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public modalController: ModalController,
-    private postService: PostsService
+    private store: Store<any>,
   ) {}
 
   ngOnInit() {
@@ -32,7 +34,9 @@ export class FormModalComponent implements OnInit {
       name: '',
       email: '',
     };
-    this.postService.addComment(payload).subscribe((res) => res);
+    this.store.dispatch(CommentsActions.createComment({comment:payload}));
+    // this.createComment$ = this.store.select(getAllComments);
+    // this.postService.addComment(payload).subscribe((res) => res);
     this.dismiss();
   }
 

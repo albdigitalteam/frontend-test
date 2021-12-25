@@ -40,7 +40,7 @@ export class PostsService {
   }
 
   addComment(data: any) {
-    return this.http.post<PostsEntity[]>(
+    return this.http.post<CommentsEntity>(
       `${this.baseUrl}/comments`,
       JSON.stringify(data),
       this.options

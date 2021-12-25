@@ -30,7 +30,13 @@ const commentsReducer = createReducer(
   on(CommentsActions.loadCommentsSuccess, (state, { comments }) =>
   commentsAdapter.setAll(comments, { ...state, loaded: true })
   ),
-  on(CommentsActions.loadCommentsFailure, (state, { error }) => ({ ...state, error }))
+  on(CommentsActions.loadCommentsFailure, (state, { error }) => ({ ...state, error })),
+
+  on(CommentsActions.createComment, (state) => ({ ...state, loaded: false, error: null })),
+  on(CommentsActions.createCommentSuccess, (state, { comment }) =>
+    commentsAdapter.addOne(comment, { ...state, loaded: true })
+  ),
+  on(CommentsActions.createCommentFailure, (state, { error }) => ({ ...state, error }))
 );
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
