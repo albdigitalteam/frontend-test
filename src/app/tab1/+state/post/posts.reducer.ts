@@ -1,5 +1,5 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on, Action, props, Store } from '@ngrx/store';
 
 import * as PostsActions from './posts.actions';
 import { PostsEntity } from './posts.models';
@@ -30,7 +30,23 @@ const postsReducer = createReducer(
   on(PostsActions.loadPostsSuccess, (state, { posts }) =>
     postsAdapter.setAll(posts, { ...state, loaded: true })
   ),
-  on(PostsActions.loadPostsFailure, (state, { error }) => ({ ...state, error }))
+  on(PostsActions.loadPostsFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
+  on(PostsActions.deletePost, (state) => ({
+    ...state,
+    loaded: false,
+    error: null,
+  })),
+  on(PostsActions.deletePostSuccess, (state, { post }) =>
+    postsAdapter.removeOne(post.id, { ...state, loaded: true })
+  ),
+  on(PostsActions.deletePostFailure, (state, { error }) => ({
+    ...state,
+    error,
+  }))
 );
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions

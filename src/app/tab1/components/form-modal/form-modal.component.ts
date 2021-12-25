@@ -31,12 +31,10 @@ export class FormModalComponent implements OnInit {
       title: this.blogForm.get('title').value,
       body: this.blogForm.get('body').value,
       postId: this.postId,
-      name: '',
-      email: '',
+      name: 'Caio Alves',
+      email: 'kaka@teste.com.br',
     };
     this.store.dispatch(CommentsActions.createComment({comment:payload}));
-    // this.createComment$ = this.store.select(getAllComments);
-    // this.postService.addComment(payload).subscribe((res) => res);
     this.dismiss();
   }
 

@@ -1,3 +1,4 @@
+import { PostsEntity } from './+state/post/posts.models';
 /* eslint-disable arrow-body-style */
 import { State } from './+state/post/posts.reducer';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -74,7 +75,6 @@ export class Tab1Page implements OnInit {
     const modal = await this.modalController.create({
       component: FormModalComponent,
       swipeToClose: true,
-      // cssClass: 'my-custom-class',
       componentProps: {
         isPost: false,
         postId: id,
@@ -83,18 +83,12 @@ export class Tab1Page implements OnInit {
     return await modal.present();
   }
 
-  // openFormModal(id: string | number) {
-  //   this.postService.addComment(id).subscribe((res) => {
-  //     console.log('Aqui', res);
-  //     return res;
-  //   });
-  // }
-
-  deletePost(id: string | number) {
-    this.postService.deleteData(id).subscribe((res) => {
-      console.log('Aqui', res);
-      return res;
-    });
+  deletePost(post: PostsEntity) {
+    this.store.dispatch(PostsActions.deletePost({post}));
+    // this.postService.deleteData(id).subscribe((res) => {
+    //   console.log('Aqui', res);
+    //   return res;
+    // });
   }
 
   loadData(event) {
@@ -113,16 +107,3 @@ export class Tab1Page implements OnInit {
   }
 }
 
-// function openCardModal() {
-//   openModal({
-//     swipeToClose: true,
-//     presentingElement: pageEl,
-//   });
-// }
-
-// function dismissModal() {
-//   if (currentModal) {
-//     currentModal.dismiss().then(() => {
-//       currentModal = null;
-//     });
-//   }

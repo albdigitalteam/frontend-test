@@ -27,5 +27,23 @@ export class PostsEffects {
     )
   );
 
+  deletePost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PostsActions.deletePost),
+      fetch({
+        // eslint-disable-next-line arrow-body-style
+        run: (action) => {
+          return this.postService
+            .deleteData(action.post.id)
+            .pipe(map((post) => PostsActions.deletePostSuccess({ post: action.post})));
+        },
+        onError: (action, error) => {
+          console.error('Error', error);
+          return PostsActions.deletePostFailure({ error });
+        },
+      })
+    )
+  );
+
   constructor(private readonly actions$: Actions, private postService: PostsService) {}
 }

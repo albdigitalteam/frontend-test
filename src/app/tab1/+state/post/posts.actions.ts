@@ -12,3 +12,18 @@ export const loadPostsFailure = createAction(
   '[Posts/API] Load Posts Failure',
   props<{ error: any }>()
 );
+
+export const deletePost = createAction(
+  '[Posts Page] Delete Post',
+  props<{ post: PostsEntity }>()
+);
+
+export const deletePostSuccess = createAction(
+  '[Posts/API] Delete Post Success',
+  props<{ post: any }>()
+);
+
+export const deletePostFailure = createAction(
+  '[Posts/API] Delete Post Failure',
+  props<{ error: any }>()
+);
