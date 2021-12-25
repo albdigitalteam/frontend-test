@@ -71,20 +71,20 @@ export class Tab1Page implements OnInit {
     // });
   }
 
-  async openFormModal(id: string | number) {
+  async openFormModal(isPost: boolean, id?: string | number) {
     const modal = await this.modalController.create({
       component: FormModalComponent,
       swipeToClose: true,
       componentProps: {
-        isPost: false,
-        postId: id,
+        isPost,
+        postId: id ? id : null,
       },
     });
     return await modal.present();
   }
 
   deletePost(post: PostsEntity) {
-    this.store.dispatch(PostsActions.deletePost({post}));
+    this.store.dispatch(PostsActions.deletePost({ post }));
     // this.postService.deleteData(id).subscribe((res) => {
     //   console.log('Aqui', res);
     //   return res;
@@ -106,4 +106,3 @@ export class Tab1Page implements OnInit {
     });
   }
 }
-

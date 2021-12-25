@@ -1,19 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title size="large">Blog</ion-title>
+    <ion-button (click)="openFormModal(true)" slot="end">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blog</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-post-card (deletePost)="deletePost($event)" (openFormModal)="openFormModal($event)" [combinedPost]="combinedPost"
+  <app-post-card (deletePost)="deletePost($event)" (openFormModal)="openFormModal(false, $event)" [combinedPost]="combinedPost"
     *ngFor="let combinedPost of combinedPosts$ | async"></app-post-card>
 
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->

@@ -46,6 +46,19 @@ const postsReducer = createReducer(
   on(PostsActions.deletePostFailure, (state, { error }) => ({
     ...state,
     error,
+  })),
+
+  on(PostsActions.createPost, (state) => ({
+    ...state,
+    loaded: false,
+    error: null,
+  })),
+  on(PostsActions.createPostSuccess, (state, { post }) =>
+    postsAdapter.addOne(post, { ...state, loaded: true })
+  ),
+  on(PostsActions.createPostFailure, (state, { error }) => ({
+    ...state,
+    error,
   }))
 );
 

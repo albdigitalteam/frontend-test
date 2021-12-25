@@ -31,8 +31,8 @@ export class PostsService {
     return this.http.get<UsersEntity[]>(`${this.baseUrl}/users`);
   }
 
-  addData(data: any) {
-    return this.http.post<PostsEntity[]>(
+  addPost(data: any) {
+    return this.http.post<PostsEntity>(
       `${this.baseUrl}/posts`,
       JSON.stringify(data),
       this.options

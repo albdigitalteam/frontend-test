@@ -35,7 +35,11 @@ export class PostsEffects {
         run: (action) => {
           return this.postService
             .deleteData(action.post.id)
-            .pipe(map((post) => PostsActions.deletePostSuccess({ post: action.post})));
+            .pipe(
+              map((post) =>
+                PostsActions.deletePostSuccess({ post: action.post })
+              )
+            );
         },
         onError: (action, error) => {
           console.error('Error', error);
@@ -45,5 +49,26 @@ export class PostsEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions, private postService: PostsService) {}
+  createPost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PostsActions.createPost),
+      fetch({
+        // eslint-disable-next-line arrow-body-style
+        run: (action) => {
+          return this.postService
+            .addPost(action.post)
+            .pipe(map((post) => PostsActions.createPostSuccess({ post })));
+        },
+        onError: (action, error) => {
+          console.error('Error', error);
+          return PostsActions.createPostFailure({ error });
+        },
+      })
+    )
+  );
+
+  constructor(
+    private readonly actions$: Actions,
+    private postService: PostsService
+  ) {}
 }

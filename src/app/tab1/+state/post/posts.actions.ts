@@ -27,3 +27,18 @@ export const deletePostFailure = createAction(
   '[Posts/API] Delete Post Failure',
   props<{ error: any }>()
 );
+
+export const createPost = createAction(
+  '[Posts Page] Create Post',
+  props<{ post: PostsEntity }>()
+);
+
+export const createPostSuccess = createAction(
+  '[Posts/API] Create Post Success',
+  props<{ post: any }>()
+);
+
+export const createPostFailure = createAction(
+  '[Posts/API] Create Post Failure',
+  props<{ error: any }>()
+);

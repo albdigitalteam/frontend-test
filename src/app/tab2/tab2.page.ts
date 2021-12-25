@@ -18,7 +18,7 @@ export class Tab2Page implements OnInit {
       userId: 105,
     };
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    this.postService.addData(data).subscribe((data) => {
+    this.postService.addPost(data).subscribe((data) => {
       console.log(data);
     });
   }
@@ -31,7 +31,7 @@ export class Tab2Page implements OnInit {
       userId: 105,
     };
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    this.postService.addData(data).subscribe((data) => {
+    this.postService.addPost(data).subscribe((data) => {
       console.log(data);
     });
   }

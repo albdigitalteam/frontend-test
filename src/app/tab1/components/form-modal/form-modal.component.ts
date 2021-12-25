@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
-import { getAllComments } from '../../+state/comments/comments.selectors';
 import * as CommentsActions from '../../+state/comments/comments.actions';
+import * as PostsActions from '../../+state/post/posts.actions';
 
 @Component({
   selector: 'app-form-modal',
@@ -18,7 +18,7 @@ export class FormModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public modalController: ModalController,
-    private store: Store<any>,
+    private store: Store<any>
   ) {}
 
   ngOnInit() {
@@ -27,14 +27,25 @@ export class FormModalComponent implements OnInit {
 
   // TODO: quando tiver login colocar os dado usuário logado
   saveForm() {
-    const payload = {
-      title: this.blogForm.get('title').value,
-      body: this.blogForm.get('body').value,
-      postId: this.postId,
-      name: 'Caio Alves',
-      email: 'kaka@teste.com.br',
-    };
-    this.store.dispatch(CommentsActions.createComment({comment:payload}));
+    let payload;
+    if (!this.isPost) {
+      payload = {
+        title: this.blogForm.get('title').value,
+        body: this.blogForm.get('body').value,
+        postId: this.postId,
+        name: 'Caio Alves',
+        email: 'kaka@teste.com.br',
+      };
+      this.store.dispatch(CommentsActions.createComment({ comment: payload }));
+    } else {
+      payload = {
+        title: this.blogForm.get('title').value,
+        body: this.blogForm.get('body').value,
+        userId: 11,
+        name: 'Caio Alves',
+      };
+      this.store.dispatch(PostsActions.createPost({ post: payload }));
+    }
     this.dismiss();
   }
 
