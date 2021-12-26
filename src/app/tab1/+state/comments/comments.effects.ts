@@ -37,7 +37,6 @@ export class CommentsEffects {
       fetch({
         // eslint-disable-next-line arrow-body-style
         run: (action) => {
-          // this.postService.addComment(action.comment).subscribe((res) => res);
           return this.postService
             .addComment(action.comment)
             .pipe(

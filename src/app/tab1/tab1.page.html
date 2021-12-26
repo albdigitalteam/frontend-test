@@ -8,10 +8,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-post-card (deletePost)="deletePost($event)" (openFormModal)="openFormModal(false, $event)" [combinedPost]="combinedPost"
-    *ngFor="let combinedPost of combinedPosts$ | async"></app-post-card>
+  <app-post-card (deletePost)="deletePost($event)" (openFormModal)="openFormModal(false, $event)"
+    [combinedPost]="combinedPost" *ngFor="let combinedPost of combinedPosts$ | async"></app-post-card>
 
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando...">
     </ion-infinite-scroll-content>

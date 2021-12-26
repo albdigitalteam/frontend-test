@@ -12,7 +12,6 @@ import { getAllComments } from './+state/comments/comments.selectors';
 import { getAllUsers } from './+state/user/users.selectors';
 import { catchError, map } from 'rxjs/operators';
 import { IonInfiniteScroll, ModalController } from '@ionic/angular';
-import { PostsService } from '../services/posts.service';
 import { FormModalComponent } from './components/form-modal/form-modal.component';
 
 @Component({
@@ -32,7 +31,6 @@ export class Tab1Page implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private postService: PostsService,
     public modalController: ModalController
   ) {}
 
@@ -66,9 +64,6 @@ export class Tab1Page implements OnInit {
         });
       }, catchError(this.handleError))
     );
-    // this.combinedPosts$.subscribe((combined) => {
-    //   console.log('Aqui', combined);
-    // });
   }
 
   async openFormModal(isPost: boolean, id?: string | number) {
@@ -85,10 +80,6 @@ export class Tab1Page implements OnInit {
 
   deletePost(post: PostsEntity) {
     this.store.dispatch(PostsActions.deletePost({ post }));
-    // this.postService.deleteData(id).subscribe((res) => {
-    //   console.log('Aqui', res);
-    //   return res;
-    // });
   }
 
   loadData(event) {
