@@ -18,17 +18,18 @@ Comentários → [https://jsonplaceholder.typicode.com/comments](https://jsonpla
 Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 
 ### Pontos a serem avaliados:
+- [ ]  Gerenciamento de temas e estilos css
 - [ ]  Utilização da linguagem e/ou tecnologia
 - [ ]  Gerencia de estado da aplicação, imutabilidade e efeitos colaterais
-- [ ]  Arquitetura, escalabilidade e organização
+- [ ]  Arquitetura, utilização de Design Pattern, performance, escalabilidade e organização
 - [ ]  Implementação de patterns e conceitos
 - [ ]  Árvore de commits do Git
 
 ### Não essencial, mas ótimo se tiver também:
-- ReactJS ou React Native
-- Redux + Redux Saga
+- React ou React Native
 - TypeScript
 - Testes automatizados
+- Crie e execute uma imagem docker da sua aplicação localmente (Web)
 
 **Prazo para entrega: 1 semana após o fork do repositório.**
 
