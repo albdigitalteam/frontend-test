@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Post from '../components/Post/Post';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../stores/hooks/useStore';
@@ -9,13 +8,14 @@ function Feed() {
     return (
         <>
             {store && store.posts ? (
-                store.posts.map((postData) => {
+                store.posts.map(({ body, userId, id, title }) => {
                     return (
                         <Post
-                            body={postData.body}
-                            name="{postData.userId}"
-                            title={postData.title}
-                            key={postData.id}
+                            body={body}
+                            userId={userId}
+                            id={id}
+                            title={title}
+                            key={id}
                         />
                     );
                 })

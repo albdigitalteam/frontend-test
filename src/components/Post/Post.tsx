@@ -1,30 +1,28 @@
-import { CommentType } from '../../types';
 import Ruler from '../Ruler';
-import CircularAvatar from './components/CircularAvatar';
+import PostComments from './components/PostComments';
+import PostHeader from './components/PostHeader';
 
 type PostProps = {
-    name: string;
+    id: number;
+    userId: number;
     title: string;
     body: string;
     image?: string;
-    comments?: CommentType[];
 };
 
-function Post({ name, title, body, image, comments }: PostProps) {
+function Post({ userId, id, title, body, image }: PostProps) {
     return (
         <div
             className="flex flex-col gap-2 mt-4 w-full rounded-xl overflow-y-auto 
                         text-gray-700 bg-white p-4"
         >
-            <div className="flex">
-                <CircularAvatar />
-                <h1 className="ml-1">{name}</h1>
-            </div>
+            <PostHeader userId={userId} />
             <Ruler />
             <h2>{title}</h2>
             {!!image && <img src={image} alt={`image_post_${title}`} />}
             <p>{body}</p>
             <Ruler />
+            <PostComments postId={id} />
         </div>
     );
 }

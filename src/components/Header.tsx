@@ -1,6 +1,6 @@
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { ReactComponent as Logo } from '../images/air-liquide.svg';
-import IconButton from './Buttons/IconButton';
+import IconButton from './common/Buttons/IconButton';
 
 function Header() {
     return (
