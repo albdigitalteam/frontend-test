@@ -5,6 +5,7 @@ import { queryClient } from './setup';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClientProvider } from '@tanstack/react-query';
+import RootStore from './stores';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <App />
+            <RootStore.StoreProvider value={RootStore.initialInstance}>
+                <App />
+            </RootStore.StoreProvider>
         </QueryClientProvider>
     </React.StrictMode>,
 );

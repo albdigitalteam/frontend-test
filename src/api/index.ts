@@ -1,3 +1,3 @@
-import { useGetPosts } from './hooks/useGetPosts';
+import { useGetData } from './hooks/useGetData';
 
-export default { useGetPosts };
+export default { useGetData };

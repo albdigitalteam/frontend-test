@@ -1,3 +1,3 @@
-import { RootStore } from './Root';
+import { initialInstance, StoreProvider } from './Root';
 
-export default RootStore;
+export default { initialInstance, StoreProvider };

@@ -1,11 +1,11 @@
-export type Post = {
+export type PostType = {
     userId: number;
     id: number;
     title: string;
     body: string;
 };
 
-export type User = {
+export type UserType = {
     id: number;
     name: string;
     username: string;
@@ -29,7 +29,7 @@ export type User = {
     };
 };
 
-export type Comment = {
+export type CommentType = {
     postId: number;
     id: number;
     name: string;
