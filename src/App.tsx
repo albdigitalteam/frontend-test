@@ -1,10 +1,13 @@
+import { useStore } from './stores/hooks/useStore';
+
 function App() {
+    const store = useStore();
+
+    console.log('111', store?.isApplicationInitializing);
+
     return (
         <div className="App">
             <header className="App-header">
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
