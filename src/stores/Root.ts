@@ -10,11 +10,23 @@ const initialInstance = types
         posts: types.optional(types.array(Post), []),
         users: types.optional(types.array(User), []),
         comments: types.optional(types.array(Comment), []),
-        isLoadingInitial: false,
+        isCommentsLoading: false,
+        isUsersLoading: false,
+        isPostsLoading: false,
+        isApplicationInitializing: true,
     })
     .actions((self) => ({
-        setIsLoadingInitial(value: boolean) {
-            self.isLoadingInitial = value;
+        setIsCommentsLoading(value: boolean) {
+            self.isCommentsLoading = value;
+        },
+        setIsUsersLoading(value: boolean) {
+            self.isUsersLoading = value;
+        },
+        setIsPostsLoading(value: boolean) {
+            self.isPostsLoading = value;
+        },
+        setIsApplicationInitializing(value: boolean) {
+            self.isApplicationInitializing = value;
         },
         setPosts(posts: PostType[]) {
             self.posts = cast(posts);
@@ -26,7 +38,15 @@ const initialInstance = types
             self.comments = cast(comments);
         },
     }))
-    .create();
+    .create({
+        posts: [],
+        users: [],
+        comments: [],
+        isCommentsLoading: false,
+        isUsersLoading: false,
+        isPostsLoading: false,
+        isApplicationInitializing: true,
+    });
 
 const RootStoreContext = createContext<null | Instance<typeof initialInstance>>(
     null,
