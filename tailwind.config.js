@@ -9,6 +9,11 @@ module.exports = {
             fontFamily: {
                 sans: ['Roboto', 'sans-serif'],
             },
+            colors: {
+                primary: '#eff6ff',
+                secondary: '#375F9B',
+                background: '#FFFBF6',
+            },
         },
     },
     plugins: [
