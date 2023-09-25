@@ -1,10 +1,16 @@
+import api from './api';
+
 function App() {
+    const { isLoading, data } = api.useGetPosts();
+
+    if (isLoading) {
+        return <>loading...</>;
+    }
+
     return (
         <div className="App">
             <header className="App-header">
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
+                <p>{JSON.stringify(data)}</p>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
