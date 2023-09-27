@@ -1,32 +1,19 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 
-const postData = <T>(url: string, data: T): Promise<T> =>
+const postData = <T, U>(url: string, data: T): Promise<U> =>
     axios.post(url, data).then((response) => response.data);
 
-type DataParams<T> = {
+type PostParam<U> = {
     url: string;
-    keys: string[];
-    data: T;
-    setToStore?: (arg: T) => void;
+    setToStore?: (arg: U) => void;
 };
 
-export const usePostData = <T>({
-    url,
-    data,
-    keys,
-    setToStore,
-}: DataParams<T>) => {
-    const { isLoading, data: postResponse } = useQuery({
-        queryKey: [keys],
-        queryFn: () => postData<T>(url, data),
-        onSuccess: (data) => {
-            if (setToStore) setToStore(data);
-        },
-        onError: (err: AxiosError) => {
-            console.error(err.message);
-        },
+// Remove the keys here since the API is fake and do not make sense invalidate the cache
+export const usePostData = <T, U>({ url, setToStore }: PostParam<U>) => {
+    return useMutation({
+        mutationFn: (data: T) => postData<T, U>(url, data),
+        onError: (err: AxiosError) => console.log(err.message),
+        onSuccess: (data: U) => !!setToStore && setToStore(data),
     });
-
-    return { isLoading, data: postResponse };
 };

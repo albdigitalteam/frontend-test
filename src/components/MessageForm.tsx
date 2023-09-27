@@ -22,10 +22,7 @@ function MessageForm<T extends FieldValues>({
         <form
             id={formId}
             className="flex flex-col"
-            onSubmit={handleSubmit((data) => {
-                console.log('summit');
-                onSubmit(data);
-            })}
+            onSubmit={handleSubmit(onSubmit)}
         >
             {isNewPost && (
                 <label className="flex flex-col  w-100">

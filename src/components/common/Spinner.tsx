@@ -4,7 +4,11 @@ import {
 } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-function Spinner({ size = 'lg' }: { size?: FontAwesomeIconProps['size'] }) {
+interface SpinnerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    size?: FontAwesomeIconProps['size'];
+}
+
+function Spinner({ size = 'lg' }: SpinnerProps) {
     return (
         <FontAwesomeIcon
             className="animate-spin text-secondary"

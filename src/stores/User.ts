@@ -16,5 +16,5 @@ export const User = types.model({
     name: types.string,
     username: types.string,
     email: types.string,
-    address: Address,
+    address: types.maybeNull(Address),
 });

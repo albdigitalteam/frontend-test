@@ -8,20 +8,30 @@ import { usePostData } from '../api/hooks/usePostData';
 import { PostType } from '../types';
 import { useStore } from '../stores/hooks/useStore';
 
+interface PostTypeSubmit extends PostType {
+    name: string;
+    username: string;
+    email: string;
+}
+
 function Header() {
     const [open, setOpen] = useState(false);
     const store = useStore();
 
-    const onSubmit = (data: Exclude<PostType, 'id' | 'userId'>) => {
-        const { isLoading: isPosting, data: responseData } =
-            usePostData<PostType>({
-                url: '/posts',
-                data,
-                keys: ['posts'],
-                setToStore: store?.addPost,
-            });
+    const { mutateAsync: sendPostData } = usePostData<PostTypeSubmit, PostType>(
+        {
+            url: '/posts',
+            setToStore: store?.addPost,
+        },
+    );
 
-        console.log(isPosting, responseData);
+    const onSubmit = async (data: PostTypeSubmit) => {
+        if (store?.user) {
+            const postData = { ...data, ...store.user };
+
+            await sendPostData(postData);
+            setOpen(false);
+        }
     };
 
     return (
