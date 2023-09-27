@@ -37,6 +37,12 @@ const initialInstance = types
         setComments(comments: CommentType[]) {
             self.comments = cast(comments);
         },
+        addUser(user: UserType) {
+            self.users.push(user);
+        },
+        addPost(post: PostType) {
+            self.posts.unshift(post);
+        },
     }))
     .create({
         posts: [],
