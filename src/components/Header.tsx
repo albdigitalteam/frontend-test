@@ -37,7 +37,8 @@ function Header() {
             setIsLoading(true);
 
             let convertedImage = undefined;
-            if (data.image) convertedImage = await fileToBase64(data.image[0]);
+            if (data.image && data.image?.length)
+                convertedImage = await fileToBase64(data.image[0]);
 
             const postData = {
                 ...data,

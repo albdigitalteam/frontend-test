@@ -70,7 +70,9 @@ function Modal({
                                     </Dialog.Title>
                                     <div className="mt-2">
                                         {isLoading ? (
-                                            <Spinner size="2xl" />
+                                            <div className="flex justify-center w-100">
+                                                <Spinner size="2xl" />
+                                            </div>
                                         ) : (
                                             content
                                         )}
