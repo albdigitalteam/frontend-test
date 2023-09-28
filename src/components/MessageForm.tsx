@@ -29,7 +29,7 @@ function MessageForm<T extends FieldValues>({
                     Title:
                     <input
                         type="text"
-                        className="bg-primary"
+                        className="bg-primary rounded-md border border-solid border-secondary p-1"
                         {...register(titleName, { required: true })}
                     />
                 </label>
@@ -37,7 +37,7 @@ function MessageForm<T extends FieldValues>({
             <label className="flex flex-col w-100">
                 Comment:
                 <textarea
-                    className="bg-primary"
+                    className="bg-primary rounded-md border border-solid border-secondary p-1"
                     rows={4}
                     {...register(bodyName, {
                         required: true,
