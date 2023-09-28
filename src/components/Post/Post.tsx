@@ -16,7 +16,7 @@ function Post({ userId, id, title, body, image }: PostProps) {
             className="flex flex-col gap-2 mt-4 w-full rounded-xl overflow-y-auto 
                         text-gray-700 bg-white p-4"
         >
-            <PostHeader userId={userId} />
+            <PostHeader userId={userId} postId={id} />
             <Ruler />
             <h2>{title}</h2>
             {!!image && <img src={image} alt={`image_post_${title}`} />}

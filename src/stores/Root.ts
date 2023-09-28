@@ -41,6 +41,9 @@ const initialInstance = types
         },
         setUsers(users: UserType[]) {
             self.users = cast(users);
+            if (self.user) {
+                self.users.push({ ...self.user });
+            }
         },
         setComments(comments: CommentType[]) {
             self.comments = cast(comments);
@@ -48,8 +51,21 @@ const initialInstance = types
         addUser(user: UserType) {
             self.users.push(user);
         },
+        addComment(comment: CommentType) {
+            self.comments.push(comment);
+        },
         addPost(post: PostType) {
             self.posts.unshift(post);
+        },
+        deleteComment(commentId: number) {
+            self.comments = cast([
+                ...self.comments.filter((comment) => comment.id !== commentId),
+            ]);
+        },
+        deletePost(postId: number) {
+            self.posts = cast([
+                ...self.posts.filter((post) => post.id !== postId),
+            ]);
         },
         setUser(user: UserType) {
             self.user = user;

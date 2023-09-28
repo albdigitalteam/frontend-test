@@ -16,20 +16,23 @@ interface PostTypeSubmit extends PostType {
 
 function Header() {
     const [open, setOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const store = useStore();
 
-    const { mutateAsync: sendPostData } = usePostData<PostTypeSubmit, PostType>(
-        {
-            url: '/posts',
-            setToStore: store?.addPost,
-        },
-    );
+    const { mutateAsync: sendPost } = usePostData<PostTypeSubmit, PostType>({
+        url: '/posts',
+        setToStore: store?.addPost,
+    });
 
+    // Send post data to server with the default user data with id given by the API
     const onSubmit = async (data: PostTypeSubmit) => {
         if (store?.user) {
-            const postData = { ...data, ...store.user };
+            const postData = { ...data, userId: store.user.id, ...store.user };
+            setIsLoading(true);
 
-            await sendPostData(postData);
+            await sendPost(postData);
+
+            setIsLoading(false);
             setOpen(false);
         }
     };
@@ -47,6 +50,7 @@ function Header() {
                 <Modal
                     open={open}
                     setOpen={setOpen}
+                    isLoading={isLoading}
                     title="New post"
                     buttonForm="newMessage"
                     content={

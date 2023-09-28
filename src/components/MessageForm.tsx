@@ -2,8 +2,8 @@ import { FieldValues, Path, useForm } from 'react-hook-form';
 
 type MessageFormProps<T> = {
     formId: string;
-    isNewPost: boolean;
     onSubmit: (data: T) => void;
+    isNewPost?: boolean;
 };
 
 function MessageForm<T extends FieldValues>({
@@ -35,7 +35,7 @@ function MessageForm<T extends FieldValues>({
                 </label>
             )}
             <label className="flex flex-col w-100">
-                Content:
+                Comment:
                 <textarea
                     className="bg-primary"
                     rows={4}

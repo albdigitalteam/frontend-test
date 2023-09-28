@@ -36,4 +36,5 @@ export type CommentType = {
     name: string;
     email: string;
     body: string;
+    isFromUser?: boolean;
 };

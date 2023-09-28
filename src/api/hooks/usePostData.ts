@@ -13,7 +13,7 @@ type PostParam<U> = {
 export const usePostData = <T, U>({ url, setToStore }: PostParam<U>) => {
     return useMutation({
         mutationFn: (data: T) => postData<T, U>(url, data),
-        onError: (err: AxiosError) => console.log(err.message),
+        onError: (err: AxiosError) => console.error(err.message),
         onSuccess: (data: U) => !!setToStore && setToStore(data),
     });
 };
