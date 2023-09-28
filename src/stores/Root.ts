@@ -34,6 +34,8 @@ const initialInstance = types
             self.users.push(user);
         },
         addComment(comment: CommentType) {
+            // Mock id because the post API return always the same id after the post
+            comment.id = self.comments.length + 1;
             self.comments.push(comment);
         },
         addPost(post: PostType) {
@@ -46,16 +48,21 @@ const initialInstance = types
                 ...self.comments.filter((comment) => comment.id !== commentId),
             ]);
         },
-        deletePost(postId: number) {
-            self.posts = cast([
-                ...self.posts.filter((post) => post.id !== postId),
-            ]);
-        },
         setUser(user: UserType) {
             self.user = user;
         },
     }))
     .actions((self) => ({
+        deletePost(postId: number) {
+            self.posts = cast([
+                ...self.posts.filter((post) => post.id !== postId),
+            ]);
+
+            // Delete post comments because the API do not remove it so we need to handle here
+            self.comments
+                .filter((comment) => comment.postId === postId)
+                .forEach((cmt) => self.deleteComment(cmt.id));
+        },
         // Set a default user for our system, to create and delete posts from the API id
         afterCreate: flow(function* afterCreate() {
             const userData = yield axios

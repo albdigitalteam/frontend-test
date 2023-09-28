@@ -25,19 +25,27 @@ function MessageForm<T extends FieldValues>({
             onSubmit={handleSubmit(onSubmit)}
         >
             {isNewPost && (
-                <label className="flex flex-col  w-100">
-                    Title:
+                <label className="flex flex-col w-100">
+                    <span>Title:</span>
                     <input
                         type="text"
-                        className="bg-primary rounded-md border border-solid border-secondary p-1"
+                        className="bg-white border border-slate-300 rounded-md text-sm 
+                        shadow-sm p-1 
+                        focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary
+                        invalid:border-pink-500 invalid:text-pink-600
+                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                         {...register(titleName, { required: true })}
                     />
                 </label>
             )}
             <label className="flex flex-col w-100">
-                Comment:
+                <span>Comment:</span>
                 <textarea
-                    className="bg-primary rounded-md border border-solid border-secondary p-1"
+                    className="bg-white border border-slate-300 rounded-md text-sm 
+                        shadow-sm p-1 
+                        focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary
+                        invalid:border-pink-500 invalid:text-pink-600
+                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     rows={4}
                     {...register(bodyName, {
                         required: true,
