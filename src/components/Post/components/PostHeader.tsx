@@ -5,6 +5,7 @@ import IconButton from '../../common/Buttons/IconButton';
 import CircularAvatar from './CircularAvatar';
 import { useState } from 'react';
 import Modal from '../../common/Modal/Modal';
+import { observer } from 'mobx-react-lite';
 
 type PostHeaderProps = {
     userId: number;
@@ -54,4 +55,4 @@ function PostHeader({ userId, postId }: PostHeaderProps) {
     );
 }
 
-export default PostHeader;
+export default observer(PostHeader);

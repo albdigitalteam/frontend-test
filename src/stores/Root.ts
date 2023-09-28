@@ -7,9 +7,9 @@ import { CommentType, PostType, UserType } from '../types';
 import axios from 'axios';
 
 const DEFAULT_APP_USER = {
-    name: 'TEST_FRONT_END',
-    email: 'TEST_FRONT_END@april.biz',
-    username: 'TEST_FRONT_END',
+    name: 'test_front_end',
+    email: 'test_front_end@april.biz',
+    username: 'test_front_end',
 };
 
 const initialInstance = types
@@ -40,10 +40,8 @@ const initialInstance = types
             self.posts = cast(posts);
         },
         setUsers(users: UserType[]) {
-            self.users = cast(users);
-            if (self.user) {
-                self.users.push({ ...self.user });
-            }
+            const concatUsers = [...self.users, ...users];
+            self.users = cast(concatUsers);
         },
         setComments(comments: CommentType[]) {
             self.comments = cast(comments);
@@ -79,6 +77,7 @@ const initialInstance = types
                 .then((response) => response.data);
 
             self.setUser(userData);
+            self.users.push(userData);
         }),
     }))
     .create({
