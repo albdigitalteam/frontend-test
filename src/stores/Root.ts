@@ -1,12 +1,20 @@
-import { types, Instance, cast } from 'mobx-state-tree';
+import { types, Instance, cast, flow } from 'mobx-state-tree';
 import { Post } from './Post';
 import { User } from './User';
 import { Comment } from './Comment';
 import { createContext } from 'react';
 import { CommentType, PostType, UserType } from '../types';
+import axios from 'axios';
+
+const DEFAULT_APP_USER = {
+    name: 'TEST_FRONT_END',
+    email: 'TEST_FRONT_END@april.biz',
+    username: 'TEST_FRONT_END',
+};
 
 const initialInstance = types
     .model({
+        user: types.maybeNull(User),
         posts: types.optional(types.array(Post), []),
         users: types.optional(types.array(User), []),
         comments: types.optional(types.array(Comment), []),
@@ -33,10 +41,45 @@ const initialInstance = types
         },
         setUsers(users: UserType[]) {
             self.users = cast(users);
+            if (self.user) {
+                self.users.push({ ...self.user });
+            }
         },
         setComments(comments: CommentType[]) {
             self.comments = cast(comments);
         },
+        addUser(user: UserType) {
+            self.users.push(user);
+        },
+        addComment(comment: CommentType) {
+            self.comments.push(comment);
+        },
+        addPost(post: PostType) {
+            self.posts.unshift(post);
+        },
+        deleteComment(commentId: number) {
+            self.comments = cast([
+                ...self.comments.filter((comment) => comment.id !== commentId),
+            ]);
+        },
+        deletePost(postId: number) {
+            self.posts = cast([
+                ...self.posts.filter((post) => post.id !== postId),
+            ]);
+        },
+        setUser(user: UserType) {
+            self.user = user;
+        },
+    }))
+    .actions((self) => ({
+        // Set a default user for our system, to create and delete posts from the API id
+        afterCreate: flow(function* afterCreate() {
+            const userData = yield axios
+                .post('/users', DEFAULT_APP_USER)
+                .then((response) => response.data);
+
+            self.setUser(userData);
+        }),
     }))
     .create({
         posts: [],

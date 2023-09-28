@@ -6,4 +6,5 @@ export const Comment = types.model({
     name: types.string,
     email: types.string,
     body: types.string,
+    isFromUser: types.optional(types.boolean, false),
 });
