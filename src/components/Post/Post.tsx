@@ -8,7 +8,7 @@ type PostProps = {
     userId: number;
     title: string;
     body: string;
-    image?: string;
+    image: string | null;
 };
 
 function Post({ userId, id, title, body, image }: PostProps) {
@@ -17,7 +17,13 @@ function Post({ userId, id, title, body, image }: PostProps) {
             <PostHeader userId={userId} postId={id} />
             <Ruler />
             <h2>{title}</h2>
-            {!!image && <img src={image} alt={`image_post_${title}`} />}
+            {!!image && (
+                <img
+                    className="w-full h-[60vh] object-fill"
+                    src={image}
+                    alt={`image_post_${title}`}
+                />
+            )}
             <p>{body}</p>
             <PostComments postId={id} />
         </Card>

@@ -9,13 +9,14 @@ function Feed() {
     return (
         <>
             {store && posts ? (
-                posts.map(({ body, userId, id, title }) => {
+                posts.map(({ body, userId, id, title, image }) => {
                     return (
                         <Post
                             body={body}
                             userId={userId}
                             id={id}
                             title={title}
+                            image={image}
                             key={id}
                         />
                     );
