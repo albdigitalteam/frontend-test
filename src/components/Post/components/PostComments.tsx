@@ -14,6 +14,7 @@ import { CommentType } from '../../../types';
 import { usePostData } from '../../../api/hooks/usePostData';
 import Spinner from '../../common/Spinner';
 import ActionButtons from '../../common/Buttons/ActionButtons';
+import Card from '../../common/Card';
 
 function PostComments({ postId }: { postId: number }) {
     const [displayComments, setDisplayComments] = useState(false);
@@ -52,17 +53,14 @@ function PostComments({ postId }: { postId: number }) {
                 postComments?.length &&
                 postComments.map(({ body, name, id }) => {
                     return (
-                        <div
-                            className="flex flex-col ml-4 mt-1"
-                            key={`post_comment_${id}`}
-                        >
+                        <Card key={`post_comment_${id}`}>
                             <div className="flex">
                                 <CircularAvatar />
                                 <h1 className="ml-1">{name}</h1>
                             </div>
-                            <p>{body}</p>
                             <Ruler />
-                        </div>
+                            <p className="break-words">{body}</p>
+                        </Card>
                     );
                 })}
             <>
@@ -70,7 +68,7 @@ function PostComments({ postId }: { postId: number }) {
                     <Spinner size="2xl" />
                 ) : (
                     showWriteComment && (
-                        <div className="flex flex-col ml-4 mt-1">
+                        <Card>
                             <MessageForm
                                 formId="newComment"
                                 onSubmit={onSubmit}
@@ -84,7 +82,7 @@ function PostComments({ postId }: { postId: number }) {
                                     onClick: () => setShowWriteComment(false),
                                 }}
                             />
-                        </div>
+                        </Card>
                     )
                 )}
             </>
