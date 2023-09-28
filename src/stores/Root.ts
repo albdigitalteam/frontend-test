@@ -53,6 +53,8 @@ const initialInstance = types
             self.comments.push(comment);
         },
         addPost(post: PostType) {
+            // Mock id because the post API return always the same id after the post
+            post.id = self.posts.length + 1;
             self.posts.unshift(post);
         },
         deleteComment(commentId: number) {
