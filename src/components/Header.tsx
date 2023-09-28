@@ -7,12 +7,19 @@ import MessageForm from './MessageForm';
 import { usePostData } from '../api/hooks/usePostData';
 import { PostType } from '../types';
 import { useStore } from '../stores/hooks/useStore';
+import { fileToBase64 } from '../utils/convertToBase64';
 
 interface PostTypeSubmit extends PostType {
     name: string;
     username: string;
     email: string;
 }
+
+type DataOnSubmit = {
+    title: string;
+    body: string;
+    image?: FileList;
+};
 
 function Header() {
     const [open, setOpen] = useState(false);
@@ -25,10 +32,23 @@ function Header() {
     });
 
     // Send post data to server with the default user data with id given by the API
-    const onSubmit = async (data: PostTypeSubmit) => {
+    const onSubmit = async (data: DataOnSubmit) => {
         if (store?.user) {
-            const postData = { ...data, userId: store.user.id, ...store.user };
             setIsLoading(true);
+
+            let convertedImage = undefined;
+            if (data.image && data.image?.length)
+                convertedImage = await fileToBase64(data.image[0]);
+
+            const postData = {
+                ...data,
+                userId: store.user.id,
+                image:
+                    typeof convertedImage === 'string'
+                        ? convertedImage
+                        : undefined,
+                ...store.user,
+            };
 
             await sendPost(postData);
 
