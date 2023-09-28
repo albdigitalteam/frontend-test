@@ -13,8 +13,8 @@ function ActionButtons({
         <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 rounded-md">
             <button
                 className="inline-flex w-full justify-center rounded-md bg-secondary ring-1 ring-inset 
-                ring-secondary hover:bg-white hover:text-secondary px-3 py-2 text-sm 
-                font-semibold text-white shadow-sm sm:ml-3 sm:w-auto 
+                ring-secondary hover:bg-white hover:text-secondary px-3 py-2 text-sm mb-2
+                font-semibold text-white shadow-sm sm:ml-3 sm:w-auto sm:mb-0
                 disabled:bg-gray-500 disabled:text-white"
                 {...buttonConfirmProps}
             >
