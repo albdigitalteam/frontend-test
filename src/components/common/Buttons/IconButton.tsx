@@ -10,9 +10,13 @@ interface IconButtonProps
     text?: string | number;
 }
 
-function IconButton({ icon, buttonAction, text }: IconButtonProps) {
+function IconButton({ icon, buttonAction, text, ...props }: IconButtonProps) {
     return (
-        <button className="hover:text-secondary w-fit" onClick={buttonAction}>
+        <button
+            className="hover:text-secondary w-fit"
+            onClick={buttonAction}
+            {...props}
+        >
             <FontAwesomeIcon icon={icon} />
             {!!text && <span className="ml-1">{text}</span>}
         </button>
