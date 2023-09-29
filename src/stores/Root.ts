@@ -1,10 +1,9 @@
-import { types, Instance, cast, flow } from 'mobx-state-tree';
+import { types, Instance, cast } from 'mobx-state-tree';
 import { Post } from './Post';
 import { User } from './User';
 import { Comment } from './Comment';
 import { createContext } from 'react';
 import { CommentType, PostType, UserType } from '../types';
-import axios from 'axios';
 
 const DEFAULT_APP_USER = {
     name: 'test_front_end',
@@ -24,7 +23,10 @@ const initialInstance = types
             self.posts = cast(posts);
         },
         setUsers(users: UserType[]) {
-            const concatUsers = [...self.users, ...users];
+            const user = { id: users.length + 1, ...DEFAULT_APP_USER };
+
+            self.user = cast(user);
+            const concatUsers = [...users, user];
             self.users = cast(concatUsers);
         },
         setComments(comments: CommentType[]) {
@@ -63,15 +65,6 @@ const initialInstance = types
                 .filter((comment) => comment.postId === postId)
                 .forEach((cmt) => self.deleteComment(cmt.id));
         },
-        // Set a default user for our system, to create and delete posts from the API id
-        afterCreate: flow(function* afterCreate() {
-            const userData = yield axios
-                .post('/users', DEFAULT_APP_USER)
-                .then((response) => response.data);
-
-            self.setUser(userData);
-            self.users.push(userData);
-        }),
     }))
     .create({
         posts: [],

@@ -66,6 +66,7 @@ function Header() {
                     buttonAction={() => {
                         setOpen(true);
                     }}
+                    data-testid="modal_new_message"
                 />
                 <Modal
                     open={open}
