@@ -3,7 +3,15 @@ import { render, fireEvent } from '@testing-library/react';
 import Header from '../Header';
 import ProvidersWrapper from '../../ProvidersWrapper';
 
-test('check if the modal pops up', () => {
+class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+}
+
+it('check if the modal pops up', () => {
+    window.ResizeObserver = ResizeObserver;
+
     const { getByTestId, queryAllByText } = render(<Header />, {
         wrapper: ProvidersWrapper,
     });
