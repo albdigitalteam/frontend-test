@@ -17,10 +17,10 @@ Comentários → [https://jsonplaceholder.typicode.com/comments](https://jsonpla
 
 Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 
-### Pontos a serem avaliados:
+### Critérios de avaliação:
 - [ ]  Gerenciamento de temas e estilos css
 - [ ]  Utilização da linguagem e/ou tecnologia
-- [ ]  Gerencia de estado da aplicação, imutabilidade e efeitos colaterais
+- [ ]  Gerenciamento do estado da aplicação, imutabilidade e efeitos colaterais
 - [ ]  Arquitetura, utilização de Design Pattern, performance, escalabilidade e organização
 - [ ]  Implementação de patterns e conceitos
 - [ ]  Árvore de commits do Git
@@ -31,6 +31,6 @@ Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplacehold
 - Testes automatizados
 - Crie e execute uma imagem docker da sua aplicação localmente (Web)
 
-**Prazo para entrega: 1 semana após o fork do repositório.**
+**Prazo para entrega: 5 dias após o fork do repositório.**
 
 Ao finalizar, abrir um Pull Request neste repositório e notificar pelo mesmo e-mail que você recebeu o teste.
