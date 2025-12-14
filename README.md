@@ -31,6 +31,6 @@ Usuários → [https://jsonplaceholder.typicode.com/users](https://jsonplacehold
 - Testes automatizados
 - Crie e execute uma imagem docker da sua aplicação localmente (Web)
 
-**Prazo para entrega: 5 dias após o fork do repositório.**
+**Prazo para entrega: 7 dias após o fork do repositório.**
 
 Ao finalizar, abrir um Pull Request neste repositório e notificar pelo mesmo e-mail que você recebeu o teste.
