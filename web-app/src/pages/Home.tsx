@@ -59,7 +59,12 @@ useEffect(() => {
 }
 
   function handleDeletePost(postId: number) {
-  setPosts(prevPosts =>
+    const confirmed = window.confirm(
+    'Tem certeza que deseja excluir este post?'
+  );
+
+  if (!confirmed) return;
+    setPosts(prevPosts =>
     prevPosts.filter(post => post.id !== postId)
   );
 }
