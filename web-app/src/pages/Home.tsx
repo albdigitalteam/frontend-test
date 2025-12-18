@@ -58,6 +58,12 @@ useEffect(() => {
     setPosts(prevPosts => [newPost, ...prevPosts]);
 }
 
+  function handleDeletePost(postId: number) {
+  setPosts(prevPosts =>
+    prevPosts.filter(post => post.id !== postId)
+  );
+}
+
 
 
   return (
@@ -75,6 +81,7 @@ useEffect(() => {
           comments={getPostComments(post.id)}
           isOpen={openPostId === post.id}
           onToggle={() => toggleComments(post.id)}
+          onDelete={() => handleDeletePost(post.id)}
         />
       ))}
     </div>

@@ -7,6 +7,8 @@ interface PostCardProps {
   comments: Comment[];
   isOpen: boolean;
   onToggle: () => void;
+  onDelete: () => void;
+
 }
 
 export function PostCard({
@@ -15,11 +17,16 @@ export function PostCard({
   author,
   comments,
   isOpen,
-  onToggle
+  onToggle,
+  onDelete
 }: PostCardProps) {
   return (
     <div style={{ border: '1px solid #ccc', padding: '16px', marginBottom: '16px' }}>
       <h2>{title}</h2>
+      <button onClick={onDelete}>
+        Excluir
+      </button>
+
       <p>{body}</p>
       <small>Autor: {author}</small>
 
