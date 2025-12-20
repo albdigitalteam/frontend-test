@@ -7,12 +7,18 @@ import { PostCard } from '../components/PostCard';
 import { CreatePostForm } from '../components/CreatePostForm';
 
 
+
 export function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
   const [openPostId, setOpenPostId] = useState<number | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const [editingPostId, setEditingPostId] = useState<number | null>(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editBody, setEditBody] = useState('');
+
+
 
 useEffect(() => {
   async function loadData() {
@@ -69,6 +75,35 @@ useEffect(() => {
   );
 }
 
+function handleEditPost(post: Post) {
+  setEditingPostId(post.id);
+  setEditTitle(post.title);
+  setEditBody(post.body);
+}
+
+function handleCancelEdit() {
+  setEditingPostId(null);
+  setEditTitle('');
+  setEditBody('');
+}
+
+function handleSavePost(
+  postId: number,
+  updatedTitle: string,
+  updatedBody: string
+) {
+  setPosts(prev =>
+    prev.map(post =>
+      post.id === postId
+        ? { ...post, title: updatedTitle, body: updatedBody }
+        : post
+    )
+  );
+
+  setEditingPostId(null);
+  setEditTitle('');
+  setEditBody('');
+}
 
 
   return (
@@ -85,9 +120,20 @@ useEffect(() => {
           author={getAuthorName(post.userId)}
           comments={getPostComments(post.id)}
           isOpen={openPostId === post.id}
+          isEditing={editingPostId === post.id}
+          editTitle={editTitle}
+          editBody={editBody}
           onToggle={() => toggleComments(post.id)}
           onDelete={() => handleDeletePost(post.id)}
+          onEdit={() => handleEditPost(post)}
+          onSave={(title, body) =>
+            handleSavePost(post.id, title, body)
+          }
+          onCancel={handleCancelEdit}
+          onChangeTitle={setEditTitle}
+          onChangeBody={setEditBody}
         />
+
       ))}
     </div>
   );
