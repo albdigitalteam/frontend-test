@@ -17,6 +17,7 @@ export function Home() {
   const [editingPostId, setEditingPostId] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState('');
   const [editBody, setEditBody] = useState('');
+  const [search, setSearch] = useState('');
 
 
 
@@ -105,14 +106,30 @@ function handleSavePost(
   setEditBody('');
 }
 
+const filteredPosts = posts.filter(post =>
+  post.title.toLowerCase().includes(search.toLowerCase())
+);
 
   return (
     <div>
       <h1>Blog</h1>
+
+      <input
+        type="text"
+        placeholder="Buscar post pelo título..."
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        style={{
+          marginBottom: '16px',
+          padding: '8px',
+          width: '100%'
+        }}
+      />
+
     
       <CreatePostForm users={users} onCreatePost={handleCreatePost} disabled={!loaded} />
       
-      {posts.map(post => (
+      {filteredPosts.map(post => (
         <PostCard
           key={post.id}
           title={post.title}
