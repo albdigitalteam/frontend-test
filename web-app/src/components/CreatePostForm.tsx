@@ -12,12 +12,12 @@ interface CreatePostFormProps {
 export function CreatePostForm({ users, onCreatePost, disabled }: CreatePostFormProps) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const [userId, setUserId] = useState<number>(users[0]?.id ?? 1);
+  const [userId, setUserId] = useState<number | ''>('');
 
 function handleSubmit(event: React.FormEvent) {
   event.preventDefault();
 
-  if (!title || !body) return;
+  if (!title || !body || !userId) return;
 
   onCreatePost(title, body, userId);
 
@@ -53,14 +53,23 @@ function handleSubmit(event: React.FormEvent) {
       <select
         value={userId}
         onChange={e => setUserId(Number(e.target.value))}
-        disabled={disabled}
+        disabled={disabled || users.length === 0}
+        style={{
+          width: '100%',
+          padding: '8px'
+        }}
       >
+        <option value="" disabled>
+          Selecione um autor
+        </option>
+
         {users.map(user => (
           <option key={user.id} value={user.id}>
             {user.name}
           </option>
         ))}
       </select>
+
       </div>
 
 

@@ -19,24 +19,39 @@ export function Home() {
   const [editBody, setEditBody] = useState('');
   const [search, setSearch] = useState('');
 
-
-
 useEffect(() => {
   async function loadData() {
-    const [postsData, usersData, commentsData] = await Promise.all([
-      getPosts(),
+    const storedPosts = localStorage.getItem('posts');
+
+    const [usersData, commentsData] = await Promise.all([
       getUsers(),
       getComments()
     ]);
 
-    setPosts(postsData);
     setUsers(usersData);
     setComments(commentsData);
+
+    if (storedPosts) {
+      setPosts(JSON.parse(storedPosts));
+      setLoaded(true);
+      return;
+    }
+
+    const postsData = await getPosts();
+    setPosts(postsData);
     setLoaded(true);
+
+    localStorage.setItem('posts', JSON.stringify(postsData));
   }
 
   loadData();
 }, []);
+
+useEffect(() => {
+  if (loaded) {
+    localStorage.setItem('posts', JSON.stringify(posts));
+  }
+}, [posts, loaded]);
 
 
   function getAuthorName(userId: number) {
@@ -126,10 +141,19 @@ const filteredPosts = posts.filter(post =>
         }}
       />
 
+      {!loaded && <p>Carregando posts...</p>}
+      
+      {loaded && posts.length === 0 && (
+        <p>Nenhum post cadastrado ainda.</p>
+      )}
+
+      {loaded && posts.length > 0 && filteredPosts.length === 0 && (
+        <p>Nenhum post encontrado para essa busca.</p>
+      )}
     
       <CreatePostForm users={users} onCreatePost={handleCreatePost} disabled={!loaded} />
       
-      {filteredPosts.map(post => (
+      {loaded && filteredPosts.map(post => (
         <PostCard
           key={post.id}
           title={post.title}
