@@ -125,24 +125,44 @@ const filteredPosts = posts.filter(post =>
   post.title.toLowerCase().includes(search.toLowerCase())
 );
 
-  return (
-    <div>
-      <h1>Blog</h1>
+return (
+  <div
+    style={{
+      minHeight: '100vh',
+      backgroundColor: '#1e1e1e',
+      padding: '32px 16px'
+    }}
+  >
+    {/* CONTAINER CENTRAL REAL */}
+    <div
+      style={{
+        maxWidth: '900px',
+        margin: '0 auto'
+      }}
+    >
+      <h1 style={{ textAlign: 'center', marginBottom: '24px' }}>
+        Blog
+      </h1>
 
+      {/* BUSCA */}
       <input
         type="text"
-        placeholder="Buscar post pelo título..."
+        placeholder="🔍 Buscar post pelo título..."
         value={search}
         onChange={e => setSearch(e.target.value)}
         style={{
-          marginBottom: '16px',
-          padding: '8px',
-          width: '100%'
+          width: '100%',
+          marginBottom: '40px',
+          padding: '16px',
+          borderRadius: '8px',
+          backgroundColor: '#2a2a2a',
+          border: '1px solid #333',
+          color: '#fff'
         }}
       />
 
       {!loaded && <p>Carregando posts...</p>}
-      
+
       {loaded && posts.length === 0 && (
         <p>Nenhum post cadastrado ainda.</p>
       )}
@@ -150,32 +170,39 @@ const filteredPosts = posts.filter(post =>
       {loaded && posts.length > 0 && filteredPosts.length === 0 && (
         <p>Nenhum post encontrado para essa busca.</p>
       )}
-    
-      <CreatePostForm users={users} onCreatePost={handleCreatePost} disabled={!loaded} />
-      
-      {loaded && filteredPosts.map(post => (
-        <PostCard
-          key={post.id}
-          title={post.title}
-          body={post.body}
-          author={getAuthorName(post.userId)}
-          comments={getPostComments(post.id)}
-          isOpen={openPostId === post.id}
-          isEditing={editingPostId === post.id}
-          editTitle={editTitle}
-          editBody={editBody}
-          onToggle={() => toggleComments(post.id)}
-          onDelete={() => handleDeletePost(post.id)}
-          onEdit={() => handleEditPost(post)}
-          onSave={(title, body) =>
-            handleSavePost(post.id, title, body)
-          }
-          onCancel={handleCancelEdit}
-          onChangeTitle={setEditTitle}
-          onChangeBody={setEditBody}
-        />
 
-      ))}
+      {/* ÚNICO CREATE POST */}
+      <CreatePostForm
+        users={users}
+        onCreatePost={handleCreatePost}
+        disabled={!loaded}
+      />
+
+      {/* POSTS */}
+      {loaded &&
+        filteredPosts.map(post => (
+          <PostCard
+            key={post.id}
+            title={post.title}
+            body={post.body}
+            author={getAuthorName(post.userId)}
+            comments={getPostComments(post.id)}
+            isOpen={openPostId === post.id}
+            isEditing={editingPostId === post.id}
+            editTitle={editTitle}
+            editBody={editBody}
+            onToggle={() => toggleComments(post.id)}
+            onDelete={() => handleDeletePost(post.id)}
+            onEdit={() => handleEditPost(post)}
+            onSave={(title, body) =>
+              handleSavePost(post.id, title, body)
+            }
+            onCancel={handleCancelEdit}
+            onChangeTitle={setEditTitle}
+            onChangeBody={setEditBody}
+          />
+        ))}
     </div>
-  );
+  </div>
+);
 }

@@ -38,7 +38,17 @@ export function PostCard({
   onChangeBody
 }: PostCardProps) {
   return (
-    <div style={{ border: '1px solid #ccc', padding: 16, marginBottom: 16 }}>
+    <div
+      style={{
+        backgroundColor: '#2a2a2a',
+        color: '#f1f1f1',
+        borderRadius: '8px',
+        padding: '16px',
+        marginBottom: '16px',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
+      }}
+    >
+
       {isEditing ? (
         <>
           <input
@@ -58,11 +68,16 @@ export function PostCard({
         <>
           <h2>{title}</h2>
 
-          <button onClick={onEdit}>Editar</button>
-          <button onClick={onDelete}>Excluir</button>
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+              <button onClick={onEdit}>Editar</button>
+              <button onClick={onDelete} style={{ color: 'red' }}>
+                Excluir
+              </button>
+            </div>
 
           <p>{body}</p>
-          <small>Autor: {author}</small>
+          <small style={{ color: '#666' }}>  Autor: {author} </small>
+
         </>
       )}
 
