@@ -41,59 +41,121 @@ export function PostCard({
     <div
       style={{
         backgroundColor: '#2a2a2a',
-        color: '#f1f1f1',
-        borderRadius: '8px',
-        padding: '16px',
-        marginBottom: '16px',
-        boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
+        padding: '20px',
+        borderRadius: '12px',
+        marginBottom: '24px',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
+        color: '#f1f1f1'
       }}
     >
-
       {isEditing ? (
         <>
           <input
             value={editTitle}
             onChange={e => onChangeTitle(e.target.value)}
+            style={{
+              width: '100%',
+              marginBottom: '12px',
+              padding: '8px',
+              borderRadius: '6px'
+            }}
           />
 
           <textarea
             value={editBody}
             onChange={e => onChangeBody(e.target.value)}
+            style={{
+              width: '100%',
+              minHeight: '100px',
+              marginBottom: '12px',
+              padding: '8px',
+              borderRadius: '6px'
+            }}
           />
 
-          <button onClick={() => onSave(editTitle, editBody)}>Salvar</button>
-          <button onClick={onCancel}>Cancelar</button>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button onClick={() => onSave(editTitle, editBody)}>
+              Salvar
+            </button>
+            <button onClick={onCancel}>
+              Cancelar
+            </button>
+          </div>
         </>
       ) : (
         <>
-          <h2>{title}</h2>
+          <h2
+            style={{
+              margin: '0 0 8px 0',
+              fontSize: '20px'
+            }}
+          >
+            {title}
+          </h2>
 
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
-              <button onClick={onEdit}>Editar</button>
-              <button onClick={onDelete} style={{ color: 'red' }}>
-                Excluir
-              </button>
-            </div>
+          <div
+            style={{
+              display: 'flex',
+              gap: '8px',
+              marginBottom: '12px'
+            }}
+          >
+            <button onClick={onEdit}>
+              Editar
+            </button>
 
-          <p>{body}</p>
-          <small style={{ color: '#666' }}>  Autor: {author} </small>
+            <button
+              onClick={onDelete}
+              style={{
+                backgroundColor: '#a33',
+                color: '#fff'
+              }}
+            >
+              Excluir
+            </button>
+          </div>
 
+          <p
+            style={{
+              lineHeight: 1.6,
+              marginBottom: '12px'
+            }}
+          >
+            {body}
+          </p>
+
+          <small style={{ opacity: 0.7 }}>
+            Autor: {author}
+          </small>
         </>
       )}
 
-      <br />
+      <div style={{ marginTop: '16px' }}>
+        <button onClick={onToggle}>
+          {isOpen ? 'Ocultar comentários' : 'Mostrar comentários'}
+        </button>
+      </div>
 
-      <button onClick={onToggle}>
-        {isOpen ? 'Ocultar comentários' : 'Mostrar comentários'}
-      </button>
-
-      {isOpen &&
-        comments.map(comment => (
-          <div key={comment.id}>
-            <strong>{comment.name}</strong>
-            <p>{comment.body}</p>
-          </div>
-        ))}
+      {isOpen && (
+        <div style={{ marginTop: '12px' }}>
+          {comments.map(comment => (
+            <div
+              key={comment.id}
+              style={{
+                backgroundColor: '#1f1f1f',
+                padding: '8px',
+                borderRadius: '6px',
+                marginBottom: '8px'
+              }}
+            >
+              <strong>{comment.name}</strong>
+              <p style={{ margin: '4px 0 0 0' }}>
+                {comment.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
