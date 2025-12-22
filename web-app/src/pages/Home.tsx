@@ -69,13 +69,20 @@ useEffect(() => {
     return comments.filter(comment => comment.postId === postId);
   }
 
-  function handleCreatePost(title: string, body: string, userId: number) {
+  function handleCreatePost(
+    title: string,
+    body: string,
+    userId: number,
+    imageUrl?: string
+  ) {
     const newPost: Post = {
       id: Date.now(),
       title,
       body,
-      userId
+      userId,
+      imageUrl
     };
+
 
     setPosts(prevPosts => [newPost, ...prevPosts]);
 }
@@ -186,6 +193,7 @@ return (
             title={post.title}
             body={post.body}
             author={getAuthorName(post.userId)}
+            imageUrl={post.imageUrl}
             comments={getPostComments(post.id)}
             isOpen={openPostId === post.id}
             isEditing={editingPostId === post.id}

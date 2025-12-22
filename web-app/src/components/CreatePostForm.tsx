@@ -3,7 +3,12 @@ import type { User } from '../types/User';
 
 interface CreatePostFormProps {
   users: User[];
-  onCreatePost: (title: string, body: string, userId: number) => void;
+  onCreatePost: (
+    title: string,
+    body: string,
+    userId: number,
+    imageUrl?: string
+    ) => void;
   disabled?: boolean;
 }
 
@@ -14,6 +19,7 @@ export function CreatePostForm({
 }: CreatePostFormProps) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [userId, setUserId] = useState<number | ''>('');
 
   function handleSubmit(event: React.FormEvent) {
@@ -21,11 +27,12 @@ export function CreatePostForm({
 
     if (!title || !body || !userId) return;
 
-    onCreatePost(title, body, userId);
+    onCreatePost(title, body, userId, imageUrl || undefined);
 
     setTitle('');
     setBody('');
     setUserId('');
+    setImageUrl('');
   }
 
   return (
@@ -85,6 +92,18 @@ export function CreatePostForm({
           </option>
         ))}
       </select>
+
+      <input
+        type="text"
+        value={imageUrl}
+        onChange={e => setImageUrl(e.target.value)}
+        placeholder="URL da imagem (opcional)"
+        style={{
+          width: '100%',
+          padding: '8px',
+          marginBottom: '8px'
+        }}
+      />
 
       <button
         type="submit"
