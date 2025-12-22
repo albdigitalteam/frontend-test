@@ -1,17 +1,18 @@
+import { useState } from 'react';
 import type { Comment } from '../types/Comment';
 
 interface PostCardProps {
+  postId: number;
   title: string;
   body: string;
   author: string;
+  imageUrl?: string;
   comments: Comment[];
   isOpen: boolean;
   isEditing: boolean;
-  imageUrl?: string;
 
   editTitle: string;
   editBody: string;
-  
 
   onToggle: () => void;
   onDelete: () => void;
@@ -20,9 +21,13 @@ interface PostCardProps {
   onCancel: () => void;
   onChangeTitle: (value: string) => void;
   onChangeBody: (value: string) => void;
+
+  onAddComment: (postId: number, name: string, body: string) => void;
+  onDeleteComment: (commentId: number) => void;
 }
 
 export function PostCard({
+  postId,
   title,
   body,
   author,
@@ -38,8 +43,22 @@ export function PostCard({
   onSave,
   onCancel,
   onChangeTitle,
-  onChangeBody
+  onChangeBody,
+  onAddComment,
+  onDeleteComment
 }: PostCardProps) {
+  const [commentName, setCommentName] = useState('');
+  const [commentBody, setCommentBody] = useState('');
+
+  function handleAddComment() {
+    if (!commentName || !commentBody) return;
+
+    onAddComment(postId, commentName, commentBody);
+
+    setCommentName('');
+    setCommentBody('');
+  }
+
   return (
     <div
       style={{
@@ -48,16 +67,7 @@ export function PostCard({
         borderRadius: '12px',
         marginBottom: '24px',
         boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
-        color: '#f1f1f1',
-        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-      }}
-      onMouseEnter={e => {
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.35)';
-      }}
-      onMouseLeave={e => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.2)';
+        color: '#f1f1f1'
       }}
     >
       {imageUrl && (
@@ -74,30 +84,19 @@ export function PostCard({
           }}
         />
       )}
-      
+
       {isEditing ? (
         <>
           <input
             value={editTitle}
             onChange={e => onChangeTitle(e.target.value)}
-            style={{
-              width: '100%',
-              marginBottom: '12px',
-              padding: '8px',
-              borderRadius: '6px'
-            }}
+            style={{ width: '100%', marginBottom: '12px', padding: '8px' }}
           />
 
           <textarea
             value={editBody}
             onChange={e => onChangeBody(e.target.value)}
-            style={{
-              width: '100%',
-              minHeight: '100px',
-              marginBottom: '12px',
-              padding: '8px',
-              borderRadius: '6px'
-            }}
+            style={{ width: '100%', minHeight: '100px', marginBottom: '12px', padding: '8px' }}
           />
 
           <div style={{ display: 'flex', gap: '8px' }}>
@@ -107,48 +106,17 @@ export function PostCard({
         </>
       ) : (
         <>
-          <h2 style={{ margin: '0 0 8px 0', fontSize: '20px' }}>
-            {title}
-          </h2>
+          <h2 style={{ marginBottom: '8px' }}>{title}</h2>
 
-          {/* ✅ DIV DOS BOTÕES FECHADA CORRETAMENTE */}
-          <div
-            style={{
-              display: 'flex',
-              gap: '8px',
-              marginBottom: '12px'
-            }}
-          >
-            <button
-              onClick={onEdit}
-              style={{
-                backgroundColor: '#3a3a3a',
-                color: '#fff',
-                border: '1px solid #444'
-              }}
-            >
-              Editar
-            </button>
-
-            <button
-              onClick={onDelete}
-              style={{
-                backgroundColor: '#a33',
-                color: '#fff',
-                border: 'none'
-              }}
-            >
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+            <button onClick={onEdit}>Editar</button>
+            <button onClick={onDelete} style={{ color: '#ff5c5c' }}>
               Excluir
             </button>
           </div>
 
-          <p style={{ lineHeight: 1.6, marginBottom: '12px' }}>
-            {body}
-          </p>
-
-          <small style={{ opacity: 0.7 }}>
-            Autor: {author}
-          </small>
+          <p>{body}</p>
+          <small style={{ opacity: 0.7 }}>Autor: {author}</small>
         </>
       )}
 
@@ -159,21 +127,60 @@ export function PostCard({
       </div>
 
       {isOpen && (
-        <div style={{ marginTop: '12px' }}>
+        <div style={{ marginTop: '16px' }}>
+          {/* FORM DE COMENTÁRIO */}
+          <div style={{ marginBottom: '16px' }}>
+            <input
+              type="text"
+              placeholder="Seu nome"
+              value={commentName}
+              onChange={e => setCommentName(e.target.value)}
+              style={{ width: '100%', marginBottom: '8px', padding: '8px' }}
+            />
+
+            <textarea
+              placeholder="Escreva um comentário..."
+              value={commentBody}
+              onChange={e => setCommentBody(e.target.value)}
+              style={{ width: '100%', minHeight: '80px', marginBottom: '8px', padding: '8px' }}
+            />
+
+            <button onClick={handleAddComment}>Comentar</button>
+          </div>
+
+          {/* LISTA DE COMENTÁRIOS */}
+          {comments.length === 0 && (
+            <p style={{ color: '#888' }}>Nenhum comentário ainda.</p>
+          )}
+
           {comments.map(comment => (
             <div
               key={comment.id}
               style={{
                 backgroundColor: '#1f1f1f',
-                padding: '8px',
-                borderRadius: '6px',
-                marginBottom: '8px'
+                padding: '12px',
+                borderRadius: '8px',
+                marginBottom: '8px',
+                display: 'flex',
+                justifyContent: 'space-between'
               }}
             >
-              <strong>{comment.name}</strong>
-              <p style={{ margin: '4px 0 0 0' }}>
-                {comment.body}
-              </p>
+              <div>
+                <strong>{comment.name}</strong>
+                <p style={{ margin: '4px 0' }}>{comment.body}</p>
+              </div>
+
+              <button
+                onClick={() => onDeleteComment(comment.id)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#ff5c5c',
+                  cursor: 'pointer'
+                }}
+              >
+                Excluir
+              </button>
             </div>
           ))}
         </div>
